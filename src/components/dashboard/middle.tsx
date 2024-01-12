@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ChartComponent from '../graph/graph';
 const Top = () => {
   return (
     <>
@@ -13,7 +13,9 @@ const Top = () => {
           boxShadow: '1px ',
           marginRight: '10px',
         }}
-      ></div>
+      >
+        <ChartComponent />
+      </div>
       <div
         style={{
           marginTop: '10px',
@@ -24,7 +26,10 @@ const Top = () => {
           boxShadow: '1px ',
           marginRight: '10px',
         }}
-      ></div>
+      >
+        {' '}
+        <ChartComponent />
+      </div>
       <div
         style={{
           marginTop: '10px',
@@ -35,7 +40,10 @@ const Top = () => {
           boxShadow: '1px ',
           marginRight: '10px',
         }}
-      ></div>
+      >
+        {' '}
+        <ChartComponent />
+      </div>
     </>
   );
 };
