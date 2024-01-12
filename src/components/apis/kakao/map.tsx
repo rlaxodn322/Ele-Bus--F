@@ -10,7 +10,7 @@ export default function MapComponent() {
   useEffect(() => {
     const kakaoMapScript = document.createElement('script');
     kakaoMapScript.async = false;
-    kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=c8a8be4fec1289917350745769f6aae0&autoload=false`;
+    kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=2b230b26fde09123dfbe3d79c118924d&autoload=false`;
     document.head.appendChild(kakaoMapScript);
 
     const onLoadKakaoAPI = () => {
@@ -18,7 +18,7 @@ export default function MapComponent() {
         const container = document.getElementById('map');
         var options = {
           center: new window.kakao.maps.LatLng(37.166062304539, 127.10342236587),
-          level: 6,
+          level: 12,
         };
 
         const map = new window.kakao.maps.Map(container, options);
@@ -30,7 +30,7 @@ export default function MapComponent() {
 
   return (
     <div>
-      <div id="map" style={{ width: '100%', height: '350px', margin: '10px 0 10px 0' }}></div>
+      <div id="map" style={{ width: '550px', height: '260px', margin: '10px 0 10px 0', borderRadius: '10px' }}></div>
     </div>
   );
 }
