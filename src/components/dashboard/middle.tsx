@@ -16,7 +16,7 @@ const Top = () => {
           width: '33%',
           border: '1px solid lightgrey',
           borderRadius: '10px',
-          boxShadow: '1px ',
+          boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
           marginRight: '10px',
         }}
       >
@@ -30,7 +30,7 @@ const Top = () => {
           width: '33%',
           border: '1px solid lightgrey',
           borderRadius: '10px',
-          boxShadow: '1px ',
+          boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
           marginRight: '10px',
         }}
       >
@@ -44,7 +44,7 @@ const Top = () => {
           width: '33%',
           border: '1px solid lightgrey',
           borderRadius: '10px',
-          boxShadow: '1px ',
+          boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
           marginRight: '10px',
         }}
       >

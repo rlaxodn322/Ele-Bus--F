@@ -8,7 +8,7 @@ const styles = {
     width: '822px',
     border: '1px solid lightgrey',
     borderRadius: '10px',
-    boxShadow: '1px ',
+    boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
     marginRight: '10px',
   },
   innerContainer: {
@@ -27,7 +27,7 @@ const styles = {
     width: '528px',
     height: '145px',
     borderRadius: '10px',
-    boxShadow: '1px ',
+    boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
   },
   subContainerWithMargin: {
     marginTop: '10px',

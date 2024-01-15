@@ -8,7 +8,7 @@ const styles = {
     width: '822px',
     border: '1px solid lightgrey',
     borderRadius: '10px',
-    boxShadow: '1px ',
+    boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
     marginRight: '10px',
   },
   header: {
@@ -36,7 +36,7 @@ const styles = {
     marginRight: '10px',
     marginTop: '10px',
     borderRadius: '10px',
-    boxShadow: '1px ',
+    boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
     border: '1px solid lightgrey',
   },
   subContainerSmall: {
@@ -47,7 +47,7 @@ const styles = {
     marginRight: '10px',
     marginTop: '10px',
     borderRadius: '10px',
-    boxShadow: '1px ',
+    boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
     border: '1px solid lightgrey',
   },
   imagestyle: {
