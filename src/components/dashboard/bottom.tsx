@@ -44,8 +44,15 @@ const Top = () => {
         </div>
       </div>
       <div style={styles.columnContainer}>
-        <div style={styles.subContainer}></div>
-        <div style={{ ...styles.subContainer, ...styles.subContainerWithMargin }}></div>
+        <div style={styles.subContainer}>
+          <h2 style={{ marginLeft: '20px' }}>공지사항</h2>
+          <h4 style={{ marginLeft: '40px' }}>등록된 데이터가 없습니다.</h4>
+        </div>
+        <div style={{ ...styles.subContainer, ...styles.subContainerWithMargin }}>
+          <h2 style={{ marginLeft: '20px' }}>고객센터</h2>
+          <h4 style={{ marginLeft: '40px' }}>taewoo@firstcorea.com 로 문의해 주세요.</h4>
+          <h4 style={{ marginLeft: '40px' }}>고객님께 최상의 서비스를 제공할 수 있도록 노력하겠습니다.</h4>
+        </div>
       </div>
     </>
   );

@@ -3,7 +3,11 @@
 import React from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 
-const BarChart = ({ colorScheme }) => {
+interface BarChartProps {
+  colorScheme: string[]; // 또는 다른 적절한 타입으로 지정
+}
+
+const BarChart: React.FC<BarChartProps> = ({ colorScheme }) => {
   // Example data
   const data = [
     { id: 'A', value: 10 },
