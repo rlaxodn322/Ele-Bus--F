@@ -13,16 +13,21 @@ const styles = {
     marginRight: '10px',
   },
   header: {
-    margin: '20px',
+    marginLeft: '50px',
+    padding: '0',
+    marginTop: '5px',
+    marginBottom: '0',
   },
   progressContainer: {
     display: 'flex',
     justifyContent: 'center',
+    marginTop: '10px',
   },
   infoContainer: {
     display: 'flex',
     justifyContent: 'flex-end',
     marginRight: '50px',
+    marginBottom: '10px',
   },
   subContainer: {
     border: '1px solid lightgrey',
@@ -62,19 +67,20 @@ const Top = () => {
   return (
     <>
       <div style={styles.container}>
-        <h1 style={styles.header}>상태</h1>
+        <h1 style={styles.header}>상황정보</h1>
         <div style={styles.progressContainer}>
-          <div style={{ marginRight: '50px' }}>
-            <CustomProgress percent={70} />
-            <h1>운행상황</h1>
-          </div>
-          <div style={{ marginRight: '50px' }}>
+          <div style={{ width: '33%', display: 'flex', justifyContent: 'center', flexFlow: 'column' }}>
             <CustomProgress percent={50} />
-            <h1>고장상황</h1>
+            <h1 style={{ marginBottom: '0' }}>운행 상황</h1>
           </div>
-          <div style={{ marginRight: '50px' }}>
-            <CustomProgress percent={10} />
-            <h1>충전소상황</h1>
+
+          <div style={{ width: '33%', display: 'flex', justifyContent: 'center', flexFlow: 'column' }}>
+            <CustomProgress percent={10} strokeColor="#118606" />
+            <h1 style={{ marginBottom: '0' }}>충전/주차 상황</h1>
+          </div>
+          <div style={{ width: '33%', display: 'flex', justifyContent: 'center', flexFlow: 'column' }}>
+            <CustomProgress percent={10} strokeColor="#e91010" />
+            <h1 style={{ marginBottom: '0' }}> 고장 상황</h1>
           </div>
         </div>
         <div>
@@ -84,8 +90,12 @@ const Top = () => {
           </div>
 
           <div style={styles.infoContainer}>
-            <img style={{ width: '20px' }} src="images/circle-svgrepo-com (2).svg" alt="주차 아이콘" />
-            주차
+            <img style={{ width: '20px' }} src="images/circle-svgrepo-com (3).svg" alt="충전 아이콘" />
+            충전
+          </div>
+          <div style={styles.infoContainer}>
+            <img style={{ width: '20px' }} src="images/circle-svgrepo-com (4).svg" alt="고장 아이콘" />
+            고장
           </div>
         </div>
       </div>
@@ -102,8 +112,8 @@ const Top = () => {
         </div>
         <div style={styles.subContainerSmall}>
           <div>
-            <h1 style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '25px' }}>주차</h1>
-            <h1 style={{ marginTop: '40px', marginLeft: '10px' }}>2대</h1>
+            <h1 style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '25px' }}>주차/충전</h1>
+            <h1 style={{ marginTop: '40px', marginLeft: '10px' }}>1대</h1>
           </div>
 
           <div>
@@ -125,7 +135,7 @@ const Top = () => {
         <div style={styles.subContainerSmall}>
           <div>
             <h1 style={{ marginLeft: '10px', fontWeight: 'bold', fontSize: '25px' }}>고장</h1>
-            <h1 style={{ marginTop: '40px', marginLeft: '10px' }}>0대</h1>
+            <h1 style={{ marginTop: '40px', marginLeft: '10px' }}>1대</h1>
           </div>
 
           <div>
