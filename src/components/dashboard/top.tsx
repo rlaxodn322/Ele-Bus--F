@@ -1,5 +1,6 @@
 import React from 'react';
-import Progress from '../antd/progress';
+
+import CustomProgress from '../antd/progress';
 
 const styles = {
   container: {
@@ -63,7 +64,18 @@ const Top = () => {
       <div style={styles.container}>
         <h1 style={styles.header}>상태</h1>
         <div style={styles.progressContainer}>
-          <Progress />
+          <div style={{ marginRight: '50px' }}>
+            <CustomProgress percent={70} />
+            <h1>운행상황</h1>
+          </div>
+          <div style={{ marginRight: '50px' }}>
+            <CustomProgress percent={50} />
+            <h1>고장상황</h1>
+          </div>
+          <div style={{ marginRight: '50px' }}>
+            <CustomProgress percent={10} />
+            <h1>충전소상황</h1>
+          </div>
         </div>
         <div>
           <div style={styles.infoContainer}>
