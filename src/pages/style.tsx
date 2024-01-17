@@ -4,10 +4,12 @@ export const Page = styled.section`
   // display: inline-flex;
 
   display: flex;
-  /* justify-content: center; */
+  justify-content: space-between;
   width: 1370px;
+  height: 850px;
   margin: 0 auto;
-  // flex-wrap: wrap;
+  border: 1px solid black;
+  //flex-wrap: wrap;
   // width: auto;
   // height: auto;
   // margin: 16px 0px 0px 0px;

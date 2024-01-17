@@ -18,7 +18,7 @@ export default function MapComponent() {
         const container = document.getElementById('map');
         var options = {
           center: new window.kakao.maps.LatLng(37.166062304539, 127.10342236587),
-          level: 12,
+          level: 8,
         };
 
         const map = new window.kakao.maps.Map(container, options);
@@ -30,7 +30,8 @@ export default function MapComponent() {
 
   return (
     <div>
-      <div id="map" style={{ width: '550px', height: '260px', margin: '10px 0 10px 0', borderRadius: '10px' }}></div>
+      <div>운행중인차량</div>
+      <div id="map" style={{ width: '550px', height: '800px', margin: '10px 0 10px 0', borderRadius: '10px' }}></div>
     </div>
   );
 }
