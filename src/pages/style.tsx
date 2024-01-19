@@ -8,7 +8,6 @@ export const Page = styled.section`
   width: 1370px;
   height: 850px;
   margin: 0 auto;
-  border: 1px solid lightgrey;
 
   //flex-wrap: wrap;
   // width: auto;
