@@ -30,8 +30,8 @@ export default function MapComponent() {
 
   return (
     <div>
-      <div>운행중인차량</div>
-      <div id="map" style={{ width: '550px', height: '800px', margin: '10px 0 10px 0', borderRadius: '10px' }}></div>
+      <h1 style={{ marginTop: '0', marginBottom: '30px', fontSize: '20px' }}>운행중인차량</h1>
+      <div id="map" style={{ width: '100%', height: '520px', borderRadius: '20px' }}></div>
     </div>
   );
 }

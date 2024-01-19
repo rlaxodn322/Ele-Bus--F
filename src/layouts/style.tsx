@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Layout = styled.section`
   margin: 0 auto;
-  background-color: white;
+  background-color: #fcfcfc;
 `;
 
 export const ContentsWrapper = styled.div`
@@ -10,7 +10,7 @@ export const ContentsWrapper = styled.div`
   margin: 0 80px;
   min-height: 82.5dvh;
 
-  background-color: white;
+  background-color: #fcfcfc;
 
   @media (max-width: 1680px) {
     // width: 1200px;
