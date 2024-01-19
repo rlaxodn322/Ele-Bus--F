@@ -36,32 +36,37 @@ const Home = () => {
         setData(receivedData);
 
         // AC 값 및 색상 업데이트
-        const acRawValue = receivedData[0]?.data.data[0]?.AC || '0';
-        const acParsedValue = parseFloat(acRawValue);
+        const acRawValue = receivedData[0]?.data.data[0]?.AC || '0.00V';
         setACValue(acRawValue);
-        setACColor(acParsedValue === 0 ? 'red' : 'blue');
+        setACColor(acRawValue === '0.00V' ? 'red' : 'blue');
 
         // DC 값 및 색상 업데이트
-        const dcRawValue = receivedData[0]?.data.data[0]?.DC || '0';
-        const dcParsedValue = parseFloat(dcRawValue);
+        const dcRawValue = receivedData[0]?.data.data[0]?.DC || '0.00V';
         setDCValue(dcRawValue);
-        setDCColor(dcParsedValue === 0 ? 'red' : 'blue');
+        setDCColor(dcRawValue === '0.00V' ? 'red' : 'blue');
       })
       .catch((error) => console.error('Error fetching data:', error));
   };
 
   return (
     <div>
-      <h1>DynamoDB Data Visualization</h1>
       <ul>
         <li>
           AC:
-          <div style={{ backgroundColor: acColor, width: '50px', height: '50px' }}></div>
+          <div style={{ backgroundColor: acColor, width: '50px', height: '50px' }}>
+            <div style={{ ...getTextStyle(acColor), ...{ color: 'white' } }}>
+              {acValue === '0.00V' ? '꺼짐' : '켜짐'}
+            </div>
+          </div>
           {acValue}
         </li>
         <li>
           DC:
-          <div style={{ backgroundColor: dcColor, width: '50px', height: '50px' }}></div>
+          <div style={{ backgroundColor: dcColor, width: '50px', height: '50px' }}>
+            <div style={{ ...getTextStyle(dcColor), ...{ color: 'white' } }}>
+              {dcValue === '0.00V' ? '꺼짐' : '켜짐'}
+            </div>
+          </div>
           {dcValue}
         </li>
       </ul>
@@ -70,3 +75,10 @@ const Home = () => {
 };
 
 export default Home;
+
+const getTextStyle = (color: string) => ({
+  textAlign: 'center',
+  marginTop: '5px',
+  fontWeight: 'bold',
+  color: color,
+});
