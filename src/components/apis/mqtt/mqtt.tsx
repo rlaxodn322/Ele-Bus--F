@@ -48,7 +48,7 @@ const Home = () => {
 
   return (
     <div>
-      <div style={{ display: 'flex', marginLeft: '10px' }}>
+      <div style={{ display: 'flex', marginLeft: '10px', marginTop: '-20px' }}>
         <div style={{ marginLeft: '10px' }}>
           AC:
           <div style={{ backgroundColor: acColor, width: '50px', height: '20px' }}>

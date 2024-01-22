@@ -109,6 +109,7 @@ const Middle = () => {
     <>
       <div
         style={{
+          marginTop: '12px',
           display: 'flex',
           justifyContent: 'space-between',
           borderRadius: '10px',
