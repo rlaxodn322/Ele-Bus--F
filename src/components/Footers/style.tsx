@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Layout = styled.div`
   width: 100%;
+  margin-top: 100px;
   height: auto;
   background-color: #fcfcfc;
   color: #808080;

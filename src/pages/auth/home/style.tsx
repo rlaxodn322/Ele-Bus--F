@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 export const Page = styled.section`
   // display: inline-flex;
 
-  /* display: flex;
-  justify-content: space-between; */
+  /* /* display: flex; */
+  /* justify-content: space-between; */
   width: 1370px;
   height: 750px;
   margin: 0 auto;

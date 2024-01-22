@@ -6,7 +6,7 @@ export const Layout = styled.section`
 `;
 
 export const ContentsWrapper = styled.div`
-  width: 100%;
+  width: 95%;
   margin: 0 80px;
   min-height: 82.5dvh;
 

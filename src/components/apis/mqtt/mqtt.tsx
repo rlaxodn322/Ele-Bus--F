@@ -11,7 +11,6 @@ interface Item {
 }
 
 const Home = () => {
-  const [data, setData] = useState<Item[]>([]);
   const [acColor, setACColor] = useState<string>('red');
   const [dcColor, setDCColor] = useState<string>('red');
   const [acValue, setACValue] = useState<string>('');
@@ -33,7 +32,6 @@ const Home = () => {
       .get<Item[]>('http://localhost:3000/mqtt/getdata')
       .then((response) => {
         const receivedData = response.data;
-        setData(receivedData);
 
         // AC 값 및 색상 업데이트
         const acRawValue = receivedData[0]?.data.data[0]?.AC || '0.00V';
@@ -50,33 +48,33 @@ const Home = () => {
 
   return (
     <div>
-      <ul>
-        <li>
+      <div style={{ display: 'flex', marginLeft: '10px' }}>
+        <div style={{ marginLeft: '10px' }}>
           AC:
-          <div style={{ backgroundColor: acColor, width: '50px', height: '50px' }}>
+          <div style={{ backgroundColor: acColor, width: '50px', height: '20px' }}>
             <div style={{ ...getTextStyle(acColor), ...{ color: 'white' } }}>
               {acValue === '0.00V' ? '꺼짐' : '켜짐'}
             </div>
           </div>
           {acValue}
-        </li>
-        <li>
+        </div>
+        <div style={{ marginLeft: '10px' }}>
           DC:
-          <div style={{ backgroundColor: dcColor, width: '50px', height: '50px' }}>
+          <div style={{ backgroundColor: dcColor, width: '50px', height: '20px' }}>
             <div style={{ ...getTextStyle(dcColor), ...{ color: 'white' } }}>
               {dcValue === '0.00V' ? '꺼짐' : '켜짐'}
             </div>
           </div>
           {dcValue}
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Home;
 
-const getTextStyle = (color: string) => ({
+const getTextStyle = (color: string): React.CSSProperties => ({
   textAlign: 'center',
   marginTop: '5px',
   fontWeight: 'bold',
