@@ -15,7 +15,13 @@ const MyPage = () => {
             <Right />
             <div style={{ marginTop: '10px', width: '100%', height: '550px' }}>
               <div
-                style={{ width: '100%', height: '50%', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}
+                style={{
+                  width: '100%',
+                  height: '50%',
+                  boxShadow: '2px 2px 2px 2px lightgray',
+                  borderRadius: '10px',
+                  background: 'white',
+                }}
               >
                 <Table />
               </div>
@@ -26,6 +32,7 @@ const MyPage = () => {
                   boxShadow: '2px 2px 2px 2px lightgray',
                   marginTop: '10px',
                   borderRadius: '10px',
+                  background: 'white',
                 }}
               >
                 <Table />

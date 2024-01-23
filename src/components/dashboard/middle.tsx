@@ -74,6 +74,18 @@ const data: RowData[] = [
     chargingStation: '1',
     location: '하남',
   },
+  {
+    key: '5',
+    name: '하남운수',
+    holding: 10,
+    operation: 9,
+    charging: 0,
+    waiting: 1,
+    breakdown: 0,
+    event: ' ',
+    chargingStation: '1',
+    location: '하남',
+  },
 ];
 
 const calculateTotal = (data: RowData[]) => {
@@ -116,6 +128,7 @@ const Middle = () => {
           boxShadow: '2px 2px 2px 2px lightgray',
           height: '90%',
           width: '100%',
+          background: 'white',
         }}
       >
         <div style={{ width: '50%', height: '100%' }}>
@@ -124,9 +137,10 @@ const Middle = () => {
         <div style={{ width: '50%', height: '100%' }}>
           <div
             style={{
-              height: '100%',
+              height: '95%',
               marginLeft: '10px',
               marginTop: '10px',
+              background: 'white',
             }}
           >
             <Table columns={columns} data={[...data, totalRow]} tableWidth="100%" tableHeight={'550px'} />

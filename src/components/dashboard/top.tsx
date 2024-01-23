@@ -19,19 +19,19 @@ const Top = () => {
             boxShadow: '2px 2px 2px 2px lightgray',
           }}
         >
-          <h1>등록버스</h1>
+          <h1 style={{ margin: '20px' }}>등록버스</h1>
         </div>
         <div style={{ borderRadius: '10px', boxShadow: '2px 2px 2px 2px lightgray', width: '19%', height: '100%' }}>
-          <h1>운행중</h1>
+          <h1 style={{ margin: '20px' }}>운행중</h1>
         </div>
         <div style={{ borderRadius: '10px', boxShadow: '2px 2px 2px 2px lightgray', width: '19%', height: '100%' }}>
-          <h1>대기/충전중</h1>
+          <h1 style={{ margin: '20px' }}>대기/충전중</h1>
         </div>
         <div style={{ borderRadius: '10px', boxShadow: '2px 2px 2px 2px lightgray', width: '19%', height: '100%' }}>
-          <h1>점검/수리중</h1>
+          <h1 style={{ margin: '20px' }}>점검/수리중</h1>
         </div>
         <div style={{ borderRadius: '10px', boxShadow: '2px 2px 2px 2px lightgray', width: '19%', height: '100%' }}>
-          <h1>배터리정보</h1>
+          <h1 style={{ margin: '20px' }}>배터리정보</h1>
           <div>
             <Mqtt />
           </div>
