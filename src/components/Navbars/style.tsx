@@ -11,10 +11,10 @@ export const Layout = styled.div`
   border-right: 1px solid #f0f0f0;
   border-radius: 5px;
   & div {
-    height: 60px;
+    height: 30px;
     padding-top: 10px;
     & li {
-      height: 30px;
+      height: 20px;
       width: 21px;
       padding-top: 4px;
       & a {
