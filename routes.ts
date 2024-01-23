@@ -28,6 +28,6 @@ export const routes = [
     router: '/auth/statistics',
     active: '/icons/sidebar/statistics-svgrepo-com (1).svg',
     default: '/icons/sidebar/statistics-svgrepo-com.svg',
-    name: 'Error',
+    name: 'Statistics',
   },
 ];
