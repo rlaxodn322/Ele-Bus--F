@@ -90,7 +90,7 @@ const data: RowData[] = [
 
 const calculateTotal = (data: RowData[]) => {
   const total = {
-    key: '5',
+    key: '6',
     name: '총계',
     holding: 0,
     operation: 0,

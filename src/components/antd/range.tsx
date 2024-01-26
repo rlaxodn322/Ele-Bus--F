@@ -23,10 +23,8 @@ const BusDummyData = [
 const App: React.FC = () => {
   const onFinish = (values: any) => {
     const busLabel = BusDummyData.find((bus) => bus.value === values.Select)?.label;
-    console.log(`Bus Label: ${busLabel}`);
-    console.log(
-      `Date Range: ${values.RangePicker[0].format('YYYY-MM-DD')} - ${values.RangePicker[1].format('YYYY-MM-DD')}`,
-    );
+    console.log(`Bus number: ${busLabel}`);
+    console.log(`Date : ${values.RangePicker[0].format('YYYY-MM-DD')} - ${values.RangePicker[1].format('YYYY-MM-DD')}`);
     // 여기서 필요한 추가 작업을 수행할 수 있습니다.
   };
 
