@@ -31,7 +31,7 @@ const Top = () => {
             }}
           >
             <h2>2</h2>
-            <img src="images/bus-transport-svgrepo-com.svg"></img>
+            <img src="images/bus-svgrepo-com (8).svg"></img>
           </div>
         </div>
         <div
@@ -52,7 +52,7 @@ const Top = () => {
             }}
           >
             <h2>2</h2>
-            <img src="images/bus-transport-svgrepo-com.svg"></img>
+            <img src="images/bus-transport-svgrepo-com (2).svg"></img>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ const Top = () => {
             }}
           >
             <h2>2</h2>
-            <img src="images/bus-transport-svgrepo-com.svg"></img>
+            <img src="images/stop-circle-svgrepo-com.svg"></img>
           </div>
         </div>
         <div
@@ -95,9 +95,18 @@ const Top = () => {
             borderRadius: '10px',
           }}
         >
-          <h3 style={{ margin: '20px' }}>고장</h3>
-
-          <Mqtt />
+          <h3 style={{ margin: '20px', marginBottom: '0' }}>고장</h3>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              paddingLeft: '20px',
+              paddingRight: '20px',
+            }}
+          >
+            <Mqtt />
+            <img src="images/danger-circle-svgrepo-com (1).svg"></img>
+          </div>
         </div>
       </div>
     </>
