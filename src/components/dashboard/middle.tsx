@@ -59,7 +59,7 @@ const Middle = () => {
         <div style={{ width: '49.5%', height: '100%' }}>
           <h1 style={{ marginLeft: '20px' }}>버스상태</h1>
           <RightTop />
-          <h1 style={{ marginLeft: '20px' }}>운행중인 차량정보</h1>
+          <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>운행중인 차량정보</h1>
           <div
             style={{
               display: 'flex',
@@ -115,8 +115,16 @@ const Middle = () => {
             ))}
           </div>
 
-          <h1 style={{ marginLeft: '20px' }}>
-            차량 고장 이벤트 이력
+          <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>차량 고장 이벤트 이력</h1>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center', // 세로 중앙 정렬
+              justifyContent: 'flex-end', // 오른쪽 정렬
+              margin: '0px',
+              border: '0px',
+            }}
+          >
             <Cascader
               options={[
                 { value: 'latest', label: '최신순' },
@@ -128,9 +136,9 @@ const Middle = () => {
                 setSortingOrder(sortOrder);
               }}
               defaultValue={['latest']}
-              style={{ marginLeft: '20px', margin: '5px' }}
+              style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
             />
-          </h1>
+          </div>
           <div
             style={{
               display: 'flex',
