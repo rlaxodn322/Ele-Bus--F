@@ -9,6 +9,7 @@ export const Layout = styled.div`
   width: 60px;
   z-index: 3;
   border-right: 1px solid #f0f0f0;
+  background-color: white;
   border-radius: 5px;
   & div {
     height: 30px;

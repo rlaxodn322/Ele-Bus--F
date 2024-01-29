@@ -2,7 +2,6 @@ import Head from 'next/head';
 import MainLayout from '../layouts';
 import { Page } from './style';
 
-import Top from '../components/dashboard/top';
 import Middle from '../components/dashboard/middle';
 const Home = () => {
   return (
@@ -12,7 +11,6 @@ const Home = () => {
         <meta name="description" content="text." />
       </Head>
       <Page>
-        <Top />
         <Middle />
       </Page>
     </>

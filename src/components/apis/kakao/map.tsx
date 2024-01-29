@@ -65,7 +65,8 @@ const MapComponent = () => {
 
   return (
     <div>
-      <div id="map" style={{ marginTop: '10px', width: '100%', height: '660px', borderRadius: '20px' }}></div>
+      <h1 style={{ marginLeft: '20px' }}>버스 위치</h1>
+      <div id="map" style={{ marginTop: '10px', width: '100%', height: '690px', borderRadius: '20px' }}></div>
     </div>
   );
 };

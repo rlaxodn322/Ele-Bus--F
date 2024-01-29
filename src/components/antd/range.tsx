@@ -46,7 +46,7 @@ const App: React.FC = () => {
 
       <Form.Item wrapperCol={{ offset: 17, span: 16 }}>
         <Button type="primary" htmlType="submit">
-          제출
+          입력
         </Button>
       </Form.Item>
     </Form>

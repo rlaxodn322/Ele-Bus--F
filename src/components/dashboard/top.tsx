@@ -5,69 +5,65 @@ const Top = () => {
     <>
       <div
         style={{
+          height: '15%',
+          marginLeft: '10px',
+          marginTop: '10px',
+          background: 'white',
           display: 'flex',
           justifyContent: 'space-between',
-          height: '15%',
-          width: '100%',
         }}
       >
         <div
           style={{
-            width: '19%',
+            width: '49%',
             height: '100%',
+            boxShadow: '1px 1px 1px 2px lightgray',
             borderRadius: '10px',
-            boxShadow: '2px 2px 2px 2px lightgray',
-            background: 'white',
           }}
         >
-          <h1 style={{ margin: '20px' }}>등록버스</h1>
+          <h3 style={{ margin: '20px' }}>전체</h3>
         </div>
         <div
           style={{
-            borderRadius: '10px',
-            boxShadow: '2px 2px 2px 2px lightgray',
-            width: '19%',
+            width: '49%',
             height: '100%',
-            background: 'white',
+            boxShadow: '1px 1px 1px 2px lightgray',
+            borderRadius: '10px',
           }}
         >
-          <h1 style={{ margin: '20px' }}>운행중</h1>
+          <h3 style={{ margin: '20px' }}>운행</h3>
+        </div>
+      </div>
+      <div
+        style={{
+          height: '15%',
+          marginLeft: '10px',
+          marginTop: '10px',
+          background: 'white',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div
+          style={{
+            width: '49%',
+            height: '100%',
+            boxShadow: '1px 1px 1px 2px lightgray',
+            borderRadius: '10px',
+          }}
+        >
+          <h3 style={{ margin: '20px' }}>대기/충전</h3>
         </div>
         <div
           style={{
-            borderRadius: '10px',
-            boxShadow: '2px 2px 2px 2px lightgray',
-            width: '19%',
+            width: '49%',
             height: '100%',
-            background: 'white',
+            boxShadow: '1px 1px 1px 2px lightgray',
+            borderRadius: '10px',
           }}
         >
-          <h1 style={{ margin: '20px' }}>대기/충전중</h1>
-        </div>
-        <div
-          style={{
-            borderRadius: '10px',
-            boxShadow: '2px 2px 2px 2px lightgray',
-            width: '19%',
-            height: '100%',
-            background: 'white',
-          }}
-        >
-          <h1 style={{ margin: '20px' }}>점검/수리중</h1>
-        </div>
-        <div
-          style={{
-            borderRadius: '10px',
-            boxShadow: '2px 2px 2px 2px lightgray',
-            width: '19%',
-            height: '100%',
-            background: 'white',
-          }}
-        >
-          <h1 style={{ margin: '20px' }}>배터리정보</h1>
-          <div>
-            <Mqtt />
-          </div>
+          <h3 style={{ margin: '20px' }}>고장</h3>
+          <Mqtt />
         </div>
       </div>
     </>
