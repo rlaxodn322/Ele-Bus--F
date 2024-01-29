@@ -13,7 +13,7 @@ const MainFooter = () => {
           <p>
             <span>저자 : 김태우</span>
             <span>이메일 : taewoo@firstcorea.com</span>
-            <span>Copyright 2023. 김태우. ALL Rights Reserved.</span>
+            <span>Copyright 2024. 김태우. ALL Rights Reserved.</span>
           </p>
         </footer>
       </Layout>

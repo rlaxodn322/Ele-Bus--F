@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { Cascader } from 'antd'; // antd의 Cascader 컴포넌트를 사용
 import Map from '../apis/kakao/map';
 import RightTop from './top';
 
@@ -26,7 +28,18 @@ const Middle = () => {
   const getCircleColor = (importance: string) => {
     return importance === 'High' ? 'red' : 'green';
   };
+  const [sortingOrder, setSortingOrder] = useState<'latest' | 'oldest'>('latest');
 
+  const sortedEventHistory = [...dummyEventHistory].sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+
+    if (sortingOrder === 'latest') {
+      return dateB - dateA;
+    } else {
+      return dateA - dateB;
+    }
+  });
   return (
     <>
       <div
@@ -34,7 +47,7 @@ const Middle = () => {
           marginTop: '12px',
           display: 'flex',
           justifyContent: 'space-between',
-          height: '90%',
+          height: '100%',
           width: '100%',
         }}
       >
@@ -51,7 +64,7 @@ const Middle = () => {
               flexDirection: 'column',
               overflowY: 'auto', // 스크롤이 필요한 경우 자동으로 스크롤 생성
               width: '98.5%',
-              height: '21.3%',
+              height: 'calc(21.3% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
               margin: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
@@ -60,12 +73,15 @@ const Middle = () => {
             {/* 운행중인 차량 정보 */}
             <div
               style={{
+                position: 'sticky',
+                top: '0',
                 display: 'flex',
                 justifyContent: 'space-between',
                 padding: '5px',
                 background: '#2CA0F3',
                 color: 'white',
                 borderRadius: '10px',
+                zIndex: '1', // 헤더가 다른 요소 위로 올라가도록 설정
               }}
             >
               <div style={{ flex: 1, textAlign: 'center' }}>운행사</div>
@@ -97,28 +113,41 @@ const Middle = () => {
             ))}
           </div>
 
-          <h1 style={{ marginLeft: '20px' }}>차량 고장 이벤트 이력</h1>
+          <h1 style={{ marginLeft: '20px' }}>
+            차량 고장 이벤트 이력{' '}
+            <Cascader
+              options={[
+                { value: 'latest', label: '최신순' },
+                { value: 'oldest', label: '늦은 순' },
+              ]}
+              onChange={(value) => setSortingOrder(value[0])}
+              defaultValue={['latest']}
+              style={{ marginLeft: '20px', margin: '5px' }}
+            />
+          </h1>
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
               overflowY: 'auto',
               width: '98.5%',
-              height: '21.3%',
+              height: 'calc(21.3% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
               margin: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
             }}
           >
-            {/* 차량 고장 이벤트 이력 */}
             <div
               style={{
+                position: 'sticky',
+                top: '0',
                 display: 'flex',
                 justifyContent: 'space-between',
                 padding: '5px',
                 background: '#2CA0F3',
                 color: 'white',
                 borderRadius: '10px',
+                zIndex: '1', // 헤더가 다른 요소 위로 올라가도록 설정
               }}
             >
               <div style={{ flex: 1, textAlign: 'center' }}>날짜</div>
@@ -127,7 +156,7 @@ const Middle = () => {
               <div style={{ flex: 1, textAlign: 'center' }}>중요도</div>
               <div style={{ flex: 1, textAlign: 'center' }}>비고</div>
             </div>
-            {dummyEventHistory.map((event, index) => (
+            {sortedEventHistory.map((event, index) => (
               <h6
                 key={index}
                 style={{
