@@ -21,7 +21,18 @@ const Top = () => {
             borderRadius: '10px',
           }}
         >
-          <h3 style={{ margin: '20px' }}>전체</h3>
+          <h3 style={{ margin: '20px', marginBottom: '0' }}>전체</h3>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              paddingLeft: '20px',
+              paddingRight: '20px',
+            }}
+          >
+            <h2>2</h2>
+            <img src="images/bus-transport-svgrepo-com.svg"></img>
+          </div>
         </div>
         <div
           style={{
@@ -31,7 +42,18 @@ const Top = () => {
             borderRadius: '10px',
           }}
         >
-          <h3 style={{ margin: '20px' }}>운행</h3>
+          <h3 style={{ margin: '20px', marginBottom: '0' }}>운행</h3>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              paddingLeft: '20px',
+              paddingRight: '20px',
+            }}
+          >
+            <h2>2</h2>
+            <img src="images/bus-transport-svgrepo-com.svg"></img>
+          </div>
         </div>
       </div>
       <div
@@ -52,7 +74,18 @@ const Top = () => {
             borderRadius: '10px',
           }}
         >
-          <h3 style={{ margin: '20px' }}>대기/충전</h3>
+          <h3 style={{ margin: '20px', marginBottom: '0' }}>대기/충전</h3>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              paddingLeft: '20px',
+              paddingRight: '20px',
+            }}
+          >
+            <h2>2</h2>
+            <img src="images/bus-transport-svgrepo-com.svg"></img>
+          </div>
         </div>
         <div
           style={{
@@ -63,6 +96,7 @@ const Top = () => {
           }}
         >
           <h3 style={{ margin: '20px' }}>고장</h3>
+
           <Mqtt />
         </div>
       </div>
