@@ -6,24 +6,24 @@ export const Layout = styled.div`
   width: 250px;
   bottom: 0;
   height: 100vh;
-  width: 60px;
+  width: 100px;
   z-index: 3;
   border-right: 1px solid #f0f0f0;
   background-color: white;
   border-radius: 5px;
   & div {
     height: 30px;
-    padding-top: 10px;
+    padding-top: 40px;
     & li {
       height: 20px;
-      width: 21px;
+      width: 60px;
       padding-top: 4px;
       & a {
         & label {
           visibility: hidden;
         }
         & img {
-          margin-left: -25px;
+          margin-left: -5px;
           margin-top: -4px;
         }
       }

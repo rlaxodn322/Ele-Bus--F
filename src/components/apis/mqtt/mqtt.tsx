@@ -51,19 +51,15 @@ const Home = () => {
       <div style={{ display: 'flex', marginLeft: '10px' }}>
         <div style={{ marginLeft: '10px' }}>
           AC:
-          <div style={{ backgroundColor: acColor, width: '50px', height: '20px' }}>
-            <div style={{ ...getTextStyle(acColor), ...{ color: 'white' } }}>
-              {acValue === '0.00V' ? '꺼짐' : '켜짐'}
-            </div>
+          <div style={{ backgroundColor: acColor, width: '50px', height: '10px' }}>
+            <div style={{ ...getTextStyle(acColor), ...{ color: 'white' } }}>{acValue === '0.00V' ? '' : ''}</div>
           </div>
           {acValue}
         </div>
         <div style={{ marginLeft: '10px' }}>
           DC:
-          <div style={{ backgroundColor: dcColor, width: '50px', height: '20px' }}>
-            <div style={{ ...getTextStyle(dcColor), ...{ color: 'white' } }}>
-              {dcValue === '0.00V' ? '꺼짐' : '켜짐'}
-            </div>
+          <div style={{ backgroundColor: dcColor, width: '50px', height: '10px' }}>
+            <div style={{ ...getTextStyle(dcColor), ...{ color: 'white' } }}>{dcValue === '0.00V' ? '' : ''}</div>
           </div>
           {dcValue}
         </div>

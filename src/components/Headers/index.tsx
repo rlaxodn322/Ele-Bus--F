@@ -4,7 +4,7 @@ import { LogoWrapper, ButtonWrapper } from './style';
 import { Layout } from 'antd';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
-// import Weather from '../apis/weather';
+import Weather from '../apis/weather';
 import LoginButton from '../antd/loginbutton';
 
 const MainLogo = () => {
@@ -47,8 +47,12 @@ const MainLogo = () => {
             <img src={'/images/FirstLogo.jpeg'} />
           </a>
         </Link>
-        {/* <Weather></Weather> */}
+
         <ButtonWrapper>
+          <div style={{ marginRight: '30px' }}>
+            <Weather></Weather>
+          </div>
+
           <LoginButton isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         </ButtonWrapper>
       </LogoWrapper>

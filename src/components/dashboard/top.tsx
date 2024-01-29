@@ -5,7 +5,7 @@ const Top = () => {
     <>
       <div
         style={{
-          height: '15%',
+          height: '12%',
           marginLeft: '10px',
           marginTop: '10px',
           background: 'white',
@@ -21,7 +21,7 @@ const Top = () => {
             borderRadius: '10px',
           }}
         >
-          <h3 style={{ margin: '20px', marginBottom: '0' }}>전체</h3>
+          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>전체</h3>
           <div
             style={{
               display: 'flex',
@@ -31,7 +31,7 @@ const Top = () => {
             }}
           >
             <h2>2</h2>
-            <img src="images/bus-svgrepo-com (8).svg"></img>
+            <img style={{ width: '20%', marginBottom: '20px' }} src="images/bus-svgrepo-com (8).svg"></img>
           </div>
         </div>
         <div
@@ -42,7 +42,7 @@ const Top = () => {
             borderRadius: '10px',
           }}
         >
-          <h3 style={{ margin: '20px', marginBottom: '0' }}>운행</h3>
+          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>운행</h3>
           <div
             style={{
               display: 'flex',
@@ -52,13 +52,13 @@ const Top = () => {
             }}
           >
             <h2>2</h2>
-            <img src="images/bus-transport-svgrepo-com (2).svg"></img>
+            <img style={{ width: '20%', marginBottom: '20px' }} src="images/bus-transport-svgrepo-com (2).svg"></img>
           </div>
         </div>
       </div>
       <div
         style={{
-          height: '15%',
+          height: '12%',
           marginLeft: '10px',
           marginTop: '10px',
           background: 'white',
@@ -74,7 +74,7 @@ const Top = () => {
             borderRadius: '10px',
           }}
         >
-          <h3 style={{ margin: '20px', marginBottom: '0' }}>대기/충전</h3>
+          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>대기/충전</h3>
           <div
             style={{
               display: 'flex',
@@ -84,7 +84,7 @@ const Top = () => {
             }}
           >
             <h2>2</h2>
-            <img src="images/stop-circle-svgrepo-com.svg"></img>
+            <img style={{ width: '20%', marginBottom: '20px' }} src="images/stop-circle-svgrepo-com.svg"></img>
           </div>
         </div>
         <div
@@ -95,7 +95,7 @@ const Top = () => {
             borderRadius: '10px',
           }}
         >
-          <h3 style={{ margin: '20px', marginBottom: '0' }}>고장</h3>
+          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>고장</h3>
           <div
             style={{
               display: 'flex',
@@ -105,7 +105,7 @@ const Top = () => {
             }}
           >
             <Mqtt />
-            <img src="images/danger-circle-svgrepo-com (1).svg"></img>
+            <img style={{ width: '20%', marginBottom: '20px' }} src="images/danger-circle-svgrepo-com (1).svg"></img>
           </div>
         </div>
       </div>

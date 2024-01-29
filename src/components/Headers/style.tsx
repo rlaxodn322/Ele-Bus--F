@@ -11,9 +11,9 @@ export const LogoWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  padding-left: 80px;
+  padding-left: 20px;
   background-color: white;
-
+  z-index: 5;
   & img {
     height: 50px;
     // margin: 10px;

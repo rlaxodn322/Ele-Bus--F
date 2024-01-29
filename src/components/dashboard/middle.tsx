@@ -6,21 +6,23 @@ import RightTop from './top';
 
 // Dummy 데이터
 const dummyVehicleData = [
-  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: 'Note A' },
-  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: 'Note B' },
-  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: 'Note A' },
-  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: 'Note B' },
-  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: 'Note A' },
-  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: 'Note B' },
+  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: '' },
+  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: '' },
+  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: '' },
+  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: '' },
+  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: '' },
+  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: '' },
+  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: '' },
+  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: '' },
   // Add more dummy data as needed
 ];
 const dummyEventHistory = [
-  { date: '2022-01-01', vehicleNum: '6789', issue: 'Engine Failure', importance: 'High', note: 'Note A' },
-  { date: '2022-02-15', vehicleNum: '5678', issue: 'Battery Issue', importance: 'Medium', note: 'Note B' },
-  { date: '2022-01-01', vehicleNum: '6789', issue: 'Engine Failure', importance: 'High', note: 'Note A' },
-  { date: '2022-02-15', vehicleNum: '5678', issue: 'Battery Issue', importance: 'Medium', note: 'Note B' },
-  { date: '2022-01-01', vehicleNum: '6789', issue: 'Engine Failure', importance: 'High', note: 'Note A' },
-  { date: '2022-02-15', vehicleNum: '5678', issue: 'Battery Issue', importance: 'Medium', note: 'Note B' },
+  { date: '2022-01-01', vehicleNum: '6789', issue: 'Engine Failure', importance: 'High', note: '' },
+  { date: '2022-02-15', vehicleNum: '5678', issue: 'Battery Issue', importance: 'Medium', note: '' },
+  { date: '2022-01-01', vehicleNum: '6789', issue: 'Engine Failure', importance: 'High', note: '' },
+  { date: '2022-02-15', vehicleNum: '5678', issue: 'Battery Issue', importance: 'Medium', note: '' },
+  { date: '2022-01-01', vehicleNum: '6789', issue: 'Engine Failure', importance: 'High', note: '' },
+  { date: '2022-02-15', vehicleNum: '5678', issue: 'Battery Issue', importance: 'Medium', note: '' },
   // Add more dummy data as needed
 ];
 
@@ -28,7 +30,7 @@ const Middle = () => {
   const getCircleColor = (importance: string) => {
     return importance === 'High' ? 'red' : 'green';
   };
-  const [sortingOrder, setSortingOrder] = useState<'latest' | 'oldest'>('latest');
+  const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
 
   const sortedEventHistory = [...dummyEventHistory].sort((a, b) => {
     const dateA = new Date(a.date).getTime();
@@ -64,7 +66,7 @@ const Middle = () => {
               flexDirection: 'column',
               overflowY: 'auto', // 스크롤이 필요한 경우 자동으로 스크롤 생성
               width: '98.5%',
-              height: 'calc(21.3% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
+              height: 'calc(27.3% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
               margin: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
@@ -86,7 +88,7 @@ const Middle = () => {
             >
               <div style={{ flex: 1, textAlign: 'center' }}>운행사</div>
               <div style={{ flex: 1, textAlign: 'center' }}>운행노선</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>차량Num</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>차량번호</div>
               <div style={{ flex: 1, textAlign: 'center' }}>SOC</div>
               <div style={{ flex: 1, textAlign: 'center' }}>위치</div>
               <div style={{ flex: 1, textAlign: 'center' }}>비고</div>
@@ -114,13 +116,17 @@ const Middle = () => {
           </div>
 
           <h1 style={{ marginLeft: '20px' }}>
-            차량 고장 이벤트 이력{' '}
+            차량 고장 이벤트 이력
             <Cascader
               options={[
                 { value: 'latest', label: '최신순' },
                 { value: 'oldest', label: '늦은 순' },
               ]}
-              onChange={(value) => setSortingOrder(value[0])}
+              onChange={(value) => {
+                // 숫자인 경우 처리
+                const sortOrder = typeof value[0] === 'number' ? 'latest' : value[0];
+                setSortingOrder(sortOrder);
+              }}
               defaultValue={['latest']}
               style={{ marginLeft: '20px', margin: '5px' }}
             />
@@ -131,7 +137,7 @@ const Middle = () => {
               flexDirection: 'column',
               overflowY: 'auto',
               width: '98.5%',
-              height: 'calc(21.3% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
+              height: 'calc(19.5% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
               margin: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
@@ -151,7 +157,7 @@ const Middle = () => {
               }}
             >
               <div style={{ flex: 1, textAlign: 'center' }}>날짜</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>차량Num</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>차량번호</div>
               <div style={{ flex: 1, textAlign: 'center' }}>고장정보</div>
               <div style={{ flex: 1, textAlign: 'center' }}>중요도</div>
               <div style={{ flex: 1, textAlign: 'center' }}>비고</div>

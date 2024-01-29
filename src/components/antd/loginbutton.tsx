@@ -23,9 +23,9 @@ const LoginButton: React.FC<LoginButtonProps> = ({ isLoggedIn, handleLogout }) =
           <Link href="/auth/login">
             <Button>로그인</Button>
           </Link>
-          <Link href="/auth/signup">
+          {/* <Link href="/auth/signup">
             <Button>회원가입</Button>
-          </Link>
+          </Link> */}
         </>
       )}
     </>
