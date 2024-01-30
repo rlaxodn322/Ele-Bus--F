@@ -1,9 +1,10 @@
 import React from 'react';
-import { Table, ColumnsType } from 'antd';
+import { Table } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 
 interface AntdTableProps {
-  columns: ColumnsType<any>; // 컬럼 데이터의 실제 유형에 맞게 'any'를 조정하세요.
-  data: any[]; // 데이터의 실제 유형에 맞게 'any'를 조정하세요.
+  columns: ColumnsType<any>;
+  data: any[];
   tableWidth: number | string;
   tableHeight: number | string;
 }
