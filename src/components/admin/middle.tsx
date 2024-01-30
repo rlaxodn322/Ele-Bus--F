@@ -127,6 +127,7 @@ const Middle = () => {
                   borderBottom: '1px solid lightgray',
                   textAlign: 'center',
                   margin: '0',
+                  color: 'gray',
                 }}
               >
                 <div style={{ flex: 1 }}>{row.user}</div>
@@ -198,6 +199,7 @@ const Middle = () => {
                   borderBottom: '1px solid lightgray',
                   textAlign: 'center',
                   margin: '0',
+                  color: 'gray',
                 }}
               >
                 <div style={{ flex: 1 }}>{row.user}</div>

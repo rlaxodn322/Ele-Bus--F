@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Input } from 'antd';
 const dummyTableData = [
   { user: 'User_A001', registrationDate: '2023-11-08', status: 'Active' },
@@ -11,6 +11,11 @@ const dummyTableData = [
   // Add more dummy data as needed
 ];
 const Top = () => {
+  const [searchInput, setSearchInput] = useState('');
+  const handleSearch = () => {
+    console.log('Search Input:', searchInput);
+    // You can perform any further actions with the searchInput value here
+  };
   return (
     <>
       <div
@@ -27,8 +32,10 @@ const Top = () => {
         <div style={{ marginLeft: '100px', width: '25%' }}>
           <h1>사업자검색</h1>
           <div style={{ display: 'flex' }}>
-            <Input placeholder="사업자 검색 바"></Input>
-            <Button style={{ background: '#2B85FF', color: 'white' }}>검색</Button>
+            <Input placeholder="사업자 검색 바" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+            <Button style={{ background: '#2B85FF', color: 'white' }} onClick={handleSearch}>
+              검색
+            </Button>
           </div>
 
           <h4>사업자리스트</h4>
@@ -66,6 +73,7 @@ const Top = () => {
                   borderBottom: '1px solid lightgray',
                   textAlign: 'center',
                   margin: '0',
+                  color: 'gray',
                 }}
               >
                 <div style={{ flex: 1 }}>{row.user}</div>

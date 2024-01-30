@@ -1,7 +1,7 @@
 import MainLayout from '../../../layouts/index';
-import Top from '../../../components/home/top';
-import TopMiddle from '../../../components/home/topmiddle';
-import Middle from '../../../components/home/middle';
+import Top from '../../../components/bus/top';
+import TopMiddle from '../../../components/bus/topmiddle';
+import Middle from '../../../components/bus/middle';
 import { Page } from './style';
 const MyPage = () => {
   return (

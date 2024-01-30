@@ -3,17 +3,17 @@ import React from 'react';
 const Top = () => {
   return (
     <>
+      <h1>버스 조회/관리</h1>
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-between',
           width: '100%',
           height: '100px',
-          background: 'white',
         }}
       >
-        <div style={{ width: '24%', height: '100px', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}>
-          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>전체버스</h3>
+        <div style={{ width: '20%', height: '100px', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}>
+          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>전체</h3>
           <div
             style={{
               display: 'flex',
@@ -26,8 +26,8 @@ const Top = () => {
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/bus-svgrepo-com (8).svg"></img>
           </div>
         </div>
-        <div style={{ width: '24%', height: '100px', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}>
-          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>운행중</h3>
+        <div style={{ width: '20%', height: '100px', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}>
+          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>운행</h3>
           <div
             style={{
               display: 'flex',
@@ -40,7 +40,7 @@ const Top = () => {
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/bus-transport-svgrepo-com (2).svg"></img>
           </div>
         </div>
-        <div style={{ width: '24%', height: '100px', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}>
+        <div style={{ width: '20%', height: '100px', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}>
           <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>충전/대기</h3>
           <div
             style={{
@@ -54,7 +54,7 @@ const Top = () => {
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/stop-circle-svgrepo-com.svg"></img>
           </div>
         </div>
-        <div style={{ width: '24%', height: '100px', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}>
+        <div style={{ width: '20%', height: '100px', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}>
           <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>고장</h3>
           <div
             style={{
