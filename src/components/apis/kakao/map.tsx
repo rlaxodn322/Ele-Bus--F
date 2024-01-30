@@ -18,23 +18,23 @@ const MapComponent = () => {
         const container = document.getElementById('map');
         const options = {
           center: new window.kakao.maps.LatLng(37.144008, 127.06761), // Centered at Osan City
-          level: 7,
+          level: 13,
         };
 
         const map = new window.kakao.maps.Map(container, options);
 
         // Add markers for 10 locations in Osan City
         const markerPositions = [
-          { title: 'Location 1', latlng: new window.kakao.maps.LatLng(37.146045, 127.072013) },
-          { title: 'Location 2', latlng: new window.kakao.maps.LatLng(37.147234, 127.067567) },
-          { title: 'Location 3', latlng: new window.kakao.maps.LatLng(37.142567, 127.063492) },
-          { title: 'Location 4', latlng: new window.kakao.maps.LatLng(37.144789, 127.061027) },
-          { title: 'Location 5', latlng: new window.kakao.maps.LatLng(37.145982, 127.058361) },
-          { title: 'Location 6', latlng: new window.kakao.maps.LatLng(37.149289, 127.062796) },
-          { title: 'Location 7', latlng: new window.kakao.maps.LatLng(37.151576, 127.065936) },
-          { title: 'Location 8', latlng: new window.kakao.maps.LatLng(37.150223, 127.070001) },
-          { title: 'Location 9', latlng: new window.kakao.maps.LatLng(37.14677, 127.076134) },
-          { title: 'Location 10', latlng: new window.kakao.maps.LatLng(37.145389, 127.071401) },
+          { title: '하남운수', latlng: new window.kakao.maps.LatLng(37.549899, 127.216505) },
+          { title: '오산운수', latlng: new window.kakao.maps.LatLng(37.149528, 127.077071) },
+          { title: '수원운수', latlng: new window.kakao.maps.LatLng(37.263573, 127.028601) },
+          { title: '평택운수', latlng: new window.kakao.maps.LatLng(36.990437, 127.092379) },
+          { title: '부산운수', latlng: new window.kakao.maps.LatLng(35.179554, 129.075642) },
+          { title: '안성운수', latlng: new window.kakao.maps.LatLng(36.990437, 127.092379) },
+          { title: '포항운수', latlng: new window.kakao.maps.LatLng(36.019986, 129.342938) },
+          { title: '울산운수', latlng: new window.kakao.maps.LatLng(35.538377, 129.311359) },
+          { title: '대구운수', latlng: new window.kakao.maps.LatLng(35.871435, 128.601445) },
+          { title: '대천운수', latlng: new window.kakao.maps.LatLng(36.491065, 126.494356) },
         ];
 
         markerPositions.forEach(({ title, latlng }) => {

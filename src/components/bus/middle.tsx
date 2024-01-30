@@ -139,7 +139,7 @@ const Middle = () => {
           <div style={{ flex: 1, padding: '8px' }}>제조사</div>
         </div>
         {data.map((row, index) => (
-          <div key={index} style={{ display: 'flex', borderBottom: '1px solid lightgray' }}>
+          <div key={index} style={{ display: 'flex', borderBottom: '1px solid lightgray', color: 'gray' }}>
             <div style={{ flex: 1, padding: '8px' }}>{row.number}</div>
             <div style={{ flex: 1, padding: '8px' }}>{row.productionHistory}</div>
             <div style={{ flex: 1, padding: '8px' }}>{row.busName}</div>
