@@ -19,10 +19,10 @@ export const routes = [
   },
 
   {
-    router: '/auth/error',
-    active: '/icons/sidebar/error-svgrepo-com (3).svg',
-    default: '/icons/sidebar/error-svgrepo-com (2).svg',
-    name: 'Error',
+    router: '/auth/admin',
+    active: '/icons/sidebar/user-svgrepo-com (2).svg',
+    default: '/icons/sidebar/user-svgrepo-com (1).svg',
+    name: 'admin',
   },
   {
     router: '/auth/statistics',
