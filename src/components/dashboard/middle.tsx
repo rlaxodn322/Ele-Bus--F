@@ -27,11 +27,25 @@ const dummyEventHistory = [
 ];
 
 const Middle = () => {
+  const uniqueCompanies = Array.from(new Set(dummyVehicleData.map((vehicle) => vehicle.company)));
   const getCircleColor = (importance: string) => {
     return importance === 'High' ? 'red' : 'green';
   };
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
-
+  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+  // 운행중인 차량 정보 필터링 함수
+  const companyOptions = [
+    { value: '전체보기', label: '전체보기' },
+    ...uniqueCompanies.map((company) => ({ value: company, label: company })),
+  ];
+  // 운행중인 차량 정보 필터링 함수
+  const getFilteredVehicleData = () => {
+    if (selectedCompany === null || selectedCompany === '전체보기') {
+      return dummyVehicleData;
+    } else {
+      return dummyVehicleData.filter((vehicle) => vehicle.company === selectedCompany);
+    }
+  };
   const sortedEventHistory = [...dummyEventHistory].sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
@@ -42,6 +56,17 @@ const Middle = () => {
       return dateA - dateB;
     }
   });
+  const sortedVehicleData = getFilteredVehicleData().sort((a, b) => {
+    const companyA = a.company.toLowerCase();
+    const companyB = b.company.toLowerCase();
+
+    if (sortingOrder === 'asc') {
+      return companyA.localeCompare(companyB);
+    } else {
+      return companyB.localeCompare(companyA);
+    }
+  });
+
   return (
     <>
       <div
@@ -72,6 +97,14 @@ const Middle = () => {
               borderRadius: '10px',
             }}
           >
+            <Cascader
+              options={companyOptions}
+              onChange={(value) => {
+                setSelectedCompany(value[0]);
+              }}
+              defaultValue={['전체보기']}
+              style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
+            />
             {/* 운행중인 차량 정보 */}
             <div
               style={{
@@ -93,7 +126,7 @@ const Middle = () => {
               <div style={{ flex: 1, textAlign: 'center' }}>위치</div>
               <div style={{ flex: 1, textAlign: 'center' }}>비고</div>
             </div>
-            {dummyVehicleData.map((vehicle, index) => (
+            {sortedVehicleData.map((vehicle, index) => (
               <h6
                 key={index}
                 style={{

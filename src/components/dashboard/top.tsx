@@ -60,7 +60,7 @@ const Top = () => {
         style={{
           height: '12%',
           marginLeft: '10px',
-          marginTop: '10px',
+          marginTop: '13px',
           background: 'white',
           display: 'flex',
           justifyContent: 'space-between',
