@@ -60,7 +60,7 @@ const Middle = () => {
               <div style={{ flex: 1, textAlign: 'center' }}>사업자</div>
               <div style={{ flex: 1, textAlign: 'center' }}>날짜</div>
               <div style={{ flex: 1, textAlign: 'center' }}>운행시간</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>총운행량</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>총 운행량</div>
             </div>
             {dummyTableData.map((row, index) => (
               <h6
