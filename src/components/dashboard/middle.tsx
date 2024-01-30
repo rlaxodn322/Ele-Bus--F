@@ -88,23 +88,34 @@ const Middle = () => {
           <div
             style={{
               display: 'flex',
-              flexDirection: 'column',
-              overflowY: 'auto', // 스크롤이 필요한 경우 자동으로 스크롤 생성
-              width: '98.5%',
-              height: 'calc(27.3% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
-              margin: '10px',
-              boxShadow: '1px 1px 1px 2px lightgray',
-              borderRadius: '10px',
+              alignItems: 'center', // 세로 중앙 정렬
+              justifyContent: 'flex-end', // 오른쪽 정렬
+              margin: '0px',
+              border: '0px',
             }}
           >
             <Cascader
               options={companyOptions}
               onChange={(value) => {
-                setSelectedCompany(value[0]);
+                // value가 배열이므로 첫 번째 요소를 선택
+                setSelectedCompany(value[0] as string | null);
               }}
               defaultValue={['전체보기']}
               style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
             />
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              overflowY: 'auto', // 스크롤이 필요한 경우 자동으로 스크롤 생성
+              width: '98.5%',
+              height: 'calc(27.3% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
+              marginLeft: '10px',
+              boxShadow: '1px 1px 1px 2px lightgray',
+              borderRadius: '10px',
+            }}
+          >
             {/* 운행중인 차량 정보 */}
             <div
               style={{
@@ -179,7 +190,7 @@ const Middle = () => {
               overflowY: 'auto',
               width: '98.5%',
               height: 'calc(19.5% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
-              margin: '10px',
+              marginLeft: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
             }}
