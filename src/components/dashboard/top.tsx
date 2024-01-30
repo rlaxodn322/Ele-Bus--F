@@ -74,7 +74,7 @@ const Top = () => {
             borderRadius: '10px',
           }}
         >
-          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>대기/충전</h3>
+          <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>충전/대기</h3>
           <div
             style={{
               display: 'flex',

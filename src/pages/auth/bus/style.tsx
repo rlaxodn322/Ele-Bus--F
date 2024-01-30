@@ -6,11 +6,9 @@ export const Page = styled.section`
   /* /* display: flex; */
   /* justify-content: space-between; */
   width: 1370px;
-  height: 350px;
-  margin: 5px auto;
+  height: 750px;
+  margin: 30px auto;
 
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px lightgray;
   //flex-wrap: wrap;
   // width: auto;
   // height: auto;

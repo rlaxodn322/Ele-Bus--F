@@ -12,10 +12,10 @@ export const routes = [
     name: 'Dashboard',
   },
   {
-    router: '/auth/home',
-    active: '/icons/sidebar/home-4-svgrepo-com (1).svg',
-    default: '/icons/sidebar/home-4-svgrepo-com.svg',
-    name: 'Home',
+    router: '/auth/bus',
+    active: '/icons/sidebar/bus-svgrepo-com (6).svg',
+    default: '/icons/sidebar/bus-svgrepo-com (3).svg',
+    name: 'Bus',
   },
 
   {
@@ -29,11 +29,5 @@ export const routes = [
     active: '/icons/sidebar/statistics-svgrepo-com (1).svg',
     default: '/icons/sidebar/statistics-svgrepo-com.svg',
     name: 'Statistics',
-  },
-  {
-    router: '/auth/bus',
-    active: '/icons/sidebar/bus-svgrepo-com (6).svg',
-    default: '/icons/sidebar/bus-svgrepo-com (3).svg',
-    name: 'Bus',
   },
 ];
