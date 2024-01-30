@@ -6,6 +6,7 @@ const MyPage = () => {
   return (
     <>
       <Page>
+        <h1>운송사조회/관리</h1>
         <Top />
         <Middle />
       </Page>
