@@ -33,7 +33,22 @@ const MainLogo = () => {
   }, []);
 
   const handleLogout = () => {
-    // ... (your existing logout logic)
+    sessionStorage.removeItem('userData');
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 500,
+      timerProgressBar: true,
+    });
+    Toast.fire({
+      icon: 'success',
+      title: '로그아웃 성공',
+    }).then(() => {
+      router.push('/auth/login').then(() => {
+        window.location.reload();
+      });
+    });
   };
 
   return (

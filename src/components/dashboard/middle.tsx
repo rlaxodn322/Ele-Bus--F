@@ -77,7 +77,7 @@ const Middle = () => {
           <h1 style={{ marginLeft: '20px' }}>버스상태</h1>
           <RightTop />
           <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>운행중인 차량정보</h1>
-          <div style={{ margin: '0px', border: '0px', display: 'flex', justifyContent: 'end' }}>
+          <div style={{ marginBottom: '5px', border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
               options={companyOptions}
               onChange={(value) => {
@@ -97,6 +97,7 @@ const Middle = () => {
               marginLeft: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
+              color: 'grey',
             }}
           >
             <div
@@ -142,7 +143,7 @@ const Middle = () => {
           </div>
 
           <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>차량 고장 이벤트 이력</h1>
-          <div style={{ margin: '0px', border: '0px', display: 'flex', justifyContent: 'end' }}>
+          <div style={{ marginBottom: '5px', border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
               options={[
                 { value: 'oldest1', label: '기본' },
@@ -167,6 +168,7 @@ const Middle = () => {
               marginLeft: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
+              color: 'grey',
             }}
           >
             <div
