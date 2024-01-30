@@ -69,15 +69,7 @@ const Middle = () => {
 
   return (
     <>
-      <div
-        style={{
-          marginTop: '12px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          height: '100%',
-          width: '100%',
-        }}
-      >
+      <div style={{ display: 'flex', height: '100%', width: '100%' }}>
         <div style={{ width: '49.5%', height: '100%' }}>
           <Map />
         </div>
@@ -85,19 +77,10 @@ const Middle = () => {
           <h1 style={{ marginLeft: '20px' }}>버스상태</h1>
           <RightTop />
           <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>운행중인 차량정보</h1>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center', // 세로 중앙 정렬
-              justifyContent: 'flex-end', // 오른쪽 정렬
-              margin: '0px',
-              border: '0px',
-            }}
-          >
+          <div style={{ margin: '0px', border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
               options={companyOptions}
               onChange={(value) => {
-                // value가 배열이므로 첫 번째 요소를 선택
                 setSelectedCompany(value[0] as string | null);
               }}
               defaultValue={['전체보기']}
@@ -108,15 +91,14 @@ const Middle = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              overflowY: 'auto', // 스크롤이 필요한 경우 자동으로 스크롤 생성
+              overflowY: 'auto',
               width: '98.5%',
-              height: 'calc(27.3% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
+              height: 'calc(27.3% - 30px)',
               marginLeft: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
             }}
           >
-            {/* 운행중인 차량 정보 */}
             <div
               style={{
                 position: 'sticky',
@@ -127,7 +109,7 @@ const Middle = () => {
                 background: '#2CA0F3',
                 color: 'white',
                 borderRadius: '10px',
-                zIndex: '1', // 헤더가 다른 요소 위로 올라가도록 설정
+                zIndex: '1',
               }}
             >
               <div style={{ flex: 1, textAlign: 'center' }}>운행사</div>
@@ -160,26 +142,18 @@ const Middle = () => {
           </div>
 
           <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>차량 고장 이벤트 이력</h1>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center', // 세로 중앙 정렬
-              justifyContent: 'flex-end', // 오른쪽 정렬
-              margin: '0px',
-              border: '0px',
-            }}
-          >
+          <div style={{ margin: '0px', border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
               options={[
-                { value: 'latest', label: '최신순' },
+                { value: 'oldest1', label: '기본' },
                 { value: 'oldest', label: '늦은 순' },
+                { value: 'latest', label: '최신순' },
               ]}
               onChange={(value) => {
-                // 숫자인 경우 처리
                 const sortOrder = typeof value[0] === 'number' ? 'latest' : value[0];
                 setSortingOrder(sortOrder);
               }}
-              defaultValue={['latest']}
+              defaultValue={['oldest1']}
               style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
             />
           </div>
@@ -189,7 +163,7 @@ const Middle = () => {
               flexDirection: 'column',
               overflowY: 'auto',
               width: '98.5%',
-              height: 'calc(19.5% - 30px)', // 헤더 높이만큼 뺀 값으로 설정
+              height: 'calc(19.5% - 30px)',
               marginLeft: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
@@ -205,7 +179,7 @@ const Middle = () => {
                 background: '#2CA0F3',
                 color: 'white',
                 borderRadius: '10px',
-                zIndex: '1', // 헤더가 다른 요소 위로 올라가도록 설정
+                zIndex: '1',
               }}
             >
               <div style={{ flex: 1, textAlign: 'center' }}>날짜</div>
