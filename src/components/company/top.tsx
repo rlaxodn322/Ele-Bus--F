@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'antd';
 const dummyTableData = [
-  { user: '수원여객', registrationDate: '2023-11-08', status: 'Active' },
-  { user: '하남여객', registrationDate: '2023-11-08', status: 'Active' },
-  { user: '오산여객', registrationDate: '2023-11-08', status: 'Active' },
-  { user: '포항여객', registrationDate: '2023-11-08', status: 'Active' },
-  { user: '대천여객', registrationDate: '2023-11-08', status: 'Active' },
-  { user: '대전여객', registrationDate: '2023-11-08', status: 'Active' },
-  { user: '화성여객', registrationDate: '2023-11-08', status: 'Active' },
+  { user: '수원여객', registrationDate: '2023-11-08', status: '50' },
+  { user: '하남여객', registrationDate: '2023-11-08', status: '10' },
+  { user: '오산여객', registrationDate: '2023-11-08', status: '20' },
+  { user: '포항여객', registrationDate: '2023-11-08', status: '30' },
+  { user: '대천여객', registrationDate: '2023-11-08', status: '40' },
+  { user: '대전여객', registrationDate: '2023-11-08', status: '50' },
+  { user: '화성여객', registrationDate: '2023-11-08', status: '60' },
   // Add more dummy data as needed
 ];
 const Top = () => {
@@ -42,7 +42,7 @@ const Top = () => {
             style={{
               border: '1px solid lightgray',
               width: '100%',
-              height: '50%',
+              height: '30%',
               marginTop: '20px',
               borderRadius: '10px',
               overflowY: 'auto',
@@ -84,36 +84,146 @@ const Top = () => {
               </h6>
             ))}
           </div>
-        </div>
-        <div style={{ width: '25%' }}>
-          <h1>기존 사업자 관리</h1>
-          <Input placeholder="사업자 번호"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="사업자 이름"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="주소"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="대표자 이름"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="차량 수"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="권한"></Input>
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
-            <Button style={{ background: '#2B85FF', color: 'white' }}>편집</Button>
+          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '40px' }}>
             <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#2B85FF', color: 'white' }}>
               삭제
             </Button>
-            <Button style={{ background: '#FB4E4E', color: 'white' }}>취소</Button>
+            <Button style={{ background: '#FB4E4E', color: 'white' }}>신규등록</Button>
           </div>
         </div>
-        <div style={{ marginRight: '100px', width: '25%' }}>
-          <h1>신규 사업자 추가</h1>
-          <Input placeholder="사업자 번호"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="사업자 이름"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="주소"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="대표자 이름"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="차량 수"></Input>
-          <Input style={{ marginTop: '7px' }} placeholder="권한"></Input>
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
-            <Button style={{ background: '#2B85FF', color: 'white' }}>등록</Button>
-            <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#FB4E4E', color: 'white' }}>
+
+        <div style={{ width: '25%' }}>
+          <h1>사업자 정보</h1>
+          <div
+            style={{
+              marginTop: '40px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            수원여객
+          </div>
+          <div
+            style={{
+              marginTop: '10px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            사업자 대표명
+          </div>
+          <div
+            style={{
+              marginTop: '10px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            사업자 등록번호
+          </div>
+          <div
+            style={{
+              marginTop: '10px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            사업자 이메일
+          </div>
+          <div
+            style={{
+              marginTop: '10px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            사업자 아이디
+          </div>
+        </div>
+        <div style={{ width: '25%', marginRight: '100px' }}>
+          <div
+            style={{
+              marginTop: '83px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            경기도 수원시 권선구###
+          </div>
+          <div
+            style={{
+              marginTop: '10px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            사업자 대표명(김아무개)
+          </div>
+          <div
+            style={{
+              marginTop: '10px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            연락처
+          </div>
+          <div
+            style={{
+              marginTop: '10px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            사업자 운행노선
+          </div>
+          <div
+            style={{
+              marginTop: '10px',
+              border: '1px solid lightgray',
+              height: '30px',
+              color: 'lightgray',
+              borderRadius: '5px',
+              boxShadow: '1px 1px 1px 1px lightgray',
+            }}
+          >
+            비밀번호
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '48px' }}>
+            <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#F6C42B', color: 'white' }}>
+              수정
+            </Button>
+            <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#27B964', color: 'white' }}>
               취소
             </Button>
+            <Button style={{ background: '#2B85FF', color: 'white' }}>삭제</Button>
           </div>
         </div>
       </div>

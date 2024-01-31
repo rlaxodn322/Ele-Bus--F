@@ -39,7 +39,7 @@ const Left = () => {
           style={{
             width: '100%',
             height: '100%',
-
+            borderRadius: '10px',
             fontSize: '18px',
             position: 'relative', // 부모 요소에 relative 위치 설정
           }}
@@ -48,11 +48,9 @@ const Left = () => {
             style={{
               width: '100%',
               height: '10%',
-              borderRadius: '10px',
               margin: '0',
               position: 'sticky', // 헤더를 화면 상단에 고정
               top: 0, // 화면 상단에 고정
-              zIndex: 1, // 다른 요소 위에 표시
               display: 'flex',
               flexDirection: 'row',
               marginBottom: '10px',

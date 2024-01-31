@@ -145,7 +145,7 @@ const Middle = () => {
             height: '74%',
           }}
         >
-          <h1>사업자별 사용이력</h1>
+          <h1>버스 등록 현황</h1>
           <div style={{ border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
               options={[
@@ -223,7 +223,7 @@ const Middle = () => {
             marginRight: '20px',
           }}
         >
-          <h1>신규 사업자 등록 이력</h1>
+          <h1>충전기 등록 현황</h1>
           <div style={{ border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
               options={[

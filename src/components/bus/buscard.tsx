@@ -27,7 +27,6 @@ const BusCard = () => {
               justifyContent: 'space-between',
               paddingLeft: '20px',
               paddingRight: '20px',
-
             }}
           >
             <h2>2 대</h2>
