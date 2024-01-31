@@ -1,27 +1,99 @@
 import React, { useState } from 'react';
 import { Cascader } from 'antd'; // antd의 Cascader 컴포넌트를 사용
 const dummyTableData = [
-  { user: 'User_A001', registrationDate: '2023-11-08', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-05', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-01', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-02', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-03', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-04', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-05', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-06', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-07', status: 'Active' },
+  {
+    user: 'busID',
+    registrationDate: '경기11바1234',
+    status: '2024-01-01',
+    status1: '2024-01-01',
+    status2: '1123456-122',
+    status3: 'AAA123',
+    status4: 'RSVP123',
+  },
+  {
+    user: 'busID',
+    registrationDate: '경기11바1234',
+    status: '2024-01-02',
+    status1: '2024-01-02',
+    status2: '1123456-122',
+    status3: 'AAA123',
+    status4: 'RSVP123',
+  },
+  {
+    user: 'busID',
+    registrationDate: '경기11바1234',
+    status: '2024-01-01',
+    status1: '2024-01-01',
+    status2: '1123456-122',
+    status3: 'AAA123',
+    status4: 'RSVP123',
+  },
+  {
+    user: 'busID',
+    registrationDate: '경기11바1234',
+    status: '2024-01-01',
+    status1: '2024-01-01',
+    status2: '1123456-122',
+    status3: 'AAA123',
+    status4: 'RSVP123',
+  },
+  {
+    user: 'busID',
+    registrationDate: '경기11바1234',
+    status: '2024-01-01',
+    status1: '2024-01-01',
+    status2: '1123456-122',
+    status3: 'AAA123',
+    status4: 'RSVP123',
+  },
+  {
+    user: 'busID',
+    registrationDate: '경기11바1234',
+    status: '2024-01-01',
+    status1: '2024-01-01',
+    status2: '1123456-122',
+    status3: 'AAA123',
+    status4: 'RSVP123',
+  },
+  {
+    user: 'busID',
+    registrationDate: '경기11바1234',
+    status: '2024-01-01',
+    status1: '2024-01-01',
+    status2: '1123456-122',
+    status3: 'AAA123',
+    status4: 'RSVP123',
+  },
+  {
+    user: 'busID',
+    registrationDate: '경기11바1234',
+    status: '2024-01-01',
+    status1: '2024-01-01',
+    status2: '1123456-122',
+    status3: 'AAA123',
+    status4: 'RSVP123',
+  },
+  {
+    user: 'busID',
+    registrationDate: '경기11바1234',
+    status: '2024-01-01',
+    status1: '2024-01-01',
+    status2: '1123456-122',
+    status3: 'AAA123',
+    status4: 'RSVP123',
+  },
   // Add more dummy data as needed
 ];
 const dummyTableData1 = [
-  { user: 'User_A001', registrationDate: '2023-11-09', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-01', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-02', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-03', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-03', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-01', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-05', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-09', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-10', status: 'Active' },
+  { user: 'chargerID', registrationDate: '2023-11-09', status: '60kw', status2: '600kw', status3: '급속A123' },
+  { user: 'chargerID', registrationDate: '2023-11-01', status: '60kw', status2: '600kw', status3: '급속A123' },
+  { user: 'chargerID', registrationDate: '2023-11-02', status: '60kw', status2: '600kw', status3: '급속A123' },
+  { user: 'chargerID', registrationDate: '2023-11-03', status: '60kw', status2: '600kw', status3: '급속A123' },
+  { user: 'chargerID', registrationDate: '2023-11-03', status: '60kw', status2: '600kw', status3: '급속A123' },
+  { user: 'chargerID', registrationDate: '2023-11-01', status: '60kw', status2: '600kw', status3: '급속A123' },
+  { user: 'chargerID', registrationDate: '2023-11-05', status: '60kw', status2: '600kw', status3: '급속A123' },
+  { user: 'chargerID', registrationDate: '2023-11-09', status: '60kw', status2: '600kw', status3: '급속A123' },
+  { user: 'chargerID', registrationDate: '2023-11-10', status: '60kw', status2: '600kw', status3: '급속A123' },
   // Add more dummy data as needed
 ];
 const Middle = () => {
@@ -29,8 +101,8 @@ const Middle = () => {
   const [sortingOrder1, setSortingOrder1] = useState<string | string[]>(['latest']);
 
   const sortedEventHistory = [...dummyTableData].sort((a, b) => {
-    const dateA = new Date(a.registrationDate).getTime();
-    const dateB = new Date(b.registrationDate).getTime();
+    const dateA = new Date(a.status).getTime();
+    const dateB = new Date(b.status).getTime();
 
     if (sortingOrder === 'oldest') {
       return dateA - dateB;
@@ -112,10 +184,13 @@ const Middle = () => {
                 zIndex: '2',
               }}
             >
-              <div style={{ flex: 1, textAlign: 'center' }}>사업자</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>날짜</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>운행시간</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>총 운행량</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>버스ID</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>차량번호</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>등록일</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>차량 등록일</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>차대번호</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>모델번호</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>통신모듈</div>
             </div>
             {sortedEventHistory.map((row, index) => (
               <h6
@@ -133,7 +208,10 @@ const Middle = () => {
                 <div style={{ flex: 1 }}>{row.user}</div>
                 <div style={{ flex: 1 }}>{row.registrationDate}</div>
                 <div style={{ flex: 1 }}>{row.status}</div>
-                <div style={{ flex: 1 }}>{row.status}</div>
+                <div style={{ flex: 1 }}>{row.status1}</div>
+                <div style={{ flex: 1 }}>{row.status2}</div>
+                <div style={{ flex: 1 }}>{row.status3}</div>
+                <div style={{ flex: 1 }}>{row.status4}</div>
               </h6>
             ))}
           </div>
@@ -184,10 +262,11 @@ const Middle = () => {
                 zIndex: '2',
               }}
             >
-              <div style={{ flex: 1, textAlign: 'center' }}>날짜</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>사업자</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>소속</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>상태</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>충전기ID</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>등록일</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>충전용량</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>누적충전량</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>모델</div>
             </div>
             {sortedEventHistory1.map((row, index) => (
               <h6
@@ -205,7 +284,8 @@ const Middle = () => {
                 <div style={{ flex: 1 }}>{row.user}</div>
                 <div style={{ flex: 1 }}>{row.registrationDate}</div>
                 <div style={{ flex: 1 }}>{row.status}</div>
-                <div style={{ flex: 1 }}>{row.status}</div>
+                <div style={{ flex: 1 }}>{row.status2}</div>
+                <div style={{ flex: 1 }}>{row.status3}</div>
               </h6>
             ))}
           </div>

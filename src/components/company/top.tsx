@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'antd';
 const dummyTableData = [
-  { user: 'User_A001', registrationDate: '2023-11-08', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-08', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-08', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-08', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-08', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-08', status: 'Active' },
-  { user: 'User_A001', registrationDate: '2023-11-08', status: 'Active' },
+  { user: '수원여객', registrationDate: '2023-11-08', status: 'Active' },
+  { user: '하남여객', registrationDate: '2023-11-08', status: 'Active' },
+  { user: '오산여객', registrationDate: '2023-11-08', status: 'Active' },
+  { user: '포항여객', registrationDate: '2023-11-08', status: 'Active' },
+  { user: '대천여객', registrationDate: '2023-11-08', status: 'Active' },
+  { user: '대전여객', registrationDate: '2023-11-08', status: 'Active' },
+  { user: '화성여객', registrationDate: '2023-11-08', status: 'Active' },
   // Add more dummy data as needed
 ];
 const Top = () => {
@@ -32,7 +32,7 @@ const Top = () => {
         <div style={{ marginLeft: '100px', width: '25%' }}>
           <h1>사업자검색</h1>
           <div style={{ display: 'flex' }}>
-            <Input placeholder="사업자 검색 바" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
+            <Input placeholder="사업자 검색" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
             <Button style={{ background: '#2B85FF', color: 'white' }} onClick={handleSearch}>
               검색
             </Button>
@@ -63,7 +63,7 @@ const Top = () => {
             >
               <div style={{ flex: 1, textAlign: 'center' }}>사업자</div>
               <div style={{ flex: 1, textAlign: 'center' }}>등록일</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>상태</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>등록버스</div>
             </div>
             {dummyTableData.map((row, index) => (
               <h6

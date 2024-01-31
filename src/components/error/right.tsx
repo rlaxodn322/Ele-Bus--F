@@ -24,7 +24,7 @@ const Right = () => {
             borderTopRightRadius: '10px', // 위쪽 오른쪽 모서리에만 적용
           }}
         >
-          <div style={{ padding: '13px' }}>DTG 정보</div>
+          <div style={{ padding: '10px' }}>DTG 정보</div>
         </div>
         <div style={{ width: '100%', height: '80%' }}></div>
       </div>

@@ -38,8 +38,8 @@ const Left = () => {
         <div
           style={{
             width: '100%',
-            height: '90%',
-            padding: '0px',
+            height: '100%',
+
             fontSize: '18px',
             position: 'relative', // 부모 요소에 relative 위치 설정
           }}
