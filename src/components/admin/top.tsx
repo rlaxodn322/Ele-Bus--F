@@ -56,6 +56,9 @@ const Top = () => {
                 background: '#2CA0F3',
                 color: 'white',
                 borderRadius: '10px',
+                position: 'sticky',
+                top: '0',
+                zIndex: '2',
               }}
             >
               <div style={{ flex: 1, textAlign: 'center' }}>사업자</div>
