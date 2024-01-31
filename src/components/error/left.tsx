@@ -13,13 +13,6 @@ const Left = () => {
     { id: 1323, vehicle: '123호1234', status: 'On', soc: '80%' },
     { id: 2131, vehicle: '123호1234', status: 'On', soc: '80%' },
     { id: 3544, vehicle: '123호1234', status: 'OFF', soc: '80%' },
-    { id: 4123, vehicle: '321호4321', status: 'OFF', soc: '80%' },
-    { id: 5123, vehicle: '321호4321', status: 'OFF', soc: '80%' },
-    { id: 6123, vehicle: '321호4321', status: 'OFF', soc: '80%' },
-    { id: 7123, vehicle: '321호4321', status: 'On', soc: '80%' },
-    { id: 8123, vehicle: '321호4321', status: 'On', soc: '80%' },
-    { id: 1323, vehicle: '123호1234', status: 'On', soc: '80%' },
-    { id: 2131, vehicle: '123호1234', status: 'On', soc: '80%' },
   ];
 
   // 테이블 컬럼 정의
@@ -49,7 +42,6 @@ const Left = () => {
             padding: '0px',
             fontSize: '18px',
             position: 'relative', // 부모 요소에 relative 위치 설정
-            borderRadius: '10px',
           }}
         >
           <div
@@ -63,7 +55,7 @@ const Left = () => {
               zIndex: 1, // 다른 요소 위에 표시
               display: 'flex',
               flexDirection: 'row',
-              marginBottom: '20px',
+              marginBottom: '10px',
               color: 'white',
             }}
           >
@@ -74,10 +66,10 @@ const Left = () => {
                   flex: 1,
                   textAlign: 'center',
                   fontWeight: 'bold',
-                  background: '#2CA0F3', // 색상 추가
+                  background: '#2CA0F3',
                 }}
               >
-                {column.Header}
+                <div style={{ margin: '10px' }}> {column.Header}</div>
               </div>
             ))}
           </div>

@@ -20,15 +20,15 @@ const MyPage = () => {
           }}
         >
           <div style={{ width: '100%' }}>
-            <h1 style={{ marginLeft: '50px' }}>수원여객차량</h1>
+            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>수원여객차량</h1>
             <Left />
           </div>
           <div style={{ width: '100%' }}>
-            <h1 style={{ marginLeft: '50px' }}>123호 1234</h1>
+            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
             <Middle />
           </div>
           <div style={{ width: '100%' }}>
-            <h1 style={{ marginLeft: '50px' }}>DTG 정보</h1>
+            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
             <Right />
           </div>
         </div>
