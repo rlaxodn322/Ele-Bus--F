@@ -3,11 +3,14 @@ import styled from '@emotion/styled';
 export const Page = styled.section`
   // display: inline-flex;
 
-  /* display: flex;
-  justify-content: space-between; */
+  /* /* display: flex; */
+  /* justify-content: space-between; */
   width: 1370px;
-  height: 790px;
-  margin: 0 auto;
+  height: 750px;
+  margin: 30px auto;
+  border-radius: 20px;
+  /* background-color: white;
+  box-shadow: 2px 2px 2px 2px lightgray; */
   //flex-wrap: wrap;
   // width: auto;
   // height: auto;

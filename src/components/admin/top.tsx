@@ -37,7 +37,6 @@ const Top = () => {
               검색
             </Button>
           </div>
-
           <h4>사업자리스트</h4>
           <div
             style={{

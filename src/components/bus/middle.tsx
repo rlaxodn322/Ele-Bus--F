@@ -123,7 +123,7 @@ const Middle = () => {
           overflowY: 'auto',
         }}
       >
-        <div style={{ display: 'flex', background: '#2CA0F3', color: 'white' }}>
+        <div style={{ display: 'flex', background: '#2CA0F3', color: 'white', textAlign: 'center' }}>
           <div style={{ flex: 1, padding: '8px' }}>번호</div>
           <div style={{ flex: 1, padding: '8px' }}>버스ID</div>
           <div style={{ flex: 1, padding: '8px' }}>차량번호</div>
@@ -139,7 +139,10 @@ const Middle = () => {
           <div style={{ flex: 1, padding: '8px' }}>제조사</div>
         </div>
         {data.map((row, index) => (
-          <div key={index} style={{ display: 'flex', borderBottom: '1px solid lightgray', color: 'gray' }}>
+          <div
+            key={index}
+            style={{ display: 'flex', borderBottom: '1px solid lightgray', color: 'gray', textAlign: 'center' }}
+          >
             <div style={{ flex: 1, padding: '8px' }}>{row.number}</div>
             <div style={{ flex: 1, padding: '8px' }}>{row.productionHistory}</div>
             <div style={{ flex: 1, padding: '8px' }}>{row.busName}</div>

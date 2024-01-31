@@ -1,5 +1,5 @@
 import React from 'react';
-import Mqtt from '../apis/mqtt/mqtt';
+// import Mqtt from '../apis/mqtt/mqtt';
 const Top = () => {
   return (
     <>
@@ -104,7 +104,8 @@ const Top = () => {
               paddingRight: '20px',
             }}
           >
-            <Mqtt />
+            {/* <Mqtt /> */}
+            <h2>2</h2>
             <img style={{ width: '20%', marginBottom: '20px' }} src="images/danger-circle-svgrepo-com (1).svg"></img>
           </div>
         </div>

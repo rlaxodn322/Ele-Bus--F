@@ -6,14 +6,14 @@ import RightTop from './top';
 
 // Dummy 데이터
 const dummyVehicleData = [
-  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: '' },
-  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: '' },
-  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: '' },
-  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: '' },
-  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: '' },
-  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: '' },
-  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: '' },
-  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: '' },
+  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: 'on' },
+  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: 'on' },
+  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: 'on' },
+  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: 'on' },
+  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: 'on' },
+  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: 'on' },
+  { company: '화성여객', route: 'Route 1', vehicleNum: '1234', soc: '80%', location: 'Location A', note: 'on' },
+  { company: '오산여객', route: 'Route 2', vehicleNum: '5678', soc: '65%', location: 'Location B', note: 'on' },
   // Add more dummy data as needed
 ];
 const dummyEventHistory = [
@@ -97,7 +97,6 @@ const Middle = () => {
               marginLeft: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
-              color: 'grey',
             }}
           >
             <div
@@ -111,6 +110,7 @@ const Middle = () => {
                 color: 'white',
                 borderRadius: '10px',
                 zIndex: '1',
+                fontSize: '17px',
               }}
             >
               <div style={{ flex: 1, textAlign: 'center' }}>운행사</div>
@@ -118,7 +118,7 @@ const Middle = () => {
               <div style={{ flex: 1, textAlign: 'center' }}>차량번호</div>
               <div style={{ flex: 1, textAlign: 'center' }}>SOC</div>
               <div style={{ flex: 1, textAlign: 'center' }}>위치</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>비고</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>통신상태</div>
             </div>
             {sortedVehicleData.map((vehicle, index) => (
               <h6
@@ -130,6 +130,7 @@ const Middle = () => {
                   borderBottom: '1px solid lightgray',
                   textAlign: 'center',
                   margin: '0',
+                  fontSize: '14px',
                 }}
               >
                 <div style={{ flex: 1 }}>{vehicle.company}</div>
@@ -168,7 +169,6 @@ const Middle = () => {
               marginLeft: '10px',
               boxShadow: '1px 1px 1px 2px lightgray',
               borderRadius: '10px',
-              color: 'grey',
             }}
           >
             <div
@@ -182,6 +182,7 @@ const Middle = () => {
                 color: 'white',
                 borderRadius: '10px',
                 zIndex: '1',
+                fontSize: '17px',
               }}
             >
               <div style={{ flex: 1, textAlign: 'center' }}>날짜</div>
@@ -200,6 +201,7 @@ const Middle = () => {
                   borderBottom: '1px solid lightgray',
                   textAlign: 'center',
                   margin: '0',
+                  fontSize: '14px',
                 }}
               >
                 <div style={{ flex: 1 }}>{event.date}</div>
