@@ -1,6 +1,6 @@
 import MainLayout from '../../../layouts/index';
-import Top from '../../../components/admin/top';
-import Middle from '../../../components/admin/middle';
+import Top from '../../../components/company/top';
+import Middle from '../../../components/company/middle';
 import { Page } from './style';
 const MyPage = () => {
   return (

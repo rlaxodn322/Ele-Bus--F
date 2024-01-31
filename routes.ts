@@ -19,15 +19,15 @@ export const routes = [
   },
 
   {
-    router: '/auth/admin',
+    router: '/auth/company',
     active: '/icons/sidebar/company-svgrepo-com (1).svg',
     default: '/icons/sidebar/company-svgrepo-com.svg',
-    name: 'admin',
+    name: 'Company',
   },
   {
     router: '/auth/error',
     active: '/icons/sidebar/error-16-svgrepo-com (1).svg',
     default: '/icons/sidebar/error-16-svgrepo-com.svg',
-    name: 'Statistics',
+    name: 'Error',
   },
 ];
