@@ -19,11 +19,11 @@ const MyPage = () => {
             marginTop: '20px',
           }}
         >
-          <div style={{ width: '100%' }}>
+          <div style={{ width: '100%', marginRight: '20px' }}>
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>수원여객차량</h1>
             <Left />
           </div>
-          <div style={{ width: '100%' }}>
+          <div style={{ width: '100%', marginRight: '20px' }}>
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
             <Middle />
           </div>

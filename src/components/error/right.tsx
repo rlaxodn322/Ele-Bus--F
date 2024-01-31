@@ -60,7 +60,7 @@ const Right = () => {
     <>
       <div
         style={{
-          width: '90%',
+          width: '100%',
           height: '90%',
           background: 'white',
           borderRadius: '10px',

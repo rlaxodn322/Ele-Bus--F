@@ -45,7 +45,7 @@ const Middle = () => {
     { id: 4, vehicle: '차량1', status: '운행속도', battery: '60 km/시' },
     { id: 5, vehicle: '차량2', status: '주행거리', battery: '20,000km' },
     { id: 6, vehicle: '차량3', status: '위치', battery: '동탄역' },
-    { id: 7, vehicle: '차량1', status: '모터정보', battery: 'on' },
+    { id: 7, vehicle: '차량1', status: '모터정보', battery: 'ON' },
     { id: 8, vehicle: '차량2', status: '배터리SOC', battery: '50%' },
     { id: 9, vehicle: '차량3', status: '배터리온도', battery: '30˚' },
     { id: 10, vehicle: '차량1', status: '배터리HOC', battery: '35%' },
@@ -65,7 +65,7 @@ const Middle = () => {
     <>
       <div
         style={{
-          width: '90%',
+          width: '100%',
           height: '90%',
           background: 'white',
           borderRadius: '10px',

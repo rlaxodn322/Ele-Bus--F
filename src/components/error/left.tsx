@@ -27,7 +27,7 @@ const Left = () => {
     <>
       <div
         style={{
-          width: '90%',
+          width: '100%',
           height: '90%',
           background: 'white',
           borderRadius: '10px',
@@ -95,7 +95,14 @@ const Left = () => {
                 }}
               >
                 {columns.map((column) => (
-                  <div key={column.Header} style={{ flex: 1, textAlign: 'center' }}>
+                  <div
+                    key={column.Header}
+                    style={{
+                      flex: 1,
+                      textAlign: 'center',
+                      color: row.status === 'On' ? '#2B85FF' : '#27B964', // Conditional color based on status
+                    }}
+                  >
                     {row[column.accessor as keyof typeof row]}
                   </div>
                 ))}
