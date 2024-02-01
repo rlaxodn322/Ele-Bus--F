@@ -93,6 +93,7 @@ const MyPage = () => {
               height: '100%',
             }}
           >
+            <h1>A/S요청 전기버스 위치</h1>
             <Map markerPositions={markerPositions} mapHeight={mapHeight} />
           </div>
           <div style={{ width: '33%', height: '100%', border: '1px solid lightgray', borderRadius: '10px' }}></div>
