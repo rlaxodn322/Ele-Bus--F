@@ -149,7 +149,7 @@ const LoginPage = () => {
           </Button>
           <span className="button-gap" />
           <a href="/auth/signup">
-            <Button size="large" primary-color>
+            <Button size="large" primary-color="true">
               회원가입
             </Button>
           </a>

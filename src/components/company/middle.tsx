@@ -1,89 +1,6 @@
 import React, { useState } from 'react';
 import { Cascader } from 'antd'; // antd의 Cascader 컴포넌트를 사용
-const dummyTableData = [
-  {
-    user: 'busID',
-    registrationDate: '경기11바1234',
-    status: '2024-01-01',
-    status1: '2024-01-01',
-    status2: '1123456-122',
-    status3: 'AAA123',
-    status4: 'RSVP123',
-  },
-  {
-    user: 'busID',
-    registrationDate: '경기11바1234',
-    status: '2024-01-02',
-    status1: '2024-01-02',
-    status2: '1123456-122',
-    status3: 'AAA123',
-    status4: 'RSVP123',
-  },
-  {
-    user: 'busID',
-    registrationDate: '경기11바1234',
-    status: '2024-01-01',
-    status1: '2024-01-01',
-    status2: '1123456-122',
-    status3: 'AAA123',
-    status4: 'RSVP123',
-  },
-  {
-    user: 'busID',
-    registrationDate: '경기11바1234',
-    status: '2024-01-01',
-    status1: '2024-01-01',
-    status2: '1123456-122',
-    status3: 'AAA123',
-    status4: 'RSVP123',
-  },
-  {
-    user: 'busID',
-    registrationDate: '경기11바1234',
-    status: '2024-01-01',
-    status1: '2024-01-01',
-    status2: '1123456-122',
-    status3: 'AAA123',
-    status4: 'RSVP123',
-  },
-  {
-    user: 'busID',
-    registrationDate: '경기11바1234',
-    status: '2024-01-01',
-    status1: '2024-01-01',
-    status2: '1123456-122',
-    status3: 'AAA123',
-    status4: 'RSVP123',
-  },
-  {
-    user: 'busID',
-    registrationDate: '경기11바1234',
-    status: '2024-01-01',
-    status1: '2024-01-01',
-    status2: '1123456-122',
-    status3: 'AAA123',
-    status4: 'RSVP123',
-  },
-  {
-    user: 'busID',
-    registrationDate: '경기11바1234',
-    status: '2024-01-01',
-    status1: '2024-01-01',
-    status2: '1123456-122',
-    status3: 'AAA123',
-    status4: 'RSVP123',
-  },
-  {
-    user: 'busID',
-    registrationDate: '경기11바1234',
-    status: '2024-01-01',
-    status1: '2024-01-01',
-    status2: '1123456-122',
-    status3: 'AAA123',
-    status4: 'RSVP123',
-  },
-  // Add more dummy data as needed
-];
+
 const dummyTableData1 = [
   { user: 'chargerID', registrationDate: '2023-11-09', status: '60kw', status2: '600kw', status3: '급속A123' },
   { user: 'chargerID', registrationDate: '2023-11-01', status: '60kw', status2: '600kw', status3: '급속A123' },
@@ -96,11 +13,11 @@ const dummyTableData1 = [
   { user: 'chargerID', registrationDate: '2023-11-10', status: '60kw', status2: '600kw', status3: '급속A123' },
   // Add more dummy data as needed
 ];
-const Middle = () => {
+const Middle = ({ data }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1, setSortingOrder1] = useState<string | string[]>(['latest']);
 
-  const sortedEventHistory = [...dummyTableData].sort((a, b) => {
+  const sortedEventHistory = [...data].sort((a, b) => {
     const dateA = new Date(a.status).getTime();
     const dateB = new Date(b.status).getTime();
 

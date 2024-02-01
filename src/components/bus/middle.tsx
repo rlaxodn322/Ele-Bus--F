@@ -1,116 +1,20 @@
 import React from 'react';
-
-const data = [
-  {
-    number: 1,
-    productionHistory: 'busID',
-    busName: '동탄여객',
-    busID: '운행중',
-    chargingStatus: 'on',
-    collectionDate: 'on',
-    usage: '20,000km',
-    eventCode: '2건',
-    eventCode1: '조회',
-    eventCode2: '2023-01-01',
-    eventCode3: '2023-01-01',
-    eventCode4: 'A123-1235',
-    eventCode5: 'AAA모터스',
-  },
-  {
-    number: 2,
-    productionHistory: 'busID',
-    busName: '동탄여객',
-    busID: '운행중',
-    chargingStatus: 'on',
-    collectionDate: 'on',
-    usage: '20,000km',
-    eventCode: '2건',
-    eventCode1: '조회',
-    eventCode2: '2023-01-01',
-    eventCode3: '2023-01-01',
-    eventCode4: 'A123-1235',
-    eventCode5: 'AAA모터스',
-  },
-  {
-    number: 3,
-    productionHistory: 'busID',
-    busName: '동탄여객',
-    busID: '운행중',
-    chargingStatus: 'on',
-    collectionDate: 'on',
-    usage: '20,000km',
-    eventCode: '2건',
-    eventCode1: '조회',
-    eventCode2: '2023-01-01',
-    eventCode3: '2023-01-01',
-    eventCode4: 'A123-1235',
-    eventCode5: 'AAA모터스',
-  },
-  {
-    number: 4,
-    productionHistory: 'busID',
-    busName: '동탄여객',
-    busID: '운행중',
-    chargingStatus: 'on',
-    collectionDate: 'on',
-    usage: '20,000km',
-    eventCode: '2건',
-    eventCode1: '조회',
-    eventCode2: '2023-01-01',
-    eventCode3: '2023-01-01',
-    eventCode4: 'A123-1235',
-    eventCode5: 'AAA모터스',
-  },
-  {
-    number: 7,
-    productionHistory: 'busID',
-    busName: '동탄여객',
-    busID: '운행중',
-    chargingStatus: 'on',
-    collectionDate: 'on',
-    usage: '20,000km',
-    eventCode: '2건',
-    eventCode1: '조회',
-    eventCode2: '2023-01-01',
-    eventCode3: '2023-01-01',
-    eventCode4: 'A123-1235',
-    eventCode5: 'AAA모터스',
-  },
-  {
-    number: 5,
-    productionHistory: 'busID',
-    busName: '동탄여객',
-    busID: '운행중',
-    chargingStatus: 'on',
-    collectionDate: 'on',
-    usage: '20,000km',
-    eventCode: '2건',
-    eventCode1: '조회',
-    eventCode2: '2023-01-01',
-    eventCode3: '2023-01-01',
-    eventCode4: 'A123-1235',
-    eventCode5: 'AAA모터스',
-  },
-  {
-    number: 6,
-    productionHistory: 'busID',
-    busName: '동탄여객',
-    busID: '운행중',
-    chargingStatus: 'on',
-    collectionDate: 'on',
-    usage: '20,000km',
-    eventCode: '2건',
-    eventCode1: '조회',
-    eventCode2: '2023-01-01',
-    eventCode3: '2023-01-01',
-    eventCode4: 'A123-1235',
-    eventCode5: 'AAA모터스',
-  },
-
-  // Add more data as needed
-];
-
-const Middle = () => {
+interface BusData {
+  number: number;
+  productionHistory: string;
+  busName: string;
+  busID: string;
+  chargingStatus: string;
+  collectionDate: string;
+  usage: string;
+  eventCode: string;
+  eventCode1: string;
+  eventCode2: string;
+  eventCode3: string;
+  eventCode4: string;
+  eventCode5: string;
+}
+const Middle: React.FC<{ data: BusData[] }> = ({ data }) => {
   return (
     <>
       <div

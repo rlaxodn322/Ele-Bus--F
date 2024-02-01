@@ -30,4 +30,10 @@ export const routes = [
     default: '/icons/sidebar/error-16-svgrepo-com.svg',
     name: 'Error',
   },
+  {
+    router: '/auth/service',
+    active: '/icons/sidebar/service-svgrepo-com (1).svg',
+    default: '/icons/sidebar/service-svgrepo-com (2).svg',
+    name: 'Service',
+  },
 ];
