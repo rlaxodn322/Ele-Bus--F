@@ -8,7 +8,7 @@ const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];
 const dummyTableData = [
   {
     user: 'busID',
-    registrationDate: '2023-1108/08/31',
+    registrationDate: '2023-1108/08:31',
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
@@ -16,7 +16,7 @@ const dummyTableData = [
   },
   {
     user: 'busID',
-    registrationDate: '2023-1108/08/32',
+    registrationDate: '2023-1108/08:32',
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
@@ -24,7 +24,7 @@ const dummyTableData = [
   },
   {
     user: 'busID',
-    registrationDate: '2023-1108/08/30',
+    registrationDate: '2023-1108/08:30',
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
@@ -32,7 +32,7 @@ const dummyTableData = [
   },
   {
     user: 'busID',
-    registrationDate: '2023-1108/08/30',
+    registrationDate: '2023-1108/08:30',
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
@@ -40,7 +40,7 @@ const dummyTableData = [
   },
   {
     user: 'busID',
-    registrationDate: '2023-1108/08/30',
+    registrationDate: '2023-1108/08:30',
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
@@ -48,7 +48,7 @@ const dummyTableData = [
   },
   {
     user: 'busID',
-    registrationDate: '2023-1108/08/30',
+    registrationDate: '2023-1108/08:30',
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
@@ -58,12 +58,12 @@ const dummyTableData = [
   // Add more dummy data as needed
 ];
 const dummyTableData1 = [
-  { user: '2023-11-08/08:30', registrationDate: 'AREA', status: 'A002', status2: '전원불량' },
-  { user: '2023-11-08/08:30', registrationDate: 'AREA', status: 'A002', status2: '전원불량' },
-  { user: '2023-11-08/08:30', registrationDate: 'AREA', status: 'A002', status2: '전원불량' },
-  { user: '2023-11-08/08:30', registrationDate: 'AREA', status: 'A002', status2: '전원불량' },
-  { user: '2023-11-08/08:30', registrationDate: 'AREA', status: 'A002', status2: '전원불량' },
-  { user: '2023-11-08/08:30', registrationDate: 'AREA', status: 'A002', status2: '전원불량' },
+  { registrationDate: '2023-1108/08:30', user: 'AREA', status: 'A002', status2: '전원불량' },
+  { registrationDate: '2023-1108/08:32', user: 'AREA', status: 'A002', status2: '전원불량' },
+  { registrationDate: '2023-1108/08:33', user: 'AREA', status: 'A002', status2: '전원불량' },
+  { registrationDate: '2023-1108/08:34', user: 'AREA', status: 'A002', status2: '전원불량' },
+  { registrationDate: '2023-1108/08:30', user: 'AREA', status: 'A002', status2: '전원불량' },
+  { registrationDate: '2023-1108/08:30', user: 'AREA', status: 'A002', status2: '전원불량' },
 
   // Add more dummy data as needed
 ];

@@ -5,35 +5,51 @@ interface Row {
   user: string;
   registrationDate: string;
   status: string;
-  status1: string;
   status2: string;
-  status3: string;
-  status4: string;
 }
 
 interface CardProps {
   data: Row[];
   columns: string[];
 }
+const parseDate = (dateString: string): number => {
+  const parts = dateString.split('/');
+  const datePart = parts[0];
+  const timePart = parts[1];
 
+  if (!datePart || datePart.length < 5) {
+    // Handle the case where datePart is invalid or too short
+    return 0;
+  }
+
+  const [year, monthDay] = datePart.split('-');
+  const [month, day] = [monthDay.slice(0, 2), monthDay.slice(2)];
+
+  const [hour, minute] = timePart.split(':');
+
+  return new Date(`${year}-${month}-${day}T${hour}:${minute}`).getTime();
+};
 const Card: React.FC<CardProps> = ({ data, columns }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1] = useState<string | string[]>(['latest']);
+  const [filterDate] = useState<string | null>(null);
 
-  const sortedEventHistory = [...data].sort((a, b) => {
-    const dateA = new Date(a.registrationDate).getTime();
-    const dateB = new Date(b.registrationDate).getTime();
+  const sortedEventHistory = [...data]
+    .filter((row) => !filterDate || row.registrationDate.includes(filterDate))
+    .sort((a, b) => {
+      const dateA = parseDate(a.registrationDate);
+      const dateB = parseDate(b.registrationDate);
 
-    if (sortingOrder === 'oldest') {
-      return dateA - dateB;
-    } else {
-      return dateB - dateA;
-    }
-  });
+      if (sortingOrder === 'oldest') {
+        return dateA - dateB;
+      } else {
+        return dateB - dateA;
+      }
+    });
 
   const sortedEventHistory1 = [...columns].sort((a, b) => {
-    const dateA = new Date(a).getTime();
-    const dateB = new Date(b).getTime();
+    const dateA = parseDate(a);
+    const dateB = parseDate(b);
 
     if (sortingOrder1 === 'oldest') {
       return dateA - dateB;
@@ -59,8 +75,12 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
               { value: 'latest', label: '최신순' },
             ]}
             onChange={(value) => {
-              const sortOrder = typeof value[0] === 'number' ? 'latest' : value[0];
-              setSortingOrder(sortOrder);
+              if (value[0] !== 'oldest1') {
+                const sortOrder = typeof value[0] === 'number' ? 'latest' : value[0];
+                setSortingOrder(sortOrder);
+              } else {
+                setSortingOrder('latest');
+              }
             }}
             defaultValue={['oldest1']}
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
@@ -108,8 +128,8 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
                 color: 'gray',
               }}
             >
-              <div style={{ flex: 1 }}>{row.user}</div>
               <div style={{ flex: 1 }}>{row.registrationDate}</div>
+              <div style={{ flex: 1 }}>{row.user}</div>
               <div style={{ flex: 1 }}>{row.status}</div>
               <div style={{ flex: 1 }}>{row.status2}</div>
             </h6>

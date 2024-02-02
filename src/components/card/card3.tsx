@@ -5,10 +5,6 @@ interface Row {
   user: string;
   registrationDate: string;
   status: string;
-  status1: string;
-  status2: string;
-  status3: string;
-  status4: string;
 }
 
 interface CardProps {
