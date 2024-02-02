@@ -1,9 +1,23 @@
 import React, { useState } from 'react';
-import { Cascader } from 'antd'; // antd의 Cascader 컴포넌트를 사용
+import { Cascader } from 'antd';
 
-const Card = ({ data, columns }) => {
+interface Row {
+  user: string;
+  registrationDate: string;
+  status: string;
+  status1: string;
+  status2: string;
+  status3: string;
+}
+
+interface CardProps {
+  data: Row[];
+  columns: string[];
+}
+
+const Card: React.FC<CardProps> = ({ data, columns }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
-  const [sortingOrder1, setSortingOrder1] = useState<string | string[]>(['latest']);
+  const [sortingOrder1] = useState<string | string[]>(['latest']);
 
   const sortedEventHistory = [...data].sort((a, b) => {
     const dateA = new Date(a.registrationDate).getTime();
@@ -12,19 +26,17 @@ const Card = ({ data, columns }) => {
     if (sortingOrder === 'oldest') {
       return dateA - dateB;
     } else {
-      // Default to 'latest' if sortingOrder is not 'oldest'
       return dateB - dateA;
     }
   });
 
   const sortedEventHistory1 = [...columns].sort((a, b) => {
-    const dateA = new Date(a.registrationDate).getTime();
-    const dateB = new Date(b.registrationDate).getTime();
+    const dateA = new Date(a).getTime();
+    const dateB = new Date(b).getTime();
 
     if (sortingOrder1 === 'oldest') {
       return dateA - dateB;
     } else {
-      // Default to 'latest' if sortingOrder1 is not 'oldest'
       return dateB - dateA;
     }
   });
@@ -35,7 +47,6 @@ const Card = ({ data, columns }) => {
         style={{
           width: '99%',
           height: '80%',
-
           borderRadius: '10px',
         }}
       >

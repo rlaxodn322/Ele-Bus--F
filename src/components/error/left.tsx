@@ -10,9 +10,7 @@ const Left = () => {
     { id: 6123, vehicle: '321호4321', status: 'OFF', soc: '80%' },
     { id: 7123, vehicle: '321호4321', status: 'On', soc: '80%' },
     { id: 8123, vehicle: '321호4321', status: 'On', soc: '80%' },
-    { id: 1323, vehicle: '123호1234', status: 'On', soc: '80%' },
-    { id: 2131, vehicle: '123호1234', status: 'On', soc: '80%' },
-    { id: 3544, vehicle: '123호1234', status: 'OFF', soc: '80%' },
+
   ];
 
   // 테이블 컬럼 정의
