@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { Cascader } from 'antd'; // antd의 Cascader 컴포넌트를 사용
-
+interface MiddleProps {
+  data: {
+    user: string;
+    registrationDate: string;
+    status: string;
+    status1: string;
+    status2: string;
+    status3: string;
+    status4: string;
+  }[];
+}
 const dummyTableData1 = [
   { user: 'chargerID', registrationDate: '2023-11-09', status: '60kw', status2: '600kw', status3: '급속A123' },
   { user: 'chargerID', registrationDate: '2023-11-01', status: '60kw', status2: '600kw', status3: '급속A123' },
@@ -13,7 +23,7 @@ const dummyTableData1 = [
   { user: 'chargerID', registrationDate: '2023-11-10', status: '60kw', status2: '600kw', status3: '급속A123' },
   // Add more dummy data as needed
 ];
-const Middle = ({ data }) => {
+const Middle: React.FC<MiddleProps> = ({ data }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1, setSortingOrder1] = useState<string | string[]>(['latest']);
 
@@ -66,7 +76,7 @@ const Middle = ({ data }) => {
           <div style={{ border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
               options={[
-                { value: 'oldest1', label: '기본' },
+                { value: 'oldest1', label: '기간별' },
                 { value: 'oldest', label: '늦은 순' },
                 { value: 'latest', label: '최신순' },
               ]}
@@ -144,7 +154,7 @@ const Middle = ({ data }) => {
           <div style={{ border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
               options={[
-                { value: 'oldest1', label: '기본' },
+                { value: 'oldest1', label: '기간별' },
                 { value: 'oldest', label: '늦은 순' },
                 { value: 'latest', label: '최신순' },
               ]}

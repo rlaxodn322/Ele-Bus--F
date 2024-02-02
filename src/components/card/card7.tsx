@@ -81,7 +81,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
           {/* Cascader for sorting order */}
           <Cascader
             options={[
-              { value: 'oldest1', label: '기본' },
+              { value: 'oldest1', label: '기간별' },
               { value: 'oldest', label: '늦은 순' },
               { value: 'latest', label: '최신순' },
             ]}

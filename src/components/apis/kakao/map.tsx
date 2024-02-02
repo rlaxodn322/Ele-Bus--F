@@ -4,6 +4,8 @@ interface MapComponentProps {
   markerPositions: { title: string; latlng: { lat: number; lng: number } }[];
   mapHeight: string | number;
 }
+
+// eslint-disable-next-line no-unused-vars
 declare global {
   interface Window {
     kakao: any;

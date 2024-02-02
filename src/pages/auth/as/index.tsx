@@ -112,48 +112,48 @@ const dummyTableData1 = [
 ];
 const dummyTableData2 = [
   {
-    user: '2023-11-08/08:30',
-    registrationDate: 'AREA',
+    user: 'Area',
+    registrationDate: '2023-1108/08:31',
     status: '활성화',
   },
   {
-    user: '2023-11-08/08:30',
-    registrationDate: 'AREA',
+    user: 'Area',
+    registrationDate: '2023-1108/08:32',
     status: '활성화',
   },
   {
-    user: '2023-11-08/08:30',
-    registrationDate: 'AREA',
+    user: 'Area',
+    registrationDate: '2023-1108/08:33',
     status: '활성화',
   },
   {
-    user: '2023-11-08/08:30',
-    registrationDate: 'AREA',
+    user: 'Area',
+    registrationDate: '2023-1108/08:31',
     status: '비활성화',
   },
   {
-    user: '2023-11-08/08:30',
-    registrationDate: 'AREA',
+    user: 'Area',
+    registrationDate: '2023-1108/08:35',
     status: '비활성화',
   },
   {
-    user: '2023-11-08/08:30',
-    registrationDate: 'AREA',
+    user: 'Area',
+    registrationDate: '2023-1108/08:37',
     status: '비활성화',
   },
   {
-    user: '2023-11-08/08:30',
-    registrationDate: 'AREA',
+    user: 'Area',
+    registrationDate: '2023-1108/08:38',
     status: '비활성화',
   },
   {
-    user: '2023-11-08/08:30',
-    registrationDate: 'AREA',
+    user: 'Area',
+    registrationDate: '2023-1108/08:39',
     status: '비활성화',
   },
   {
-    user: '2023-11-08/08:30',
-    registrationDate: 'AREA',
+    user: 'Area',
+    registrationDate: '2023-1108/08:31',
     status: '비활성화',
   },
 ];
