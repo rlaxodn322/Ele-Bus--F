@@ -3,6 +3,7 @@ import { Page } from './style';
 import Card from '../../../components/card/card6';
 import Card1 from '../../../components/card/card4';
 import Map from '../../../components/apis/kakao/map';
+import Graph from '../../../components/graph/graph1';
 const busDataColumns = ['사용자', '날짜', '위치', '버스ID', '요청시간', '담당자'];
 const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];
 const dummyTableData = [
@@ -98,8 +99,12 @@ const MyPage = () => {
             <h1>A/S요청 전기버스 위치</h1>
             <Map markerPositions={markerPositions} mapHeight={mapHeight} />
           </div>
-          <div style={{ width: '33%', height: '100%', borderRadius: '10px' }}></div>
-          <div style={{ width: '33%', height: '100%', borderRadius: '10px' }}></div>
+          <div style={{ width: '33%', height: '100%', borderRadius: '10px' }}>
+            <Graph />
+          </div>
+          <div style={{ width: '33%', height: '100%', borderRadius: '10px' }}>
+            <Graph />
+          </div>
         </div>
         <div
           style={{
