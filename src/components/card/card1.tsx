@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Cascader } from 'antd'; // antd의 Cascader 컴포넌트를 사용
-
-const Card = ({ data, columns }) => {
+const renderColumnData = (row, columns) => {
+  return columns.map((column, index) => (
+    <div key={index} style={{ flex: 1 }}>
+      {row[column]}
+    </div>
+  ));
+};
+const Card1 = ({ data, columns }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1, setSortingOrder1] = useState<string | string[]>(['latest']);
 
@@ -99,9 +105,7 @@ const Card = ({ data, columns }) => {
               <div style={{ flex: 1 }}>{row.user}</div>
               <div style={{ flex: 1 }}>{row.registrationDate}</div>
               <div style={{ flex: 1 }}>{row.status}</div>
-              <div style={{ flex: 1 }}>{row.status1}</div>
               <div style={{ flex: 1 }}>{row.status2}</div>
-              <div style={{ flex: 1 }}>{row.status3}</div>
             </h6>
           ))}
         </div>
@@ -110,4 +114,4 @@ const Card = ({ data, columns }) => {
   );
 };
 
-export default Card;
+export default Card1;

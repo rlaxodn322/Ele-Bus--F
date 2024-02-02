@@ -1,14 +1,14 @@
 import MainLayout from '../../../layouts/index';
-import { Input, Button } from 'antd';
 import { Page } from './style';
 import Card from '../../../components/card/card';
+import Card1 from '../../../components/card/card1';
 import Map from '../../../components/apis/kakao/map';
 const busDataColumns = ['사용자', '날짜', '위치', '버스ID', '요청시간', '담당자'];
 const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];
 const dummyTableData = [
   {
     user: 'busID',
-    registrationDate: '2023-1108/08/30',
+    registrationDate: '2023-1108/08/31',
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
@@ -16,7 +16,7 @@ const dummyTableData = [
   },
   {
     user: 'busID',
-    registrationDate: '2023-1108/08/30',
+    registrationDate: '2023-1108/08/32',
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
@@ -116,7 +116,7 @@ const MyPage = () => {
             </div>
             <div style={{ width: '100%' }}>
               <h1>고장정보</h1>
-              <Card data={dummyTableData1} columns={busDataColumns1} />
+              <Card1 data={dummyTableData1} columns={busDataColumns1} />
             </div>
           </div>
         </div>

@@ -1,6 +1,15 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-const MapComponent = ({ markerPositions, mapHeight }) => {
+interface MapComponentProps {
+  markerPositions: { title: string; latlng: { lat: number; lng: number } }[];
+  mapHeight: string | number;
+}
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight }) => {
   useEffect(() => {
     const onLoadKakaoAPI = () => {
       window.kakao.maps.load(() => {
