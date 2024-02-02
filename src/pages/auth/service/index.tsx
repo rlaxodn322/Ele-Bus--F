@@ -118,11 +118,11 @@ const MyPage = () => {
           }}
         >
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
-            <div style={{ marginLeft: '10px', width: '100%' }}>
+            <div style={{ marginLeft: '10px', width: '60%' }}>
               <h1>A/S 요청 이력</h1>
               <Card data={dummyTableData} columns={busDataColumns} />
             </div>
-            <div style={{ width: '100%' }}>
+            <div style={{ width: '40%' }}>
               <h1>고장정보</h1>
               <Card1 data={dummyTableData1} columns={busDataColumns1} />
             </div>
