@@ -1,9 +1,15 @@
 import React from 'react';
-
-const DivBox = () => {
+interface DivBoxprops {
+  a?: string; // 'a' 속성을 선택적으로 받도록 변경
+  b?: string; // 'b' 속성을 선택적으로 받도록 변경
+  c?: string; // 'b' 속성을 선택적으로 받도록 변경
+  d?: string; // 'b' 속성을 선택적으로 받도록 변경
+  e?: string; // 'b' 속성을 선택적으로 받도록 변경
+}
+const DivBox: React.FC<DivBoxprops> = ({ a, b, c, d, e }) => {
   return (
     <>
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ color: 'lightgray' }}>
         <div
           style={{
             width: '80%',
@@ -13,7 +19,9 @@ const DivBox = () => {
             margin: '0 auto',
             marginTop: '10px',
           }}
-        ></div>
+        >
+          {a}
+        </div>
         <div
           style={{
             width: '80%',
@@ -23,7 +31,9 @@ const DivBox = () => {
             margin: '0 auto',
             marginTop: '10px',
           }}
-        ></div>
+        >
+          {b}
+        </div>
         <div
           style={{
             width: '80%',
@@ -33,7 +43,9 @@ const DivBox = () => {
             margin: '0 auto',
             marginTop: '10px',
           }}
-        ></div>
+        >
+          {c}
+        </div>
         <div
           style={{
             width: '80%',
@@ -43,7 +55,9 @@ const DivBox = () => {
             margin: '0 auto',
             marginTop: '10px',
           }}
-        ></div>
+        >
+          {d}
+        </div>
         <div
           style={{
             width: '80%',
@@ -53,17 +67,9 @@ const DivBox = () => {
             margin: '0 auto',
             marginTop: '10px',
           }}
-        ></div>
-        <div
-          style={{
-            width: '80%',
-            height: '30px',
-            border: '1px solid lightgray',
-            borderRadius: '5px',
-            margin: '0 auto',
-            marginTop: '10px',
-          }}
-        ></div>
+        >
+          {e}
+        </div>
       </div>
     </>
   );

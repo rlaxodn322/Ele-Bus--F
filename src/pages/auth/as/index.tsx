@@ -6,6 +6,8 @@ import Card4 from '../../../components/card/card4';
 import Card3 from '../../../components/card/card3';
 import DivBox from '../../../components/div/divbox';
 import Button3 from '../../../components/button/button3';
+import Button2 from '../../../components/button/button2';
+import Input5 from '../../../components/input/Input5';
 import { Button } from 'antd';
 const busDataColumns = ['부품번호', '날짜', '부품위치', '창고위치', '요청시간', '담당자', '부품'];
 const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];
@@ -238,10 +240,14 @@ const MyPage = () => {
 
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
             <InputButton a="부품 관리" b="부품 검색" />
-            <DivBox />
+            <DivBox a="부품번호" b="담당자 이름" c="등록일자" d="기타사항" e="상태" />
             <Button3 a="편집" b="삭제" c="취소" />
           </div>
-          <div style={{ width: '33%', height: '100%', borderRadius: '10px' }}></div>
+          <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
+            <Input5 a="신규 부품 입력" b="부품 번호" c="담당자 이름" d="등록일자" e="기타 사항" f="상태" />
+
+            <Button2 a="등록" b="취소" />
+          </div>
         </div>
         <div
           style={{
