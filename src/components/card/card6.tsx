@@ -35,9 +35,13 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1] = useState<string | string[]>(['latest']);
   const [filterDate] = useState<string | null>(null);
+  const [filterStatus3, setFilterStatus3] = useState<string | null>(null);
 
   const sortedEventHistory = [...data]
-    .filter((row) => !filterDate || row.registrationDate.includes(filterDate))
+    .filter(
+      (row) =>
+        (!filterDate || row.registrationDate.includes(filterDate)) && (!filterStatus3 || row.status3 === filterStatus3),
+    )
     .sort((a, b) => {
       const dateA = parseDate(a.registrationDate);
       const dateB = parseDate(b.registrationDate);
@@ -60,6 +64,9 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
     }
   });
 
+  // Options for the Cascader filtering by status3
+  const status3Options = Array.from(new Set(data.map((row) => row.status3)));
+
   return (
     <>
       <div
@@ -70,6 +77,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
         }}
       >
         <div style={{ border: '0px', display: 'flex', justifyContent: 'end' }}>
+          {/* Cascader for sorting order */}
           <Cascader
             options={[
               { value: 'oldest1', label: '기본' },
@@ -85,6 +93,23 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
               }
             }}
             defaultValue={['oldest1']}
+            style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
+          />
+
+          {/* Cascader for filtering by status3 */}
+          <Cascader
+            options={[
+              { value: 'all', label: '전체 담당자' },
+              ...status3Options.map((option) => ({ value: option, label: option })),
+            ]}
+            onChange={(value) => {
+              if (value[0] !== 'all') {
+                setFilterStatus3(value[0].toString());
+              } else {
+                setFilterStatus3(null);
+              }
+            }}
+            defaultValue={['all']}
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
           />
         </div>

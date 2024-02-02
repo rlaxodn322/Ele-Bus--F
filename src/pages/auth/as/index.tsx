@@ -19,7 +19,7 @@ const dummyTableData = [
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
-    status3: '퍼스트씨앤디',
+    status3: '이카플러그',
     status4: '전원',
   },
   {
@@ -28,7 +28,7 @@ const dummyTableData = [
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
-    status3: '퍼스트씨앤디',
+    status3: '이카플러그',
     status4: '전원',
   },
   {

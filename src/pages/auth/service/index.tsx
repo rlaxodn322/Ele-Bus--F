@@ -20,7 +20,7 @@ const dummyTableData = [
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
-    status3: '퍼스트씨앤디',
+    status3: '이앤비',
   },
   {
     user: 'busID',
@@ -28,7 +28,7 @@ const dummyTableData = [
     status: 'AREA',
     status1: 'A001',
     status2: '1시간30분',
-    status3: '퍼스트씨앤디',
+    status3: '이카플러그',
   },
   {
     user: 'busID',
@@ -80,33 +80,36 @@ const MyPage = () => {
           style={{
             width: '100%',
             height: '60%',
-            border: '1px solid lightgray',
+
             display: 'flex',
             justifyContent: 'space-between',
             borderRadius: '10px',
             background: 'white',
+            boxShadow: '1px 1px 2px 2px lightgray',
           }}
         >
           <div
             style={{
               width: '33%',
               height: '100%',
+              padding: '10px',
             }}
           >
             <h1>A/S요청 전기버스 위치</h1>
             <Map markerPositions={markerPositions} mapHeight={mapHeight} />
           </div>
-          <div style={{ width: '33%', height: '100%', border: '1px solid lightgray', borderRadius: '10px' }}></div>
-          <div style={{ width: '33%', height: '100%', border: '1px solid lightgray', borderRadius: '10px' }}></div>
+          <div style={{ width: '33%', height: '100%', borderRadius: '10px' }}></div>
+          <div style={{ width: '33%', height: '100%', borderRadius: '10px' }}></div>
         </div>
         <div
           style={{
             width: '100%',
             height: '40%',
-            border: '1px solid lightgray',
+
             marginTop: '20px',
             borderRadius: '10px',
             background: 'white',
+            boxShadow: '1px 1px 2px 2px lightgray',
           }}
         >
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
