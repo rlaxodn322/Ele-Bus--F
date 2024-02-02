@@ -1,9 +1,12 @@
 import MainLayout from '../../../layouts/index';
 import { Page } from './style';
-import { Input, Button } from 'antd';
+import InputButton from '../../../components/inputbutton/inputbutton';
 import Card from '../../../components/card/card7';
 import Card4 from '../../../components/card/card4';
 import Card3 from '../../../components/card/card3';
+import DivBox from '../../../components/div/divbox';
+import Button3 from '../../../components/button/button3';
+import { Button } from 'antd';
 const busDataColumns = ['부품번호', '날짜', '부품위치', '창고위치', '요청시간', '담당자', '부품'];
 const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];
 const busDataColumns2 = ['등록일자', '사용자', '상태'];
@@ -93,6 +96,33 @@ const dummyTableData1 = [
     status3: '3',
     status4: '4',
   },
+  {
+    user: '2023-11-08/08:30',
+    registrationDate: 'AREA',
+    status: 'A002',
+    status1: '0',
+    status2: '전원불량',
+    status3: '3',
+    status4: '4',
+  },
+  {
+    user: '2023-11-08/08:30',
+    registrationDate: 'AREA',
+    status: 'A002',
+    status1: '0',
+    status2: '전원불량',
+    status3: '3',
+    status4: '4',
+  },
+  {
+    user: '2023-11-08/08:30',
+    registrationDate: 'AREA',
+    status: 'A002',
+    status1: '0',
+    status2: '전원불량',
+    status3: '3',
+    status4: '4',
+  },
 
   // Add more dummy data as needed
 ];
@@ -133,7 +163,53 @@ const dummyTableData2 = [
     status3: '값3',
     status4: '값4',
   },
+  {
+    user: '2023-11-08/08:30',
+    registrationDate: 'AREA',
+    status: '비활성화',
+    status1: '값1',
+    status2: '값2',
+    status3: '값3',
+    status4: '값4',
+  },
+  {
+    user: '2023-11-08/08:30',
+    registrationDate: 'AREA',
+    status: '비활성화',
+    status1: '값1',
+    status2: '값2',
+    status3: '값3',
+    status4: '값4',
+  },
+  {
+    user: '2023-11-08/08:30',
+    registrationDate: 'AREA',
+    status: '비활성화',
+    status1: '값1',
+    status2: '값2',
+    status3: '값3',
+    status4: '값4',
+  },
+  {
+    user: '2023-11-08/08:30',
+    registrationDate: 'AREA',
+    status: '비활성화',
+    status1: '값1',
+    status2: '값2',
+    status3: '값3',
+    status4: '값4',
+  },
+  {
+    user: '2023-11-08/08:30',
+    registrationDate: 'AREA',
+    status: '비활성화',
+    status1: '값1',
+    status2: '값2',
+    status3: '값3',
+    status4: '값4',
+  },
 ];
+
 const MyPage = () => {
   return (
     <>
@@ -156,15 +232,15 @@ const MyPage = () => {
               height: '100%',
             }}
           >
-            <div style={{ textAlign: 'center' }}>
-              <h1>부품 검색</h1>
-              <Input placeholder="부품검색" style={{ width: '300px', marginBottom: '30px' }}></Input>
-              <Button>🔍</Button>
-            </div>
-
+            <InputButton b="부품 검색" /> {/* 'a' 속성을 전달 */}
             <Card3 data={dummyTableData2} columns={busDataColumns2} />
           </div>
-          <div style={{ width: '33%', height: '100%', borderRadius: '10px' }}></div>
+
+          <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
+            <InputButton a="부품 관리" b="부품 검색" />
+            <DivBox />
+            <Button3 a="편집" b="삭제" c="취소" />
+          </div>
           <div style={{ width: '33%', height: '100%', borderRadius: '10px' }}></div>
         </div>
         <div
@@ -180,7 +256,7 @@ const MyPage = () => {
         >
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ marginLeft: '10px', width: '100%' }}>
-              <h1>A/S 요청 이력</h1>
+              <h1>부품 리스트</h1>
               <Card data={dummyTableData} columns={busDataColumns} />
             </div>
             <div style={{ width: '100%' }}>
