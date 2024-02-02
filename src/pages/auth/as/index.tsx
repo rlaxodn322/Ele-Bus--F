@@ -8,7 +8,7 @@ import DivBox from '../../../components/div/divbox';
 import Button3 from '../../../components/button/button3';
 import Button2 from '../../../components/button/button2';
 import Input5 from '../../../components/input/Input5';
-import { Button } from 'antd';
+
 const busDataColumns = ['부품번호', '날짜', '부품위치', '창고위치', '요청시간', '담당자', '부품'];
 const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];
 const busDataColumns2 = ['등록일자', '사용자', '상태'];

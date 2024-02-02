@@ -20,11 +20,11 @@ const Input5: React.FC<InputProps> = ({ a, b, c, d, e, f }) => {
         }}
       >
         <h1>{a}</h1>
-        <Input placeholder={b} style={{ marginTop: '10px' }} />
-        <Input placeholder={c} style={{ marginTop: '10px' }} />
-        <Input placeholder={d} style={{ marginTop: '10px' }} />
-        <Input placeholder={e} style={{ marginTop: '10px' }} />
-        <Input placeholder={f} style={{ marginTop: '10px' }} />
+        <Input placeholder={b} style={{ marginTop: '20px' }} />
+        <Input placeholder={c} style={{ marginTop: '20px' }} />
+        <Input placeholder={d} style={{ marginTop: '20px' }} />
+        <Input placeholder={e} style={{ marginTop: '20px' }} />
+        <Input placeholder={f} style={{ marginTop: '20px' }} />
       </div>
     </>
   );

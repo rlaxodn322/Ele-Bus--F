@@ -12,7 +12,7 @@ const Button2: React.FC<ButtonProps> = ({ a, b }) => {
           display: 'flex',
           justifyContent: 'space-between',
           textAlign: 'center',
-          width: '40%',
+          width: '30%',
           margin: '0 auto',
           marginTop: '10px',
         }}
