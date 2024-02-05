@@ -1,7 +1,6 @@
 import MainLayout from '../../../layouts/index';
 import Card from '../../../components/card/right';
 import { Button } from 'antd';
-import Link from 'next/link';
 import { Page } from './style';
 // 더미 데이터
 const dummyData = [
