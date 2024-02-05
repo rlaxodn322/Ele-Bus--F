@@ -77,7 +77,7 @@ const Middle = () => {
             background: '#2CA0F3',
             fontSize: '18px',
             color: 'white',
-            borderRadius: '10px',
+
             display: 'flex',
             paddingTop: '9px',
             paddingLeft: '10px',
