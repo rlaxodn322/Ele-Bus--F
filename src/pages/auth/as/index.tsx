@@ -1,9 +1,9 @@
 import MainLayout from '../../../layouts/index';
 import { Page } from './style';
 import InputButton from '../../../components/inputbutton/inputbutton';
-import Card from '../../../components/card/card7';
-import Card4 from '../../../components/card/card4';
-import Card3 from '../../../components/card/card3';
+import Table7 from '../../../components/table/table7';
+import Table4 from '../../../components/table/talbe4';
+import Table3 from '../../../components/table/table3';
 import DivBox from '../../../components/div/divbox';
 import Button3 from '../../../components/button/button3';
 import Button2 from '../../../components/button/button2';
@@ -181,7 +181,7 @@ const MyPage = () => {
             }}
           >
             <InputButton b="부품 검색" /> {/* 'a' 속성을 전달 */}
-            <Card3 data={dummyTableData2} columns={busDataColumns2} />
+            <Table3 data={dummyTableData2} columns={busDataColumns2} />
           </div>
 
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
@@ -209,11 +209,11 @@ const MyPage = () => {
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ marginLeft: '10px', width: '60%' }}>
               <h1>부품 리스트</h1>
-              <Card data={dummyTableData} columns={busDataColumns} />
+              <Table7 data={dummyTableData} columns={busDataColumns} />
             </div>
             <div style={{ width: '40%' }}>
               <h1>고장정보</h1>
-              <Card4 data={dummyTableData1} columns={busDataColumns1} />
+              <Table4 data={dummyTableData1} columns={busDataColumns1} />
             </div>
           </div>
         </div>

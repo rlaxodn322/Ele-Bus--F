@@ -5,14 +5,14 @@ import { Button, message } from 'antd';
 import MainLayout from '../../../layouts';
 import { PageProfile, ProfileTitle, ProfileInfo, ButtonWrapper } from './style';
 import { deleteUserAPI } from '../../../components/apis/user/user';
-import EditModal from '../../../components/Modals/auth';
+// import EditModal from '../../../components/Modals/auth';
 
 const MyPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [createdAt, setCreate] = useState('');
   const [updatedAt, setUpdate] = useState('');
-  const [editModalVisible, setEditModalVisible] = useState(false);
+  // const [editModalVisible, setEditModalVisible] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -27,9 +27,9 @@ const MyPage = () => {
     }
   }, []);
 
-  const handleEdit = () => {
-    setEditModalVisible(true);
-  };
+  // const handleEdit = () => {
+  //   setEditModalVisible(true);
+  // };
 
   const handleDelete = () => {
     const confirmDelete = window.confirm('정말로 회원을 탈퇴하시겠습니까?');
@@ -46,9 +46,9 @@ const MyPage = () => {
     }
   };
 
-  const handleEditModalCancel = () => {
-    setEditModalVisible(false);
-  };
+  // const handleEditModalCancel = () => {
+  //   setEditModalVisible(false);
+  // };
 
   return (
     <>
@@ -72,9 +72,9 @@ const MyPage = () => {
             <strong>업데이트일:</strong> {updatedAt}
           </div>
           <ButtonWrapper>
-            <Button key="" type="primary" onClick={handleEdit}>
+            {/* <Button key="" type="primary" onClick={handleEdit}>
               정보수정
-            </Button>
+            </Button> */}
             <span className="button-gap" />
             <Button key="" onClick={handleDelete}>
               회원탈퇴
@@ -82,7 +82,7 @@ const MyPage = () => {
           </ButtonWrapper>
         </ProfileInfo>
       </PageProfile>
-      <EditModal visible={editModalVisible} onCancel={handleEditModalCancel} user={{ name, email }} />
+      {/* <EditModal visible={editModalVisible} onCancel={handleEditModalCancel} user={{ name, email }} /> */}
     </>
   );
 };

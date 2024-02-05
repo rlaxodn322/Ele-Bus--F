@@ -25,20 +25,16 @@ const Left = () => {
       <div
         style={{
           width: '100%',
-          height: '90%',
-          background: 'white',
-          borderRadius: '10px',
-          boxShadow: '1px 1px 2px 2px lightgray',
-          overflow: 'hidden',
+          height: '80%',
         }}
       >
         <div
           style={{
             width: '100%',
             height: '100%',
-            borderRadius: '10px',
             fontSize: '18px',
             position: 'relative', // 부모 요소에 relative 위치 설정
+            borderRadius: '10px',
           }}
         >
           <div
@@ -52,6 +48,7 @@ const Left = () => {
               flexDirection: 'row',
               marginBottom: '10px',
               color: 'white',
+              borderRadius: '10px',
             }}
           >
             {columns.map((column) => (

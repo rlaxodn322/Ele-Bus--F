@@ -1,7 +1,7 @@
 import MainLayout from '../../../layouts/index';
 import { Page } from './style';
-import Card from '../../../components/card/card6';
-import Card1 from '../../../components/card/card4';
+import Table6 from '../../../components/table/talbe6';
+import Table4 from '../../../components/table/talbe4';
 import Map from '../../../components/apis/kakao/map';
 import Graph from '../../../components/graph/graph1';
 const busDataColumns = ['사용자', '날짜', '위치', '버스ID', '요청시간', '담당자'];
@@ -120,11 +120,11 @@ const MyPage = () => {
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ marginLeft: '10px', width: '60%' }}>
               <h1>A/S 요청 이력</h1>
-              <Card data={dummyTableData} columns={busDataColumns} />
+              <Table6 data={dummyTableData} columns={busDataColumns} />
             </div>
             <div style={{ width: '40%' }}>
               <h1>고장정보</h1>
-              <Card1 data={dummyTableData1} columns={busDataColumns1} />
+              <Table4 data={dummyTableData1} columns={busDataColumns1} />
             </div>
           </div>
         </div>

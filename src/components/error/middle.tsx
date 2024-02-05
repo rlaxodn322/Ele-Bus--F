@@ -66,10 +66,7 @@ const Middle = () => {
       <div
         style={{
           width: '100%',
-          height: '90%',
-          background: 'white',
-          borderRadius: '10px',
-          boxShadow: '1px 1px 2px 2px lightgray',
+          height: '80%',
         }}
       >
         <div
@@ -80,8 +77,7 @@ const Middle = () => {
             background: '#2CA0F3',
             fontSize: '18px',
             color: 'white',
-            borderTopLeftRadius: '10px',
-            borderTopRightRadius: '10px',
+            borderRadius: '10px',
             display: 'flex',
             paddingTop: '9px',
             paddingLeft: '10px',
