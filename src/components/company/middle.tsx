@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Cascader } from 'antd'; // antd의 Cascader 컴포넌트를 사용
+import { Cascader, Button } from 'antd'; // antd의 Cascader 컴포넌트를 사용
 interface MiddleProps {
   data: {
     user: string;
@@ -72,7 +72,11 @@ const Middle: React.FC<MiddleProps> = ({ data }) => {
             height: '74%',
           }}
         >
-          <h1>버스 등록 현황</h1>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <h1>버스 등록 현황</h1>
+            <Button style={{ marginTop: '10px', background: '#27B964', color: 'white' }}>엑셀다운로드</Button>
+          </div>
+
           <div style={{ border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
               options={[

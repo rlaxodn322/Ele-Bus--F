@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from 'antd';
+import Link from 'next/link';
 const Right = () => {
   const numCols = 2;
 
@@ -91,6 +93,12 @@ const Right = () => {
               <div style={{ fontSize: '11px', marginTop: '5px', fontWeight: 'bold' }}>{`${data.battery}`}</div>
             </div>
           ))}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px' }}>
+          <Link href="./dtg">
+            <Button style={{ marginRight: '10PX' }}>제출하기</Button>
+          </Link>
+          <Button>다운로드</Button>
         </div>
       </div>
     </>
