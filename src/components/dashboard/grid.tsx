@@ -1,5 +1,5 @@
 import React from 'react';
-import Map from '../apis/kakao/map';
+
 import Mqtt from '../apis/mqtt/mqtt';
 const Grid = () => {
   return (
@@ -10,9 +10,7 @@ const Grid = () => {
           backgroundColor: 'white',
         }}
       >
-        <div style={{ height: '70%', boxShadow: '2px 2px 2px 2px gray', borderRadius: '10px' }}>
-          <Map />
-        </div>
+        <div style={{ height: '70%', boxShadow: '2px 2px 2px 2px gray', borderRadius: '10px' }}></div>
         <div
           style={{
             marginTop: '-10px',

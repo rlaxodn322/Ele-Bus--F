@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 
 export const CheckError = styled.button`
-font-size: 10px;
-color: red;
-border: none;
-background-color: transparent;
-margin-left: 4px;
-tabindex= -1;
+  font-size: 10px;
+  color: red;
+  border: none;
+  background-color: transparent;
+  margin-left: 4px;
+  /* tabindex= -1; */
 
-&:focus {
-  outline: none;
-}
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const TitleWrapper = styled.div`
