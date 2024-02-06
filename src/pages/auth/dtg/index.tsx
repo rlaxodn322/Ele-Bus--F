@@ -9,7 +9,7 @@ import Date from '../../../components/antd/date';
 const busDataColumns = ['운행일시', '운행시간', '누적거리', '운행속도', '운행거리', '평균속도'];
 const dummyTableData = [
   {
-    user: '2024-02-05',
+    user: '2024-02-01',
     registrationDate: '1시 01분 30초',
     status: '10시~11시',
     status1: '18,000km',
@@ -25,7 +25,7 @@ const dummyTableData = [
     status3: '60km',
   },
   {
-    user: '2024-02-05',
+    user: '2024-02-09',
     registrationDate: '1시 01분 30초',
     status: '10시~11시',
     status1: '18,000km',
@@ -114,12 +114,26 @@ const dummyData = [
 
   // 필요한 만큼 데이터를 추가할 수 있습니다.
 ];
+
 const MyPage = () => {
   const [dtgRecordTitle, setDtgRecordTitle] = useState<string>('차량넘버');
+  const [startDate, setStartDate] = useState<string | null>(null);
+  const [endDate, setEndDate] = useState<string | null>(null);
 
   const updateDtgRecordTitle = (vehicleNumber: string) => {
     setDtgRecordTitle(` ${vehicleNumber}`);
   };
+
+  const handleDateChange = (start: string | null, end: string | null) => {
+    setStartDate(start);
+    setEndDate(end);
+  };
+
+  // dummyTableData를 필터링하여 startDate와 endDate 사이의 데이터를 추출
+  const filteredData = dummyTableData.filter((item) => {
+    if (!startDate || !endDate) return true;
+    return item.user >= startDate && item.user <= endDate;
+  });
   return (
     <>
       <Page>
@@ -173,11 +187,12 @@ const MyPage = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <h1>DTG 과거 이력</h1>
               <div style={{ marginTop: '15px' }}>
-                <Date />
+                {/* Date 컴포넌트에 선택한 날짜 범위를 전달하고, 선택 시 handleDateChange 함수 호출 */}
+                <Date onDateChange={handleDateChange} />
               </div>
             </div>
-
-            <DtgTable data={dummyTableData} columns={busDataColumns} />
+            {/* 필터링된 데이터를 DtgTable 컴포넌트로 전달 */}
+            <DtgTable data={filteredData} columns={busDataColumns} />
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px' }}>
               <Button style={{ marginRight: '10px' }}>다운로드</Button>
               <Button>DTG정보제출하기</Button>
