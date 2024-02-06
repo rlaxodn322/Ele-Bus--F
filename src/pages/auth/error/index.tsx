@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from 'antd';
 import { Page } from './style';
 import Left from '../../../components/error/left';
-import Card from '../../../components/card/right';
+import Card from '../../../components/card/dtgcard';
 import Middle from '../../../components/error/middle';
 import BusCard from '../../../components/bus/buscard';
 // 더미 데이터

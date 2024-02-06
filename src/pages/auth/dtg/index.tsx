@@ -1,7 +1,67 @@
 import MainLayout from '../../../layouts/index';
-import Card from '../../../components/card/right';
+import Card from '../../../components/card/dtgcard';
+import Table3 from '../../../components/table/table3company';
 import { Button } from 'antd';
 import { Page } from './style';
+const busDataColumns2 = ['등록일자', '사용자', '상태'];
+const dummyTableData2 = [
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1234',
+    status: '운행중',
+  },
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1235',
+    status: '운행중',
+  },
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1236',
+    status: '운행중',
+  },
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1237',
+    status: '운행중',
+  },
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1238',
+    status: '운행중',
+  },
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1234',
+    status: '운행중',
+  },
+  {
+    user: '화성여객',
+    registrationDate: '경기11가1234',
+    status: '운행중',
+  },
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1234',
+    status: '운행중',
+  },
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1234',
+    status: '운행중',
+  },
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1234',
+    status: '운행중',
+  },
+  {
+    user: '동탄여객',
+    registrationDate: '경기11가1234',
+    status: '운행중',
+  },
+];
+
 // 더미 데이터
 const dummyData = [
   { id: 1, vehicle: '차량1', status: '운행기록장치 모델명', battery: 'GTG 기록 ABCD' },
@@ -39,15 +99,15 @@ const MyPage = () => {
           <div
             style={{ width: '100%', marginRight: '20px', borderRadius: '10px', boxShadow: '1px 1px 2px 2px lightgray' }}
           >
-            <h1>차량 목록</h1>
-            <Card data={dummyData}></Card>
+            <h1 style={{ marginLeft: '10px' }}>차량 목록</h1>
+            <Table3 data={dummyTableData2} columns={busDataColumns2} />
           </div>
           <div
             style={{ width: '100%', marginRight: '20px', borderRadius: '10px', boxShadow: '1px 1px 2px 2px lightgray' }}
           >
             <h1>DTG 실시간 기록</h1>
             <Card data={dummyData}></Card>
-            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px' }}>
+            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '20px' }}>
               <Button>다운로드</Button>
             </div>
           </div>
