@@ -41,6 +41,7 @@ const Middle = () => {
 
   const [sortingOrder] = useState<string | string[]>(['latest']);
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+
   // 운행중인 차량 정보 필터링 함수
   const companyOptions = [
     { value: '전체보기', label: '전체보기' },
@@ -75,7 +76,119 @@ const Middle = () => {
         </div>
         <div style={{ width: '49.5%', height: '100%' }}>
           <h1 style={{ marginLeft: '20px' }}>버스상태</h1>
-          <RightTop />
+          <div
+            style={{
+              height: '12%',
+              marginLeft: '10px',
+              marginTop: '10px',
+              background: 'white',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div
+              style={{
+                width: '49%',
+                height: '100%',
+                boxShadow: '1px 1px 1px 2px lightgray',
+                borderRadius: '10px',
+              }}
+            >
+              <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>전체</h3>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  paddingLeft: '20px',
+                  paddingRight: '20px',
+                }}
+              >
+                <h2>2 대</h2>
+                <img style={{ width: '20%', marginBottom: '20px' }} src="images/bus-svgrepo-com (8).svg"></img>
+              </div>
+            </div>
+            <div
+              style={{
+                width: '49%',
+                height: '100%',
+                boxShadow: '1px 1px 1px 2px lightgray',
+                borderRadius: '10px',
+              }}
+            >
+              <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>운행</h3>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  paddingLeft: '20px',
+                  paddingRight: '20px',
+                }}
+              >
+                <h2>2 대</h2>
+                <img
+                  style={{ width: '20%', marginBottom: '20px' }}
+                  src="images/bus-transport-svgrepo-com (2).svg"
+                ></img>
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              height: '12%',
+              marginLeft: '10px',
+              marginTop: '13px',
+              background: 'white',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div
+              style={{
+                width: '49%',
+                height: '100%',
+                boxShadow: '1px 1px 1px 2px lightgray',
+                borderRadius: '10px',
+              }}
+            >
+              <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>충전/대기</h3>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  paddingLeft: '20px',
+                  paddingRight: '20px',
+                }}
+              >
+                <h2>2 대</h2>
+                <img style={{ width: '20%', marginBottom: '20px' }} src="images/stop-circle-svgrepo-com.svg"></img>
+              </div>
+            </div>
+            <div
+              style={{
+                width: '49%',
+                height: '100%',
+                boxShadow: '1px 1px 1px 2px lightgray',
+                borderRadius: '10px',
+              }}
+            >
+              <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>고장</h3>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  paddingLeft: '20px',
+                  paddingRight: '20px',
+                }}
+              >
+                {/* <Mqtt /> */}
+                <h2>2 대</h2>
+                <img
+                  style={{ width: '20%', marginBottom: '20px' }}
+                  src="images/danger-circle-svgrepo-com (1).svg"
+                ></img>
+              </div>
+            </div>
+          </div>
           <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>운행중인 차량정보</h1>
           <div style={{ marginBottom: '5px', border: '0px', display: 'flex', justifyContent: 'end' }}>
             <Cascader
