@@ -6,30 +6,21 @@ import RightTop from './top';
 
 // Dummy 데이터
 const dummyVehicleData = [
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행중', soc: '80%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행중', soc: '65%', note: 'no' },
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행중', soc: '80%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행중', soc: '65%', note: 'no' },
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행중', soc: '80%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '충전중', soc: '65%', note: 'no' },
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행중', soc: '80%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장점검', soc: '65%', note: 'on' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장점검', soc: '65%', note: 'on' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장점검', soc: '65%', note: 'on' },
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행중', soc: '80%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행중', soc: '65%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장점검', soc: '65%', note: 'on' },
+  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
+  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
+  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '충전/대기', soc: '65%', note: 'no' },
+  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
+  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
   // Add more dummy data as needed
 ];
-// const dummyEventHistory = [
-//   { date: '2022-01-01', vehicleNum: '6789', issue: 'Engine Failure', importance: 'High', note: '' },
-//   { date: '2022-02-15', vehicleNum: '5678', issue: 'Battery Issue', importance: 'Medium', note: '' },
-//   { date: '2022-01-01', vehicleNum: '6789', issue: 'Engine Failure', importance: 'High', note: '' },
-//   { date: '2022-02-15', vehicleNum: '5678', issue: 'Battery Issue', importance: 'Medium', note: '' },
-//   { date: '2022-01-01', vehicleNum: '6789', issue: 'Engine Failure', importance: 'High', note: '' },
-//   { date: '2022-02-15', vehicleNum: '5678', issue: 'Battery Issue', importance: 'Medium', note: '' },
-//   // Add more dummy data as needed
-// ];
 
 const Middle = () => {
   // Add markers for 10 locations in Osan City
@@ -63,16 +54,7 @@ const Middle = () => {
       return dummyVehicleData.filter((vehicle) => vehicle.company === selectedCompany);
     }
   };
-  // const sortedEventHistory = [...dummyEventHistory].sort((a, b) => {
-  //   const dateA = new Date(a.date).getTime();
-  //   const dateB = new Date(b.date).getTime();
 
-  //   if (sortingOrder === 'latest') {
-  //     return dateB - dateA;
-  //   } else {
-  //     return dateA - dateB;
-  //   }
-  // });
   const sortedVehicleData = getFilteredVehicleData().sort((a, b) => {
     const companyA = a.company.toLowerCase();
     const companyB = b.company.toLowerCase();
@@ -152,11 +134,11 @@ const Middle = () => {
                   // 수정된 부분 시작
 
                   color:
-                    vehicle.location === '운행중'
+                    vehicle.location === '운행'
                       ? vehicle.note === 'no'
                         ? 'blue'
                         : 'red'
-                      : vehicle.location === '충전중'
+                      : vehicle.location === '충전/대기'
                       ? 'green'
                       : 'red',
                   // 수정된 부분 끝
@@ -171,89 +153,6 @@ const Middle = () => {
               </h6>
             ))}
           </div>
-
-          {/* <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>차량 고장 이벤트 이력</h1>
-          <div style={{ marginBottom: '5px', border: '0px', display: 'flex', justifyContent: 'end' }}>
-            <Cascader
-              options={[
-                { value: 'oldest1', label: '기본' },
-                { value: 'oldest', label: '늦은 순' },
-                { value: 'latest', label: '최신순' },
-              ]}
-              onChange={(value) => {
-                const sortOrder = typeof value[0] === 'number' ? 'latest' : value[0];
-                setSortingOrder(sortOrder);
-              }}
-              defaultValue={['oldest1']}
-              style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
-            />
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              overflowY: 'auto',
-              width: '98.5%',
-              height: 'calc(19.5% - 30px)',
-              marginLeft: '10px',
-              boxShadow: '1px 1px 1px 2px lightgray',
-              borderRadius: '10px',
-            }}
-          >
-            <div
-              style={{
-                position: 'sticky',
-                top: '0',
-                display: 'flex',
-                justifyContent: 'space-between',
-                padding: '5px',
-                background: '#2CA0F3',
-                color: 'white',
-                borderRadius: '10px',
-                zIndex: '1',
-                fontSize: '17px',
-              }}
-            >
-              <div style={{ flex: 1, textAlign: 'center' }}>날짜</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>차량번호</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>고장정보</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>중요도</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>비고</div>
-            </div>
-            {sortedEventHistory.map((event, index) => (
-              <h6
-                key={index}
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  padding: '5px',
-                  borderBottom: '1px solid lightgray',
-                  textAlign: 'center',
-                  margin: '0',
-                  fontSize: '14px',
-                }}
-              >
-                <div style={{ flex: 1 }}>{event.date}</div>
-                <div style={{ flex: 1 }}>{event.vehicleNum}</div>
-                <div style={{ flex: 1 }}>{event.issue}</div>
-                <div style={{ flex: 1, position: 'relative' }}>
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      width: '10px',
-                      height: '10px',
-                      borderRadius: '50%',
-                      backgroundColor: getCircleColor(event.importance),
-                    }}
-                  />
-                </div>
-                <div style={{ flex: 1 }}> {event.note}</div>
-              </h6>
-            ))}
-          </div> */}
         </div>
       </div>
     </>
