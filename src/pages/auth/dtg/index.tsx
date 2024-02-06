@@ -36,7 +36,7 @@ const dummyTableData2 = [
     status: '운행중',
   },
   {
-    user: '화성여객',
+    user: '동탄여객',
     registrationDate: '경기11가1234',
     status: '운행중',
   },
@@ -97,13 +97,25 @@ const MyPage = () => {
           }}
         >
           <div
-            style={{ width: '100%', marginRight: '20px', borderRadius: '10px', boxShadow: '1px 1px 2px 2px lightgray' }}
+            style={{
+              width: '30%',
+              marginRight: '20px',
+              borderRadius: '10px',
+              boxShadow: '1px 1px 2px 2px lightgray',
+              background: 'white',
+            }}
           >
             <h1 style={{ marginLeft: '10px' }}>차량 목록</h1>
             <Table3 data={dummyTableData2} columns={busDataColumns2} />
           </div>
           <div
-            style={{ width: '100%', marginRight: '20px', borderRadius: '10px', boxShadow: '1px 1px 2px 2px lightgray' }}
+            style={{
+              width: '30%',
+              marginRight: '20px',
+              borderRadius: '10px',
+              boxShadow: '1px 1px 2px 2px lightgray',
+              background: 'white',
+            }}
           >
             <h1>DTG 실시간 기록</h1>
             <Card data={dummyData}></Card>
@@ -112,7 +124,13 @@ const MyPage = () => {
             </div>
           </div>
           <div
-            style={{ width: '100%', marginRight: '20px', borderRadius: '10px', boxShadow: '1px 1px 2px 2px lightgray' }}
+            style={{
+              width: '50%',
+              marginRight: '20px',
+              borderRadius: '10px',
+              boxShadow: '1px 1px 2px 2px lightgray',
+              background: 'white',
+            }}
           >
             <h1>DTG 과거 이력</h1>
             <Card data={dummyData}></Card>
