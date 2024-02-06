@@ -10,6 +10,7 @@ interface Row {
 interface CardProps {
   data: Row[];
   columns: string[];
+  updateDtgRecordTitle: (vehicleNumber: string) => void;
 }
 
 const parseDate = (dateString: string): number => {
@@ -26,7 +27,7 @@ const parseDate = (dateString: string): number => {
   return 0; // 유효한 날짜가 파싱되지 않을 경우 0을 반환
 };
 
-const Card: React.FC<CardProps> = ({ data, columns }) => {
+const Card: React.FC<CardProps> = ({ data, columns, updateDtgRecordTitle }) => {
   const [sortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1] = useState<string | string[]>(['latest']);
   const [filterDate, setFilterDate] = useState<string | null>(null);
@@ -34,9 +35,13 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
   const [vehicleNumber, setVehicleNumber] = useState<string>('');
 
   const handleFilter = () => {
-    setFilterDate(vehicleNumber);
+    if (vehicleNumber) {
+      // vehicleNumber를 사용하여 다른 작업 수행
+      // 예: 데이터 필터링 이후의 추가 동작 등
+      setFilterDate(vehicleNumber);
+      updateDtgRecordTitle(vehicleNumber);
+    }
   };
-
   const sortedEventHistory = [...data]
     .filter(
       (row) => (!filterDate || row.registrationDate.includes(filterDate)) && (!filterUser || row.user === filterUser),
@@ -71,15 +76,6 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
           height: '80%',
         }}
       >
-        <div style={{ border: '0px', display: 'flex', justifyContent: 'center' }}>
-          <Input
-            style={{ width: '80%' }}
-            placeholder="차량번호입력"
-            value={vehicleNumber}
-            onChange={(e) => setVehicleNumber(e.target.value)}
-          />
-          <Button onClick={handleFilter}>검색</Button>
-        </div>
         <div
           style={{
             width: '100%',
@@ -92,12 +88,16 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
             style={{
               display: 'flex',
               justifyContent: 'space-between',
-              padding: '5px',
+              padding: '10px',
               background: '#2CA0F3',
               color: 'white',
               position: 'sticky',
               top: '0',
               zIndex: '2',
+              paddingTop: '10px',
+              height: '10%',
+              fontSize: '18px',
+              fontWeight: 'bold',
             }}
           >
             {sortedEventHistory1.map((column, index) => (
@@ -105,6 +105,23 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
                 {column}
               </div>
             ))}
+          </div>
+          <div
+            style={{
+              marginTop: '10px',
+              marginBottom: '10px',
+              border: '0px',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <Input
+              style={{ width: '80%' }}
+              placeholder="차량번호입력"
+              value={vehicleNumber}
+              onChange={(e) => setVehicleNumber(e.target.value)}
+            />
+            <Button onClick={handleFilter}>검색</Button>
           </div>
           {sortedEventHistory.map((row, index) => (
             <h6
