@@ -14,6 +14,7 @@ interface Row {
 interface CardProps {
   data: Row[];
   columns: string[];
+  a?: string;
 }
 const parseDate = (dateString: string): number => {
   const parts = dateString.split('/');
@@ -32,7 +33,7 @@ const parseDate = (dateString: string): number => {
 
   return new Date(`${year}-${month}-${day}T${hour}:${minute}`).getTime();
 };
-const Card: React.FC<CardProps> = ({ data, columns }) => {
+const Card: React.FC<CardProps> = ({ data, columns, a }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1] = useState<string | string[]>(['latest']);
   const [filterDate] = useState<string | null>(null);
@@ -100,7 +101,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
           {/* Cascader for filtering by status3 */}
           <Cascader
             options={[
-              { value: 'all', label: '전체 담당자' },
+              { value: 'all', label: a },
               ...status3Options.map((option) => ({ value: option, label: option })),
             ]}
             onChange={(value) => {

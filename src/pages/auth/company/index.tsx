@@ -5,7 +5,7 @@ import Table5 from '../../../components/table/table5';
 import { Button } from 'antd';
 import { Page } from './style';
 const MyPage = () => {
-  const busDataColumns = ['버스ID', '등록일', '차량번호', '차량등록', '차대번호', '모델번호', '통신모듈'];
+  const busDataColumns = ['버스ID', '등록일', '차량번호', '차량등록', '차대번호', '통신모듈', '모델번호'];
   const busDataColumns1 = ['충전ID', '등록일', '충전용량', '누적충전', '모델'];
 
   const dummyTableData = [
@@ -15,8 +15,8 @@ const MyPage = () => {
       status: '경기11바1234',
       status1: '2024-01-01',
       status2: '1123456-122',
-      status3: 'AAA123',
-      status4: 'RSVP123',
+      status3: 'RSVP123',
+      status4: 'AAA123',
     },
     {
       user: 'busID',
@@ -24,8 +24,8 @@ const MyPage = () => {
       status: '경기11바1234',
       status1: '2024-01-01',
       status2: '1123456-122',
-      status3: 'AAA123',
-      status4: 'RSVP123',
+      status3: 'RSVP123',
+      status4: 'AAA123',
     },
     {
       user: 'busID',
@@ -33,8 +33,8 @@ const MyPage = () => {
       status: '경기11바1234',
       status1: '2024-01-01',
       status2: '1123456-122',
-      status3: 'AAA123',
-      status4: 'RSVP123',
+      status3: 'RSVP123',
+      status4: 'AAA123',
     },
     {
       user: 'busID',
@@ -42,35 +42,8 @@ const MyPage = () => {
       status: '경기11바1234',
       status1: '2024-01-01',
       status2: '1123456-122',
-      status3: 'AAA123',
-      status4: 'RSVP123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:31',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'AAA123',
-      status4: 'RSVP123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:35',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'AAA123',
-      status4: 'RSVP123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:37',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'AAA125',
-      status4: 'RSVP123',
+      status3: 'RSVP123',
+      status4: 'AAA123',
     },
     {
       user: 'busID',
@@ -78,8 +51,8 @@ const MyPage = () => {
       status: '경기11바1234',
       status1: '2024-01-01',
       status2: '1123456-122',
-      status3: 'AAA123',
-      status4: 'RSVP123',
+      status3: 'RSVP123',
+      status4: 'AAA123',
     },
     {
       user: 'busID',
@@ -87,8 +60,8 @@ const MyPage = () => {
       status: '경기11바1234',
       status1: '2024-01-01',
       status2: '1123456-122',
-      status3: 'AAA123',
-      status4: 'RSVP123',
+      status3: 'RSVP123',
+      status4: 'AAA123',
     },
 
     // Add more dummy data as needed
@@ -140,7 +113,7 @@ const MyPage = () => {
                 <Button>엑셀다운로드</Button>
               </div>
 
-              <Table7 data={dummyTableData} columns={busDataColumns} />
+              <Table7 a="전체 통신모듈" data={dummyTableData} columns={busDataColumns} />
             </div>
             <div style={{ width: '90%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
