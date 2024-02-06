@@ -71,6 +71,28 @@ const dummyTableData1 = [
 const MyPage = () => {
   const markerPositions = [
     { title: '하남운수', latlng: { lat: 37.549899, lng: 127.216505 } },
+    { title: '오산운수', latlng: { lat: 37.149528, lng: 127.077071 } },
+    { title: '수원운수', latlng: { lat: 37.263573, lng: 127.028601 } },
+    { title: '평택운수', latlng: { lat: 36.990437, lng: 127.092379 } },
+    { title: '부산운수', latlng: { lat: 35.179554, lng: 129.075642 } },
+    { title: '부산운수', latlng: { lat: 35.179554, lng: 129.075642 } },
+    { title: '안성운수', latlng: { lat: 36.990437, lng: 127.092379 } },
+    { title: '포항운수', latlng: { lat: 36.019986, lng: 129.342938 } },
+    { title: '울산운수', latlng: { lat: 35.538377, lng: 129.311359 } },
+    { title: '대구운수', latlng: { lat: 35.871435, lng: 128.601445 } },
+    { title: '대구운수', latlng: { lat: 35.871435, lng: 128.601445 } },
+    { title: '대천운수', latlng: { lat: 36.491065, lng: 126.494356 } },
+    { title: '광주운수', latlng: { lat: 35.491065, lng: 126.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
+    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
     // 다른 위치 정보도 추가해주세요
   ];
   const mapHeight = '335px';

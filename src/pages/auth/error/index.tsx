@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MainLayout from '../../../layouts';
 import Link from 'next/link';
 import { Button } from 'antd';
@@ -7,6 +7,7 @@ import Left from '../../../components/error/left';
 import Card from '../../../components/card/dtgcard';
 import Middle from '../../../components/error/middle';
 import BusCard from '../../../components/bus/buscard';
+
 // 더미 데이터
 const dummyData = [
   { id: 1, vehicle: '차량1', status: '운행기록장치 모델명', battery: 'GTG 기록 ABCD' },
@@ -27,6 +28,8 @@ const dummyData = [
   // 필요한 만큼 데이터를 추가할 수 있습니다.
 ];
 const MyPage = () => {
+  const [dtgRecordTitle] = useState<string>('DTG정보');
+
   return (
     <>
       <Page>
@@ -61,7 +64,7 @@ const MyPage = () => {
             }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
-            <Card data={dummyData}></Card>
+            <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px' }}>
               <Link href="./dtg">
                 <Button style={{ marginRight: '10px' }}>제출하기</Button>

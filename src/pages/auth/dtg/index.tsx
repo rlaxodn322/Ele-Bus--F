@@ -4,6 +4,37 @@ import Card from '../../../components/card/dtgcard';
 import Table3 from '../../../components/table/table3company';
 import { Button } from 'antd';
 import { Page } from './style';
+import DtgTable from '../../../components/table/dtgtable.tsx';
+import Date from '../../../components/antd/date';
+const busDataColumns = ['운행일시', '운행시간', '누적거리', '운행속도', '운행거리', '평균속도'];
+const dummyTableData = [
+  {
+    user: '2024-02-05',
+    registrationDate: '1시 01분 30초',
+    status: '10시~11시',
+    status1: '18,000km',
+    status2: '60km',
+    status3: '60km',
+  },
+  {
+    user: '2024-02-05',
+    registrationDate: '1시 01분 30초',
+    status: '10시~11시',
+    status1: '18,000km',
+    status2: '60km',
+    status3: '60km',
+  },
+  {
+    user: '2024-02-05',
+    registrationDate: '1시 01분 30초',
+    status: '10시~11시',
+    status1: '18,000km',
+    status2: '60km',
+    status3: '60km',
+  },
+
+  // Add more dummy data as needed
+];
 const busDataColumns2 = ['등록일자', '사용자', '상태'];
 const dummyTableData2 = [
   {
@@ -84,10 +115,10 @@ const dummyData = [
   // 필요한 만큼 데이터를 추가할 수 있습니다.
 ];
 const MyPage = () => {
-  const [dtgRecordTitle, setDtgRecordTitle] = useState<string>('DTG 실시간 기록');
+  const [dtgRecordTitle, setDtgRecordTitle] = useState<string>('차량넘버');
 
   const updateDtgRecordTitle = (vehicleNumber: string) => {
-    setDtgRecordTitle(`DTG 실시간 기록 (${vehicleNumber})`);
+    setDtgRecordTitle(` ${vehicleNumber}`);
   };
   return (
     <>
@@ -123,8 +154,8 @@ const MyPage = () => {
               background: 'white',
             }}
           >
-            <h1>{dtgRecordTitle}</h1>
-            <Card data={dummyData}></Card>
+            <h1>DTG 실시간 기록</h1>
+            <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '20px' }}>
               <Button>다운로드</Button>
             </div>
@@ -138,8 +169,14 @@ const MyPage = () => {
               background: 'white',
             }}
           >
-            <h1>DTG 과거 이력</h1>
-            <Card data={dummyData}></Card>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <h1>DTG 과거 이력</h1>
+              <div style={{ marginTop: '15px' }}>
+                <Date />
+              </div>
+            </div>
+
+            <DtgTable data={dummyTableData} columns={busDataColumns}></DtgTable>
           </div>
         </div>
       </Page>
