@@ -5,13 +5,28 @@ interface MapComponentProps {
   mapHeight: string | number;
 }
 
-// eslint-disable-next-line no-unused-vars
 declare global {
+  // eslint-disable-next-line no-unused-vars
   interface Window {
     kakao: any;
   }
 }
-const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight }) => {
+const markerPositions = [
+  { title: '하남운수', latlng: { lat: 37.549899, lng: 127.216505 } },
+  { title: '오산운수', latlng: { lat: 37.149528, lng: 127.077071 } },
+  { title: '수원운수', latlng: { lat: 37.263573, lng: 127.028601 } },
+  { title: '평택운수', latlng: { lat: 36.990437, lng: 127.092379 } },
+  { title: '부산운수', latlng: { lat: 35.179554, lng: 129.075642 } },
+  { title: '부산운수', latlng: { lat: 35.179554, lng: 129.075642 } },
+  { title: '안성운수', latlng: { lat: 36.990437, lng: 127.092379 } },
+  { title: '포항운수', latlng: { lat: 36.019986, lng: 129.342938 } },
+  { title: '울산운수', latlng: { lat: 35.538377, lng: 129.311359 } },
+  { title: '대구운수', latlng: { lat: 35.871435, lng: 128.601445 } },
+  { title: '대구운수', latlng: { lat: 35.871435, lng: 128.601445 } },
+  { title: '대천운수', latlng: { lat: 36.491065, lng: 126.494356 } },
+  { title: '대천운수', latlng: { lat: 36.491065, lng: 126.494356 } },
+];
+const MapComponent: React.FC<MapComponentProps> = ({ mapHeight }) => {
   useEffect(() => {
     const onLoadKakaoAPI = () => {
       window.kakao.maps.load(() => {
@@ -23,12 +38,22 @@ const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight 
 
         const map = new window.kakao.maps.Map(container, options);
 
+        // 클러스터러 생성
+        const clusterer = new window.kakao.maps.MarkerClusterer({
+          map: map,
+          averageCenter: true,
+          minLevel: 10,
+        });
+
+        // 마커 생성 및 클러스터러에 추가
         markerPositions.forEach(({ title, latlng }) => {
           const marker = new window.kakao.maps.Marker({
-            map: map,
             position: new window.kakao.maps.LatLng(latlng.lat, latlng.lng),
             title: title,
           });
+
+          // 클러스터러에 마커 추가
+          clusterer.addMarker(marker);
 
           const infowindow = new window.kakao.maps.InfoWindow({
             content: `<div>${title}</div>`,
@@ -45,11 +70,11 @@ const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight 
       });
     };
 
-    // Load Kakao API script only on the client side
+    // Kakao API 스크립트 로드
     if (typeof window !== 'undefined') {
       const kakaoMapScript = document.createElement('script');
       kakaoMapScript.async = false;
-      kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=2b230b26fde09123dfbe3d79c118924d&autoload=false`;
+      kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=2b230b26fde09123dfbe3d79c118924d&autoload=false&libraries=clusterer`;
       document.head.appendChild(kakaoMapScript);
 
       kakaoMapScript.addEventListener('load', onLoadKakaoAPI, { passive: true });
@@ -58,7 +83,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight 
     return () => {
       // Cleanup code if necessary
     };
-  }, [markerPositions, mapHeight]);
+  }, [mapHeight]);
 
   return (
     <div>
@@ -66,5 +91,4 @@ const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight 
     </div>
   );
 };
-
 export default MapComponent;
