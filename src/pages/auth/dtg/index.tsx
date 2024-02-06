@@ -162,6 +162,7 @@ const MyPage = () => {
           </div>
           <div
             style={{
+              height: '100%',
               width: '50%',
               marginRight: '20px',
               borderRadius: '10px',
@@ -176,7 +177,11 @@ const MyPage = () => {
               </div>
             </div>
 
-            <DtgTable data={dummyTableData} columns={busDataColumns}></DtgTable>
+            <DtgTable data={dummyTableData} columns={busDataColumns} />
+            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px' }}>
+              <Button style={{ marginRight: '10px' }}>다운로드</Button>
+              <Button>DTG정보제출하기</Button>
+            </div>
           </div>
         </div>
       </Page>
