@@ -165,7 +165,7 @@ const MyPage = () => {
         <div
           style={{
             width: '100%',
-            height: '60%',
+            height: '50%',
             boxShadow: '1px 1px 2px 2px lightgray',
             display: 'flex',
             justifyContent: 'space-between',
@@ -198,7 +198,7 @@ const MyPage = () => {
         <div
           style={{
             width: '100%',
-            height: '40%',
+            height: '30%',
             border: '1px solid lightgray',
             marginTop: '20px',
             borderRadius: '10px',

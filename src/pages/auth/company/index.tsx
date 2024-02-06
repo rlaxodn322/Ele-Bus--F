@@ -93,12 +93,12 @@ const MyPage = () => {
   return (
     <>
       <Page>
-        <h1>운송사조회/관리</h1>
+        <h1>사업자조회/관리</h1>
         <Top />
         <div
           style={{
             width: '100%',
-            height: '40%',
+            height: '35%',
             marginTop: '10px',
             padding: '10px',
             background: 'white',
@@ -106,8 +106,8 @@ const MyPage = () => {
             boxShadow: '1px 1px 2px 2px lightgray',
           }}
         >
-          <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
-            <div style={{ width: '90%', marginRight: '20px' }}>
+          <div style={{ width: '100%', height: '90%', display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ width: '90%', marginRight: '20px', height: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h1>버스 등록 현황</h1>
                 <Button>엑셀다운로드</Button>

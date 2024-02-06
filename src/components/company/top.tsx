@@ -23,7 +23,7 @@ const Top = () => {
           display: 'flex',
           justifyContent: 'space-between',
           width: '100%',
-          height: '55%',
+          height: '40%',
           background: 'white',
           borderRadius: '10px',
           boxShadow: '1px 1px 1px 2px lightgray',

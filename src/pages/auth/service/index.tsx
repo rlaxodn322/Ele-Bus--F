@@ -73,14 +73,14 @@ const MyPage = () => {
     { title: '하남운수', latlng: { lat: 37.549899, lng: 127.216505 } },
     // 다른 위치 정보도 추가해주세요
   ];
-  const mapHeight = '370px';
+  const mapHeight = '335px';
   return (
     <>
       <Page>
         <div
           style={{
             width: '100%',
-            height: '60%',
+            height: '45%',
 
             display: 'flex',
             justifyContent: 'space-between',

@@ -30,13 +30,14 @@ const MyPage = () => {
   return (
     <>
       <Page>
+        <h1>차량조회/관리</h1>
         <BusCard />
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             width: '100%',
-            height: '80%',
+            height: '65%',
             marginTop: '20px',
           }}
         >

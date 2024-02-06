@@ -6,7 +6,7 @@ export const Page = styled.section`
   /* /* display: flex; */
   /* justify-content: space-between; */
   width: 1370px;
-  height: 750px;
+  height: 100vh;
   margin: 30px auto;
 
   //flex-wrap: wrap;
