@@ -105,7 +105,7 @@ const dummyTableData = [
     status3: '60km',
   },
   {
-    user: '2024-02-1',
+    user: '2024-02-11',
     registrationDate: '1시 01분 30초',
     status: '10시~11시',
     status1: '18,000km',
@@ -256,7 +256,7 @@ const MyPage = () => {
               background: 'white',
             }}
           >
-            <h1>DTG 실시간 기록</h1>
+            <h1 style={{ marginLeft: '10px' }}>DTG 실시간 기록</h1>
             <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '20px' }}>
               <Button>다운로드</Button>
@@ -273,7 +273,7 @@ const MyPage = () => {
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <h1>DTG 과거 이력</h1>
+              <h1 style={{ marginLeft: '10px' }}>DTG 과거 이력</h1>
               <div style={{ marginTop: '15px' }}>
                 {/* Date 컴포넌트에 선택한 날짜 범위를 전달하고, 선택 시 handleDateChange 함수 호출 */}
                 <Date onDateChange={handleDateChange} />
