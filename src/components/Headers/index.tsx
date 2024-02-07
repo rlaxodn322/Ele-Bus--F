@@ -23,7 +23,7 @@ const MainLogo = () => {
     // Update date every day
     const intervalId = setInterval(
       () => {
-        setCurrentDate(new Date().toLocaleDateString());
+        setCurrentDate(new Date().toLocaleDateString('ko-KR'));
       },
       24 * 60 * 60 * 1000,
     ); // Update every 24 hours
