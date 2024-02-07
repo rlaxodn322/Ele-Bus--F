@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { WeatherContainer, WeatherTemp, WeatherDesc, WeatherCloud, WeatherIcon } from './style';
+import { WeatherContainer, WeatherTemp, WeatherDesc, WeatherCloud } from './style';
 import axios from 'axios';
 
 interface WeatherState {

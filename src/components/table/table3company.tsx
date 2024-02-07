@@ -10,6 +10,7 @@ interface Row {
 interface CardProps {
   data: Row[];
   columns: string[];
+  // eslint-disable-next-line no-unused-vars
   updateDtgRecordTitle: (vehicleNumber: string) => void;
 }
 

@@ -16,7 +16,6 @@ const Page = styled.section`
   width: 1370px;
   height: 100vh;
   margin: 30px auto;
-  border-radius: 20px;
 `;
 
 // 더미 데이터

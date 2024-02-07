@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { Cascader } from 'antd'; // antd의 Cascader 컴포넌트를 사용
 import Map from '../apis/kakao/map';
-import RightTop from './top';
 
 // Dummy 데이터
 const dummyVehicleData = [

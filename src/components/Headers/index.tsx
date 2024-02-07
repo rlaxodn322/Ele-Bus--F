@@ -55,9 +55,10 @@ const MainLogo = () => {
     <Layout>
       <LogoWrapper>
         <Link href="../">
-          <a>
-            <img src={'/images/FirstLogo.jpeg'} alt="Logo" />
-          </a>
+          <img src={'/images/FirstLogo.jpeg'} alt="Logo" />
+          {/* <a>
+        
+          </a> */}
         </Link>
 
         <ButtonWrapper>

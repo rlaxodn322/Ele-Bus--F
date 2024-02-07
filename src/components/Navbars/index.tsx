@@ -37,10 +37,11 @@ const MainNavbar: FC = () => {
                 return (
                   <li key={item.name + i} style={liStyle}>
                     <Link href={item.router}>
-                      <a>
-                        <IconImage src={isSelected ? item.active : item.default} />
-                        <label style={{ fontWeight: isSelected ? 400 : 'normal' }}>{item.name}</label>
-                      </a>
+                      <IconImage src={isSelected ? item.active : item.default} />
+                      <label style={{ fontWeight: isSelected ? 400 : 'normal' }}>{item.name}</label>
+                      {/* <a>
+                      
+                      </a> */}
                     </Link>
                   </li>
                 );
