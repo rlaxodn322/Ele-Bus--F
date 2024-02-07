@@ -10,7 +10,7 @@ import LoginButton from '../antd/loginbutton';
 const MainLogo = () => {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString());
+  const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString('ko-KR'));
 
   useEffect(() => {
     const userDataString = sessionStorage.getItem('userData');
