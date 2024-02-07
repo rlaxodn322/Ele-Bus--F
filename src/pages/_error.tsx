@@ -17,7 +17,7 @@ export const getServerSideProps = async ({
   err,
 }: ExtendedGetServerSidePropsContext): Promise<GetServerSidePropsResult<ErrorProps>> => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-  return { props: { statusCode } };
+  return { props: { statusCode: statusCode ?? 404 } }; // 타입 단언을 사용하여 statusCode가 undefined일 때 기본값을 설정합니다.
 };
 
 export default Error;
