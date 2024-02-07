@@ -46,7 +46,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
               top: '0',
               zIndex: '2',
               paddingTop: '10px',
-              height: '11%',
+              height: '10%',
               fontSize: '18px',
               fontWeight: 'bold',
             }}
