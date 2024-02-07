@@ -2,11 +2,22 @@ import React, { useState } from 'react';
 import MainLayout from '../../../layouts';
 import Link from 'next/link';
 import { Button } from 'antd';
-import { Page } from './style';
+// import { Page } from './style';
 import Left from '../../../components/error/left';
 import Card from '../../../components/card/dtgcard';
 import Middle from '../../../components/error/middle';
 import BusCard from '../../../components/bus/buscard';
+import styled from '@emotion/styled';
+const Page = styled.section`
+  // display: inline-flex;
+
+  /* /* display: flex; */
+  /* justify-content: space-between; */
+  width: 1370px;
+  height: 100vh;
+  margin: 30px auto;
+  border-radius: 20px;
+`;
 
 // 더미 데이터
 const dummyData = [

@@ -1,8 +1,21 @@
 import React from 'react';
 import MainLayout from '../../../layouts';
-import { Page } from './style';
+// import { Page } from './style';
 import Range from '../../../components/antd/range';
 import { Button } from 'antd';
+import styled from '@emotion/styled';
+const Page = styled.section`
+  // display: inline-flex;
+
+  /* /* display: flex; */
+  /* justify-content: space-between; */
+  width: 1370px;
+  height: 750px;
+  margin: 30px auto;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px lightgray;
+`;
 interface ErrorLogProps {
   date: string;
   vehicle: string;

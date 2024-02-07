@@ -1,11 +1,20 @@
 import Head from 'next/head';
 import MainLayout from '../layouts';
-import { Page } from './style';
+// import { Page } from './style';
 import React, { useState } from 'react';
 import { Cascader } from 'antd'; // antd
 import Map from '../components/apis/kakao/map';
 import BusCard from '../components/card/buscard';
+import styled from '@emotion/styled';
+const Page = styled.section`
+  // display: inline-flex;
 
+  /* /* display: flex; */
+  /* justify-content: space-between; */
+  width: 1370px;
+  height: 100vh;
+  margin: 0 auto;
+`;
 // Dummy 데이터
 
 const dummyVehicleData = [

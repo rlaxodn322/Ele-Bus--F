@@ -1,12 +1,80 @@
 import Head from 'next/head';
 import React, { useState, useCallback, useRef } from 'react';
 import MainLayout from '../../../layouts';
-import { CheckError, TitleWrapper, PageSignUp, SignUpBar, SignUpInput, ButtonWrapper } from './style';
+// import { CheckError, TitleWrapper, PageSignUp, SignUpBar, SignUpInput, ButtonWrapper } from './style';
 import { Button } from 'antd';
 import { useRouter } from 'next/router';
 import { signUpAPI } from '../../../components/apis/user/user';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import styled from '@emotion/styled';
+
+const CheckError = styled.button`
+  font-size: 10px;
+  color: red;
+  border: none;
+  background-color: transparent;
+  margin-left: 4px;
+  /* tabindex= -1; */
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const TitleWrapper = styled.div`
+  padding: 20px; /* 텍스트 박스와 영역 사이의 여백 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+// const TextBox = styled.div`
+//   color: #ffffff; /* 원하는 텍스트 색상으로 변경 */
+//   font-size: 2rem; /* 원하는 텍스트 크기로 변경 */
+//   text-align: left;
+//   user-select: none;
+//   background-color: white;
+// `;
+
+const PageSignUp = styled.div`
+  //margin-top: 0%;
+  width: 60%;
+  height: 60vh;
+  padding-left: 40%;
+  background-color: white;
+`;
+
+const SignUpBar = styled.div`
+  display: flex;
+  align-items: center;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  padding: 6px;
+  margin: 10px;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px #4285f4;
+  }
+`;
+
+const SignUpInput = styled.input`
+  flex: 1;
+  border: none;
+  border-radius: 24px;
+  padding: 8px;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 40%;
+`;
 
 const Signup = () => {
   const [name, setName] = useState<string>('');

@@ -1,5 +1,5 @@
 import MainLayout from '../../../layouts/index';
-import { Page } from './style';
+// import { Page } from './style';
 import InputButton from '../../../components/inputbutton/inputbutton';
 import Table7 from '../../../components/table/table7';
 import Table4 from '../../../components/table/talbe4';
@@ -8,6 +8,16 @@ import DivBox from '../../../components/div/divbox';
 import Button3 from '../../../components/button/button3';
 import Button2 from '../../../components/button/button2';
 import Input5 from '../../../components/input/Input5';
+import styled from '@emotion/styled';
+const Page = styled.section`
+  // display: inline-flex;
+
+  /* /* display: flex; */
+  /* justify-content: space-between; */
+  width: 1370px;
+  height: 100vh;
+  margin: 30px auto;
+`;
 
 const busDataColumns = ['부품번호', '날짜', '부품위치', '창고위치', '요청시간', '담당자', '부품'];
 const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];

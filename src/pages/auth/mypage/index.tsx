@@ -3,9 +3,53 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Button, message } from 'antd';
 import MainLayout from '../../../layouts';
-import { PageProfile, ProfileTitle, ProfileInfo, ButtonWrapper } from './style';
+// import { PageProfile, ProfileTitle, ProfileInfo, ButtonWrapper } from './style';
 import { deleteUserAPI } from '../../../components/apis/user/user';
 // import EditModal from '../../../components/Modals/auth';
+import styled from '@emotion/styled';
+// const TitleWrapper = styled.div`
+//   margin-bottom: 20px;
+// `;
+
+const PageProfile = styled.div`
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ProfileTitle = styled.h1`
+  font-size: 24px;
+  font-weight: bold;
+`;
+
+const ProfileInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+
+  div {
+    margin-bottom: 10px;
+  }
+
+  strong {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  padding-left: 40%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0px;
+
+  .button-gap {
+    margin-right: 10px;
+  }
+`;
 
 const MyPage = () => {
   const [name, setName] = useState('');

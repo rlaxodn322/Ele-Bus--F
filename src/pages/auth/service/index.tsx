@@ -1,9 +1,19 @@
 import MainLayout from '../../../layouts/index';
-import { Page } from './style';
+// import { Page } from './style';
 import Table6 from '../../../components/table/talbe6';
 import Table4 from '../../../components/table/talbe4';
 import Map from '../../../components/apis/kakao/map';
 import Graph from '../../../components/graph/graph1';
+import styled from '@emotion/styled';
+const Page = styled.section`
+  // display: inline-flex;
+
+  /* /* display: flex; */
+  /* justify-content: space-between; */
+  width: 1370px;
+  height: 100vh;
+  margin: 30px auto;
+`;
 const busDataColumns = ['사용자', '날짜', '위치', '버스ID', '요청시간', '담당자'];
 const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];
 const dummyTableData = [

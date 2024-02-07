@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import { CheckError, PageLogin, LoginBar, LoginTitle, SearchInput, ButtonWrapper } from './style';
-import { Button } from 'antd';
+// import { CheckError, PageLogin, LoginBar, LoginTitle, SearchInput, ButtonWrapper } from './style';
+import { Button, Form } from 'antd';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -9,6 +9,105 @@ import { logInAPI } from '../../../components/apis/user/user';
 import { useSetRecoilState } from 'recoil';
 import Swal from 'sweetalert2';
 import { userState } from '../../../recoil/modal/index';
+import styled from '@emotion/styled';
+// const Label = styled.label`
+//   user-select: none; // 클릭x
+//   color: #483f3f;
+// `;
+
+// const InputBox = styled.div`
+//   margin-top: 1%;
+//   display: flex;
+//   flex-direction: row;
+//   font-size: 13px;
+// `;
+
+const CheckError = styled.button`
+  font-size: 10px;
+  color: red;
+  border: none;
+  background-color: transparent;
+  margin-left: 4px;
+  /* tabindex= -1; */
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+// const TitleWrapper = styled.div`
+//   padding: 20px; /* 텍스트 박스와 영역 사이의 여백 */
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
+
+// const TextBox = styled.div`
+//   color: #ffffff; /* 원하는 텍스트 색상으로 변경 */
+//   font-size: 2rem; /* 원하는 텍스트 크기로 변경 */
+//   text-align: left;
+//   user-select: none;
+// `;
+
+const PageLogin = styled(Form)`
+  height: 60vh; /* 배경색상 크기설정 */
+  width: 60%;
+  padding-left: 40%;
+  line-height: 1.3;
+`;
+
+const LoginTitle = styled.div`
+  margin: 20px;
+`;
+
+const LoginBar = styled.div`
+  margin-top: 0%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  padding: 6px;
+  margin: 10px;
+  background-color: white;
+  color: #808080;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px #4285f4;
+    color: #808080;
+  }
+`;
+
+const SearchInput = styled.input`
+  flex: 1;
+  border: none;
+  border-radius: 24px;
+  padding: 8px;
+  font-size: 14px;
+  background-color: white;
+  color: #808080;
+
+  &:focus {
+    outline: none;
+    color: #808080;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  padding-left: 40%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0px;
+
+  .button-gap {
+    margin-right: 10px;
+  }
+
+  & Button {
+    color: #808080;
+    /* danger-color: #808080; */
+  }
+`;
+
 // import '../styles/variables.less';
 
 const LoginPage = () => {

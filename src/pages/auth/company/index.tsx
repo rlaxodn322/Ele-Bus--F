@@ -3,7 +3,18 @@ import Top from '../../../components/company/top';
 import Table7 from '../../../components/table/table7';
 import Table5 from '../../../components/table/table5';
 import { Button } from 'antd';
-import { Page } from './style';
+// import { Page } from './style';
+import styled from '@emotion/styled';
+const Page = styled.section`
+  // display: inline-flex;
+
+  /* /* display: flex; */
+  /* justify-content: space-between; */
+  width: 1370px;
+  height: 100vh;
+  margin: 30px auto;
+`;
+
 const MyPage = () => {
   const busDataColumns = ['버스ID', '등록일', '차량번호', '차량등록', '차대번호', '통신모듈', '모델번호'];
   const busDataColumns1 = ['충전ID', '등록일', '충전용량', '누적충전', '모델'];

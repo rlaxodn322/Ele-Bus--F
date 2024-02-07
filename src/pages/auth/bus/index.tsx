@@ -2,7 +2,18 @@ import MainLayout from '../../../layouts/index';
 import Top from '../../../components/bus/top';
 import TopMiddle from '../../../components/bus/topmiddle';
 import Middle from '../../../components/bus/middle';
-import { Page } from './style';
+// import { Page } from './style';
+import styled from '@emotion/styled';
+const Page = styled.section`
+  // display: inline-flex;
+
+  /* /* display: flex; */
+  /* justify-content: space-between; */
+  width: 1370px;
+  height: 100vh;
+  margin: 30px auto;
+`;
+
 const MyPage = () => {
   const data = [
     {

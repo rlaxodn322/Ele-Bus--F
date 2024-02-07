@@ -3,9 +3,20 @@ import MainLayout from '../../../layouts/index';
 import Card from '../../../components/card/dtgcard';
 import Table3 from '../../../components/table/table3company';
 import { Button } from 'antd';
-import { Page } from './style';
+// import { Page } from './style';
 import DtgTable from '../../../components/table/dtgtable.tsx';
 import Date from '../../../components/antd/date';
+import styled from '@emotion/styled';
+const Page = styled.section`
+  // display: inline-flex;
+
+  /* /* display: flex; */
+  /* justify-content: space-between; */
+  width: 1370px;
+  height: 100vh;
+  margin: 30px auto;
+`;
+
 const busDataColumns = ['운행일시', '운행시간', '누적거리', '운행속도', '운행거리', '평균속도'];
 const dummyTableData = [
   {
