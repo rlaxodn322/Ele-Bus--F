@@ -5,9 +5,9 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import MainLayout from '../../../layouts';
 import { logInAPI } from '../../../components/apis/user/user';
-import { useSetRecoilState } from 'recoil';
+// import { useSetRecoilState } from 'recoil';
 import Swal from 'sweetalert2';
-import { userState } from '../../../recoil/modal/index';
+// import { userState } from '../../../recoil/modal/index';
 import styled from '@emotion/styled';
 import Link from 'next/link'; // 추가
 
@@ -88,7 +88,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [emailError, setEmailError] = useState(false);
-  const setUserData = useSetRecoilState(userState);
+  // const setUserData = useSetRecoilState(userState);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -134,7 +134,7 @@ const LoginPage = () => {
     onSuccess: (email) => {
       queryClient.setQueryData(['email'], email);
       const userData = queryClient.setQueryData(['email'], email);
-      setUserData(userData);
+      // setUserData(userData);
 
       if (userData !== null && Object.keys(userData).length > 0) {
         sessionStorage.setItem('userData', JSON.stringify(userData));

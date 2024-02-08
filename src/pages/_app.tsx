@@ -6,6 +6,7 @@ import PageWithLayoutType from '../types/pageWithLayout';
 import { ReactNode, useState } from 'react';
 import { RecoilRoot } from 'recoil';
 import { NextPage } from 'next/types';
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: () => ReactNode;
 };

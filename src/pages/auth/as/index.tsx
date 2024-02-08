@@ -9,6 +9,17 @@ import Button3 from '../../../components/button/button3';
 import Button2 from '../../../components/button/button2';
 import Input5 from '../../../components/input/Input5';
 import styled from '@emotion/styled';
+import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import { loadMyInfoAPI } from '@/components/apis/user/user';
+import { useEffect } from 'react';
+
+interface UserData {
+  id: string;
+  email: string;
+  // 다른 필요한 사용자 정보 속성을 여기에 추가할 수 있습니다.
+}
+
 const Page = styled.section`
   // display: inline-flex;
 
@@ -169,6 +180,16 @@ const dummyTableData2 = [
 ];
 
 const MyPage = () => {
+  const router = useRouter();
+
+  // eslint-disable-next-line no-undef
+  const { isLoading, data: me } = useQuery<UserData>(['user'], loadMyInfoAPI);
+
+  useEffect(() => {
+    if (!isLoading && !me?.id) {
+      router.push('/auth/login');
+    }
+  }, [isLoading, router, me]);
   return (
     <>
       <Page>
@@ -233,5 +254,20 @@ const MyPage = () => {
 };
 
 MyPage.layout = MainLayout;
+// eslint-disable-next-line no-unused-vars
+export const getServerSideProps = async () => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ['user'],
+    queryFn: loadMyInfoAPI,
+  });
+
+  return {
+    props: {
+      items: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+    },
+  };
+};
 
 export default MyPage;

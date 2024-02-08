@@ -2,11 +2,13 @@ import Head from 'next/head';
 import MainLayout from '../layouts';
 // import { Page } from './style';
 import React, { useState } from 'react';
+
 import { Cascader } from 'antd'; // antd
 import Map from '../components/apis/kakao/map';
 import BusCard from '../components/card/buscard';
 
 import styled from '@emotion/styled';
+
 const Page = styled.section`
   // display: inline-flex;
 
@@ -39,6 +41,7 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState('전체'); // 선택된 위치 상태 추가
   const [sortingOrder] = useState<string | string[]>(['latest']);
   const [selectedCompany, setSelectedCompany] = useState<string | null>('전체보기');
+
   // Add markers for 10 locations in Osan City
   const markerPositions = [
     { title: '하남운수', latlng: { lat: 37.549899, lng: 127.216505 } },
