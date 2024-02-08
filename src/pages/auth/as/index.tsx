@@ -186,7 +186,7 @@ const MyPage = () => {
   const { isLoading, data: me } = useQuery<UserData>(['user'], loadMyInfoAPI);
 
   useEffect(() => {
-    if (!isLoading && !me?.id) {
+    if (!isLoading && !me?.email) {
       router.push('/auth/login');
     }
   }, [isLoading, router, me]);
