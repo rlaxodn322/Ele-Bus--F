@@ -5,6 +5,7 @@ import Table5 from '../../../components/table/table5';
 import { Button } from 'antd';
 // import { Page } from './style';
 import styled from '@emotion/styled';
+import Head from 'next/head';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -103,6 +104,10 @@ const MyPage = () => {
   ];
   return (
     <>
+      <Head>
+        <title>사업자조회/관리 페이지</title>
+        <meta name="description" content="company" />
+      </Head>
       <Page>
         <h1>사업자조회/관리</h1>
         <Top />

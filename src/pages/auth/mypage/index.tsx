@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Button, message } from 'antd';
+import { Button, message, Modal } from 'antd';
 import MainLayout from '../../../layouts';
 // import { PageProfile, ProfileTitle, ProfileInfo, ButtonWrapper } from './style';
 import { deleteUserAPI } from '../../../components/apis/user/user';
@@ -74,21 +74,41 @@ const MyPage = () => {
   // const handleEdit = () => {
   //   setEditModalVisible(true);
   // };
-
   const handleDelete = () => {
-    const confirmDelete = window.confirm('정말로 회원을 탈퇴하시겠습니까?');
-    if (confirmDelete) {
-      deleteUserAPI(email)
-        .then(() => {
-          message.success('회원 탈퇴가 완료되었습니다.');
-          router.push('../auth/login'); // 회원 탈퇴 후 홈페이지로 이동
-        })
-        .catch((error) => {
-          message.error('회원 탈퇴 중 오류가 발생했습니다.');
-          console.error(error);
-        });
-    }
+    Modal.confirm({
+      title: '회원 탈퇴',
+      content: '정말로 회원을 탈퇴하시겠습니까?',
+      onOk: () => {
+        deleteUserAPI(email)
+          .then(() => {
+            message.success('회원 탈퇴가 완료되었습니다.');
+            router.push('/auth/login'); // 페이지 이동
+          })
+
+          .catch((error) => {
+            message.error('회원 탈퇴 중 오류가 발생했습니다.');
+            console.error(error);
+          });
+      },
+      onCancel: () => {
+        // 사용자가 취소한 경우 실행할 로직
+      },
+    });
   };
+  // const handleDelete = () => {
+  //   const confirmDelete = window.confirm('정말로 회원을 탈퇴하시겠습니까?');
+  //   if (confirmDelete) {
+  //     deleteUserAPI(email)
+  //       .then(() => {
+  //         message.success('회원 탈퇴가 완료되었습니다.');
+  //         router.push('../auth/login'); // 회원 탈퇴 후 홈페이지로 이동
+  //       })
+  //       .catch((error) => {
+  //         message.error('회원 탈퇴 중 오류가 발생했습니다.');
+  //         console.error(error);
+  //       });
+  //   }
+  // };
 
   // const handleEditModalCancel = () => {
   //   setEditModalVisible(false);

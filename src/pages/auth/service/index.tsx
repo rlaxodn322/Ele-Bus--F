@@ -5,6 +5,7 @@ import Table4 from '../../../components/table/talbe4';
 import Map from '../../../components/apis/kakao/map';
 import Graph from '../../../components/graph/graph1';
 import styled from '@emotion/styled';
+import Head from 'next/head';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -108,6 +109,10 @@ const MyPage = () => {
   const mapHeight = '335px';
   return (
     <>
+      <Head>
+        <title>Service 관리 페이지</title>
+        <meta name="description" content="Service" />
+      </Head>
       <Page>
         <div
           style={{

@@ -4,6 +4,7 @@ import TopMiddle from '../../../components/bus/topmiddle';
 import Middle from '../../../components/bus/middle';
 // import { Page } from './style';
 import styled from '@emotion/styled';
+import Head from 'next/head';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -126,6 +127,10 @@ const MyPage = () => {
   ];
   return (
     <>
+      <Head>
+        <title>Bus 관리 페이지</title>
+        <meta name="description" content="Bus" />
+      </Head>
       <Page>
         <Top />
         <TopMiddle data={data} />

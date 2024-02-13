@@ -8,6 +8,7 @@ import Card from '../../../components/card/dtgcard';
 import Middle from '../../../components/error/middle';
 import BusCard from '../../../components/bus/buscard';
 import styled from '@emotion/styled';
+import Head from 'next/head';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -42,6 +43,10 @@ const MyPage = () => {
 
   return (
     <>
+      <Head>
+        <title>ERROR 관리 페이지</title>
+        <meta name="description" content="ERROR" />
+      </Head>
       <Page>
         <h1>차량조회/관리</h1>
         <BusCard />

@@ -7,6 +7,7 @@ import { Button } from 'antd';
 import DtgTable from '../../../components/table/dtgtable.tsx';
 import Date from '../../../components/antd/date';
 import styled from '@emotion/styled';
+import Head from 'next/head';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -235,6 +236,10 @@ const MyPage = () => {
   });
   return (
     <>
+      <Head>
+        <title>DTG 관리 페이지</title>
+        <meta name="description" content="DTG" />
+      </Head>
       <Page>
         <h2>DTG 관리</h2>
         <div

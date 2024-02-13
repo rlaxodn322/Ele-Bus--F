@@ -9,16 +9,12 @@ import Button3 from '../../../components/button/button3';
 import Button2 from '../../../components/button/button2';
 import Input5 from '../../../components/input/Input5';
 import styled from '@emotion/styled';
-import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
-import { loadMyInfoAPI } from '@/components/apis/user/user';
-import { useEffect } from 'react';
-
-interface UserData {
-  id: string;
-  email: string;
-  // 다른 필요한 사용자 정보 속성을 여기에 추가할 수 있습니다.
-}
+import Head from 'next/head';
+// import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
+// import { useRouter } from 'next/router';
+// import { loadMyInfoAPI } from '@/components/apis/user/user';
+// import { useEffect } from 'react';
+// import User from '@/interfaces/user';
 
 const Page = styled.section`
   // display: inline-flex;
@@ -180,18 +176,22 @@ const dummyTableData2 = [
 ];
 
 const MyPage = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
-  // eslint-disable-next-line no-undef
-  const { isLoading, data: me } = useQuery<UserData>(['user'], loadMyInfoAPI);
+  // // eslint-disable-next-line no-undef
+  // const { isLoading, data: me } = useQuery<User>(['user'], loadMyInfoAPI);
 
-  useEffect(() => {
-    if (!isLoading && !me?.email) {
-      router.push('/auth/login');
-    }
-  }, [isLoading, router, me]);
+  // useEffect(() => {
+  //   if (!isLoading && !me?.email) {
+  //     router.push('/auth/login');
+  //   }
+  // }, [isLoading, router, me]);
   return (
     <>
+      <Head>
+        <title>A/S페이지</title>
+        <meta name="description" content="as" />
+      </Head>
       <Page>
         <div
           style={{
@@ -254,20 +254,21 @@ const MyPage = () => {
 };
 
 MyPage.layout = MainLayout;
-// eslint-disable-next-line no-unused-vars
-export const getServerSideProps = async () => {
-  const queryClient = new QueryClient();
+// // eslint-disable-next-line no-unused-vars
+// export const getServerSideProps = async () => {
+//   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery({
-    queryKey: ['user'],
-    queryFn: loadMyInfoAPI,
-  });
+//   await queryClient.prefetchQuery({
+//     queryKey: ['user'],
+//     queryFn: loadMyInfoAPI,
+//   });
 
-  return {
-    props: {
-      items: JSON.parse(JSON.stringify(dehydrate(queryClient))),
-    },
-  };
-};
+//   return {
+//     props: {
+//       // dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+//       items: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+//     },
+//   };
+// };
 
 export default MyPage;
