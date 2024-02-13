@@ -14,6 +14,7 @@ import Head from 'next/head';
 // import { useRouter } from 'next/router';
 // import { loadMyInfoAPI } from '@/components/apis/user/user';
 // import { useEffect } from 'react';
+// import { loadMyInfoAPI } from '@/components/apis/user/user';
 // import User from '@/interfaces/user';
 
 const Page = styled.section`
@@ -254,7 +255,7 @@ const MyPage = () => {
 };
 
 MyPage.layout = MainLayout;
-// // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 // export const getServerSideProps = async () => {
 //   const queryClient = new QueryClient();
 

@@ -140,7 +140,7 @@ const MyPage = () => {
               정보수정
             </Button> */}
             <span className="button-gap" />
-            <Button key="" onClick={handleDelete}>
+            <Button key="primary" onClick={handleDelete}>
               회원탈퇴
             </Button>
           </ButtonWrapper>
