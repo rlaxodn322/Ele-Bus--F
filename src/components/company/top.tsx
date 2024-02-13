@@ -220,9 +220,7 @@ const Top = () => {
             <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#F6C42B', color: 'white' }}>
               수정
             </Button>
-            <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#27B964', color: 'white' }}>
-              취소
-            </Button>
+            <Button style={{ marginRight: '10px', background: '#27B964', color: 'white' }}>취소</Button>
             <Button style={{ background: '#2B85FF', color: 'white' }}>삭제</Button>
           </div>
         </div>
