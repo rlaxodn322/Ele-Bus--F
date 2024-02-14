@@ -12,7 +12,7 @@ export const routes = [
   //   name: 'Bus',
   // },
   {
-    router: '/auth/error',
+    router: '/auth/car',
     active: '/icons/sidebar/error-16-svgrepo-com (1).svg',
     default: '/icons/sidebar/error-16-svgrepo-com.svg',
     name: '차량 조회관리',

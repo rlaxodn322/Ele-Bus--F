@@ -20,8 +20,8 @@ const Middle = () => {
     display: 'grid',
     gridTemplateColumns: `repeat(${numCols}, 1fr)`,
     gap: '10px',
-    padding: '10px',
-    height: '20%',
+    padding: '5px',
+    height: '10%',
   };
 
   const cellStyles: CellStyle = {
@@ -33,7 +33,7 @@ const Middle = () => {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '10px',
+    padding: '5px',
     boxShadow: '1px 1px 1px 1px lightgray',
   };
 
@@ -66,13 +66,13 @@ const Middle = () => {
       <div
         style={{
           width: '100%',
-          height: '30%',
+          height: '20%',
         }}
       >
         <div
           style={{
             width: '100%',
-            height: '28%',
+            height: '40%',
             background: '#2CA0F3',
             color: 'white',
             display: 'flex',
@@ -85,7 +85,7 @@ const Middle = () => {
           {dummyData.map((data, index) => (
             <div key={index} style={cellStyles}>
               <div style={{ fontSize: '12px', color: 'gray' }}>{`${data.status}`}</div>
-              <div style={{ fontSize: '11px', marginTop: '8px', fontWeight: 'bold' }}>{`${data.battery}`}</div>
+              <div style={{ fontSize: '11px', marginTop: '5px', fontWeight: 'bold' }}>{`${data.battery}`}</div>
             </div>
           ))}
         </div>

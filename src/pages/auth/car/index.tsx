@@ -45,8 +45,8 @@ const MyPage = () => {
   return (
     <>
       <Head>
-        <title>ERROR 관리 페이지</title>
-        <meta name="description" content="ERROR" />
+        <title>차량조회/관리 페이지</title>
+        <meta name="description" content="차량조회" />
       </Head>
       <Page>
         <h1>차량조회/관리</h1>
@@ -73,7 +73,6 @@ const MyPage = () => {
               borderRadius: '10px',
               boxShadow: '1px 1px 2px 2px lightgray',
               overflowY: 'auto',
-              position: 'relative', // 부모 요소에 relative 위치 설정
             }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>4403 노선</h1>
