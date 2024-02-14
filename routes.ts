@@ -11,6 +11,12 @@ export const routes = [
   //   default: '/icons/sidebar/bus-svgrepo-com (3).svg',
   //   name: 'Bus',
   // },
+  {
+    router: '/auth/error',
+    active: '/icons/sidebar/error-16-svgrepo-com (1).svg',
+    default: '/icons/sidebar/error-16-svgrepo-com.svg',
+    name: '차량 조회관리',
+  },
 
   {
     router: '/auth/company',
@@ -18,12 +24,7 @@ export const routes = [
     default: '/icons/sidebar/company-svgrepo-com.svg',
     name: '사업자 조회관리',
   },
-  {
-    router: '/auth/error',
-    active: '/icons/sidebar/error-16-svgrepo-com (1).svg',
-    default: '/icons/sidebar/error-16-svgrepo-com.svg',
-    name: '차량 조회관리',
-  },
+
   // {
   //   router: '/auth/service',
   //   active: '/icons/sidebar/service-svgrepo-com (1).svg',

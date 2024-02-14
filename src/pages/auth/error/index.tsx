@@ -9,6 +9,7 @@ import Middle from '../../../components/error/middle';
 import BusCard from '../../../components/bus/buscard';
 import styled from '@emotion/styled';
 import Head from 'next/head';
+import Bus from '../../../components/apis/bus/bus';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -69,7 +70,8 @@ const MyPage = () => {
             style={{ width: '100%', marginRight: '20px', borderRadius: '10px', boxShadow: '1px 1px 2px 2px lightgray' }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
-            <Middle />
+            {/* <Middle /> */}
+            <Bus />
           </div>
           <div
             style={{
