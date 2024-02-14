@@ -9,7 +9,7 @@ import Middle from '../../../components/error/middle';
 import BusCard from '../../../components/bus/buscard';
 import styled from '@emotion/styled';
 import Head from 'next/head';
-import Bus from '../../../components/apis/bus/bus';
+import Bus from '../../../components/bus/busstation';
 
 import axios from 'axios';
 interface BusLocation {
@@ -49,8 +49,18 @@ const dummyData = [
   // 필요한 만큼 데이터를 추가할 수 있습니다.
 ];
 const MyPage = () => {
+  const [stations, setStations] = useState<BusLocation[]>([]);
   const [busLocations, setBusLocations] = useState<BusLocation[]>([]);
   useEffect(() => {
+    const fetchStations = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/stations');
+        setStations(response.data.stations);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     const fetchBusLocations = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/bus');
@@ -60,8 +70,17 @@ const MyPage = () => {
       }
     };
 
+    // 초기 호출
+    fetchStations();
     fetchBusLocations();
-    const intervalId = setInterval(fetchBusLocations, 60000);
+
+    // 1분마다 호출
+    const intervalId = setInterval(() => {
+      fetchStations();
+      fetchBusLocations();
+    }, 60000);
+
+    // 컴포넌트가 언마운트되면 clearInterval을 호출하여 인터벌 제거
     return () => clearInterval(intervalId);
   }, []);
   const [dtgRecordTitle] = useState<string>('DTG정보');
@@ -102,7 +121,8 @@ const MyPage = () => {
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>4403 노선</h1>
 
             <Middle />
-            <Bus />
+
+            <Bus stations={stations} busLocations={busLocations} />
           </div>
           <div
             style={{
