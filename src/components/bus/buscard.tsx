@@ -1,6 +1,8 @@
 import React from 'react';
-
-const BusCard = () => {
+interface BusCardProps {
+  busCount: number;
+}
+const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
   return (
     <>
       <div
@@ -29,7 +31,7 @@ const BusCard = () => {
               paddingRight: '20px',
             }}
           >
-            <h2>2 대</h2>
+            <h2>10 대</h2>
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/bus-svgrepo-com (8).svg"></img>
           </div>
         </div>
@@ -43,7 +45,7 @@ const BusCard = () => {
               paddingRight: '20px',
             }}
           >
-            <h2>2 대</h2>
+            <h2>{busCount} 대</h2>
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/bus-transport-svgrepo-com (2).svg"></img>
           </div>
         </div>

@@ -1,3 +1,6 @@
+// MyComponent 코드
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 // BusLocation 타입 정의
 interface BusLocation {
   stationId: string;
@@ -5,10 +8,6 @@ interface BusLocation {
   stationName: string;
   // 다른 속성들도 필요하다면 추가
 }
-
-// MyComponent 코드
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 const MyComponent = () => {
   const [stations, setStations] = useState<BusLocation[]>([]);
@@ -48,7 +47,7 @@ const MyComponent = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ marginTop: '100px' }}>
       <ul>
         {stations.map((station, index) => (
           <li key={index}>

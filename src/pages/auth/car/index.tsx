@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainLayout from '../../../layouts';
 import Link from 'next/link';
 import { Button } from 'antd';
@@ -10,6 +10,15 @@ import BusCard from '../../../components/bus/buscard';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import Bus from '../../../components/apis/bus/bus';
+
+import axios from 'axios';
+interface BusLocation {
+  stationId: string;
+  remainSeatCnt: string;
+  stationName: string;
+  // 다른 속성들도 필요하다면 추가
+}
+
 const Page = styled.section`
   // display: inline-flex;
 
@@ -40,6 +49,21 @@ const dummyData = [
   // 필요한 만큼 데이터를 추가할 수 있습니다.
 ];
 const MyPage = () => {
+  const [busLocations, setBusLocations] = useState<BusLocation[]>([]);
+  useEffect(() => {
+    const fetchBusLocations = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/bus');
+        setBusLocations(response.data.stations);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchBusLocations();
+    const intervalId = setInterval(fetchBusLocations, 60000);
+    return () => clearInterval(intervalId);
+  }, []);
   const [dtgRecordTitle] = useState<string>('DTG정보');
 
   return (
@@ -50,7 +74,7 @@ const MyPage = () => {
       </Head>
       <Page>
         <h1>차량조회/관리</h1>
-        <BusCard />
+        <BusCard busCount={busLocations.length} />
         <div
           style={{
             display: 'flex',
