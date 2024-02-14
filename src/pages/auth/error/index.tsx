@@ -67,10 +67,18 @@ const MyPage = () => {
             <Left />
           </div>
           <div
-            style={{ width: '100%', marginRight: '20px', borderRadius: '10px', boxShadow: '1px 1px 2px 2px lightgray' }}
+            style={{
+              width: '100%',
+              marginRight: '20px',
+              borderRadius: '10px',
+              boxShadow: '1px 1px 2px 2px lightgray',
+              overflowY: 'auto',
+              position: 'relative', // 부모 요소에 relative 위치 설정
+            }}
           >
-            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
-            {/* <Middle /> */}
+            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>4403 노선</h1>
+
+            <Middle />
             <Bus />
           </div>
           <div

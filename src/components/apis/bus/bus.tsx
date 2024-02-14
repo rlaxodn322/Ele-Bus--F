@@ -1,9 +1,18 @@
+// BusLocation 타입 정의
+interface BusLocation {
+  stationId: string;
+  remainSeatCnt: string;
+  stationName: string;
+  // 다른 속성들도 필요하다면 추가
+}
+
+// MyComponent 코드
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const MyComponent = () => {
-  const [stations, setStations] = useState([]);
-  const [busLocations, setBusLocations] = useState([]);
+  const [stations, setStations] = useState<BusLocation[]>([]);
+  const [busLocations, setBusLocations] = useState<BusLocation[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +31,7 @@ const MyComponent = () => {
     const fetchBusLocations = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/bus');
-        setBusLocations(response.data.stations);
+        setBusLocations(response.data.stations); // <- Here was the issue
       } catch (error) {
         console.error(error);
       }
@@ -40,16 +49,11 @@ const MyComponent = () => {
 
   return (
     <div>
-      <h1>버스 정류소 목록</h1>
       <ul>
         {stations.map((station, index) => (
           <li key={index}>
-            {(station as any).stationName || 'Unknown Station'}
-            {busLocations.some((bus) => bus.stationId === station.stationId) ? (
-              <span style={{ color: 'green' }}> | Bus Check</span>
-            ) : (
-              <span style={{ color: 'red' }}> </span>
-            )}
+            {station.stationName || 'Unknown Station'}
+            {busLocations.some((bus) => bus.stationId === station.stationId) ? <span> | 🚌 </span> : <span> </span>}
           </li>
         ))}
       </ul>
