@@ -15,9 +15,9 @@ export const Layout = styled.div`
     height: 30px;
     padding-top: 40px;
     & li {
-      height: 20px;
+      height: 25px;
       width: 60px;
-      padding-top: 4px;
+      padding-top: 14px;
       & a {
         & label {
           visibility: hidden;

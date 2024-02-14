@@ -1,34 +1,28 @@
 export const routes = [
   {
-    router: '/auth/login',
-    active: '/icons/sidebar/user_active.svg',
-    default: '/icons/sidebar/user_default.svg',
-    name: 'Login',
-  },
-  {
     router: '/',
     active: '/icons/sidebar/dashboard_active.svg',
     default: '/icons/sidebar/dashboard_default.svg',
-    name: 'Dashboard',
+    name: '메인',
   },
-  {
-    router: '/auth/bus',
-    active: '/icons/sidebar/bus-svgrepo-com (6).svg',
-    default: '/icons/sidebar/bus-svgrepo-com (3).svg',
-    name: 'Bus',
-  },
+  // {
+  //   router: '/auth/bus',
+  //   active: '/icons/sidebar/bus-svgrepo-com (6).svg',
+  //   default: '/icons/sidebar/bus-svgrepo-com (3).svg',
+  //   name: 'Bus',
+  // },
 
   {
     router: '/auth/company',
     active: '/icons/sidebar/company-svgrepo-com (1).svg',
     default: '/icons/sidebar/company-svgrepo-com.svg',
-    name: 'Company',
+    name: '사업자 조회관리',
   },
   {
     router: '/auth/error',
     active: '/icons/sidebar/error-16-svgrepo-com (1).svg',
     default: '/icons/sidebar/error-16-svgrepo-com.svg',
-    name: 'Error',
+    name: '차량 조회관리',
   },
   // {
   //   router: '/auth/service',
@@ -40,6 +34,12 @@ export const routes = [
     router: '/auth/as',
     active: '/icons/sidebar/service-svgrepo-com (4).svg',
     default: '/icons/sidebar/service-svgrepo-com (3).svg',
-    name: 'A/S',
+    name: 'A/S및 부품관리',
+  },
+  {
+    router: '/auth/login',
+    active: '/icons/sidebar/user_active.svg',
+    default: '/icons/sidebar/user_default.svg',
+    name: 'Login',
   },
 ];
