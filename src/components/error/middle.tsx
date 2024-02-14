@@ -72,7 +72,7 @@ const Middle = () => {
         <div
           style={{
             width: '100%',
-            height: '50%',
+            height: '42%',
             background: '#2CA0F3',
             color: 'white',
             display: 'flex',
