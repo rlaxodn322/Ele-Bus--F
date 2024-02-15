@@ -2,13 +2,14 @@ import MainLayout from '../../../layouts/index';
 import Top from '../../../components/company/top';
 import Table7 from '../../../components/table/table7';
 import Table5 from '../../../components/table/table5';
-import { Button, Modal, Form, Input } from 'antd'; // Modal과 Form을 추가로 import
+import { Button } from 'antd'; // Modal과 Form을 추가로 import
 import { useState } from 'react';
+
+import BusCreate from '../../../components/modal/buscreate';
 // import { Page } from './style';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 
-const { Item } = Form;
 const Page = styled.section`
   // display: inline-flex;
 
@@ -21,7 +22,7 @@ const Page = styled.section`
 
 const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false); // visible 상태 대신 open 상태로 변경
-  const [form] = Form.useForm();
+
   // Modal 열기 함수
   const showModal = () => {
     setModalOpen(true);
@@ -30,16 +31,8 @@ const MyPage = () => {
   // Modal 닫기 함수
   const handleCancel = () => {
     setModalOpen(false);
-    form.resetFields(); // 입력값 초기화
   };
-  // 자동차 정보 등록 처리 함수
-  const handleCarRegistration = (values: any) => {
-    // TODO: 입력된 자동차 정보를 처리하는 로직을 작성합니다.
-    console.log('등록된 자동차 정보:', values);
-    // 등록 후 Modal 닫기
-    setModalOpen(false);
-    form.resetFields(); // 입력값 초기화
-  };
+
   const busDataColumns = ['버스ID', '등록일', '차량번호', '차량등록', '차대번호', '통신모듈', '모델번호'];
   const busDataColumns1 = ['충전ID', '등록일', '충전용량', '누적충전', '모델'];
 
@@ -156,7 +149,7 @@ const MyPage = () => {
                   <Button style={{ marginRight: '5px' }}>엑셀다운로드</Button>
                 </div>
               </div>
-
+              <BusCreate open={modalOpen} onCancel={handleCancel} />
               <Table7 a="전체 통신모듈" data={dummyTableData} columns={busDataColumns} />
             </div>
             <div style={{ width: '90%' }}>
@@ -170,20 +163,6 @@ const MyPage = () => {
           </div>
         </div>
       </Page>
-      <Modal title="버스 등록" open={modalOpen} onCancel={handleCancel} footer={null}>
-        {/* 등록 폼 */}
-        <Form form={form} onFinish={handleCarRegistration}>
-          <Item label="차량번호" name="carNumber" rules={[{ required: true, message: '차량번호를 입력해주세요.' }]}>
-            <Input />
-          </Item>
-          <Item label="노선번호" name="Number" rules={[{ required: true, message: '노선번호를 입력해주세요.' }]}>
-            <Input />
-          </Item>
-          <Button type="primary" htmlType="submit">
-            등록
-          </Button>
-        </Form>
-      </Modal>
     </>
   );
 };
