@@ -1,5 +1,4 @@
 // components/modal/BusCreate.js
-
 import React from 'react';
 import { Modal, Form, Input, Button } from 'antd';
 import { signUpAPI } from '../../components/apis/bus/bus';
@@ -36,10 +35,10 @@ const BusCreate: React.FC<BusCreateProps> = ({ open, onCancel }) => {
       {/* 등록 폼 */}
       <Form form={form} onFinish={handleCarRegistration}>
         <Item label="차량번호" name="carNumber" rules={[{ required: true, message: '차량번호를 입력해주세요.' }]}>
-          <Input />
+          <Input placeholder="차량번호 입력" />
         </Item>
         <Item label="노선번호" name="routeNumber" rules={[{ required: true, message: '노선번호를 입력해주세요.' }]}>
-          <Input />
+          <Input placeholder="노선번호 입력" />
         </Item>
         <Button type="primary" htmlType="submit">
           등록

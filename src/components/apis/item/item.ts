@@ -13,7 +13,7 @@ export async function loadMyInfoAPI() {
 // 등록 API
 export function signUpAPI(data: any) {
   console.log('등록', data);
-  return axios.post('/bus', data).then((response) => response.data);
+  return axios.post('/item', data).then((response) => response.data);
 }
 
 // // 회원 삭제 API

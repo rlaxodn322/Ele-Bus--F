@@ -6,8 +6,8 @@ import Table4 from '../../../components/table/talbe4';
 import Table3 from '../../../components/table/table3';
 import DivBox from '../../../components/div/divbox';
 import Button3 from '../../../components/button/button3';
-import Button2 from '../../../components/button/button2';
-import Input5 from '../../../components/input/Input5';
+// import Button2 from '../../../components/button/button2';
+import NewItem from '../../../components/input/newItem';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 // import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
@@ -177,6 +177,17 @@ const dummyTableData2 = [
 ];
 
 const MyPage = () => {
+  const handleInput5Submit = (values: any) => {
+    // 여기에 신규 부품 입력이 완료된 후의 로직을 구현합니다.
+    console.log('입력 완료:', values);
+    // 필요한 로직을 추가하세요.
+  };
+  const handleInput5Cancel = () => {
+    // 여기에 취소 버튼이 클릭되었을 때의 로직을 구현합니다.
+    console.log('입력 취소');
+    // 필요한 로직을 추가하세요.
+  };
+
   // const router = useRouter();
 
   // // eslint-disable-next-line no-undef
@@ -222,9 +233,12 @@ const MyPage = () => {
             <Button3 a="편집" b="삭제" c="취소" />
           </div>
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
-            <Input5 a="신규 부품 입력" b="부품 번호" c="담당자 이름" d="등록일자" e="기타 사항" f="상태" />
-
-            <Button2 a="등록" b="취소" />
+            <NewItem
+              title="신규 부품 입력"
+              onSubmit={handleInput5Submit} // handleInput5Submit 함수는 신규 부품 입력이 완료되었을 때 호출되어야 하는 함수입니다.
+              onCancel={handleInput5Cancel} // handleInput5Cancel 함수는 취소 버튼이 클릭되었을 때 호출되어야 하는 함수입니다.
+              placeholders={[]}
+            />
           </div>
         </div>
         <div
