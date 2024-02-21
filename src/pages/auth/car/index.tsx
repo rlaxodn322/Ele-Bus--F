@@ -118,17 +118,16 @@ const MyPage = () => {
               overflowY: 'auto',
             }}
           >
-            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>4403 노선</h1>
+            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>4403 </h1>
 
             <Middle />
-
-            <Bus stations={stations} busLocations={busLocations} />
           </div>
           <div
             style={{
               width: '100%',
               borderRadius: '10px',
               boxShadow: '1px 1px 2px 2px lightgray',
+              marginRight: '20px',
             }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
@@ -140,6 +139,30 @@ const MyPage = () => {
 
               <Button>다운로드</Button>
             </div>
+          </div>
+          <div
+            style={{
+              width: '90%',
+              marginRight: '20px',
+              borderRadius: '10px',
+              boxShadow: '1px 1px 2px 2px lightgray',
+              overflowY: 'auto',
+            }}
+          >
+            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>4403 노선</h1>
+            <div
+              style={{
+                width: '100%',
+                height: '8%',
+                background: '#2CA0F3',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <h1 style={{ margin: '0 auto' }}>노선</h1>
+            </div>
+            <Bus stations={stations} busLocations={busLocations} />
           </div>
         </div>
       </Page>

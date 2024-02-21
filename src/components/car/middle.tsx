@@ -26,7 +26,7 @@ const Middle = () => {
 
   const cellStyles: CellStyle = {
     width: '100%',
-    height: '100%',
+    height: '90%',
     border: '1px solid lightgray',
     borderRadius: '10px',
     display: 'flex',

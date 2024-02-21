@@ -44,7 +44,7 @@ const Right: React.FC<RightProps> = ({ data, dtgRecordTitle }) => {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '10px',
+    padding: '1px',
     boxShadow: '1px 1px 1px 1px lightgray',
   };
 
@@ -63,7 +63,6 @@ const Right: React.FC<RightProps> = ({ data, dtgRecordTitle }) => {
             background: '#2CA0F3',
             color: 'white',
             display: 'flex',
-
             alignItems: 'center',
           }}
         >
@@ -72,8 +71,8 @@ const Right: React.FC<RightProps> = ({ data, dtgRecordTitle }) => {
         <div style={gridStyles}>
           {data.map((data, index) => (
             <div key={index} style={cellStyles}>
-              <div style={{ fontSize: '12px', color: 'gray' }}>{`${data.status}`}</div>
-              <div style={{ fontSize: '11px', marginTop: '5px', fontWeight: 'bold' }}>{`${data.battery}`}</div>
+              <div style={{ fontSize: '11px', color: 'gray' }}>{`${data.status}`}</div>
+              <div style={{ fontSize: '10px', marginTop: '5px', fontWeight: 'bold' }}>{`${data.battery}`}</div>
             </div>
           ))}
         </div>

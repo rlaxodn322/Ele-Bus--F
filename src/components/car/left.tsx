@@ -49,6 +49,7 @@ const Left = () => {
               marginBottom: '10px',
               color: 'white',
               borderRadius: '10px',
+              fontSize: '15px',
             }}
           >
             {columns.map((column) => (
