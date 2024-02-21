@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Middle = () => {
-  const numCols = 6;
+  const numCols = 2;
 
   interface CellStyle {
     width: string;
@@ -20,7 +20,7 @@ const Middle = () => {
     display: 'grid',
     gridTemplateColumns: `repeat(${numCols}, 1fr)`,
     gap: '10px',
-    padding: '5px',
+    padding: '7px',
     height: '10%',
   };
 
