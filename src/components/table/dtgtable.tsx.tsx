@@ -31,7 +31,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
           style={{
             width: '100%',
             height: '70%',
-            marginTop: '5px',
+            marginTop: '2px',
             overflowY: 'auto',
           }}
         >

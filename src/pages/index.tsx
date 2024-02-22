@@ -15,7 +15,7 @@ const Page = styled.section`
   /* /* display: flex; */
   /* justify-content: space-between; */
   width: 1370px;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
 `;
 // Dummy 데이터
@@ -68,7 +68,7 @@ const Home = () => {
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
   ];
-  const mapHeight = '680px';
+  const mapHeight = '750px';
   const uniqueCompanies = Array.from(new Set(dummyVehicleData.map((vehicle) => vehicle.company)));
 
   // 운행중인 차량 정보 필터링 함수
@@ -137,6 +137,7 @@ const Home = () => {
                 marginLeft: '10px',
                 boxShadow: '1px 1px 1px 2px lightgray',
                 borderRadius: '10px',
+                background: 'white',
               }}
             >
               <div

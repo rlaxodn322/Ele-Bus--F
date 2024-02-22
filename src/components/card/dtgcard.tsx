@@ -53,7 +53,7 @@ const Right: React.FC<RightProps> = ({ data, dtgRecordTitle }) => {
       <div
         style={{
           width: '100%',
-          height: '80%',
+          height: '62%',
         }}
       >
         <div

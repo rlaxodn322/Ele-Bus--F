@@ -23,7 +23,7 @@ const Page = styled.section`
   /* /* display: flex; */
   /* justify-content: space-between; */
   width: 1370px;
-  height: 100vh;
+  height: 100%;
   margin: 30px auto;
 `;
 

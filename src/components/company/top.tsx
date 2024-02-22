@@ -42,7 +42,7 @@ const Top = () => {
             style={{
               border: '1px solid lightgray',
               width: '100%',
-              height: '30%',
+              height: '40%',
               marginTop: '20px',
               borderRadius: '10px',
               overflowY: 'auto',
@@ -216,7 +216,7 @@ const Top = () => {
           >
             비밀번호
           </div>
-          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '48px' }}>
+          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '100px' }}>
             <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#F6C42B', color: 'white' }}>
               수정
             </Button>

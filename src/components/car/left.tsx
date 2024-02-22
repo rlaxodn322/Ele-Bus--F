@@ -35,6 +35,7 @@ const Left = () => {
             fontSize: '18px',
             position: 'relative', // 부모 요소에 relative 위치 설정
             borderRadius: '10px',
+            background: 'white',
           }}
         >
           <div

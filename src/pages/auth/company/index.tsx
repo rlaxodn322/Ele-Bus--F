@@ -16,7 +16,7 @@ const Page = styled.section`
   /* /* display: flex; */
   /* justify-content: space-between; */
   width: 1370px;
-  height: 100vh;
+  height: 100%;
   margin: 30px auto;
 `;
 
@@ -133,9 +133,10 @@ const MyPage = () => {
             height: '35%',
             marginTop: '10px',
             padding: '10px',
-            background: 'white',
+
             borderRadius: '10px',
             boxShadow: '1px 1px 2px 2px lightgray',
+            background: 'white',
           }}
         >
           <div style={{ width: '100%', height: '90%', display: 'flex', justifyContent: 'space-between' }}>

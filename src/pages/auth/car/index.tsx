@@ -25,7 +25,7 @@ const Page = styled.section`
   /* /* display: flex; */
   /* justify-content: space-between; */
   width: 1370px;
-  height: 100vh;
+  height: 100%;
   margin: 30px auto;
 `;
 
@@ -104,7 +104,14 @@ const MyPage = () => {
           }}
         >
           <div
-            style={{ width: '100%', marginRight: '20px', borderRadius: '10px', boxShadow: '1px 1px 2px 2px lightgray' }}
+            style={{
+              height: '600px',
+              width: '100%',
+              marginRight: '20px',
+              borderRadius: '10px',
+              boxShadow: '1px 1px 2px 2px lightgray',
+              background: 'white',
+            }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>수원여객차량</h1>
             <Left />
@@ -112,10 +119,12 @@ const MyPage = () => {
           <div
             style={{
               width: '100%',
+              height: '600px',
               marginRight: '20px',
               borderRadius: '10px',
               boxShadow: '1px 1px 2px 2px lightgray',
               overflowY: 'auto',
+              background: 'white',
             }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>4403 </h1>
@@ -125,9 +134,11 @@ const MyPage = () => {
           <div
             style={{
               width: '100%',
+              height: '600px',
               borderRadius: '10px',
               boxShadow: '1px 1px 2px 2px lightgray',
               marginRight: '20px',
+              background: 'white',
             }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
@@ -143,6 +154,7 @@ const MyPage = () => {
           <div
             style={{
               width: '90%',
+              height: '600px',
               marginRight: '20px',
               borderRadius: '10px',
               boxShadow: '1px 1px 2px 2px lightgray',

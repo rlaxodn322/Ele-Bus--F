@@ -14,7 +14,7 @@ const Page = styled.section`
   /* /* display: flex; */
   /* justify-content: space-between; */
   width: 1370px;
-  height: 100vh;
+  height: 100%;
   margin: 30px auto;
 `;
 
@@ -247,13 +247,14 @@ const MyPage = () => {
             display: 'flex',
             justifyContent: 'space-between',
             width: '100%',
-            height: '70%',
+            height: '100%',
             marginTop: '20px',
           }}
         >
           <div
             style={{
               width: '30%',
+              height: '700px',
               marginRight: '20px',
               borderRadius: '10px',
               boxShadow: '1px 1px 2px 2px lightgray',
@@ -266,6 +267,7 @@ const MyPage = () => {
           <div
             style={{
               width: '30%',
+
               marginRight: '20px',
               borderRadius: '10px',
               boxShadow: '1px 1px 2px 2px lightgray',
@@ -280,7 +282,7 @@ const MyPage = () => {
           </div>
           <div
             style={{
-              height: '100%',
+              height: '700px',
               width: '50%',
               marginRight: '20px',
               borderRadius: '10px',
