@@ -155,7 +155,7 @@ const MyPage = () => {
             style={{
               width: '90%',
               height: '600px',
-              marginRight: '20px',
+
               borderRadius: '10px',
               boxShadow: '1px 1px 2px 2px lightgray',
               overflowY: 'auto',
