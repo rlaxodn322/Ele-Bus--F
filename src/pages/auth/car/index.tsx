@@ -143,7 +143,7 @@ const MyPage = () => {
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
             <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
-            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px' }}>
+            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '100px' }}>
               <Link href="./dtg">
                 <Button style={{ marginRight: '10px' }}>제출하기</Button>
               </Link>

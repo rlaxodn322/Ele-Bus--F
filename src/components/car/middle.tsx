@@ -20,20 +20,20 @@ const Middle = () => {
     display: 'grid',
     gridTemplateColumns: `repeat(${numCols}, 1fr)`,
     gap: '10px',
-    padding: '7px',
+    padding: '10px',
     height: '10%',
   };
 
   const cellStyles: CellStyle = {
     width: '100%',
-    height: '90%',
+    height: '100%',
     border: '1px solid lightgray',
     borderRadius: '10px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '5px',
+    padding: '8px',
     boxShadow: '1px 1px 1px 1px lightgray',
   };
 
