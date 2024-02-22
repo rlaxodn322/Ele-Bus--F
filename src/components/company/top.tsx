@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'antd';
+import CompanyCreate from '../modal/companycreate';
 const dummyTableData = [
   { user: '수원여객', registrationDate: '2023-11-08', status: '50' },
   { user: '하남여객', registrationDate: '2023-11-08', status: '10' },
@@ -11,7 +12,17 @@ const dummyTableData = [
   // Add more dummy data as needed
 ];
 const Top = () => {
+  const [modalOpen, setModalOpen] = useState(false); // visible 상태 대신
   const [searchInput, setSearchInput] = useState('');
+  // Modal 열기 함수
+  const showModal = () => {
+    setModalOpen(true);
+  };
+
+  // Modal 닫기 함수
+  const handleCancel = () => {
+    setModalOpen(false);
+  };
   const handleSearch = () => {
     console.log('Search Input:', searchInput);
     // You can perform any further actions with the searchInput value here
@@ -88,7 +99,10 @@ const Top = () => {
             <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#2B85FF', color: 'white' }}>
               삭제
             </Button>
-            <Button style={{ background: '#FB4E4E', color: 'white' }}>신규등록</Button>
+            <Button onClick={showModal} style={{ background: '#FB4E4E', color: 'white' }}>
+              신규등록
+            </Button>
+            <CompanyCreate open={modalOpen} onCancel={handleCancel} />
           </div>
         </div>
 
