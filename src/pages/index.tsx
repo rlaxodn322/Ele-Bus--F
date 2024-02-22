@@ -21,7 +21,14 @@ const Page = styled.section`
 // Dummy 데이터
 
 const dummyVehicleData = [
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+  {
+    company: '화성여객',
+    route: '경기11가1234',
+    vehicleNum: 'Route 1',
+    location: '운행',
+    soc: '80%',
+    note: 'no',
+  },
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
