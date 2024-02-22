@@ -14,7 +14,6 @@ import Head from 'next/head';
 // import { useRouter } from 'next/router';
 // import { loadMyInfoAPI } from '@/components/apis/user/user';
 // import { useEffect } from 'react';
-// import { loadMyInfoAPI } from '@/components/apis/user/user';
 // import User from '@/interfaces/user';
 
 const Page = styled.section`

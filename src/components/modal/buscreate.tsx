@@ -34,8 +34,21 @@ const BusCreate: React.FC<BusCreateProps> = ({ open, onCancel }) => {
     <Modal title="버스 등록" open={open} onCancel={onCancel} footer={null}>
       {/* 등록 폼 */}
       <Form form={form} onFinish={handleCarRegistration}>
+        <Item
+          label="사업자번호"
+          name="companyNumber"
+          rules={[{ required: true, message: '사업자번호를 입력해주세요.' }]}
+        >
+          <Input placeholder="사업자번호 입력" />
+        </Item>
         <Item label="차량번호" name="carNumber" rules={[{ required: true, message: '차량번호를 입력해주세요.' }]}>
           <Input placeholder="차량번호 입력" />
+        </Item>
+        <Item label="차대번호" name="carinfo" rules={[{ required: true, message: '차대번호를 입력해주세요.' }]}>
+          <Input placeholder="차대번호 입력" />
+        </Item>
+        <Item label="모델번호" name="carmodel" rules={[{ required: true, message: '모델번호를 입력해주세요.' }]}>
+          <Input placeholder="모델번호 입력" />
         </Item>
         <Item label="노선번호" name="routeNumber" rules={[{ required: true, message: '노선번호를 입력해주세요.' }]}>
           <Input placeholder="노선번호 입력" />
