@@ -75,7 +75,7 @@ const Home = () => {
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
   ];
-  const mapHeight = '750px';
+  const mapHeight = '745px';
   const uniqueCompanies = Array.from(new Set(dummyVehicleData.map((vehicle) => vehicle.company)));
 
   // 운행중인 차량 정보 필터링 함수

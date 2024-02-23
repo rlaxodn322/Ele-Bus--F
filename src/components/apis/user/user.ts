@@ -11,6 +11,7 @@ export async function loadMyInfoAPI() {
 }
 
 // 로그인 API
+
 export function logInAPI(data: any) {
   console.log('로그인', data);
   return axios.post('/user/login', data).then((response) => response.data);
