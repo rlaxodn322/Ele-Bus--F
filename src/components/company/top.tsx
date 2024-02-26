@@ -53,7 +53,7 @@ const Top = () => {
             style={{
               border: '1px solid lightgray',
               width: '100%',
-              height: '40%',
+              height: '30%',
               marginTop: '20px',
               borderRadius: '10px',
               overflowY: 'auto',
@@ -95,7 +95,7 @@ const Top = () => {
               </h6>
             ))}
           </div>
-          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '40px' }}>
+          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '10px' }}>
             <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#2B85FF', color: 'white' }}>
               삭제
             </Button>
@@ -230,7 +230,7 @@ const Top = () => {
           >
             비밀번호
           </div>
-          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '100px' }}>
+          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '20px' }}>
             <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#F6C42B', color: 'white' }}>
               수정
             </Button>

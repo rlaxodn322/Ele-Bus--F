@@ -43,4 +43,10 @@ export const routes = [
     default: '/icons/sidebar/user_default.svg',
     name: 'Login',
   },
+  {
+    router: '/auth/car/event',
+    active: '/icons/sidebar/service-svgrepo-com (4).svg',
+    default: '/icons/sidebar/service-svgrepo-com (3).svg',
+    name: '부품교체이력',
+  },
 ];

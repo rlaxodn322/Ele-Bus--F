@@ -130,7 +130,7 @@ const MyPage = () => {
         <div
           style={{
             width: '100%',
-            height: '35%',
+            height: '30%',
             marginTop: '10px',
             padding: '10px',
 
