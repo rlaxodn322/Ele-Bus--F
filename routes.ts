@@ -1,8 +1,8 @@
 export const routes = [
   {
     router: '/',
-    active: '/icons/sidebar/dashboard_active.svg',
-    default: '/icons/sidebar/dashboard_default.svg',
+    default: '/icons/sidebar/dashboard_active.svg',
+    active: '/icons/sidebar/dashboard_default.svg',
     name: '메인',
   },
   // {
