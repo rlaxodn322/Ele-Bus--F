@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Cascader, Button, Input } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Cascader, Input } from 'antd';
 
 interface Row {
   user: string;
@@ -10,6 +10,7 @@ interface Row {
 interface CardProps {
   data: Row[];
 }
+
 const parseDate = (dateString: string): number => {
   const parts = dateString.split('/');
   const datePart = parts[0];
@@ -27,14 +28,26 @@ const parseDate = (dateString: string): number => {
 
   return new Date(`${year}-${month}-${day}T${hour}:${minute}`).getTime();
 };
+
 const Card: React.FC<CardProps> = ({ data }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
-
   const [filterDate] = useState<string | null>(null);
+  const [searchKeyword, setSearchKeyword] = useState<string | null>(null);
+  const [displayedRows, setDisplayedRows] = useState<Row[]>(data);
 
-  const sortedEventHistory = [...data]
-    .filter((row) => !filterDate || row.registrationDate.includes(filterDate))
-    .sort((a, b) => {
+  useEffect(() => {
+    // 검색어를 사용하여 행 필터링
+    const filteredRows = data.filter(
+      (row) =>
+        (!searchKeyword ||
+          row.user.includes(searchKeyword) ||
+          row.registrationDate.includes(searchKeyword) ||
+          row.status.includes(searchKeyword)) &&
+        (!filterDate || row.registrationDate.includes(filterDate)),
+    );
+
+    // 정렬
+    const sortedRows = filteredRows.sort((a, b) => {
       const dateA = parseDate(a.registrationDate);
       const dateB = parseDate(b.registrationDate);
 
@@ -44,6 +57,10 @@ const Card: React.FC<CardProps> = ({ data }) => {
         return dateB - dateA;
       }
     });
+
+    // 상태 업데이트
+    setDisplayedRows(sortedRows);
+  }, [data, searchKeyword, filterDate, sortingOrder]);
 
   return (
     <>
@@ -69,11 +86,15 @@ const Card: React.FC<CardProps> = ({ data }) => {
                 setSortingOrder('latest');
               }
             }}
-            defaultValue={['oldest1']}
+            defaultValue={['oldest1']} // 배열 형태로 변경
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
           />
-          <Input style={{ marginLeft: '5px', width: '30%' }} placeholder="키워드 검색"></Input>
-          <Button>검색</Button>
+          <Input
+            style={{ marginLeft: '5px', width: '30%' }}
+            placeholder="키워드 검색"
+            value={searchKeyword || undefined} // null 대신 undefined를 전달
+            onChange={(e) => setSearchKeyword(e.target.value)}
+          />
         </div>
         <div
           style={{
@@ -84,7 +105,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
             overflowY: 'auto',
           }}
         >
-          {sortedEventHistory.map((row, index) => (
+          {displayedRows.map((row, index) => (
             <h6
               key={index}
               style={{
