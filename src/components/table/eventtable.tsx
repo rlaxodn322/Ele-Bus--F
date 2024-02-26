@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Cascader, Input } from 'antd';
 
+const parseDate = (dateString: string | undefined) => {
+  const date = dateString || new Date().toISOString();
+  const splitDate = date.split('-');
+  return splitDate;
+};
+
+interface EventDataValues {
+  day: string;
+  detail: string;
+  status: string;
+}
+
 interface Row {
   user: string;
   registrationDate: string;
@@ -11,32 +23,18 @@ interface CardProps {
   data: Row[];
 }
 
-const parseDate = (dateString: string): number => {
-  const parts = dateString.split('/');
-  const datePart = parts[0];
-  const timePart = parts[1];
-
-  if (!datePart || datePart.length < 5) {
-    // Handle the case where datePart is invalid or too short
-    return 0;
-  }
-
-  const [year, monthDay] = datePart.split('-');
-  const [month, day] = [monthDay.slice(0, 2), monthDay.slice(2)];
-
-  const [hour, minute] = timePart.split(':');
-
-  return new Date(`${year}-${month}-${day}T${hour}:${minute}`).getTime();
-};
-
 const Card: React.FC<CardProps> = ({ data }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [filterDate] = useState<string | null>(null);
   const [searchKeyword, setSearchKeyword] = useState<string | null>(null);
-  const [displayedRows, setDisplayedRows] = useState<Row[]>(data);
-
+  const [displayedRows, setDisplayedRows] = useState<Row[]>([]);
+  console.log(displayedRows);
   useEffect(() => {
-    // 검색어를 사용하여 행 필터링
+    if (!Array.isArray(data)) {
+      console.error('Data is not an array');
+      return;
+    }
+
     const filteredRows = data.filter(
       (row) =>
         (!searchKeyword ||
@@ -46,7 +44,11 @@ const Card: React.FC<CardProps> = ({ data }) => {
         (!filterDate || row.registrationDate.includes(filterDate)),
     );
 
-    // 정렬
+    if (filteredRows.length === 0) {
+      setDisplayedRows([]);
+      return;
+    }
+
     const sortedRows = filteredRows.sort((a, b) => {
       const dateA = parseDate(a.registrationDate);
       const dateB = parseDate(b.registrationDate);
@@ -58,7 +60,6 @@ const Card: React.FC<CardProps> = ({ data }) => {
       }
     });
 
-    // 상태 업데이트
     setDisplayedRows(sortedRows);
   }, [data, searchKeyword, filterDate, sortingOrder]);
 
@@ -86,13 +87,13 @@ const Card: React.FC<CardProps> = ({ data }) => {
                 setSortingOrder('latest');
               }
             }}
-            defaultValue={['oldest1']} // 배열 형태로 변경
+            defaultValue={['oldest1']}
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
           />
           <Input
-            style={{ marginLeft: '5px', width: '30%' }}
+            style={{ marginLeft: '5px', width: '40%' }}
             placeholder="키워드 검색"
-            value={searchKeyword || undefined} // null 대신 undefined를 전달
+            value={searchKeyword || undefined}
             onChange={(e) => setSearchKeyword(e.target.value)}
           />
         </div>
@@ -115,7 +116,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
                 color: 'gray',
               }}
             >
-              <div>
+              <div style={{ margin: '10px' }}>
                 <h3>날짜: {row.registrationDate}</h3>
                 <h3>정비 내용: {row.user}</h3>
                 <h3>비고: {row.status}</h3>

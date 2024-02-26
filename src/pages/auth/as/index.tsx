@@ -203,11 +203,12 @@ const MyPage = () => {
         <title>A/S페이지</title>
         <meta name="description" content="as" />
       </Head>
+      <h1 style={{ marginLeft: '230PX' }}>A/S서비스 부품관리</h1>
       <Page>
         <div
           style={{
             width: '100%',
-            height: '50%',
+            height: '40%',
             boxShadow: '1px 1px 2px 2px lightgray',
             display: 'flex',
             justifyContent: 'space-between',

@@ -7,13 +7,13 @@ axios.defaults.withCredentials = true;
 // 내 정보 불러오기 API
 export async function loadMyInfoAPI() {
   console.log('loadMyInfo');
-  return await axios.get('/company').then((response) => response.data);
+  return await axios.get('/event').then((response) => response.data);
 }
 
 // 등록 API
 export function signUpAPI(data: any) {
   console.log('등록', data);
-  return axios.post('/company', data).then((response) => response.data);
+  return axios.post('/event', data).then((response) => response.data);
 }
 
 // // 회원 삭제 API
