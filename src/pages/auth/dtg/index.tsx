@@ -4,7 +4,7 @@ import Card from '../../../components/card/dtgcard';
 import Table3 from '../../../components/table/table3company';
 import { Button } from 'antd';
 // import { Page } from './style';
-import DtgTable from '../../../components/table/dtgtable.tsx';
+import DtgTable from '../../../components/table/dtgtable';
 import Date from '../../../components/antd/date';
 import styled from '@emotion/styled';
 import Head from 'next/head';
@@ -276,7 +276,7 @@ const MyPage = () => {
           >
             <h1 style={{ marginLeft: '10px' }}>DTG 실시간 기록</h1>
             <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
-            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '20px' }}>
+            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '120px' }}>
               <Button>다운로드</Button>
             </div>
           </div>

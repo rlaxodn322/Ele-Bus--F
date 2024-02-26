@@ -38,15 +38,15 @@ export const routes = [
     name: 'A/S및 부품관리',
   },
   {
-    router: '/auth/login',
-    active: '/icons/sidebar/user_active.svg',
-    default: '/icons/sidebar/user_default.svg',
-    name: 'Login',
-  },
-  {
     router: '/auth/car/event',
     active: '/icons/sidebar/service-svgrepo-com (4).svg',
     default: '/icons/sidebar/service-svgrepo-com (3).svg',
     name: '부품교체이력',
+  },
+  {
+    router: '/auth/login',
+    active: '/icons/sidebar/user_active.svg',
+    default: '/icons/sidebar/user_default.svg',
+    name: 'Login',
   },
 ];
