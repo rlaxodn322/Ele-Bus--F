@@ -91,7 +91,7 @@ const MyPage = () => {
             </div>
             <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
               <Button style={{ marginRight: '5px' }} onClick={showModal}>
-                정비 이력 입력
+                정비이력입력
               </Button>
               <Button style={{ marginRight: '5px' }}>수정</Button>
               <Button>삭제</Button>
