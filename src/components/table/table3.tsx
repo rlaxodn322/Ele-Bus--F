@@ -70,7 +70,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
           borderRadius: '10px',
         }}
       >
-        <InputButton a="부품 검색" onChange={(value) => setSearchInput(value)} />
+        <InputButton a="부품 검색" name="부품 이름 검색" onChange={(value) => setSearchInput(value)} />
         <div style={{ border: '0px', display: 'flex', justifyContent: 'end' }}>
           <Cascader
             options={[

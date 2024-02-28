@@ -4,11 +4,12 @@ import { Input, Button } from 'antd';
 
 interface InputButtonProps {
   a?: string; // 'a' 속성을 선택적으로 받도록 변경
+  name?: string;
   // eslint-disable-next-line no-unused-vars
   onChange: (value: string) => void; // 검색어 변경 시 부모 컴포넌트에 알리기 위한 콜백 함수
 }
 
-const InputButton: React.FC<InputButtonProps> = ({ a, onChange }) => {
+const InputButton: React.FC<InputButtonProps> = ({ a, onChange, name }) => {
   const [searchInput, setSearchInput] = useState<string>('');
 
   // eslint-disable-next-line no-unused-vars
@@ -26,7 +27,7 @@ const InputButton: React.FC<InputButtonProps> = ({ a, onChange }) => {
       <div style={{ textAlign: 'center' }}>
         <h1>{a}</h1>
         <Input
-          placeholder="부품 검색"
+          placeholder={name}
           style={{ width: '300px', marginBottom: '30px' }}
           value={searchInput}
           onChange={handleInputChange}

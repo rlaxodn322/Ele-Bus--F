@@ -32,16 +32,16 @@ export const routes = [
   //   name: 'Service',
   // },
   {
-    router: '/auth/as',
-    active: '/icons/sidebar/service-svgrepo-com (4).svg',
-    default: '/icons/sidebar/service-svgrepo-com (3).svg',
-    name: 'A/S및 부품관리',
-  },
-  {
     router: '/auth/dtg',
     active: '/icons/sidebar/service-svgrepo-com (1).svg',
     default: '/icons/sidebar/service-svgrepo-com (2).svg',
     name: 'DTG 정보조회',
+  },
+  {
+    router: '/auth/as',
+    active: '/icons/sidebar/service-svgrepo-com (4).svg',
+    default: '/icons/sidebar/service-svgrepo-com (3).svg',
+    name: 'A/S및 부품관리',
   },
 
   {
