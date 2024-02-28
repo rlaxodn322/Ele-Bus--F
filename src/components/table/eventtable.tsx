@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Cascader, Input } from 'antd';
 
-const parseDate = (dateString: string | undefined) => {
-  const date = dateString || new Date().toISOString();
-  const splitDate = date.split('-');
-  return splitDate;
-};
-
-interface EventDataValues {
+interface Row {
   day: string;
   detail: string;
-  status: string;
-}
-
-interface Row {
-  user: string;
-  registrationDate: string;
   status: string;
 }
 
@@ -28,7 +16,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
   const [filterDate] = useState<string | null>(null);
   const [searchKeyword, setSearchKeyword] = useState<string | null>(null);
   const [displayedRows, setDisplayedRows] = useState<Row[]>([]);
-  console.log(displayedRows);
+
   useEffect(() => {
     if (!Array.isArray(data)) {
       console.error('Data is not an array');
@@ -38,10 +26,10 @@ const Card: React.FC<CardProps> = ({ data }) => {
     const filteredRows = data.filter(
       (row) =>
         (!searchKeyword ||
-          row.user.includes(searchKeyword) ||
-          row.registrationDate.includes(searchKeyword) ||
+          row.day.includes(searchKeyword) ||
+          row.detail.includes(searchKeyword) ||
           row.status.includes(searchKeyword)) &&
-        (!filterDate || row.registrationDate.includes(filterDate)),
+        (!filterDate || row.day.includes(filterDate)),
     );
 
     if (filteredRows.length === 0) {
@@ -50,8 +38,8 @@ const Card: React.FC<CardProps> = ({ data }) => {
     }
 
     const sortedRows = filteredRows.sort((a, b) => {
-      const dateA = parseDate(a.registrationDate);
-      const dateB = parseDate(b.registrationDate);
+      const dateA = new Date(a.day).getTime();
+      const dateB = new Date(b.day).getTime();
 
       if (sortingOrder === 'oldest') {
         return dateA - dateB;
@@ -107,7 +95,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
           }}
         >
           {displayedRows.map((row, index) => (
-            <h6
+            <div
               key={index}
               style={{
                 padding: '5px',
@@ -117,11 +105,11 @@ const Card: React.FC<CardProps> = ({ data }) => {
               }}
             >
               <div style={{ margin: '10px' }}>
-                <h3>날짜: {row.registrationDate}</h3>
-                <h3>정비 내용: {row.user}</h3>
+                <h3>날짜: {row.day}</h3>
+                <h3>정비 내용: {row.detail}</h3>
                 <h3>비고: {row.status}</h3>
               </div>
-            </h6>
+            </div>
           ))}
         </div>
       </div>

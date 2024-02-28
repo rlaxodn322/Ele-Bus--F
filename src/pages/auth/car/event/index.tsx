@@ -18,46 +18,27 @@ const Page = styled.section`
 const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
-  const [partReplacementHistory, setPartReplacementHistory] = useState<Row[]>([]);
-  const [processedData, setProcessedData] = useState<ProcessedRow[]>([]);
-
   useEffect(() => {
     const fetchMyInfo = async () => {
       try {
         const myInfoData = await loadMyInfoAPI();
-        console.log('myInfoData', myInfoData);
-
         // 정비 이력 데이터
-        const maintenanceHistoryData = myInfoData
-          .filter((info: { type: string }) => info.type === 'maintenance')
-          .map((info: { dataValues: EventDataValues }) => ({
-            day: info.dataValues.day,
-            detail: info.dataValues.detail,
-            status: info.dataValues.status || '',
-          }));
-
-        // 부품 교체 이력 데이터
-        const partReplacementHistoryData = myInfoData
-          .filter((info: { type: string }) => info.type === 'partReplacement')
-          .map((info: { dataValues: EventDataValues }) => ({
-            day: info.dataValues.day,
-            detail: info.dataValues.detail,
-            status: info.dataValues.status || '',
-          }));
-
+        const maintenanceHistoryData = myInfoData.map((info: { day: any; detail: any; status: any }) => ({
+          day: info.day,
+          detail: info.detail,
+          status: info.status || '',
+        }));
         setMaintenanceHistory(maintenanceHistoryData);
-        setPartReplacementHistory(partReplacementHistoryData);
-
-        console.log('maintenanceHistory', maintenanceHistory);
-        console.log('partReplacementHistory', partReplacementHistory);
+        // 상태 업데이트 이후에 상태를 직접 사용
+        console.log('maintenanceHistory', maintenanceHistoryData);
       } catch (error) {
         console.error('데이터 불러오기 오류:', error);
-        // Handle the error appropriately
+        // 오류를 적절하게 처리
       }
     };
 
     fetchMyInfo();
-  }, [setMaintenanceHistory, setPartReplacementHistory]);
+  }, []);
 
   const showModal = () => {
     setModalOpen(true);
@@ -87,7 +68,7 @@ const MyPage = () => {
                 borderRadius: '10px',
               }}
             >
-              <EventTable data={processedData} />
+              <EventTable data={maintenanceHistory} />
             </div>
             <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
               <Button style={{ marginRight: '5px' }} onClick={showModal}>
