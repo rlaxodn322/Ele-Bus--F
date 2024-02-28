@@ -187,16 +187,6 @@ const MyPage = () => {
     // 필요한 로직을 추가하세요.
   };
 
-  // const router = useRouter();
-
-  // // eslint-disable-next-line no-undef
-  // const { isLoading, data: me } = useQuery<User>(['user'], loadMyInfoAPI);
-
-  // useEffect(() => {
-  //   if (!isLoading && !me?.email) {
-  //     router.push('/auth/login');
-  //   }
-  // }, [isLoading, router, me]);
   return (
     <>
       <Head>

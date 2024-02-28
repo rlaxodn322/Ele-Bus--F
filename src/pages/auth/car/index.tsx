@@ -114,7 +114,7 @@ const MyPage = () => {
             }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>수원여객차량</h1>
-            <Left />
+            <Left busLocations={busLocations} />
           </div>
           <div
             style={{

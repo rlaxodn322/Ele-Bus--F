@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'antd';
 import CompanyCreate from '../modal/companycreate';
-const dummyTableData = [
-  { user: '수원여객', registrationDate: '2023-11-08', status: '50' },
-  { user: '하남여객', registrationDate: '2023-11-08', status: '10' },
-  { user: '오산여객', registrationDate: '2023-11-08', status: '20' },
-  { user: '포항여객', registrationDate: '2023-11-08', status: '30' },
-  { user: '대천여객', registrationDate: '2023-11-08', status: '40' },
-  { user: '대전여객', registrationDate: '2023-11-08', status: '50' },
-  { user: '화성여객', registrationDate: '2023-11-08', status: '60' },
-  // Add more dummy data as needed
-];
+
+interface Row {
+  companynumber: string;
+  company: string;
+  companylocation: string;
+  companyname: string;
+  day: string;
+}
+
 interface TopProps {
   data: Row[];
 }
@@ -111,7 +110,7 @@ const Top: React.FC<TopProps> = ({ data }) => {
           <h1>사업자 정보</h1>
           <div
             style={{
-              marginTop: '40px',
+              marginTop: '20px',
               border: '1px solid lightgray',
               height: '30px',
               color: 'lightgray',
@@ -173,7 +172,7 @@ const Top: React.FC<TopProps> = ({ data }) => {
         <div style={{ width: '25%', marginRight: '100px' }}>
           <div
             style={{
-              marginTop: '83px',
+              marginTop: '65px',
               border: '1px solid lightgray',
               height: '30px',
               color: 'lightgray',
@@ -231,7 +230,7 @@ const Top: React.FC<TopProps> = ({ data }) => {
           >
             비밀번호
           </div>
-          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '10px' }}>
             <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#F6C42B', color: 'white' }}>
               수정
             </Button>

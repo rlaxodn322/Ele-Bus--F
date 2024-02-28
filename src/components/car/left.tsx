@@ -1,39 +1,33 @@
 import React from 'react';
 
-const Left = () => {
-  const data = [
-    { id: 1323, vehicle: '123호1234', status: 'On', soc: '80%' },
-    { id: 2131, vehicle: '123호1234', status: 'On', soc: '80%' },
-    { id: 3544, vehicle: '123호1234', status: 'OFF', soc: '80%' },
-    { id: 4123, vehicle: '321호4321', status: 'OFF', soc: '80%' },
-    { id: 5123, vehicle: '321호4321', status: 'OFF', soc: '80%' },
-    { id: 6123, vehicle: '321호4321', status: 'OFF', soc: '80%' },
-    { id: 7123, vehicle: '321호4321', status: 'On', soc: '80%' },
-    { id: 8123, vehicle: '321호4321', status: 'On', soc: '80%' },
-  ];
+interface BusLocation {
+  plateType: string;
+  plateNo: string;
+  stationId: string;
+  remainSeatCnt: string;
+}
+interface LeftProps {
+  busLocations: BusLocation[];
+}
 
+const Left: React.FC<LeftProps> = ({ busLocations }) => {
   // 테이블 컬럼 정의
   const columns = [
-    { Header: '운행노선', accessor: 'id' },
-    { Header: '차량번호', accessor: 'vehicle' },
-    { Header: '운행상태', accessor: 'status' },
-    { Header: 'SOC', accessor: 'soc' },
+    { Header: '운행노선', accessor: 'routeId' },
+    { Header: '차량번호', accessor: 'plateNo' },
+    { Header: '정류소', accessor: 'stationId' },
+    { Header: '빈자리수', accessor: 'remainSeatCnt' },
   ];
 
   return (
     <>
-      <div
-        style={{
-          width: '100%',
-          height: '80%',
-        }}
-      >
+      <div style={{ width: '100%', height: '80%' }}>
         <div
           style={{
             width: '100%',
             height: '100%',
             fontSize: '18px',
-            position: 'relative', // 부모 요소에 relative 위치 설정
+            position: 'relative',
             borderRadius: '10px',
             background: 'white',
           }}
@@ -43,8 +37,8 @@ const Left = () => {
               width: '100%',
               height: '10%',
               margin: '0',
-              position: 'sticky', // 헤더를 화면 상단에 고정
-              top: 0, // 화면 상단에 고정
+              position: 'sticky',
+              top: 0,
               display: 'flex',
               flexDirection: 'row',
               marginBottom: '10px',
@@ -68,7 +62,6 @@ const Left = () => {
             ))}
           </div>
 
-          {/* 데이터 */}
           <div
             style={{
               display: 'flex',
@@ -77,9 +70,9 @@ const Left = () => {
               overflowY: 'auto',
             }}
           >
-            {data.map((row) => (
+            {busLocations.map((row, index) => (
               <div
-                key={row.id}
+                key={index}
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
@@ -96,7 +89,7 @@ const Left = () => {
                     style={{
                       flex: 1,
                       textAlign: 'center',
-                      color: row.status === 'On' ? '#2B85FF' : '#27B964', // Conditional color based on status
+                      color: 'gray', // You can set a color based on conditions
                     }}
                   >
                     {row[column.accessor as keyof typeof row]}
