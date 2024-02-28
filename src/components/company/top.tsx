@@ -13,22 +13,34 @@ interface Row {
 interface TopProps {
   data: Row[];
 }
+
 const Top: React.FC<TopProps> = ({ data }) => {
-  const [modalOpen, setModalOpen] = useState(false); // visible 상태 대신
+  const [modalOpen, setModalOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
-  // Modal 열기 함수
+  const [foundCompany, setFoundCompany] = useState<Row | null>(null);
+
   const showModal = () => {
     setModalOpen(true);
   };
 
-  // Modal 닫기 함수
   const handleCancel = () => {
     setModalOpen(false);
   };
+
   const handleSearch = () => {
-    console.log('Search Input:', searchInput);
-    // You can perform any further actions with the searchInput value here
+    const foundCompany = data.find((row) => row.company === searchInput);
+
+    if (foundCompany) {
+      setFoundCompany(foundCompany);
+    } else {
+      // Set foundCompany to null if no match is found
+      setFoundCompany(null);
+    }
   };
+
+  // Display the first five companies initially
+  const initialCompanies = data.slice(0, 5);
+
   return (
     <>
       <div
@@ -78,7 +90,8 @@ const Top: React.FC<TopProps> = ({ data }) => {
               <div style={{ flex: 1, textAlign: 'center' }}>등록일</div>
               <div style={{ flex: 1, textAlign: 'center' }}>사업자대표명</div>
             </div>
-            {data.map((row, index) => (
+            {/* Display the first five companies initially */}
+            {initialCompanies.map((row, index) => (
               <h6
                 key={index}
                 style={{
@@ -98,9 +111,7 @@ const Top: React.FC<TopProps> = ({ data }) => {
             ))}
           </div>
           <div style={{ height: '120px', display: 'flex', justifyContent: 'end', marginTop: '30px' }}>
-            <Button onClick={showModal} style={{}}>
-              신규등록
-            </Button>
+            <Button onClick={showModal}>신규등록</Button>
             <Button style={{ marginLeft: '10px' }}>삭제</Button>
             <CompanyCreate open={modalOpen} onCancel={handleCancel} />
           </div>
@@ -112,130 +123,137 @@ const Top: React.FC<TopProps> = ({ data }) => {
             style={{
               marginTop: '20px',
               border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
               borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
+              boxShadow: '2px 2px 1px 1px lightgray',
             }}
           >
-            수원여객
-          </div>
-          <div
-            style={{
-              marginTop: '10px',
-              border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
-              borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
-            }}
-          >
-            사업자 대표명
-          </div>
-          <div
-            style={{
-              marginTop: '10px',
-              border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
-              borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
-            }}
-          >
-            사업자 등록번호
-          </div>
-          <div
-            style={{
-              marginTop: '10px',
-              border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
-              borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
-            }}
-          >
-            사업자 이메일
-          </div>
-          <div
-            style={{
-              marginTop: '10px',
-              border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
-              borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
-            }}
-          >
-            사업자 아이디
+            {/* Display search prompt if no company is selected */}
+            {!foundCompany ? (
+              <div
+                style={{
+                  height: '30px',
+                  color: 'gray',
+                  borderBottom: '1px solid lightgray',
+                  padding: '5px',
+                }}
+              >
+                우측에 사업자를 입력해주세요.
+              </div>
+            ) : (
+              /* Display found company information if available */
+              <>
+                <div
+                  style={{
+                    height: '30px',
+                    color: 'gray',
+                    borderBottom: '1px solid lightgray',
+                    padding: '5px',
+                  }}
+                >
+                  사업자 번호: {foundCompany.companynumber}
+                </div>
+                <div
+                  style={{
+                    height: '30px',
+                    color: 'gray',
+                    borderBottom: '1px solid lightgray',
+                    padding: '5px',
+                  }}
+                >
+                  사업자 이름: {foundCompany.companyname}
+                </div>
+                <div
+                  style={{
+                    height: '30px',
+                    color: 'gray',
+                    borderBottom: '1px solid lightgray',
+                    padding: '5px',
+                  }}
+                >
+                  사업자 주소: {foundCompany.companylocation}
+                </div>
+                <div
+                  style={{
+                    height: '30px',
+                    color: 'gray',
+                    borderBottom: '1px solid lightgray',
+                    padding: '5px',
+                  }}
+                >
+                  등록일: {foundCompany.day}
+                </div>
+              </>
+            )}
           </div>
         </div>
+
         <div style={{ width: '25%', marginRight: '100px' }}>
+          <h1>사업자 정보</h1>
           <div
             style={{
-              marginTop: '65px',
+              marginTop: '20px',
               border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
               borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
+              boxShadow: '2px 2px 1px 1px lightgray',
             }}
           >
-            경기도 수원시 권선구###
-          </div>
-          <div
-            style={{
-              marginTop: '10px',
-              border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
-              borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
-            }}
-          >
-            사업자 대표명(김아무개)
-          </div>
-          <div
-            style={{
-              marginTop: '10px',
-              border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
-              borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
-            }}
-          >
-            연락처
-          </div>
-          <div
-            style={{
-              marginTop: '10px',
-              border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
-              borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
-            }}
-          >
-            사업자 운행노선
-          </div>
-          <div
-            style={{
-              marginTop: '10px',
-              border: '1px solid lightgray',
-              height: '30px',
-              color: 'lightgray',
-              borderRadius: '5px',
-              boxShadow: '1px 1px 1px 1px lightgray',
-            }}
-          >
-            비밀번호
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '10px' }}>
-            <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#F6C42B', color: 'white' }}>
-              수정
-            </Button>
-            <Button style={{ marginRight: '10px', background: '#27B964', color: 'white' }}>취소</Button>
-            <Button style={{ background: '#2B85FF', color: 'white' }}>삭제</Button>
+            {/* Display search prompt if no company is selected */}
+            {!foundCompany ? (
+              <div
+                style={{
+                  height: '30px',
+                  color: 'gray',
+                  borderBottom: '1px solid lightgray',
+                  padding: '5px',
+                }}
+              >
+                우측에 사업자를 입력해주세요.
+              </div>
+            ) : (
+              /* Display found company information if available */
+              <>
+                <div
+                  style={{
+                    height: '30px',
+                    color: 'gray',
+                    borderBottom: '1px solid lightgray',
+                    padding: '5px',
+                  }}
+                >
+                  사업자 번호: {foundCompany.companynumber}
+                </div>
+                <div
+                  style={{
+                    height: '30px',
+                    color: 'gray',
+                    borderBottom: '1px solid lightgray',
+                    padding: '5px',
+                  }}
+                >
+                  사업자 이름: {foundCompany.companyname}
+                </div>
+                <div
+                  style={{
+                    height: '30px',
+                    color: 'gray',
+                    borderBottom: '1px solid lightgray',
+                    padding: '5px',
+                  }}
+                >
+                  사업자 주소: {foundCompany.companylocation}
+                </div>
+                <div
+                  style={{
+                    height: '30px',
+                    color: 'gray',
+                    borderBottom: '1px solid lightgray',
+                    padding: '5px',
+                  }}
+                >
+                  등록일: {foundCompany.day}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
