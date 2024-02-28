@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Cascader } from 'antd';
 
 interface Row {
-  user: string;
-  registrationDate: string;
+  number: string;
+  name: string;
+  date: string;
+  memo: string;
   status: string;
 }
 
@@ -11,33 +13,28 @@ interface CardProps {
   data: Row[];
   columns: string[];
 }
-const parseDate = (dateString: string): number => {
-  const parts = dateString.split('/');
-  const datePart = parts[0];
-  const timePart = parts[1];
 
-  if (!datePart || datePart.length < 5) {
-    // Handle the case where datePart is invalid or too short
+const parseDate = (dateString: string): number => {
+  const [year, month, day] = dateString.split('-');
+
+  // If any part of the date is not a valid number, return 0
+  if (isNaN(Number(year)) || isNaN(Number(month)) || isNaN(Number(day))) {
     return 0;
   }
 
-  const [year, monthDay] = datePart.split('-');
-  const [month, day] = [monthDay.slice(0, 2), monthDay.slice(2)];
-
-  const [hour, minute] = timePart.split(':');
-
-  return new Date(`${year}-${month}-${day}T${hour}:${minute}`).getTime();
+  return new Date(`${year}-${month}-${day}`).getTime();
 };
+
 const Card: React.FC<CardProps> = ({ data, columns }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1] = useState<string | string[]>(['latest']);
   const [filterDate] = useState<string | null>(null);
 
   const sortedEventHistory = [...data]
-    .filter((row) => !filterDate || row.registrationDate.includes(filterDate))
+    .filter((row) => !filterDate || row.date.includes(filterDate))
     .sort((a, b) => {
-      const dateA = parseDate(a.registrationDate);
-      const dateB = parseDate(b.registrationDate);
+      const dateA = parseDate(a.date);
+      const dateB = parseDate(b.date);
 
       if (sortingOrder === 'oldest') {
         return dateA - dateB;
@@ -127,9 +124,9 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
                 color: 'gray',
               }}
             >
-              <div style={{ flex: 1 }}>{row.registrationDate}</div>
-              <div style={{ flex: 1 }}>{row.user}</div>
-              <div style={{ flex: 1 }}>{row.status}</div>
+              <div style={{ flex: 1 }}>{row.date}</div>
+              <div style={{ flex: 1 }}>{row.name}</div>
+              <div style={{ flex: 1 }}>{row.memo}</div>
             </h6>
           ))}
         </div>

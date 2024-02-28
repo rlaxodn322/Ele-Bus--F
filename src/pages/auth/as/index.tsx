@@ -10,17 +10,10 @@ import Button3 from '../../../components/button/button3';
 import NewItem from '../../../components/input/newItem';
 import styled from '@emotion/styled';
 import Head from 'next/head';
-// import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
-// import { useRouter } from 'next/router';
-// import { loadMyInfoAPI } from '@/components/apis/user/user';
-// import { useEffect } from 'react';
-// import User from '@/interfaces/user';
+import { loadMyInfoAPI } from '@/components/apis/item/item';
+import { useEffect, useState } from 'react';
 
 const Page = styled.section`
-  // display: inline-flex;
-
-  /* /* display: flex; */
-  /* justify-content: space-between; */
   width: 1370px;
   height: 100%;
   margin: 30px auto;
@@ -28,7 +21,7 @@ const Page = styled.section`
 
 const busDataColumns = ['부품번호', '날짜', '부품위치', '창고위치', '요청시간', '담당자', '부품'];
 const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];
-const busDataColumns2 = ['등록일자', '사용자', '상태'];
+const busDataColumns2 = ['등록일자', '담당이름', '부품명'];
 const dummyTableData = [
   {
     user: 'busID',
@@ -127,55 +120,32 @@ const dummyTableData1 = [
 
   // Add more dummy data as needed
 ];
-const dummyTableData2 = [
-  {
-    user: 'Area',
-    registrationDate: '2023-1108/08:31',
-    status: '활성화',
-  },
-  {
-    user: 'Area',
-    registrationDate: '2023-1108/08:32',
-    status: '활성화',
-  },
-  {
-    user: 'Area',
-    registrationDate: '2023-1108/08:33',
-    status: '활성화',
-  },
-  {
-    user: 'Area',
-    registrationDate: '2023-1108/08:31',
-    status: '비활성화',
-  },
-  {
-    user: 'Area',
-    registrationDate: '2023-1108/08:35',
-    status: '비활성화',
-  },
-  {
-    user: 'Area',
-    registrationDate: '2023-1108/08:37',
-    status: '비활성화',
-  },
-  {
-    user: 'Area',
-    registrationDate: '2023-1108/08:38',
-    status: '비활성화',
-  },
-  {
-    user: 'Area',
-    registrationDate: '2023-1108/08:39',
-    status: '비활성화',
-  },
-  {
-    user: 'Area',
-    registrationDate: '2023-1108/08:31',
-    status: '비활성화',
-  },
-];
 
 const MyPage = () => {
+  const [maintenanceHistory, setMaintenanceHistory] = useState([]);
+  const fetchMyInfo = async () => {
+    try {
+      const myInfoData = await loadMyInfoAPI();
+      const maintenanceHistoryData = myInfoData.map(
+        (info: { number: any; name: any; date: any; memo: any; status: any }) => ({
+          number: info.number,
+          name: info.name,
+          date: info.date,
+          memo: info.memo,
+          status: info.status,
+        }),
+      );
+      setMaintenanceHistory(maintenanceHistoryData);
+      console.log(maintenanceHistory);
+    } catch (error) {
+      console.error('데이터 불러오기 오류:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMyInfo();
+  }, []);
+
   const handleInput5Submit = (values: any) => {
     // 여기에 신규 부품 입력이 완료된 후의 로직을 구현합니다.
     console.log('입력 완료:', values);
@@ -215,7 +185,7 @@ const MyPage = () => {
             }}
           >
             <InputButton b="부품 검색" /> {/* 'a' 속성을 전달 */}
-            <Table3 data={dummyTableData2} columns={busDataColumns2} />
+            <Table3 data={maintenanceHistory} columns={busDataColumns2} />
           </div>
 
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
@@ -225,6 +195,7 @@ const MyPage = () => {
           </div>
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
             <NewItem
+              onReloadData={fetchMyInfo}
               title="신규 부품 입력"
               onSubmit={handleInput5Submit} // handleInput5Submit 함수는 신규 부품 입력이 완료되었을 때 호출되어야 하는 함수입니다.
               onCancel={handleInput5Cancel} // handleInput5Cancel 함수는 취소 버튼이 클릭되었을 때 호출되어야 하는 함수입니다.

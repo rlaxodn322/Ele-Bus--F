@@ -8,9 +8,10 @@ interface InputProps {
   // eslint-disable-next-line no-unused-vars
   onSubmit: (values: any) => void;
   onCancel: () => void;
+  onReloadData: () => void;
 }
 
-const NewItem: React.FC<InputProps> = ({ title, onCancel }) => {
+const NewItem: React.FC<InputProps> = ({ title, onCancel, onReloadData }) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
@@ -21,6 +22,7 @@ const NewItem: React.FC<InputProps> = ({ title, onCancel }) => {
       // 등록 후 Modal 닫기
       onCancel();
       console.log(values);
+      onReloadData();
       form.resetFields(); // 입력값 초기화
     } catch (error) {
       console.error('아이템 등록 오류:', error);
@@ -41,11 +43,11 @@ const NewItem: React.FC<InputProps> = ({ title, onCancel }) => {
           <Item label="등록일자" name="date" rules={[{ required: true, message: '등록일자를 입력해주세요.' }]}>
             <Input placeholder="등록일자 입력" />
           </Item>
-          <Item label="기타사항" name="memo" rules={[{ required: true, message: '기타 사항를 입력해주세요.' }]}>
-            <Input placeholder="기타 사항 입력" />
+          <Item label="부품이름" name="memo" rules={[{ required: true, message: '부품이름를 입력해주세요.' }]}>
+            <Input placeholder="부품이름 입력" />
           </Item>
-          <Item label="버스상태" name="status" rules={[{ required: true, message: '상태를 입력해주세요.' }]}>
-            <Input placeholder="상태 입력" />
+          <Item label="기타사항" name="status" rules={[{ required: true, message: '기타사항을 입력해주세요.' }]}>
+            <Input placeholder="기타사항 입력" />
           </Item>
           <Form.Item>
             <div style={{ marginTop: '-40px', display: 'flex', justifyContent: 'center' }}>
