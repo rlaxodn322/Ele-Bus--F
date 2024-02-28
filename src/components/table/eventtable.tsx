@@ -104,7 +104,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
                 color: 'gray',
               }}
             >
-              <div style={{ margin: '10px' }}>
+              <div style={{ margin: '10px', fontSize: '13px' }}>
                 <h3>날짜: {row.day}</h3>
                 <h3>정비 내용: {row.detail}</h3>
                 <h3>비고: {row.status}</h3>

@@ -17,7 +17,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
           style={{
             width: '20%',
             height: '100px',
-            boxShadow: '2px 2px 2px 2px lightgray',
+            boxShadow: '1px 1px 2px 2px lightgray',
             borderRadius: '10px',
             background: 'white',
           }}
@@ -35,7 +35,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/bus-svgrepo-com (8).svg"></img>
           </div>
         </div>
-        <div style={{ width: '20%', height: '100px', boxShadow: '2px 2px 2px 2px lightgray', borderRadius: '10px' }}>
+        <div style={{ width: '20%', height: '100px', boxShadow: '1px 1px 2px 2px lightgray', borderRadius: '10px' }}>
           <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>운행</h3>
           <div
             style={{
@@ -53,7 +53,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
           style={{
             width: '20%',
             height: '100px',
-            boxShadow: '2px 2px 2px 2px lightgray',
+            boxShadow: '1px 1px 2px 2px lightgray',
             borderRadius: '10px',
             background: 'white',
           }}
@@ -75,7 +75,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
           style={{
             width: '20%',
             height: '100px',
-            boxShadow: '2px 2px 2px 2px lightgray',
+            boxShadow: '1px 1px 2px 2px lightgray',
             borderRadius: '10px',
             background: 'white',
           }}

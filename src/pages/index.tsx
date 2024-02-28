@@ -75,7 +75,7 @@ const Home = () => {
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
   ];
-  const mapHeight = '745px';
+  const mapHeight = '797px';
   const uniqueCompanies = Array.from(new Set(dummyVehicleData.map((vehicle) => vehicle.company)));
 
   // 운행중인 차량 정보 필터링 함수
@@ -113,9 +113,9 @@ const Home = () => {
         <meta name="description" content="text." />
       </Head>
       <Page>
+        <h1>버스 현황</h1>
         <div style={{ display: 'flex', height: '100%', width: '100%' }}>
           <div style={{ width: '49.5%', height: '100%' }}>
-            <h1>버스 현황</h1>
             <Map markerPositions={markerPositions} mapHeight={mapHeight} />
           </div>
           <div style={{ width: '49.5%', height: '100%' }}>

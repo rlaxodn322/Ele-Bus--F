@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { Button } from 'antd';
+import Link from 'next/link';
 const Middle = () => {
   const numCols = 2;
 
@@ -72,7 +73,7 @@ const Middle = () => {
         <div
           style={{
             width: '100%',
-            height: '42%',
+            height: '34%',
             background: '#2CA0F3',
             color: 'white',
             display: 'flex',
@@ -88,6 +89,11 @@ const Middle = () => {
               <div style={{ fontSize: '11px', marginTop: '5px', fontWeight: 'bold' }}>{`${data.battery}`}</div>
             </div>
           ))}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '400px', marginRight: '10px' }}>
+          <Link href="./car/event">
+            <Button>정비이력조회</Button>
+          </Link>
         </div>
       </div>
     </>

@@ -16,7 +16,8 @@ interface BusLocation {
   stationId: string;
   remainSeatCnt: string;
   stationName: string;
-  // 다른 속성들도 필요하다면 추가
+  plateType: string; // 예시로 추가된 속성, 실제로 사용할 속성에 맞게 수정하세요.
+  plateNo: string; // 예시로 추가된 속성, 실제로 사용할 속성에 맞게 수정하세요.
 }
 
 const Page = styled.section`
@@ -145,10 +146,8 @@ const MyPage = () => {
             <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '100px' }}>
               <Link href="./dtg">
-                <Button style={{ marginRight: '10px' }}>제출하기</Button>
+                <Button style={{ marginRight: '10px' }}>DTG 조회하기</Button>
               </Link>
-
-              <Button>다운로드</Button>
             </div>
           </div>
           <div
@@ -165,7 +164,7 @@ const MyPage = () => {
             <div
               style={{
                 width: '100%',
-                height: '8%',
+                height: '40px',
                 background: '#2CA0F3',
                 color: 'white',
                 display: 'flex',

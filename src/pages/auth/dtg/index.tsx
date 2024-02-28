@@ -241,7 +241,7 @@ const MyPage = () => {
         <meta name="description" content="DTG" />
       </Head>
       <Page>
-        <h2>DTG 관리</h2>
+        <h1>DTG 관리</h1>
         <div
           style={{
             display: 'flex',
