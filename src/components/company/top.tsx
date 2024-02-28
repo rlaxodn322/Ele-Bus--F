@@ -36,7 +36,7 @@ const Top: React.FC<TopProps> = ({ data }) => {
           display: 'flex',
           justifyContent: 'space-between',
           width: '100%',
-          height: '40%',
+          height: '350px',
           background: 'white',
           borderRadius: '10px',
           boxShadow: '1px 1px 1px 2px lightgray',
@@ -50,13 +50,13 @@ const Top: React.FC<TopProps> = ({ data }) => {
               검색
             </Button>
           </div>
-          <h4>사업자리스트</h4>
+          <h4 style={{ margin: '3px' }}>사업자리스트</h4>
           <div
             style={{
               border: '1px solid lightgray',
               width: '100%',
-              height: '30%',
-              marginTop: '20px',
+              height: '150px',
+              marginTop: '5px',
               borderRadius: '10px',
               overflowY: 'auto',
             }}
@@ -97,7 +97,7 @@ const Top: React.FC<TopProps> = ({ data }) => {
               </h6>
             ))}
           </div>
-          <div style={{ display: 'flex', justifyContent: 'end', marginTop: '10px' }}>
+          <div style={{ height: '120px', display: 'flex', justifyContent: 'end', marginTop: '30px' }}>
             <Button onClick={showModal} style={{}}>
               신규등록
             </Button>
