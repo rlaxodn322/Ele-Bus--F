@@ -123,6 +123,7 @@ const dummyTableData1 = [
 
 const MyPage = () => {
   const [maintenanceHistory, setMaintenanceHistory] = useState([]);
+
   const fetchMyInfo = async () => {
     try {
       const myInfoData = await loadMyInfoAPI();
@@ -184,12 +185,11 @@ const MyPage = () => {
               height: '100%',
             }}
           >
-            <InputButton b="부품 검색" /> {/* 'a' 속성을 전달 */}
             <Table3 data={maintenanceHistory} columns={busDataColumns2} />
           </div>
 
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
-            <InputButton a="부품 관리" b="부품 검색" />
+            <InputButton a="부품 관리" onChange={function (): void {}} />
             <DivBox a="부품번호" b="담당자 이름" c="등록일자" d="기타사항" e="상태" />
             <Button3 a="편집" b="삭제" c="취소" />
           </div>

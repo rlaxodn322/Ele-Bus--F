@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Cascader } from 'antd';
-
+import InputButton from '../../components/inputbutton/inputbutton';
 interface Row {
   number: string;
   name: string;
@@ -29,9 +29,16 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1] = useState<string | string[]>(['latest']);
   const [filterDate] = useState<string | null>(null);
+  const [searchInput, setSearchInput] = useState<string>('');
 
   const sortedEventHistory = [...data]
-    .filter((row) => !filterDate || row.date.includes(filterDate))
+    .filter(
+      (row) =>
+        (!filterDate || row.date.includes(filterDate)) &&
+        (searchInput === '' ||
+          row.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+          row.memo.toLowerCase().includes(searchInput.toLowerCase())),
+    )
     .sort((a, b) => {
       const dateA = parseDate(a.date);
       const dateB = parseDate(b.date);
@@ -59,10 +66,11 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
       <div
         style={{
           width: '99%',
-          height: '80%',
+          height: '260px',
           borderRadius: '10px',
         }}
       >
+        <InputButton a="부품 검색" onChange={(value) => setSearchInput(value)} />
         <div style={{ border: '0px', display: 'flex', justifyContent: 'end' }}>
           <Cascader
             options={[
@@ -71,11 +79,12 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
               { value: 'latest', label: '최신순' },
             ]}
             onChange={(value) => {
-              if (value[0] !== 'oldest1') {
-                const sortOrder = typeof value[0] === 'number' ? 'latest' : value[0];
-                setSortingOrder(sortOrder);
+              if (value[0] === 'oldest1') {
+                // 기간별을 선택한 경우에는 특별한 동작을 수행하거나 필요에 따라 처리를 추가할 수 있습니다.
+                // 예를 들어, DatePicker를 띄우거나 다른 필터 작업을 수행할 수 있습니다.
               } else {
-                setSortingOrder('latest');
+                const sortOrder = value[0] === 'oldest' ? 'oldest' : 'latest';
+                setSortingOrder(sortOrder);
               }
             }}
             defaultValue={['oldest1']}
