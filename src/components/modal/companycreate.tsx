@@ -41,6 +41,9 @@ const BusCreate: React.FC<BusCreateProps> = ({ open, onCancel }) => {
         >
           <Input placeholder="사업자 번호 입력" />
         </Item>
+        <Item label="사업자명" name="company" rules={[{ required: true, message: '사업자명을 입력해주세요.' }]}>
+          <Input placeholder="사업자 번호 입력" />
+        </Item>
         <Item
           label="사업자 주소"
           name="companylocation"
@@ -54,6 +57,9 @@ const BusCreate: React.FC<BusCreateProps> = ({ open, onCancel }) => {
           rules={[{ required: true, message: '사업자 대표를 입력해주세요.' }]}
         >
           <Input placeholder="사업자 대표 입력" />
+        </Item>
+        <Item label="등록일" name="day" rules={[{ required: true, message: '등록일을 입력해주세요.' }]}>
+          <Input placeholder="등록일 입력" />
         </Item>
 
         <Button type="primary" htmlType="submit">

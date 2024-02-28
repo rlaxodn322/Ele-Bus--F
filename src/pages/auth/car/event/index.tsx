@@ -6,6 +6,11 @@ import EventModal from '../../../../components/modal/event';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import { loadMyInfoAPI } from '../../../../components/apis/event/event';
+interface Row {
+  day: string;
+  detail: string;
+  status: string;
+}
 
 const Page = styled.section`
   width: 1370px;
@@ -91,13 +96,7 @@ const MyPage = () => {
                 borderRadius: '10px',
               }}
             >
-              {/* <EventTable
-                data={partReplacementHistory.map((info) => ({
-                  registrationDate: info.dataValues.createdAt,
-                  user: info.dataValues.detail,
-                  status: info.dataValues.status || '',
-                }))}
-              /> */}
+              {/* <EventTable data={maintenanceHistory} /> */}
             </div>
             <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
               <Button>부품 교체 이력 다운로드</Button>

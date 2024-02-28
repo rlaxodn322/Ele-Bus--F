@@ -11,7 +11,10 @@ const dummyTableData = [
   { user: '화성여객', registrationDate: '2023-11-08', status: '60' },
   // Add more dummy data as needed
 ];
-const Top = () => {
+interface TopProps {
+  data: Row[];
+}
+const Top: React.FC<TopProps> = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false); // visible 상태 대신
   const [searchInput, setSearchInput] = useState('');
   // Modal 열기 함수
@@ -74,9 +77,9 @@ const Top = () => {
             >
               <div style={{ flex: 1, textAlign: 'center' }}>사업자</div>
               <div style={{ flex: 1, textAlign: 'center' }}>등록일</div>
-              <div style={{ flex: 1, textAlign: 'center' }}>등록버스</div>
+              <div style={{ flex: 1, textAlign: 'center' }}>사업자대표명</div>
             </div>
-            {dummyTableData.map((row, index) => (
+            {data.map((row, index) => (
               <h6
                 key={index}
                 style={{
@@ -89,19 +92,17 @@ const Top = () => {
                   color: 'gray',
                 }}
               >
-                <div style={{ flex: 1 }}>{row.user}</div>
-                <div style={{ flex: 1 }}>{row.registrationDate}</div>
-                <div style={{ flex: 1 }}>{row.status}</div>
+                <div style={{ flex: 1 }}>{row.company}</div>
+                <div style={{ flex: 1 }}>{row.day}</div>
+                <div style={{ flex: 1 }}>{row.companyname}</div>
               </h6>
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'end', marginTop: '10px' }}>
-            <Button style={{ marginLeft: '10px', marginRight: '10px', background: '#2B85FF', color: 'white' }}>
-              삭제
-            </Button>
-            <Button onClick={showModal} style={{ background: '#FB4E4E', color: 'white' }}>
+            <Button onClick={showModal} style={{}}>
               신규등록
             </Button>
+            <Button style={{ marginLeft: '10px' }}>삭제</Button>
             <CompanyCreate open={modalOpen} onCancel={handleCancel} />
           </div>
         </div>
