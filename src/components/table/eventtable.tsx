@@ -38,13 +38,13 @@ const Card: React.FC<CardProps> = ({ data }) => {
     }
 
     const sortedRows = filteredRows.sort((a, b) => {
-      const dateA = new Date(a.day).getTime();
-      const dateB = new Date(b.day).getTime();
+      const dateA = a.day.split('.').join('');
+      const dateB = b.day.split('.').join('');
 
       if (sortingOrder === 'oldest') {
-        return dateA - dateB;
+        return dateA.localeCompare(dateB);
       } else {
-        return dateB - dateA;
+        return dateB.localeCompare(dateA);
       }
     });
 

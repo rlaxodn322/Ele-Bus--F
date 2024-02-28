@@ -30,7 +30,6 @@ const MyPage = () => {
         }));
         setMaintenanceHistory(maintenanceHistoryData);
         // 상태 업데이트 이후에 상태를 직접 사용
-        console.log('maintenanceHistory', maintenanceHistoryData);
       } catch (error) {
         console.error('데이터 불러오기 오류:', error);
         // 오류를 적절하게 처리
