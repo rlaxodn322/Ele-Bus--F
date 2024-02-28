@@ -16,8 +16,8 @@ export function signUpAPI(data: any) {
   return axios.post('/company', data).then((response) => response.data);
 }
 
-// // 회원 삭제 API
-// export function deleteUserAPI(email: string) {
-//   console.log('회원 삭제', email);
-//   return axios.delete('/user', { data: { email } }).then((response) => response.data);
-// }
+// 사업자 삭제 API
+export function deleteCompanyAPI(companynumber: string) {
+  console.log('사업자 삭제', companynumber);
+  return axios.delete(`/company/${companynumber}`).then((response) => response.data);
+}

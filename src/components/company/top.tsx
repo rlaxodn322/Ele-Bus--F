@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button, Input } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Button, Input, Modal } from 'antd';
 import CompanyCreate from '../modal/companycreate';
-
+import { deleteCompanyAPI } from '../apis/company/company';
 interface Row {
   companynumber: string;
   company: string;
@@ -12,19 +12,22 @@ interface Row {
 
 interface TopProps {
   data: Row[];
+  onReloadData: () => void; // 새로운 함수 추가
 }
 
-const Top: React.FC<TopProps> = ({ data }) => {
+const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [foundCompany, setFoundCompany] = useState<Row | null>(null);
-
+  const [reloadData, setReloadData] = useState(false); // 추가: 데이터 변경 시에 사용
   const showModal = () => {
     setModalOpen(true);
   };
 
   const handleCancel = () => {
     setModalOpen(false);
+    // onReloadData 함수 호출
+    onReloadData();
   };
 
   const handleSearch = () => {
@@ -33,13 +36,58 @@ const Top: React.FC<TopProps> = ({ data }) => {
     if (foundCompany) {
       setFoundCompany(foundCompany);
     } else {
-      // Set foundCompany to null if no match is found
       setFoundCompany(null);
     }
   };
 
-  // Display the first five companies initially
-  const initialCompanies = data.slice(0, 5);
+  const handleCompanyClick = (clickedCompany: Row) => {
+    setFoundCompany(clickedCompany);
+  };
+
+  const handleDeleteClick = () => {
+    if (foundCompany) {
+      // Call the API to delete the company
+      deleteCompanyAPI(foundCompany.companynumber)
+        .then((response) => {
+          if (response.success) {
+            // Handle successful deletion, e.g., show a message or update the state
+            console.log('Company deleted successfully');
+            setFoundCompany(null); // Clear the selected company after deletion
+            // onReloadData 함수 호출
+            onReloadData();
+          } else {
+            // Handle deletion failure, e.g., show an error message
+            console.error('Company deletion failed:', response.error);
+          }
+        })
+        .catch((error) => {
+          console.error('Error calling deleteCompanyAPI:', error);
+        });
+    }
+  };
+  const showDeleteConfirm = () => {
+    if (foundCompany) {
+      Modal.confirm({
+        title: '사업자 삭제',
+        content: `사업자 ${foundCompany?.company}을(를) 정말로 삭제하시겠습니까?`,
+        onOk() {
+          handleDeleteClick();
+        },
+        onCancel() {
+          // 사용자가 취소를 눌렀을 때의 동작 (아무 동작 없음)
+        },
+      });
+    }
+  };
+  useEffect(() => {
+    // 데이터 변경이 감지되면 다시 렌더링
+    if (reloadData) {
+      setReloadData(false); // 변경 여부 초기화
+      // 여기에서 필요한 상태 업데이트나 추가적인 작업 수행
+      // 예: 다시 데이터를 불러오거나, 상태 업데이트 등
+    }
+  }, [reloadData, data]);
+  const initialCompanies = data.slice(0, 100);
 
   return (
     <>
@@ -90,7 +138,6 @@ const Top: React.FC<TopProps> = ({ data }) => {
               <div style={{ flex: 1, textAlign: 'center' }}>등록일</div>
               <div style={{ flex: 1, textAlign: 'center' }}>사업자대표명</div>
             </div>
-            {/* Display the first five companies initially */}
             {initialCompanies.map((row, index) => (
               <h6
                 key={index}
@@ -102,7 +149,9 @@ const Top: React.FC<TopProps> = ({ data }) => {
                   textAlign: 'center',
                   margin: '0',
                   color: 'gray',
+                  cursor: 'pointer', // Make the div clickable
                 }}
+                onClick={() => handleCompanyClick(row)}
               >
                 <div style={{ flex: 1 }}>{row.company}</div>
                 <div style={{ flex: 1 }}>{row.day}</div>
@@ -112,7 +161,9 @@ const Top: React.FC<TopProps> = ({ data }) => {
           </div>
           <div style={{ height: '120px', display: 'flex', justifyContent: 'end', marginTop: '30px' }}>
             <Button onClick={showModal}>신규등록</Button>
-            <Button style={{ marginLeft: '10px' }}>삭제</Button>
+            <Button style={{ marginLeft: '10px' }} onClick={showDeleteConfirm}>
+              삭제
+            </Button>
             <CompanyCreate open={modalOpen} onCancel={handleCancel} />
           </div>
         </div>
@@ -127,7 +178,6 @@ const Top: React.FC<TopProps> = ({ data }) => {
               boxShadow: '2px 2px 1px 1px lightgray',
             }}
           >
-            {/* Display search prompt if no company is selected */}
             {!foundCompany ? (
               <div
                 style={{
@@ -137,10 +187,9 @@ const Top: React.FC<TopProps> = ({ data }) => {
                   padding: '5px',
                 }}
               >
-                우측에 사업자를 입력해주세요.
+                좌측에 사업자를 입력해주세요.
               </div>
             ) : (
-              /* Display found company information if available */
               <>
                 <div
                   style={{
@@ -160,7 +209,17 @@ const Top: React.FC<TopProps> = ({ data }) => {
                     padding: '5px',
                   }}
                 >
-                  사업자 이름: {foundCompany.companyname}
+                  사업자: {foundCompany.company}
+                </div>
+                <div
+                  style={{
+                    height: '30px',
+                    color: 'gray',
+                    borderBottom: '1px solid lightgray',
+                    padding: '5px',
+                  }}
+                >
+                  대표자 이름: {foundCompany.companyname}
                 </div>
                 <div
                   style={{
@@ -188,7 +247,7 @@ const Top: React.FC<TopProps> = ({ data }) => {
         </div>
 
         <div style={{ width: '25%', marginRight: '100px' }}>
-          <h1>사업자 정보</h1>
+          <h1>버스 정보</h1>
           <div
             style={{
               marginTop: '20px',
@@ -197,7 +256,6 @@ const Top: React.FC<TopProps> = ({ data }) => {
               boxShadow: '2px 2px 1px 1px lightgray',
             }}
           >
-            {/* Display search prompt if no company is selected */}
             {!foundCompany ? (
               <div
                 style={{
@@ -206,11 +264,8 @@ const Top: React.FC<TopProps> = ({ data }) => {
                   borderBottom: '1px solid lightgray',
                   padding: '5px',
                 }}
-              >
-                우측에 사업자를 입력해주세요.
-              </div>
+              ></div>
             ) : (
-              /* Display found company information if available */
               <>
                 <div
                   style={{

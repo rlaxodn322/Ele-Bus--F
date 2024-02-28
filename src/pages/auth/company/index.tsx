@@ -5,6 +5,7 @@ import Table5 from '../../../components/table/table5';
 import { Button } from 'antd'; // Modal과 Form을 추가로 import
 import { useState, useEffect } from 'react';
 import { loadMyInfoAPI } from '@/components/apis/company/company';
+
 import BusCreate from '../../../components/modal/buscreate';
 // import { Page } from './style';
 import styled from '@emotion/styled';
@@ -29,29 +30,25 @@ interface Row {
 const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false); // visible 상태 대
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
-  useEffect(() => {
-    const fetchMyInfo = async () => {
-      try {
-        const myInfoData = await loadMyInfoAPI();
-        // 정비 이력 데이터
-        const maintenanceHistoryData = myInfoData.map(
-          (info: { companynumber: any; company: any; companylocation: any; companyname: any; day: any }) => ({
-            companynumber: info.companynumber,
-            company: info.company,
-            companylocation: info.companylocation,
-            companyname: info.companyname,
-            day: info.day,
-          }),
-        );
-        setMaintenanceHistory(maintenanceHistoryData);
-        // console.log(maintenanceHistory);
-        // 상태 업데이트 이후에 상태를 직접 사용
-      } catch (error) {
-        console.error('데이터 불러오기 오류:', error);
-        // 오류를 적절하게 처리
-      }
-    };
+  const fetchMyInfo = async () => {
+    try {
+      const myInfoData = await loadMyInfoAPI();
+      const maintenanceHistoryData = myInfoData.map(
+        (info: { companynumber: any; company: any; companylocation: any; companyname: any; day: any }) => ({
+          companynumber: info.companynumber,
+          company: info.company,
+          companylocation: info.companylocation,
+          companyname: info.companyname,
+          day: info.day,
+        }),
+      );
+      setMaintenanceHistory(maintenanceHistoryData);
+    } catch (error) {
+      console.error('데이터 불러오기 오류:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchMyInfo();
   }, []);
 
@@ -63,6 +60,8 @@ const MyPage = () => {
   // Modal 닫기 함수
   const handleCancel = () => {
     setModalOpen(false);
+    // 데이터 다시 불러오기
+    fetchMyInfo();
   };
 
   const busDataColumns = ['버스ID', '등록일', '차량번호', '차량등록', '차대번호', '통신모듈', '모델번호'];
@@ -158,7 +157,7 @@ const MyPage = () => {
       </Head>
       <Page>
         <h1>사업자조회/관리</h1>
-        <Top data={maintenanceHistory} />
+        <Top data={maintenanceHistory} onReloadData={fetchMyInfo} />
         <div
           style={{
             width: '100%',

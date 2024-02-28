@@ -35,7 +35,7 @@ const Left: React.FC<LeftProps> = ({ busLocations }) => {
           <div
             style={{
               width: '100%',
-              height: '8%',
+              height: '9%',
               margin: '0',
               position: 'sticky',
               top: 0,
@@ -77,7 +77,7 @@ const Left: React.FC<LeftProps> = ({ busLocations }) => {
                   display: 'flex',
                   flexDirection: 'row',
                   marginTop: '15px',
-                  fontSize: '15px',
+                  fontSize: '13px',
                   fontWeight: 'bold',
                   color: 'gray',
                   borderBottom: '1px solid lightgray',
