@@ -214,14 +214,14 @@ const MyPage = () => {
           }}
         >
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
-            <div style={{ marginLeft: '10px', width: '60%' }}>
+            <div style={{ marginLeft: '10px', width: '100%' }}>
               <h1>부품 리스트</h1>
               <Table7 a="전체 담당자" data={dummyTableData} columns={busDataColumns} />
             </div>
-            <div style={{ width: '40%' }}>
+            {/* <div style={{ width: '40%' }}>
               <h1>고장정보</h1>
               <Table4 data={dummyTableData1} columns={busDataColumns1} />
-            </div>
+            </div> */}
           </div>
         </div>
       </Page>
