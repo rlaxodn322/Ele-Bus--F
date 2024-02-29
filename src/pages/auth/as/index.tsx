@@ -137,7 +137,6 @@ const MyPage = () => {
         }),
       );
       setMaintenanceHistory(maintenanceHistoryData);
-      console.log(maintenanceHistory);
     } catch (error) {
       console.error('데이터 불러오기 오류:', error);
     }

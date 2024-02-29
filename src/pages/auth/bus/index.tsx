@@ -1,5 +1,5 @@
 import MainLayout from '../../../layouts/index';
-import Top from '../../../components/bus/top';
+// import Top from '../../../components/bus/top';
 import TopMiddle from '../../../components/bus/topmiddle';
 import Middle from '../../../components/bus/middle';
 // import { Page } from './style';
@@ -132,7 +132,7 @@ const MyPage = () => {
         <meta name="description" content="Bus" />
       </Head>
       <Page>
-        <Top />
+        {/* <Top /> */}
         <TopMiddle data={data} />
         <Middle data={data} />
       </Page>
