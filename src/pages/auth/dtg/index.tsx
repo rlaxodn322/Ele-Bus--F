@@ -5,9 +5,12 @@ import Table3 from '../../../components/table/table3company';
 import { Button } from 'antd';
 // import { Page } from './style';
 import DtgTable from '../../../components/table/dtgtable';
+import Link from 'next/link';
 import Date from '../../../components/antd/date';
 import styled from '@emotion/styled';
 import Head from 'next/head';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -234,6 +237,15 @@ const MyPage = () => {
     if (!startDate || !endDate) return true;
     return item.user >= startDate && item.user <= endDate;
   });
+  const downloadExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(filteredData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    const data = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const fileName = 'dtg_data.xlsx';
+    saveAs(data, fileName);
+  };
   return (
     <>
       <Head>
@@ -300,8 +312,12 @@ const MyPage = () => {
             {/* 필터링된 데이터를 DtgTable 컴포넌트로 전달 */}
             <DtgTable data={filteredData} columns={busDataColumns} />
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px' }}>
-              <Button style={{ marginRight: '10px' }}>다운로드</Button>
-              <Button>DTG정보제출하기</Button>
+              <Button onClick={downloadExcel} style={{ marginRight: '10px' }}>
+                다운로드
+              </Button>
+              <Link href="http://www.kotsa.or.kr">
+                <Button>DTG정보제출하기</Button>
+              </Link>
             </div>
           </div>
         </div>

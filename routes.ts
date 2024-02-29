@@ -47,7 +47,7 @@ export const routes = [
   {
     router: '/auth/login',
     active: '/icons/sidebar/user_active.svg',
-    default: '/icons/sidebar/user_default.svg',
+    default: '/icons/sidebar/user_active.svg',
     name: 'Login',
   },
 ];
