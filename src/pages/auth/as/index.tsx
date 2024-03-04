@@ -1,6 +1,6 @@
 import MainLayout from '../../../layouts/index';
 import InputButton from '../../../components/inputbutton/inputbutton';
-import Table7 from '../../../components/table/table7';
+import ASTable7 from '../../../components/table/astable7';
 import Table3 from '../../../components/table/table3';
 import DivBox from '../../../components/div/divbox';
 import NewItem from '../../../components/input/newItem';
@@ -24,100 +24,6 @@ const Page = styled.section`
 const busDataColumns = ['부품번호', '날짜', '부품위치', '창고위치', '요청시간', '담당자', '부품'];
 
 const busDataColumns2 = ['등록일자', '담당이름', '부품'];
-const dummyTableData = [
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'itemID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-
-  // Add more dummy data as needed
-];
 
 const MyPage = () => {
   const [maintenanceHistory, setMaintenanceHistory] = useState<MaintenanceHistoryItem[]>([]);
@@ -211,7 +117,7 @@ const MyPage = () => {
 
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
             <InputButton a="부품 관리" name="부품 번호 검색" onChange={handleInputButtonChange} />
-            {selectedPart ? (
+            {selectedPart !== null ? (
               <DivBox
                 a={selectedPart.number}
                 b={selectedPart.name}
@@ -219,7 +125,9 @@ const MyPage = () => {
                 d={selectedPart.memo}
                 e={selectedPart.status}
               />
-            ) : null}
+            ) : (
+              <EmptyDivBox />
+            )}
           </div>
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
             <NewItem
@@ -245,7 +153,7 @@ const MyPage = () => {
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ marginLeft: '10px', width: '100%' }}>
               <h1>부품 리스트</h1>
-              <Table7 a="전체 담당자" data={dummyTableData} columns={busDataColumns} />
+              <ASTable7 a="전체 담당자" data={maintenanceHistory} columns={busDataColumns} />
             </div>
           </div>
         </div>
@@ -257,3 +165,69 @@ const MyPage = () => {
 MyPage.layout = MainLayout;
 
 export default MyPage;
+const EmptyDivBox = () => (
+  <div>
+    <div style={{ color: 'gray' }}>
+      <div
+        style={{
+          width: '80%',
+          height: '30px',
+          border: '1px solid lightgray',
+          borderRadius: '5px',
+          margin: '0 auto',
+          marginTop: '10px',
+        }}
+      >
+        부품번호:
+      </div>
+      <div
+        style={{
+          width: '80%',
+          height: '30px',
+          border: '1px solid lightgray',
+          borderRadius: '5px',
+          margin: '0 auto',
+          marginTop: '10px',
+        }}
+      >
+        담당 이름:
+      </div>
+      <div
+        style={{
+          width: '80%',
+          height: '30px',
+          border: '1px solid lightgray',
+          borderRadius: '5px',
+          margin: '0 auto',
+          marginTop: '10px',
+        }}
+      >
+        등록일자:
+      </div>
+      <div
+        style={{
+          width: '80%',
+          height: '30px',
+          border: '1px solid lightgray',
+          borderRadius: '5px',
+          margin: '0 auto',
+          marginTop: '10px',
+        }}
+      >
+        부품이름:
+      </div>
+      <div
+        style={{
+          width: '80%',
+          height: '30px',
+          border: '1px solid lightgray',
+          borderRadius: '5px',
+          margin: '0 auto',
+          marginTop: '10px',
+        }}
+      >
+        기타사항:
+      </div>
+    </div>
+  </div>
+);

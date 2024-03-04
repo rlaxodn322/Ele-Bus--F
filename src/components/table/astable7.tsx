@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { Cascader } from 'antd';
 
-interface Row {
-  user: string;
-  registrationDate: string;
+interface MaintenanceHistoryItem {
+  registrationDate: any;
+  number: string;
+  name: string;
+  date: string;
+  memo: string;
   status: string;
-  status1: string;
-  status2: string;
-  status3: string;
-  status4: string;
 }
 
 interface CardProps {
-  data: Row[];
+  data: MaintenanceHistoryItem[];
   columns: string[];
   a?: string;
 }
@@ -47,7 +46,7 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
   const sortedEventHistory = [...data]
     .filter(
       (row) =>
-        (!filterDate || row.registrationDate.includes(filterDate)) && (!filterStatus3 || row.status3 === filterStatus3),
+        (!filterDate || row.registrationDate.includes(filterDate)) && (!filterStatus3 || row.momo === filterStatus3),
     )
     .sort((a, b) => {
       const dateA = parseDate(a.registrationDate);
@@ -72,7 +71,7 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
   });
 
   // Options for the Cascader filtering by status3
-  const status3Options = Array.from(new Set(data.map((row) => row.status3)));
+  const status3Options = Array.from(new Set(data.map((row) => row.memo)));
 
   return (
     <>
@@ -162,13 +161,13 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
                 color: 'gray',
               }}
             >
-              <div style={{ flex: 1 }}>{row.user}</div>
-              <div style={{ flex: 1 }}>{row.registrationDate}</div>
+              <div style={{ flex: 1 }}>{row.number}</div>
+              <div style={{ flex: 1 }}>{row.date}</div>
+              <div style={{ flex: 1 }}>경기</div>
               <div style={{ flex: 1 }}>{row.status}</div>
-              <div style={{ flex: 1 }}>{row.status1}</div>
-              <div style={{ flex: 1 }}>{row.status2}</div>
-              <div style={{ flex: 1 }}>{row.status3}</div>
-              <div style={{ flex: 1 }}>{row.status4}</div>
+              <div style={{ flex: 1 }}>1시30분</div>
+              <div style={{ flex: 1 }}>{row.name}</div>
+              <div style={{ flex: 1 }}>{row.memo}</div>
             </h6>
           ))}
         </div>
