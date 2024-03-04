@@ -8,7 +8,13 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import { loadMyInfoAPI } from '@/components/apis/item/item';
 import { useEffect, useState } from 'react';
-
+interface MaintenanceHistoryItem {
+  number: string;
+  name: string;
+  date: string;
+  memo: string;
+  status: string;
+}
 const Page = styled.section`
   width: 1370px;
   height: 100%;
@@ -114,39 +120,33 @@ const dummyTableData = [
 ];
 
 const MyPage = () => {
-  const [maintenanceHistory, setMaintenanceHistory] = useState([]);
-  const [selectedPart, setSelectedPart] = useState(null); // 선택된 부품 정보를 저장하기 위한 상태
+  const [maintenanceHistory, setMaintenanceHistory] = useState<MaintenanceHistoryItem[]>([]);
+  const [selectedPart, setSelectedPart] = useState<MaintenanceHistoryItem | null>(null);
   const [searchedNumber, setSearchedNumber] = useState(''); // 검색한 부품번호를 저장하기 위한 상태
 
-  const fetchPartInfo = async (partNumber: string) => {
-    try {
-      // 부품 번호에 해당하는 정보를 가져오는 API 함수를 가정
-      const partInfo = await loadMyInfoAPI(partNumber);
-      console.log(partNumber, partInfo); // 확인용으로 로그 출력
-      setSelectedPart(partInfo ? [partInfo] : []); // 부품번호에 해당하는 정보가 있으면 배열로
-      findSelectedPart(); // 부품 정보를 불러온 후에 선택된 부품을 찾음
-    } catch (error) {
-      console.error('부품 정보 불러오기 오류:', error);
-    }
-  };
   const handleInputButtonChange = async (value: string) => {
-    console.log(value); // 확인용
-    fetchPartInfo(value);
     setSearchedNumber(value);
   };
+  useEffect(() => {
+    if (searchedNumber && maintenanceHistory.length > 0) {
+      const foundPart = maintenanceHistory.find((part) => part.number === searchedNumber);
+      setSelectedPart(foundPart || null);
+    }
+  }, [searchedNumber, maintenanceHistory]);
+
   const findSelectedPart = () => {
     // 검색한 부품번호를 이용하여 선택된 부품 찾기
     if (searchedNumber && maintenanceHistory.length > 0) {
       const foundPart = maintenanceHistory.find((part) => part.number === searchedNumber);
       setSelectedPart(foundPart || null);
+      console.log(selectedPart);
     }
   };
-
   const fetchMyInfo = async () => {
     try {
       // 기존 로직을 사용하여 A/S 정보를 가져옴
       const myInfoData = await loadMyInfoAPI();
-      const maintenanceHistoryData = myInfoData.map(
+      const maintenanceHistoryData: MaintenanceHistoryItem[] = myInfoData.map(
         (info: { number: any; name: any; date: any; memo: any; status: any }) => ({
           number: info.number,
           name: info.name,
@@ -211,7 +211,7 @@ const MyPage = () => {
 
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
             <InputButton a="부품 관리" name="부품 번호 검색" onChange={handleInputButtonChange} />
-            {selectedPart && (
+            {selectedPart ? (
               <DivBox
                 a={selectedPart.number}
                 b={selectedPart.name}
@@ -219,7 +219,7 @@ const MyPage = () => {
                 d={selectedPart.memo}
                 e={selectedPart.status}
               />
-            )}
+            ) : null}
           </div>
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
             <NewItem

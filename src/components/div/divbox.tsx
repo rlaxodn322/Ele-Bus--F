@@ -10,7 +10,7 @@ interface DivBoxprops {
 const DivBox: React.FC<DivBoxprops> = ({ a, b, c, d, e }) => {
   return (
     <>
-      <div style={{ color: 'lightgray' }}>
+      <div style={{ color: 'gray' }}>
         <div
           style={{
             width: '80%',
@@ -21,7 +21,7 @@ const DivBox: React.FC<DivBoxprops> = ({ a, b, c, d, e }) => {
             marginTop: '10px',
           }}
         >
-          {a}
+          부품번호: {a}
         </div>
         <div
           style={{
@@ -33,7 +33,7 @@ const DivBox: React.FC<DivBoxprops> = ({ a, b, c, d, e }) => {
             marginTop: '10px',
           }}
         >
-          {b}
+          담당 이름: {b}
         </div>
         <div
           style={{
@@ -45,7 +45,7 @@ const DivBox: React.FC<DivBoxprops> = ({ a, b, c, d, e }) => {
             marginTop: '10px',
           }}
         >
-          {c}
+          등록일자: {c}
         </div>
         <div
           style={{
@@ -57,7 +57,7 @@ const DivBox: React.FC<DivBoxprops> = ({ a, b, c, d, e }) => {
             marginTop: '10px',
           }}
         >
-          {d}
+          부품이름: {d}
         </div>
         <div
           style={{
@@ -69,7 +69,7 @@ const DivBox: React.FC<DivBoxprops> = ({ a, b, c, d, e }) => {
             marginTop: '10px',
           }}
         >
-          {e}
+          기타사항: {e}
         </div>
       </div>
       <Button3 a="편집" b="삭제" c="취소" />
