@@ -15,7 +15,7 @@ interface Row {
 const Page = styled.section`
   width: 1370px;
   height: 730px;
-  margin: 30px auto;
+  margin: auto;
   display: flex;
   justify-content: space-between;
 `;
@@ -23,24 +23,24 @@ const Page = styled.section`
 const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
-  useEffect(() => {
-    const fetchMyInfo = async () => {
-      try {
-        const myInfoData = await loadMyInfoAPI();
-        // 정비 이력 데이터
-        const maintenanceHistoryData = myInfoData.map((info: { day: any; detail: any; status: any }) => ({
-          day: info.day,
-          detail: info.detail,
-          status: info.status || '',
-        }));
-        setMaintenanceHistory(maintenanceHistoryData);
-        // 상태 업데이트 이후에 상태를 직접 사용
-      } catch (error) {
-        console.error('데이터 불러오기 오류:', error);
-        // 오류를 적절하게 처리
-      }
-    };
 
+  const fetchMyInfo = async () => {
+    try {
+      const myInfoData = await loadMyInfoAPI();
+      // 정비 이력 데이터
+      const maintenanceHistoryData = myInfoData.map((info: { day: any; detail: any; status: any }) => ({
+        day: info.day,
+        detail: info.detail,
+        status: info.status || '',
+      }));
+      setMaintenanceHistory(maintenanceHistoryData);
+      // 상태 업데이트 이후에 상태를 직접 사용
+    } catch (error) {
+      console.error('데이터 불러오기 오류:', error);
+      // 오류를 적절하게 처리
+    }
+  };
+  useEffect(() => {
     fetchMyInfo();
   }, []);
 
@@ -50,6 +50,7 @@ const MyPage = () => {
 
   const handleCancel = () => {
     setModalOpen(false);
+    fetchMyInfo();
   };
 
   return (
@@ -58,7 +59,9 @@ const MyPage = () => {
         <title>Bus 관리 페이지</title>
         <meta name="description" content="Bus" />
       </Head>
-      <h1 style={{ marginLeft: '230px' }}>자동차 정비 및 부품교체 이력</h1>
+      <div style={{ width: '1370px', margin: '0 auto', display: 'flex', justifyContent: 'flex-start' }}>
+        <h1>자동차 정비 및 부품교체 이력</h1>
+      </div>
       <Page>
         <div style={{ width: '30%', height: '100%' }}>
           <h3>정비 이력</h3>
