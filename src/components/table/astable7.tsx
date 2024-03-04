@@ -16,26 +16,14 @@ interface CardProps {
   a?: string;
 }
 const parseDate = (dateString: string): number => {
-  if (!dateString || typeof dateString !== 'string') {
-    // dateString이 정의되지 않았거나 문자열이 아닌 경우 0을 반환
+  const [year, month, day] = dateString.split('-');
+
+  // If any part of the date is not a valid number, return 0
+  if (isNaN(Number(year)) || isNaN(Number(month)) || isNaN(Number(day))) {
     return 0;
   }
 
-  const parts = dateString.split('/');
-  const datePart = parts[0];
-  const timePart = parts[1];
-
-  if (!datePart || datePart.length < 5) {
-    // Handle the case where datePart is invalid or too short
-    return 0;
-  }
-
-  const [year, monthDay] = datePart.split('-');
-  const [month, day] = [monthDay.slice(0, 2), monthDay.slice(2)];
-
-  const [hour, minute] = timePart.split(':');
-
-  return new Date(`${year}-${month}-${day}T${hour}:${minute}`).getTime();
+  return new Date(`${year}-${month}-${day}`).getTime();
 };
 const Card: React.FC<CardProps> = ({ data, columns, a }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
@@ -46,11 +34,11 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
   const sortedEventHistory = [...data]
     .filter(
       (row) =>
-        (!filterDate || row.registrationDate.includes(filterDate)) && (!filterStatus3 || row.momo === filterStatus3),
+        (!filterDate || (row.date && row.date.includes(filterDate))) && (!filterStatus3 || row.memo === filterStatus3),
     )
     .sort((a, b) => {
-      const dateA = parseDate(a.registrationDate);
-      const dateB = parseDate(b.registrationDate);
+      const dateA = a.date ? parseDate(a.date) : 0;
+      const dateB = b.date ? parseDate(b.date) : 0;
 
       if (sortingOrder === 'oldest') {
         return dateA - dateB;
@@ -58,7 +46,7 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
         return dateB - dateA;
       }
     });
-
+  // sortedEventHistory1 정렬 부분 수정
   const sortedEventHistory1 = [...columns].sort((a, b) => {
     const dateA = parseDate(a);
     const dateB = parseDate(b);
