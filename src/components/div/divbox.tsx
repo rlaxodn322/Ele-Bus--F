@@ -1,4 +1,5 @@
 import React from 'react';
+import Button3 from '../../components/button/button3';
 interface DivBoxprops {
   a?: string; // 'a' 속성을 선택적으로 받도록 변경
   b?: string; // 'b' 속성을 선택적으로 받도록 변경
@@ -71,6 +72,7 @@ const DivBox: React.FC<DivBoxprops> = ({ a, b, c, d, e }) => {
           {e}
         </div>
       </div>
+      <Button3 a="편집" b="삭제" c="취소" />
     </>
   );
 };

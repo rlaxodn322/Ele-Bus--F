@@ -5,7 +5,6 @@ import Table5 from '../../../components/table/table5';
 import { Button } from 'antd'; // Modal과 Form을 추가로 import
 import { useState, useEffect } from 'react';
 import { loadMyInfoAPI } from '@/components/apis/company/company';
-
 import BusCreate from '../../../components/modal/buscreate';
 // import { Page } from './style';
 import styled from '@emotion/styled';
@@ -30,6 +29,7 @@ interface Row {
 const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false); // visible 상태 대
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
+
   const fetchMyInfo = async () => {
     try {
       const myInfoData = await loadMyInfoAPI();
@@ -122,6 +122,33 @@ const MyPage = () => {
       status3: 'RSVP123',
       status4: 'AAA123',
     },
+    {
+      user: 'busID',
+      registrationDate: '2023-1108/08:30',
+      status: '경기11바1234',
+      status1: '2024-01-01',
+      status2: '1123456-122',
+      status3: 'RSVP123',
+      status4: 'AAA123',
+    },
+    {
+      user: 'busID',
+      registrationDate: '2023-1108/08:30',
+      status: '경기11바1234',
+      status1: '2024-01-01',
+      status2: '1123456-122',
+      status3: 'RSVP123',
+      status4: 'AAA123',
+    },
+    {
+      user: 'busID',
+      registrationDate: '2023-1108/08:30',
+      status: '경기11바1234',
+      status1: '2024-01-01',
+      status2: '1123456-122',
+      status3: 'RSVP123',
+      status4: 'AAA123',
+    },
 
     // Add more dummy data as needed
   ];
@@ -139,6 +166,48 @@ const MyPage = () => {
       status: '60kw',
       status1: '600kw',
       status2: '급속A123',
+    },
+    {
+      user: 'chargerID',
+      registrationDate: '2023-1108/08:30',
+      status: '60kw',
+      status1: '600kw',
+      status2: '급속A125',
+    },
+    {
+      user: 'chargerID',
+      registrationDate: '2023-1108/08:30',
+      status: '60kw',
+      status1: '600kw',
+      status2: '급속A125',
+    },
+    {
+      user: 'chargerID',
+      registrationDate: '2023-1108/08:30',
+      status: '60kw',
+      status1: '600kw',
+      status2: '급속A125',
+    },
+    {
+      user: 'chargerID',
+      registrationDate: '2023-1108/08:30',
+      status: '60kw',
+      status1: '600kw',
+      status2: '급속A125',
+    },
+    {
+      user: 'chargerID',
+      registrationDate: '2023-1108/08:30',
+      status: '60kw',
+      status1: '600kw',
+      status2: '급속A125',
+    },
+    {
+      user: 'chargerID',
+      registrationDate: '2023-1108/08:30',
+      status: '60kw',
+      status1: '600kw',
+      status2: '급속A125',
     },
     {
       user: 'chargerID',

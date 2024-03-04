@@ -1,12 +1,8 @@
 import MainLayout from '../../../layouts/index';
-// import { Page } from './style';
 import InputButton from '../../../components/inputbutton/inputbutton';
 import Table7 from '../../../components/table/table7';
-import Table4 from '../../../components/table/talbe4';
 import Table3 from '../../../components/table/table3';
 import DivBox from '../../../components/div/divbox';
-import Button3 from '../../../components/button/button3';
-// import Button2 from '../../../components/button/button2';
 import NewItem from '../../../components/input/newItem';
 import styled from '@emotion/styled';
 import Head from 'next/head';
@@ -20,56 +16,11 @@ const Page = styled.section`
 `;
 
 const busDataColumns = ['부품번호', '날짜', '부품위치', '창고위치', '요청시간', '담당자', '부품'];
-const busDataColumns1 = ['날짜', '위치', '버스ID', '고장'];
-const busDataColumns2 = ['등록일자', '담당이름', '부품명'];
+
+const busDataColumns2 = ['등록일자', '담당이름', '부품'];
 const dummyTableData = [
   {
-    user: 'busID',
-    registrationDate: '2023-1108/08:30',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '이카플러그',
-    status4: '전원',
-  },
-  {
-    user: 'busID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '이카플러그',
-    status4: '전원',
-  },
-  {
-    user: 'busID',
-    registrationDate: '2023-1108/08:25',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '전원',
-  },
-  {
-    user: 'busID',
-    registrationDate: '2023-1108/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '바퀴',
-  },
-  {
-    user: 'busID',
-    registrationDate: '2023-1105/08:31',
-    status: 'AREA',
-    status1: 'A001',
-    status2: '1시간30분',
-    status3: '퍼스트씨앤디',
-    status4: '통신',
-  },
-  {
-    user: 'busID',
+    user: 'itemID',
     registrationDate: '2023-1108/08:31',
     status: 'AREA',
     status1: 'A001',
@@ -77,45 +28,86 @@ const dummyTableData = [
     status3: '퍼스트씨앤디',
     status4: '전원',
   },
-
-  // Add more dummy data as needed
-];
-const dummyTableData1 = [
   {
-    registrationDate: '2023-1108/08:30',
-    user: 'AREA',
-    status: 'A002',
-    status2: '전원불량',
-  },
-  {
-    registrationDate: '2023-1108/08:30',
-    user: 'AREA',
-    status: 'A002',
-    status2: '전원불량',
-  },
-  {
-    registrationDate: '2023-1108/08:30',
-    user: 'AREA',
-    status: 'A002',
-    status2: '전원불량',
-  },
-  {
-    registrationDate: '2023-1108/08:30',
-    user: 'AREA',
-    status: 'A002',
-    status2: '전원불량',
-  },
-  {
-    registrationDate: '2023-1108/08:30',
-    user: 'AREA',
-    status: 'A002',
-    status2: '전원불량',
-  },
-  {
+    user: 'itemID',
     registrationDate: '2023-1108/08:31',
-    user: 'AREA',
-    status: 'A002',
-    status2: '전원불량',
+    status: 'AREA',
+    status1: 'A001',
+    status2: '1시간30분',
+    status3: '퍼스트씨앤디',
+    status4: '전원',
+  },
+  {
+    user: 'itemID',
+    registrationDate: '2023-1108/08:31',
+    status: 'AREA',
+    status1: 'A001',
+    status2: '1시간30분',
+    status3: '퍼스트씨앤디',
+    status4: '전원',
+  },
+  {
+    user: 'itemID',
+    registrationDate: '2023-1108/08:31',
+    status: 'AREA',
+    status1: 'A001',
+    status2: '1시간30분',
+    status3: '퍼스트씨앤디',
+    status4: '전원',
+  },
+  {
+    user: 'itemID',
+    registrationDate: '2023-1108/08:31',
+    status: 'AREA',
+    status1: 'A001',
+    status2: '1시간30분',
+    status3: '퍼스트씨앤디',
+    status4: '전원',
+  },
+  {
+    user: 'itemID',
+    registrationDate: '2023-1108/08:31',
+    status: 'AREA',
+    status1: 'A001',
+    status2: '1시간30분',
+    status3: '퍼스트씨앤디',
+    status4: '전원',
+  },
+  {
+    user: 'itemID',
+    registrationDate: '2023-1108/08:31',
+    status: 'AREA',
+    status1: 'A001',
+    status2: '1시간30분',
+    status3: '퍼스트씨앤디',
+    status4: '전원',
+  },
+  {
+    user: 'itemID',
+    registrationDate: '2023-1108/08:31',
+    status: 'AREA',
+    status1: 'A001',
+    status2: '1시간30분',
+    status3: '퍼스트씨앤디',
+    status4: '전원',
+  },
+  {
+    user: 'itemID',
+    registrationDate: '2023-1108/08:31',
+    status: 'AREA',
+    status1: 'A001',
+    status2: '1시간30분',
+    status3: '퍼스트씨앤디',
+    status4: '전원',
+  },
+  {
+    user: 'itemID',
+    registrationDate: '2023-1108/08:31',
+    status: 'AREA',
+    status1: 'A001',
+    status2: '1시간30분',
+    status3: '퍼스트씨앤디',
+    status4: '전원',
   },
 
   // Add more dummy data as needed
@@ -123,9 +115,36 @@ const dummyTableData1 = [
 
 const MyPage = () => {
   const [maintenanceHistory, setMaintenanceHistory] = useState([]);
+  const [selectedPart, setSelectedPart] = useState(null); // 선택된 부품 정보를 저장하기 위한 상태
+  const [searchedNumber, setSearchedNumber] = useState(''); // 검색한 부품번호를 저장하기 위한 상태
+
+  const fetchPartInfo = async (partNumber: string) => {
+    try {
+      // 부품 번호에 해당하는 정보를 가져오는 API 함수를 가정
+      const partInfo = await loadMyInfoAPI(partNumber);
+      console.log(partNumber, partInfo); // 확인용으로 로그 출력
+      setSelectedPart(partInfo ? [partInfo] : []); // 부품번호에 해당하는 정보가 있으면 배열로
+      findSelectedPart(); // 부품 정보를 불러온 후에 선택된 부품을 찾음
+    } catch (error) {
+      console.error('부품 정보 불러오기 오류:', error);
+    }
+  };
+  const handleInputButtonChange = async (value: string) => {
+    console.log(value); // 확인용
+    fetchPartInfo(value);
+    setSearchedNumber(value);
+  };
+  const findSelectedPart = () => {
+    // 검색한 부품번호를 이용하여 선택된 부품 찾기
+    if (searchedNumber && maintenanceHistory.length > 0) {
+      const foundPart = maintenanceHistory.find((part) => part.number === searchedNumber);
+      setSelectedPart(foundPart || null);
+    }
+  };
 
   const fetchMyInfo = async () => {
     try {
+      // 기존 로직을 사용하여 A/S 정보를 가져옴
       const myInfoData = await loadMyInfoAPI();
       const maintenanceHistoryData = myInfoData.map(
         (info: { number: any; name: any; date: any; memo: any; status: any }) => ({
@@ -137,6 +156,8 @@ const MyPage = () => {
         }),
       );
       setMaintenanceHistory(maintenanceHistoryData);
+      // 부품 정보 불러온 후에 선택된 부품을 찾음
+      findSelectedPart();
     } catch (error) {
       console.error('데이터 불러오기 오류:', error);
     }
@@ -150,13 +171,14 @@ const MyPage = () => {
     // 여기에 신규 부품 입력이 완료된 후의 로직을 구현합니다.
     console.log('입력 완료:', values);
     // 필요한 로직을 추가하세요.
+    // 새로운 부품이 추가되었으므로 다시 데이터를 불러와서 상태를 업데이트합니다.
+    fetchMyInfo();
   };
   const handleInput5Cancel = () => {
     // 여기에 취소 버튼이 클릭되었을 때의 로직을 구현합니다.
     console.log('입력 취소');
     // 필요한 로직을 추가하세요.
   };
-
   return (
     <>
       <Head>
@@ -188,9 +210,16 @@ const MyPage = () => {
           </div>
 
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
-            <InputButton a="부품 관리" name="부품 번호 검색" onChange={function (): void {}} />
-            <DivBox a="부품번호" b="담당자 이름" c="등록일자" d="부품이름" e="기타사항" />
-            <Button3 a="편집" b="삭제" c="취소" />
+            <InputButton a="부품 관리" name="부품 번호 검색" onChange={handleInputButtonChange} />
+            {selectedPart && (
+              <DivBox
+                a={selectedPart.number}
+                b={selectedPart.name}
+                c={selectedPart.date}
+                d={selectedPart.memo}
+                e={selectedPart.status}
+              />
+            )}
           </div>
           <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
             <NewItem
@@ -218,10 +247,6 @@ const MyPage = () => {
               <h1>부품 리스트</h1>
               <Table7 a="전체 담당자" data={dummyTableData} columns={busDataColumns} />
             </div>
-            {/* <div style={{ width: '40%' }}>
-              <h1>고장정보</h1>
-              <Table4 data={dummyTableData1} columns={busDataColumns1} />
-            </div> */}
           </div>
         </div>
       </Page>
@@ -230,21 +255,5 @@ const MyPage = () => {
 };
 
 MyPage.layout = MainLayout;
-// eslint-disable-next-line no-unused-vars
-// export const getServerSideProps = async () => {
-//   const queryClient = new QueryClient();
-
-//   await queryClient.prefetchQuery({
-//     queryKey: ['user'],
-//     queryFn: loadMyInfoAPI,
-//   });
-
-//   return {
-//     props: {
-//       // dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
-//       items: JSON.parse(JSON.stringify(dehydrate(queryClient))),
-//     },
-//   };
-// };
 
 export default MyPage;

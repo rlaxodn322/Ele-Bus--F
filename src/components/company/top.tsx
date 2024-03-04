@@ -285,7 +285,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
                     padding: '5px',
                   }}
                 >
-                  사업자 이름: {foundCompany.companyname}
+                  대표자 이름: {foundCompany.companyname}
                 </div>
                 <div
                   style={{

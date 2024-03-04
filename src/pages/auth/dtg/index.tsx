@@ -315,7 +315,7 @@ const MyPage = () => {
               <Button onClick={downloadExcel} style={{ marginRight: '10px' }}>
                 다운로드
               </Button>
-              <Link href="http://www.kotsa.or.kr">
+              <Link href="https://www.kotsa.or.kr/main.do">
                 <Button>DTG정보제출하기</Button>
               </Link>
             </div>
