@@ -6,6 +6,7 @@ import EventModal from '../../../../components/modal/event';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import { loadMyInfoAPI } from '../../../../components/apis/event/event';
+
 interface Row {
   day: string;
   detail: string;

@@ -14,6 +14,7 @@ interface MaintenanceHistoryItem {
   date: string;
   memo: string;
   status: string;
+  registrationDate: string; // 적절한 속성 이름으로 업데이트합니다.
 }
 const Page = styled.section`
   width: 1370px;

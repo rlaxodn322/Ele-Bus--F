@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Cascader, Input } from 'antd';
+import { Cascader, Input, Modal, message } from 'antd';
+import { deleteEventAPI } from '../apis/event/event';
 
 interface Row {
+  id: any;
   day: string;
   detail: string;
   status: string;
@@ -50,6 +52,44 @@ const Card: React.FC<CardProps> = ({ data }) => {
 
     setDisplayedRows(sortedRows);
   }, [data, searchKeyword, filterDate, sortingOrder]);
+
+  const handleDeleteClick = (index: number) => {
+    // 사용자에게 확인 메시지 표시
+    Modal.confirm({
+      title: '삭제 확인',
+      content: '삭제하시겠습니까?',
+      onOk: () => {
+        // 확인 버튼을 눌렀을 때 수행할 로직
+        deleteRow(index);
+      },
+      onCancel: () => {
+        // 취소 버튼을 눌렀을 때 수행할 로직
+      },
+    });
+  };
+  const deleteRow = async (index: number) => {
+    try {
+      // 선택한 행 삭제 로직 추가
+      const deletedEventId = displayedRows[index]?.id; // 이벤트의 ID를 사용한다고 가정
+      if (!deletedEventId) {
+        console.error('이벤트 ID가 없습니다.');
+        console.log(deletedEventId);
+        return;
+      }
+
+      await deleteEventAPI(deletedEventId);
+
+      // 삭제 성공 시 메시지 표시 및 상태 업데이트
+      message.success('이벤트가 성공적으로 삭제되었습니다.');
+      const updatedRows = [...displayedRows];
+      updatedRows.splice(index, 1);
+      setDisplayedRows(updatedRows);
+    } catch (error) {
+      // 삭제 실패 시 에러 메시지 표시
+      message.error('이벤트 삭제 중 오류가 발생했습니다.');
+      console.error('이벤트 삭제 오류:', error);
+    }
+  };
 
   return (
     <>
@@ -102,12 +142,29 @@ const Card: React.FC<CardProps> = ({ data }) => {
                 borderBottom: '1px dashed lightgray',
                 margin: '0',
                 color: 'gray',
+                backgroundColor: 'white',
+                cursor: 'pointer',
+                position: 'relative',
               }}
             >
-              <div style={{ margin: '10px', fontSize: '13px' }}>
-                <h3>날짜: {row.day}</h3>
-                <h3>정비 내용: {row.detail}</h3>
-                <h3>비고: {row.status}</h3>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
+                <div style={{ margin: '10px', fontSize: '13px' }}>
+                  <h3>날짜: {row.day}</h3>
+                  <h3>정비 내용: {row.detail}</h3>
+                  <h3>비고: {row.status}</h3>
+                </div>
+                <div
+                  style={{ position: 'absolute', top: '5px', right: '5px', cursor: 'pointer' }}
+                  onClick={() => handleDeleteClick(index)}
+                >
+                  X
+                </div>
               </div>
             </div>
           ))}

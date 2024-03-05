@@ -15,9 +15,10 @@ export function signUpAPI(data: any) {
   console.log('등록', data);
   return axios.post('/event', data).then((response) => response.data);
 }
-export function deleteEventAPI(id: string) {
+// eslint-disable-next-line no-undef
+export function deleteEventAPI(id: BigInteger) {
   console.log('이벤트 삭제', id);
-  return axios.delete(`/event/${id}`).then((response) => response.data);
+  return axios.delete(`/event/${id}`).then((response) => response.data.id);
 }
 // // 회원 삭제 API
 // export function deleteUserAPI(email: string) {

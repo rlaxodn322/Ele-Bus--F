@@ -71,7 +71,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
       <div
         style={{
           width: '99%',
-          height: '80%',
+          height: '300px',
           borderRadius: '10px',
         }}
       >
@@ -116,7 +116,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
           style={{
             border: '1px solid lightgray',
             width: '100%',
-            height: '250px',
+            height: '240px',
             marginTop: '5px',
             borderRadius: '10px',
             overflowY: 'auto',
