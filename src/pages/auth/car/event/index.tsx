@@ -110,7 +110,6 @@ const MyPage = () => {
     </>
   );
 };
-
 MyPage.layout = MainLayout;
 
 export default MyPage;
