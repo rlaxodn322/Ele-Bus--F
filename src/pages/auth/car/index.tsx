@@ -144,7 +144,9 @@ const MyPage = () => {
               background: 'white',
             }}
           >
-            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>123호 1234</h1>
+            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>
+              <br></br>
+            </h1>
             <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '100px' }}>
               <Link href="./dtg">

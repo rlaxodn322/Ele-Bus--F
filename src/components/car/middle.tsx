@@ -90,7 +90,7 @@ const Middle = () => {
             </div>
           ))}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '400px', marginRight: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '415px', marginRight: '10px' }}>
           <Link href="./car/event">
             <Button>정비이력조회</Button>
           </Link>
