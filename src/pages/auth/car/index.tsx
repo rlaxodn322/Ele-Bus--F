@@ -128,7 +128,9 @@ const MyPage = () => {
               background: 'white',
             }}
           >
-            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>4403 </h1>
+            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>
+              <br></br>
+            </h1>
 
             <Middle />
           </div>
@@ -160,7 +162,7 @@ const MyPage = () => {
               overflowY: 'auto',
             }}
           >
-            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>4403 노선</h1>
+            <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}> 노선</h1>
             <div
               style={{
                 width: '100%',

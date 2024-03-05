@@ -16,7 +16,6 @@ const Left: React.FC<LeftProps> = ({ busLocations }) => {
     { Header: '운행노선', accessor: 'routeId' },
     { Header: '차량번호', accessor: 'plateNo' },
     { Header: '정류소', accessor: 'stationId' },
-    { Header: '빈자리수', accessor: 'remainSeatCnt' },
   ];
 
   return (

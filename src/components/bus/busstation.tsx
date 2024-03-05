@@ -14,7 +14,7 @@ interface MyComponentProps {
 const MyComponent: React.FC<MyComponentProps> = ({ stations, busLocations }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <ul style={{ listStyle: 'none', padding: 5 }}>
         {stations.map((station, index) => (
           <li key={index} style={{ display: 'flex', alignItems: 'center', position: 'relative', marginBottom: '20px' }}>
             <div style={{ marginRight: '20px' }}>
