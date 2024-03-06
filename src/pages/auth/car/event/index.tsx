@@ -266,7 +266,7 @@ const MyPage = () => {
   return (
     <>
       <Head>
-        <title>Bus 관리 페이지</title>
+        <title>자동차 정비 이력페이지</title>
         <meta name="description" content="Bus" />
       </Head>
       <div style={{ width: '1370px', margin: '0 auto', display: 'flex', justifyContent: 'flex-start' }}>

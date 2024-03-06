@@ -25,7 +25,7 @@ const parseDate = (dateString: string): number => {
 
   return new Date(`${year}-${month}-${day}`).getTime();
 };
-const Card: React.FC<CardProps> = ({ data, columns, a }) => {
+const Card: React.FC<CardProps> = ({ data, columns }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1] = useState<string | string[]>(['latest']);
   const [filterDate] = useState<string | null>(null);
@@ -93,7 +93,7 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
           {/* Cascader for filtering by status3 */}
           <Cascader
             options={[
-              { value: 'all', label: a },
+              { value: 'all', label: '전체부품' },
               ...status3Options.map((option) => ({ value: option, label: option })),
             ]}
             onChange={(value) => {

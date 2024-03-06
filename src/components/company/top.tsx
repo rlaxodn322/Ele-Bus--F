@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Input, Modal } from 'antd';
 import CompanyCreate from '../modal/companycreate';
 import { deleteCompanyAPI } from '../apis/company/company';
+
 interface Row {
   companynumber: string;
   company: string;
