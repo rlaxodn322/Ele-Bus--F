@@ -98,8 +98,8 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
     borderRadius: '5px',
     boxShadow: '2px 2px 1px 1px lightgray',
     padding: '10px',
+    marginBottom: '20px', // Add margin-bottom for spacing
   };
-
   const initialCompanies = data.slice(0, 100);
 
   return (
@@ -214,25 +214,50 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
           <h1>버스 정보</h1>
           <div style={infoBoxStyle}>
             {!foundCompany ? (
-              <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
+              <div
+                style={{
+                  height: '30px',
+                  color: 'gray',
+                  borderBottom: '1px solid lightgray',
+                  padding: '5px',
+                }}
+              >
                 선택된 회사가 없습니다.
               </div>
             ) : (
               <>
-                <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
-                  사업자 번호: {foundCompany.companynumber}
-                </div>
                 {foundCompany.buses && foundCompany.buses.length > 0 ? (
                   foundCompany.buses.map((bus, index) => (
-                    <div key={index} style={{ ...infoBoxStyle, marginTop: '10px' }}>
-                      <div>버스 번호: {bus.carNumber}</div>
-                      <div>버스 정보: {bus.carinfo}</div>
-                      <div>버스 모델: {bus.carmodel}</div>
-                      <div>버스 노선: {bus.routeNumber}</div>
+                    <div key={index}>
+                      <div
+                        style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}
+                      >
+                        사업자 번호: {foundCompany.companynumber}
+                      </div>
+                      <div
+                        style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}
+                      >
+                        버스 번호: {bus.carNumber}
+                      </div>
+                      <div
+                        style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}
+                      >
+                        버스 정보: {bus.carinfo}
+                      </div>
+                      <div
+                        style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}
+                      >
+                        버스 모델: {bus.carmodel}
+                      </div>
+                      <div
+                        style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}
+                      >
+                        버스 노선: {bus.routeNumber}
+                      </div>
                     </div>
                   ))
                 ) : (
-                  <div style={{ ...infoBoxStyle, marginTop: '10px' }}>해당 회사의 버스 정보가 없습니다.</div>
+                  <div>해당 회사의 버스 정보가 없습니다.</div>
                 )}
               </>
             )}
