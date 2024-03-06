@@ -4,30 +4,40 @@ import CompanyCreate from '../modal/companycreate';
 import { deleteCompanyAPI } from '../apis/company/company';
 
 interface Row {
+  buses: {
+    carNumber: string;
+    carinfo: string;
+    carmodel: string;
+    routeNumber: string;
+  }[];
   companynumber: string;
   company: string;
   companylocation: string;
   companyname: string;
   day: string;
+  carNumber: string;
+  carinfo: string;
+  carmodel: string;
+  routeNumber: string;
 }
 
 interface TopProps {
   data: Row[];
-  onReloadData: () => void; // 새로운 함수 추가
+  onReloadData: () => void;
 }
 
 const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [foundCompany, setFoundCompany] = useState<Row | null>(null);
-  const [reloadData, setReloadData] = useState(false); // 추가: 데이터 변경 시에 사용
+  const [reloadData, setReloadData] = useState(false);
+
   const showModal = () => {
     setModalOpen(true);
   };
 
   const handleCancel = () => {
     setModalOpen(false);
-    // onReloadData 함수 호출
     onReloadData();
   };
 
@@ -47,17 +57,13 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
 
   const handleDeleteClick = () => {
     if (foundCompany) {
-      // Call the API to delete the company
       deleteCompanyAPI(foundCompany.companynumber)
         .then((response) => {
           if (response.success) {
-            // Handle successful deletion, e.g., show a message or update the state
             console.log('Company deleted successfully');
-            setFoundCompany(null); // Clear the selected company after deletion
-            // onReloadData 함수 호출
+            setFoundCompany(null);
             onReloadData();
           } else {
-            // Handle deletion failure, e.g., show an error message
             console.error('Company deletion failed:', response.error);
           }
         })
@@ -66,6 +72,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
         });
     }
   };
+
   const showDeleteConfirm = () => {
     if (foundCompany) {
       Modal.confirm({
@@ -74,20 +81,25 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
         onOk() {
           handleDeleteClick();
         },
-        onCancel() {
-          // 사용자가 취소를 눌렀을 때의 동작 (아무 동작 없음)
-        },
+        onCancel() {},
       });
     }
   };
+
   useEffect(() => {
-    // 데이터 변경이 감지되면 다시 렌더링
     if (reloadData) {
-      setReloadData(false); // 변경 여부 초기화
-      // 여기에서 필요한 상태 업데이트나 추가적인 작업 수행
-      // 예: 다시 데이터를 불러오거나, 상태 업데이트 등
+      setReloadData(false);
     }
   }, [reloadData, data]);
+
+  const infoBoxStyle = {
+    marginTop: '20px',
+    border: '1px solid lightgray',
+    borderRadius: '5px',
+    boxShadow: '2px 2px 1px 1px lightgray',
+    padding: '10px',
+  };
+
   const initialCompanies = data.slice(0, 100);
 
   return (
@@ -150,7 +162,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
                   textAlign: 'center',
                   margin: '0',
                   color: 'gray',
-                  cursor: 'pointer', // Make the div clickable
+                  cursor: 'pointer',
                 }}
                 onClick={() => handleCompanyClick(row)}
               >
@@ -171,75 +183,26 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
 
         <div style={{ width: '25%' }}>
           <h1>사업자 정보</h1>
-          <div
-            style={{
-              marginTop: '20px',
-              border: '1px solid lightgray',
-              borderRadius: '5px',
-              boxShadow: '2px 2px 1px 1px lightgray',
-            }}
-          >
+          <div style={infoBoxStyle}>
             {!foundCompany ? (
-              <div
-                style={{
-                  height: '30px',
-                  color: 'gray',
-                  borderBottom: '1px solid lightgray',
-                  padding: '5px',
-                }}
-              >
+              <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
                 좌측에 사업자를 입력해주세요.
               </div>
             ) : (
               <>
-                <div
-                  style={{
-                    height: '30px',
-                    color: 'gray',
-                    borderBottom: '1px solid lightgray',
-                    padding: '5px',
-                  }}
-                >
+                <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
                   사업자 번호: {foundCompany.companynumber}
                 </div>
-                <div
-                  style={{
-                    height: '30px',
-                    color: 'gray',
-                    borderBottom: '1px solid lightgray',
-                    padding: '5px',
-                  }}
-                >
+                <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
                   사업자: {foundCompany.company}
                 </div>
-                <div
-                  style={{
-                    height: '30px',
-                    color: 'gray',
-                    borderBottom: '1px solid lightgray',
-                    padding: '5px',
-                  }}
-                >
+                <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
                   대표자 이름: {foundCompany.companyname}
                 </div>
-                <div
-                  style={{
-                    height: '30px',
-                    color: 'gray',
-                    borderBottom: '1px solid lightgray',
-                    padding: '5px',
-                  }}
-                >
+                <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
                   사업자 주소: {foundCompany.companylocation}
                 </div>
-                <div
-                  style={{
-                    height: '30px',
-                    color: 'gray',
-                    borderBottom: '1px solid lightgray',
-                    padding: '5px',
-                  }}
-                >
+                <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
                   등록일: {foundCompany.day}
                 </div>
               </>
@@ -249,65 +212,28 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
 
         <div style={{ width: '25%', marginRight: '100px' }}>
           <h1>버스 정보</h1>
-          <div
-            style={{
-              marginTop: '20px',
-              border: '1px solid lightgray',
-              borderRadius: '5px',
-              boxShadow: '2px 2px 1px 1px lightgray',
-            }}
-          >
+          <div style={infoBoxStyle}>
             {!foundCompany ? (
-              <div
-                style={{
-                  height: '30px',
-                  color: 'gray',
-                  borderBottom: '1px solid lightgray',
-                  padding: '5px',
-                }}
-              ></div>
+              <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
+                선택된 회사가 없습니다.
+              </div>
             ) : (
               <>
-                <div
-                  style={{
-                    height: '30px',
-                    color: 'gray',
-                    borderBottom: '1px solid lightgray',
-                    padding: '5px',
-                  }}
-                >
+                <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
                   사업자 번호: {foundCompany.companynumber}
                 </div>
-                <div
-                  style={{
-                    height: '30px',
-                    color: 'gray',
-                    borderBottom: '1px solid lightgray',
-                    padding: '5px',
-                  }}
-                >
-                  대표자 이름: {foundCompany.companyname}
-                </div>
-                <div
-                  style={{
-                    height: '30px',
-                    color: 'gray',
-                    borderBottom: '1px solid lightgray',
-                    padding: '5px',
-                  }}
-                >
-                  사업자 주소: {foundCompany.companylocation}
-                </div>
-                <div
-                  style={{
-                    height: '30px',
-                    color: 'gray',
-                    borderBottom: '1px solid lightgray',
-                    padding: '5px',
-                  }}
-                >
-                  등록일: {foundCompany.day}
-                </div>
+                {foundCompany.buses && foundCompany.buses.length > 0 ? (
+                  foundCompany.buses.map((bus, index) => (
+                    <div key={index} style={{ ...infoBoxStyle, marginTop: '10px' }}>
+                      <div>버스 번호: {bus.carNumber}</div>
+                      <div>버스 정보: {bus.carinfo}</div>
+                      <div>버스 모델: {bus.carmodel}</div>
+                      <div>버스 노선: {bus.routeNumber}</div>
+                    </div>
+                  ))
+                ) : (
+                  <div style={{ ...infoBoxStyle, marginTop: '10px' }}>해당 회사의 버스 정보가 없습니다.</div>
+                )}
               </>
             )}
           </div>

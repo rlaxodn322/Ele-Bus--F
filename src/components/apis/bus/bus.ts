@@ -5,7 +5,7 @@ axios.defaults.baseURL = backUrl;
 axios.defaults.withCredentials = true;
 
 // 내 정보 불러오기 API
-export async function loadMyInfoAPI() {
+export async function loadBusListAPI() {
   console.log('loadMyInfo');
   return await axios.get('/bus').then((response) => response.data);
 }

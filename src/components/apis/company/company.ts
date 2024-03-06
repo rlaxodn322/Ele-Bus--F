@@ -9,11 +9,16 @@ export async function loadMyInfoAPI() {
   console.log('loadMyInfo');
   return await axios.get('/company').then((response) => response.data);
 }
+// 내 정보 불러오기 API
+export async function loadMyInfoAPI1() {
+  console.log('loadMyInfo');
+  return await axios.get('/company/1').then((response) => response.data);
+}
 
 // 등록 API
 export function signUpAPI(data: any) {
   console.log('등록', data);
-  return axios.post('/company', data).then((response) => response.data);
+  return axios.post('/company', data).then((response) => response.data.companies);
 }
 
 // 사업자 삭제 API

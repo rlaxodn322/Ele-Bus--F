@@ -4,7 +4,7 @@ import Table7 from '../../../components/table/table7';
 import Table5 from '../../../components/table/table5';
 import { Button } from 'antd'; // Modal과 Form을 추가로 import
 import { useState, useEffect } from 'react';
-import { loadMyInfoAPI } from '@/components/apis/company/company';
+import { loadMyInfoAPI1 } from '@/components/apis/company/company';
 import BusCreate from '../../../components/modal/buscreate';
 // import { Page } from './style';
 import styled from '@emotion/styled';
@@ -20,34 +20,70 @@ const Page = styled.section`
   margin: 30px auto;
 `;
 interface Row {
+  buses: any;
   companynumber: string;
   company: string;
   companylocation: string;
   companyname: string;
   day: string;
+  carNumber: string;
+  carinfo: string;
+  carmodel: string;
+  routeNumber: string;
 }
 const MyPage = () => {
-  const [modalOpen, setModalOpen] = useState(false); // visible 상태 대
+  const [modalOpen, setModalOpen] = useState(false);
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
-
+  const [buses, setBuses] = useState<any[]>([]); // 이 줄 추가
   const fetchMyInfo = async () => {
     try {
-      const myInfoData = await loadMyInfoAPI();
-      const maintenanceHistoryData = myInfoData.map(
-        (info: { companynumber: any; company: any; companylocation: any; companyname: any; day: any }) => ({
-          companynumber: info.companynumber,
-          company: info.company,
-          companylocation: info.companylocation,
-          companyname: info.companyname,
-          day: info.day,
-        }),
+      const myInfoData = await loadMyInfoAPI1();
+      console.log(myInfoData);
+
+      // 회사 정보만 가져와서 setMaintenanceHistory로 업데이트
+      const companiesData = myInfoData.companies.map(
+        (info: {
+          companynumber: any;
+          company: any;
+          companylocation: any;
+          companyname: any;
+          day: any;
+          buses: any[];
+        }) => {
+          // Extract relevant information from each company, including buses
+          const { companynumber, company, companylocation, companyname, day, buses } = info;
+
+          // Extract bus information if available
+          const busData =
+            buses && buses.length > 0
+              ? buses.map((bus: any) => ({
+                  carNumber: bus.carNumber,
+                  carinfo: bus.carinfo,
+                  carmodel: bus.carmodel,
+                  routeNumber: bus.routeNumber,
+                }))
+              : [];
+
+          return {
+            companynumber,
+            company,
+            companylocation,
+            companyname,
+            day,
+            buses: busData,
+          };
+        },
       );
-      setMaintenanceHistory(maintenanceHistoryData);
+
+      setMaintenanceHistory(companiesData);
+
+      // 회사 정보와 해당 회사의 버스 목록을 함께 가져와서 setBuses로 업데이트
+      setBuses(myInfoData.companies);
+      console.log(buses);
     } catch (error) {
       console.error('데이터 불러오기 오류:', error);
     }
   };
-
   useEffect(() => {
     fetchMyInfo();
   }, []);
