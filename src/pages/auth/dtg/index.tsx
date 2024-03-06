@@ -288,9 +288,7 @@ const MyPage = () => {
           >
             <h1 style={{ marginLeft: '10px' }}>DTG 실시간 기록</h1>
             <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
-            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '120px' }}>
-              <Button>다운로드</Button>
-            </div>
+            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '120px' }}></div>
           </div>
           <div
             style={{

@@ -4,8 +4,7 @@ import { deleteEventAPI } from '../apis/event/event';
 
 interface Row {
   companynumber: string;
-  dataValues: any;
-  id: any;
+  busnum: string;
   day: string;
   detail: string;
   status: string;
@@ -31,6 +30,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
       (row) =>
         (!searchKeyword ||
           row.companynumber.includes(searchKeyword) ||
+          row.busnum.includes(searchKeyword) ||
           row.day.includes(searchKeyword) ||
           row.detail.includes(searchKeyword) ||
           row.status.includes(searchKeyword)) &&
@@ -72,9 +72,8 @@ const Card: React.FC<CardProps> = ({ data }) => {
   };
   const deleteRow = async (index: number) => {
     try {
-      console.log(displayedRows[index].companynumber);
-      const deletedEventId = displayedRows[index].companynumber;
-      console.log(deletedEventId);
+      const deletedEventId = displayedRows[index]?.companynumber;
+
       if (!deletedEventId) {
         console.error('이벤트 ID가 없습니다.');
         return;
@@ -84,9 +83,11 @@ const Card: React.FC<CardProps> = ({ data }) => {
 
       // 삭제 성공 시 메시지 표시 및 상태 업데이트
       message.success('이벤트가 성공적으로 삭제되었습니다.');
-      const updatedRows = [...displayedRows];
-      updatedRows.splice(index, 1);
-      setDisplayedRows(updatedRows);
+      setDisplayedRows((prevRows) => {
+        const updatedRows = [...prevRows];
+        updatedRows.splice(index, 1);
+        return updatedRows;
+      });
     } catch (error) {
       // 삭제 실패 시 에러 메시지 표시
       message.error('이벤트 삭제 중 오류가 발생했습니다.');
@@ -99,7 +100,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
       <div
         style={{
           width: '99%',
-          height: '80%',
+          height: '90%',
           borderRadius: '10px',
         }}
       >
@@ -159,6 +160,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
               >
                 <div style={{ margin: '10px', fontSize: '13px' }}>
                   <h3>사업자:{row.companynumber}</h3>
+                  <h3>버스:{row.busnum}</h3>
                   <h3>날짜: {row.day}</h3>
                   <h3>정비 내용: {row.detail}</h3>
                   <h3>비고: {row.status}</h3>

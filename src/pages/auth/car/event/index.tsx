@@ -6,12 +6,13 @@ import EventModal from '../../../../components/modal/event';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import { loadMyInfoAPI } from '../../../../components/apis/event/event';
-
+import Table7 from '../../../../components/table/event7';
 interface Row {
+  companynumber: string;
+  busnum: string;
   day: string;
   detail: string;
   status: string;
-  id: any;
 }
 
 const Page = styled.section`
@@ -21,7 +22,210 @@ const Page = styled.section`
   display: flex;
   justify-content: space-between;
 `;
+const busDataColumns = ['이벤트경보', '부품명', '교체주기', '마지막점검', '교체예정', '비고', '수정'];
 
+const dummyTableData = [
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+  {
+    user: '-',
+    registrationDate: '배터리',
+    status: '5년/200,000',
+    status1: '2024-01-01',
+    status2: '2027-01-01',
+    status3: '',
+    status4: '수정',
+  },
+
+  // Add more dummy data as needed
+];
 const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
@@ -31,8 +235,9 @@ const MyPage = () => {
       const myInfoData = await loadMyInfoAPI();
       // 정비 이력 데이터
       const maintenanceHistoryData = myInfoData.map(
-        (info: { companynumber: any; day: any; detail: any; status: any }) => ({
+        (info: { companynumber: any; day: any; detail: any; status: any; busnum: any }) => ({
           companynumber: info.companynumber,
+          busnum: info.busnum,
           day: info.day,
           detail: info.detail,
           status: info.status || '',
@@ -86,8 +291,7 @@ const MyPage = () => {
               <Button style={{ marginRight: '5px' }} onClick={showModal}>
                 정비이력입력
               </Button>
-              <Button style={{ marginRight: '5px' }}>수정</Button>
-              <Button>삭제</Button>
+
               <EventModal open={modalOpen} onCancel={handleCancel} />
             </div>
           </div>
@@ -104,7 +308,7 @@ const MyPage = () => {
                 borderRadius: '10px',
               }}
             >
-              {/* <EventTable data={maintenanceHistory} /> */}
+              <Table7 data={dummyTableData} columns={busDataColumns} />
             </div>
             <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
               <Button>부품 교체 이력 다운로드</Button>
