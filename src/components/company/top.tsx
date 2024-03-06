@@ -185,9 +185,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
           <h1>사업자 정보</h1>
           <div style={infoBoxStyle}>
             {!foundCompany ? (
-              <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
-                좌측에 사업자를 입력해주세요.
-              </div>
+              <div style={{ height: '30px', color: 'gray', padding: '5px' }}>좌측에 사업자를 입력해주세요.</div>
             ) : (
               <>
                 <div style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}>
@@ -218,7 +216,6 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
                 style={{
                   height: '30px',
                   color: 'gray',
-                  borderBottom: '1px solid lightgray',
                   padding: '5px',
                 }}
               >
