@@ -34,6 +34,9 @@ const Event: React.FC<EventCreateProps> = ({ open, onCancel }) => {
     <Modal title="정비이력 등록" open={open} onCancel={onCancel} footer={null}>
       {/* 등록 폼 */}
       <Form form={form} onFinish={handleCarRegistration}>
+        <Item label="사업자" name="companynumber" rules={[{ required: true, message: '사업자를 입력해주세요.' }]}>
+          <Input placeholder="사업자 입력" />
+        </Item>
         <Item label="날짜" name="day" rules={[{ required: true, message: '날짜를 입력해주세요.' }]}>
           <Input placeholder="날짜 입력" />
         </Item>

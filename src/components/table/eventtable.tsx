@@ -3,6 +3,8 @@ import { Cascader, Input, Modal, message } from 'antd';
 import { deleteEventAPI } from '../apis/event/event';
 
 interface Row {
+  companynumber: string;
+  dataValues: any;
   id: any;
   day: string;
   detail: string;
@@ -28,6 +30,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
     const filteredRows = data.filter(
       (row) =>
         (!searchKeyword ||
+          row.companynumber.includes(searchKeyword) ||
           row.day.includes(searchKeyword) ||
           row.detail.includes(searchKeyword) ||
           row.status.includes(searchKeyword)) &&
@@ -69,11 +72,11 @@ const Card: React.FC<CardProps> = ({ data }) => {
   };
   const deleteRow = async (index: number) => {
     try {
-      // 선택한 행 삭제 로직 추가
-      const deletedEventId = displayedRows[index]?.id; // 이벤트의 ID를 사용한다고 가정
+      console.log(displayedRows[index].companynumber);
+      const deletedEventId = displayedRows[index].companynumber;
+      console.log(deletedEventId);
       if (!deletedEventId) {
         console.error('이벤트 ID가 없습니다.');
-        console.log(deletedEventId);
         return;
       }
 
@@ -155,6 +158,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
                 }}
               >
                 <div style={{ margin: '10px', fontSize: '13px' }}>
+                  <h3>사업자:{row.companynumber}</h3>
                   <h3>날짜: {row.day}</h3>
                   <h3>정비 내용: {row.detail}</h3>
                   <h3>비고: {row.status}</h3>

@@ -11,6 +11,7 @@ interface Row {
   day: string;
   detail: string;
   status: string;
+  id: any;
 }
 
 const Page = styled.section`
@@ -29,11 +30,14 @@ const MyPage = () => {
     try {
       const myInfoData = await loadMyInfoAPI();
       // 정비 이력 데이터
-      const maintenanceHistoryData = myInfoData.map((info: { day: any; detail: any; status: any }) => ({
-        day: info.day,
-        detail: info.detail,
-        status: info.status || '',
-      }));
+      const maintenanceHistoryData = myInfoData.map(
+        (info: { companynumber: any; day: any; detail: any; status: any }) => ({
+          companynumber: info.companynumber,
+          day: info.day,
+          detail: info.detail,
+          status: info.status || '',
+        }),
+      );
       setMaintenanceHistory(maintenanceHistoryData);
       // 상태 업데이트 이후에 상태를 직접 사용
     } catch (error) {
