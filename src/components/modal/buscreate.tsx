@@ -1,6 +1,6 @@
 // components/modal/BusCreate.js
 import React from 'react';
-import { Modal, Form, Input, Button } from 'antd';
+import { Modal, Form, Input, Button, message } from 'antd';
 import { signUpAPI } from '../../components/apis/bus/bus';
 
 const { Item } = Form;
@@ -23,9 +23,11 @@ const BusCreate: React.FC<BusCreateProps> = ({ open, onCancel }) => {
       onCancel();
       console.log(values);
       form.resetFields(); // 입력값 초기화
+      message.success('버스정보가 성공적으로 등록되었습니다.');
     } catch (error) {
       console.error('차량 등록 오류:', error);
       // 오류 처리 로직 추가
+      message.error('버스 등록 중 오류가 발생했습니다. 사업자번호를 정확히 입력해주세요.');
     }
   };
 

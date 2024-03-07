@@ -35,13 +35,14 @@ interface Row {
 const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
+  // eslint-disable-next-line no-unused-vars
   const [buses, setBuses] = useState<any[]>([]); // 이 줄 추가
   const [buses1, setBuses1] = useState<any[]>([]); // 이 줄 추가
   // 추가: 버스 목록을 가져오는 함수
   const fetchBusList = async () => {
     try {
       const busListData = await loadBusListAPI();
-      console.log(busListData);
+
       setBuses1(busListData);
     } catch (error) {
       console.error('버스 목록 불러오기 오류:', error);
