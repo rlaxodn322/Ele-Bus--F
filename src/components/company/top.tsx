@@ -97,7 +97,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
     border: '1px solid lightgray',
     borderRadius: '5px',
     boxShadow: '2px 2px 1px 1px lightgray',
-    padding: '10px',
+    padding: '5px',
     marginBottom: '20px', // Add margin-bottom for spacing
   };
   const initialCompanies = data.slice(0, 100);

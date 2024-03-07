@@ -74,7 +74,7 @@ const Card: React.FC<CardProps> = ({ data, columns, updateDtgRecordTitle }) => {
       <div
         style={{
           width: '99%',
-          height: '60%',
+          height: '90%',
         }}
       >
         <div

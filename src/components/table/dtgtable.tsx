@@ -1,5 +1,8 @@
 import React from 'react';
-
+import { Button } from 'antd';
+import Link from 'next/link';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 interface Row {
   user: string;
   registrationDate: string;
@@ -17,20 +20,35 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ data, columns }) => {
   const sortedEventHistory = [...data];
   const sortedEventHistory1 = [...columns];
+  const downloadExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
+    // Use write function with type 'array' to get Uint8Array data
+    const excelData = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+
+    // Create a Blob object
+    const dataBlob = new Blob([excelData], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+
+    // Use FileSaver.js or other methods to save the Blob as a file
+    saveAs(dataBlob, 'dtg_data.xlsx');
+  };
   return (
     <>
       <div
         style={{
           width: '99%',
-          height: '82%',
+          height: '100%',
           borderRadius: '10px',
         }}
       >
         <div
           style={{
             width: '100%',
-            height: '70%',
+            height: '90%',
             marginTop: '2px',
             overflowY: 'auto',
           }}
@@ -46,7 +64,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
               top: '0',
               zIndex: '2',
               paddingTop: '10px',
-              height: '10%',
+              height: '6.5%',
               fontSize: '18px',
               fontWeight: 'bold',
             }}
@@ -78,6 +96,14 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
               <div style={{ flex: 1 }}>{row.status3}</div>
             </h6>
           ))}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '20px' }}>
+          <Button onClick={downloadExcel} style={{ marginRight: '10px' }}>
+            엑셀다운로드
+          </Button>
+          <Link href="https://www.kotsa.or.kr/main.do">
+            <Button>DTG정보제출하기</Button>
+          </Link>
         </div>
       </div>
     </>
