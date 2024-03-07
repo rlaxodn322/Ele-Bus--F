@@ -81,7 +81,7 @@ const Middle: React.FC<MiddleProps> = ({ data }) => {
             <Cascader
               options={[
                 { value: 'oldest1', label: '기간별' },
-                { value: 'oldest', label: '늦은 순' },
+                { value: 'oldest', label: '과거 순' },
                 { value: 'latest', label: '최신순' },
               ]}
               onChange={(value) => {
@@ -159,7 +159,7 @@ const Middle: React.FC<MiddleProps> = ({ data }) => {
             <Cascader
               options={[
                 { value: 'oldest1', label: '기간별' },
-                { value: 'oldest', label: '늦은 순' },
+                { value: 'oldest', label: '과거 순' },
                 { value: 'latest', label: '최신순' },
               ]}
               onChange={(value) => {

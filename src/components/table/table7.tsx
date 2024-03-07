@@ -1,42 +1,34 @@
 import React, { useState } from 'react';
 import { Cascader } from 'antd';
 
-interface Row {
-  user: string;
-  registrationDate: string;
-  status: string;
-  status1: string;
-  status2: string;
-  status3: string;
-  status4: string;
+interface Bus {
+  carNumber: string;
+  carinfo: string;
+  carmodel: string;
+  companyNumber: string;
+  createdAt: string | null;
+  day: string;
+  id: number;
+  model: string;
+  routeNumber: string;
+  updatedAt: string | null;
 }
 
 interface CardProps {
-  data: Row[];
+  data: Bus[];
   columns: string[];
   a?: string;
 }
+
 const parseDate = (dateString: string): number => {
-  if (!dateString || typeof dateString !== 'string') {
-    // dateString이 정의되지 않았거나 문자열이 아닌 경우 0을 반환
+  const [year, month, day] = dateString.split('-');
+
+  // If any part of the date is not a valid number, return 0
+  if (isNaN(Number(year)) || isNaN(Number(month)) || isNaN(Number(day))) {
     return 0;
   }
 
-  const parts = dateString.split('/');
-  const datePart = parts[0];
-  const timePart = parts[1];
-
-  if (!datePart || datePart.length < 5) {
-    // Handle the case where datePart is invalid or too short
-    return 0;
-  }
-
-  const [year, monthDay] = datePart.split('-');
-  const [month, day] = [monthDay.slice(0, 2), monthDay.slice(2)];
-
-  const [hour, minute] = timePart.split(':');
-
-  return new Date(`${year}-${month}-${day}T${hour}:${minute}`).getTime();
+  return new Date(`${year}-${month}-${day}`).getTime();
 };
 const Card: React.FC<CardProps> = ({ data, columns, a }) => {
   const [sortingOrder, setSortingOrder] = useState<string | string[]>(['latest']);
@@ -47,11 +39,11 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
   const sortedEventHistory = [...data]
     .filter(
       (row) =>
-        (!filterDate || row.registrationDate.includes(filterDate)) && (!filterStatus3 || row.status3 === filterStatus3),
+        (!filterDate || (row.day && row.day.includes(filterDate))) && (!filterStatus3 || row.model === filterStatus3),
     )
     .sort((a, b) => {
-      const dateA = parseDate(a.registrationDate);
-      const dateB = parseDate(b.registrationDate);
+      const dateA = a.day ? parseDate(a.day) : 0;
+      const dateB = b.day ? parseDate(b.day) : 0;
 
       if (sortingOrder === 'oldest') {
         return dateA - dateB;
@@ -59,7 +51,7 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
         return dateB - dateA;
       }
     });
-
+  // sortedEventHistory1 정렬 부분 수정
   const sortedEventHistory1 = [...columns].sort((a, b) => {
     const dateA = parseDate(a);
     const dateB = parseDate(b);
@@ -70,9 +62,8 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
       return dateB - dateA;
     }
   });
-
-  // Options for the Cascader filtering by status3
-  const status3Options = Array.from(new Set(data.map((row) => row.status3)));
+  // 수정된 부분: Cascader의 options에 model을 추가
+  const status3Options = Array.from(new Set(data.map((row) => row.model)));
 
   return (
     <>
@@ -84,11 +75,10 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
         }}
       >
         <div style={{ border: '0px', display: 'flex', justifyContent: 'end' }}>
-          {/* Cascader for sorting order */}
           <Cascader
             options={[
               { value: 'oldest1', label: '기간별' },
-              { value: 'oldest', label: '늦은 순' },
+              { value: 'oldest', label: '과거 순' },
               { value: 'latest', label: '최신순' },
             ]}
             onChange={(value) => {
@@ -102,14 +92,13 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
             defaultValue={['oldest1']}
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
           />
-
-          {/* Cascader for filtering by status3 */}
           <Cascader
             options={[
               { value: 'all', label: a },
               ...status3Options.map((option) => ({ value: option, label: option })),
             ]}
             onChange={(value) => {
+              // 수정된 부분: onChange에서 value[0]을 사용하여 상태를 업데이트
               if (value[0] !== 'all') {
                 setFilterStatus3(value[0].toString());
               } else {
@@ -120,6 +109,7 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
           />
         </div>
+
         <div
           style={{
             border: '1px solid lightgray',
@@ -162,13 +152,13 @@ const Card: React.FC<CardProps> = ({ data, columns, a }) => {
                 color: 'gray',
               }}
             >
-              <div style={{ flex: 1 }}>{row.user}</div>
-              <div style={{ flex: 1 }}>{row.registrationDate}</div>
-              <div style={{ flex: 1 }}>{row.status}</div>
-              <div style={{ flex: 1 }}>{row.status1}</div>
-              <div style={{ flex: 1 }}>{row.status2}</div>
-              <div style={{ flex: 1 }}>{row.status3}</div>
-              <div style={{ flex: 1 }}>{row.status4}</div>
+              <div style={{ flex: 1 }}>{row.companyNumber}</div>
+              <div style={{ flex: 1 }}>{row.day}</div>
+              <div style={{ flex: 1 }}>{row.carNumber}</div>
+              <div style={{ flex: 1 }}>{row.carinfo}</div>
+              <div style={{ flex: 1 }}>{row.carmodel}</div>
+              <div style={{ flex: 1 }}>{row.routeNumber}</div> {/* 여기 수정 */}
+              <div style={{ flex: 1 }}>{row.model}</div> {/* 다른 status 사용 예시 */}
             </h6>
           ))}
         </div>

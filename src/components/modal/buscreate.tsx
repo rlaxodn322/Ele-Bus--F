@@ -47,8 +47,8 @@ const BusCreate: React.FC<BusCreateProps> = ({ open, onCancel }) => {
         <Item label="차량번호" name="carNumber" rules={[{ required: true, message: '차량번호를 입력해주세요.' }]}>
           <Input placeholder="차량번호 입력" />
         </Item>
-        <Item label="차대번호" name="carinfo" rules={[{ required: true, message: '차대번호를 입력해주세요.' }]}>
-          <Input placeholder="차대번호 입력" />
+        <Item label="버스종류" name="carinfo" rules={[{ required: true, message: '버스종류를 입력해주세요.' }]}>
+          <Input placeholder="버스종류 입력" />
         </Item>
         <Item label="모델번호" name="carmodel" rules={[{ required: true, message: '모델번호를 입력해주세요.' }]}>
           <Input placeholder="모델번호 입력" />

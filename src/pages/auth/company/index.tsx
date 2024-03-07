@@ -5,6 +5,7 @@ import Table5 from '../../../components/table/table5';
 import { Button } from 'antd'; // Modal과 Form을 추가로 import
 import { useState, useEffect } from 'react';
 import { loadMyInfoAPI1 } from '@/components/apis/company/company';
+import { loadBusListAPI } from '../../../components/apis/bus/bus';
 import BusCreate from '../../../components/modal/buscreate';
 // import { Page } from './style';
 import styled from '@emotion/styled';
@@ -35,6 +36,18 @@ const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
   const [buses, setBuses] = useState<any[]>([]); // 이 줄 추가
+  const [buses1, setBuses1] = useState<any[]>([]); // 이 줄 추가
+  // 추가: 버스 목록을 가져오는 함수
+  const fetchBusList = async () => {
+    try {
+      const busListData = await loadBusListAPI();
+      console.log(busListData);
+      setBuses1(busListData);
+    } catch (error) {
+      console.error('버스 목록 불러오기 오류:', error);
+    }
+  };
+
   const fetchMyInfo = async () => {
     try {
       const myInfoData = await loadMyInfoAPI1();
@@ -79,13 +92,13 @@ const MyPage = () => {
 
       // 회사 정보와 해당 회사의 버스 목록을 함께 가져와서 setBuses로 업데이트
       setBuses(myInfoData.companies);
-      console.log(buses);
     } catch (error) {
       console.error('데이터 불러오기 오류:', error);
     }
   };
   useEffect(() => {
     fetchMyInfo();
+    fetchBusList();
   }, []);
 
   // Modal 열기 함수
@@ -98,96 +111,12 @@ const MyPage = () => {
     setModalOpen(false);
     // 데이터 다시 불러오기
     fetchMyInfo();
+    fetchBusList();
   };
 
-  const busDataColumns = ['버스ID', '등록일', '차량번호', '차량등록', '차대번호', '통신모듈', '모델번호'];
+  const busDataColumns = ['사업자번호', '등록일', '차량번호', '버스종류', '모델번호', '노선번호', '모델번호'];
   const busDataColumns1 = ['충전ID', '등록일', '충전용량', '누적충전', '모델'];
 
-  const dummyTableData = [
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:30',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'RSVP123',
-      status4: 'AAA123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:30',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'RSVP123',
-      status4: 'AAA123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:30',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'RSVP123',
-      status4: 'AAA123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:30',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'RSVP123',
-      status4: 'AAA123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:30',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'RSVP123',
-      status4: 'AAA123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:30',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'RSVP123',
-      status4: 'AAA123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:30',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'RSVP123',
-      status4: 'AAA123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:30',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'RSVP123',
-      status4: 'AAA123',
-    },
-    {
-      user: 'busID',
-      registrationDate: '2023-1108/08:30',
-      status: '경기11바1234',
-      status1: '2024-01-01',
-      status2: '1123456-122',
-      status3: 'RSVP123',
-      status4: 'AAA123',
-    },
-
-    // Add more dummy data as needed
-  ];
   const dummyTableData1 = [
     {
       user: 'chargerID',
@@ -287,7 +216,7 @@ const MyPage = () => {
                 </div>
               </div>
               <BusCreate open={modalOpen} onCancel={handleCancel} />
-              <Table7 a="전체 통신모듈" data={dummyTableData} columns={busDataColumns} />
+              <Table7 a="전체모델" data={Array.isArray(buses1) ? buses1 : []} columns={busDataColumns} />
             </div>
             <div style={{ width: '90%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
