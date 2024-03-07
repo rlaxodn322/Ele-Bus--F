@@ -319,7 +319,7 @@ const MyPage = () => {
             <DtgTable data={filteredData} columns={busDataColumns} />
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px' }}>
               <Button onClick={downloadExcel} style={{ marginRight: '10px' }}>
-                다운로드
+                엑셀다운로드
               </Button>
               <Link href="https://www.kotsa.or.kr/main.do">
                 <Button>DTG정보제출하기</Button>
