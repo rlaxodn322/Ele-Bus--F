@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Cascader } from 'antd';
-
+import { Cascader, Button } from 'antd';
+import * as XLSX from 'xlsx';
 interface MaintenanceHistoryItem {
   registrationDate: any;
   number: string;
@@ -60,7 +60,20 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
 
   // Options for the Cascader filtering by status3
   const status3Options = Array.from(new Set(data.map((row) => row.memo)));
+  // 엑셀 다운로드 함수
+  const downloadExcel = (data: any[], columns: any[], fileName: string) => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
 
+    // 컬럼 레이블 정보를 엑셀에 추가
+    XLSX.utils.sheet_add_aoa(worksheet, [columns.map((column: { label: any }) => column.label)], { origin: -1 });
+
+    // 데이터를 엑셀에 추가
+    XLSX.utils.sheet_add_json(worksheet, data, { origin: 1, skipHeader: true });
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet 1');
+    XLSX.writeFile(workbook, `${fileName}.xlsx`);
+  };
   return (
     <>
       <div
@@ -89,7 +102,6 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
             defaultValue={['oldest1']}
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
           />
-
           {/* Cascader for filtering by status3 */}
           <Cascader
             options={[
@@ -106,6 +118,9 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
             defaultValue={['all']}
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
           />
+          <div style={{ marginLeft: '10PX' }}>
+            <Button onClick={() => downloadExcel(data, columns, '부품 리스트 현황')}>엑셀다운로드</Button>
+          </div>
         </div>
         <div
           style={{

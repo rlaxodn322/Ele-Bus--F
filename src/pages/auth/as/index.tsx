@@ -8,6 +8,7 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import { loadMyInfoAPI } from '@/components/apis/item/item';
 import { useEffect, useState } from 'react';
+
 interface MaintenanceHistoryItem {
   number: string;
   name: string;
@@ -154,6 +155,7 @@ const MyPage = () => {
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ marginLeft: '10px', width: '100%' }}>
               <h1>부품 리스트</h1>
+
               <ASTable7 data={maintenanceHistory} columns={busDataColumns} />
             </div>
           </div>

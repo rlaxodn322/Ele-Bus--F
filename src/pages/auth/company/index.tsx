@@ -10,7 +10,7 @@ import BusCreate from '../../../components/modal/buscreate';
 // import { Page } from './style';
 import styled from '@emotion/styled';
 import Head from 'next/head';
-
+import * as XLSX from 'xlsx';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -114,6 +114,20 @@ const MyPage = () => {
     fetchMyInfo();
     fetchBusList();
   };
+  // 엑셀 다운로드 함수
+  const downloadExcel = (data: any[], columns: any[], fileName: string) => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+
+    // 컬럼 레이블 정보를 엑셀에 추가
+    XLSX.utils.sheet_add_aoa(worksheet, [columns.map((column: { label: any }) => column.label)], { origin: -1 });
+
+    // 데이터를 엑셀에 추가
+    XLSX.utils.sheet_add_json(worksheet, data, { origin: 1, skipHeader: true });
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet 1');
+    XLSX.writeFile(workbook, `${fileName}.xlsx`);
+  };
 
   const busDataColumns = ['사업자번호', '등록일', '차량번호', '버스종류', '모델번호', '노선번호', '모델번호'];
   const busDataColumns1 = ['충전ID', '등록일', '충전용량', '누적충전', '모델'];
@@ -213,7 +227,12 @@ const MyPage = () => {
                   <Button style={{ marginRight: '5px' }} onClick={showModal}>
                     버스 등록
                   </Button>
-                  <Button style={{ marginRight: '5px' }}>엑셀다운로드</Button>
+                  <Button
+                    style={{ marginRight: '5px' }}
+                    onClick={() => downloadExcel(buses1, busDataColumns, '버스_등록_현황')}
+                  >
+                    엑셀다운로드
+                  </Button>
                 </div>
               </div>
               <BusCreate open={modalOpen} onCancel={handleCancel} />
@@ -222,7 +241,9 @@ const MyPage = () => {
             <div style={{ width: '90%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h1>충전기 등록 현황</h1>
-                <Button>엑셀다운로드</Button>
+                <Button onClick={() => downloadExcel(dummyTableData1, busDataColumns1, '충전기_등록_현황')}>
+                  엑셀다운로드
+                </Button>
               </div>
 
               <Table5 data={dummyTableData1} columns={busDataColumns1} />
