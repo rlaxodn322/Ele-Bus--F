@@ -1,4 +1,4 @@
-export const routes = [
+ export const routes = [
   {
     router: '/',
     default: '/icons/sidebar/dashboard_active.svg',
