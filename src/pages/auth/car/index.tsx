@@ -12,6 +12,7 @@ import Head from 'next/head';
 import Bus from '../../../components/bus/busstation';
 
 import axios from 'axios';
+import { useRouter } from 'next/router';
 interface BusLocation {
   stationId: string;
   remainSeatCnt: string;
@@ -52,6 +53,17 @@ const dummyData = [
 const MyPage = () => {
   const [stations, setStations] = useState<BusLocation[]>([]);
   const [busLocations, setBusLocations] = useState<BusLocation[]>([]);
+  const router = useRouter();
+
+  // 세션 스토리지에서 로그인 데이터를 가져옵니다.
+  const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
+
+  // 로그인되어 있지 않으면 로그인 페이지로 리디렉션합니다.
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/auth/login');
+    }
+  }, [isAuthenticated]);
   useEffect(() => {
     const fetchStations = async () => {
       try {

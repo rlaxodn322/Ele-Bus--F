@@ -6,6 +6,7 @@ import DtgTable from '../../../components/table/dtgtable';
 import Date from '../../../components/antd/date';
 import styled from '@emotion/styled';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const Page = styled.section`
   // display: inline-flex;
@@ -380,7 +381,17 @@ const MyPage = () => {
   const [dtgRecordTitle, setDtgRecordTitle] = useState<string>('차량넘버');
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
+  const router = useRouter();
 
+  // 세션 스토리지에서 로그인 데이터를 가져옵니다.
+  const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
+
+  // 로그인되어 있지 않으면 로그인 페이지로 리디렉션합니다.
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/auth/login');
+    }
+  }, [isAuthenticated]);
   const updateDtgRecordTitle = (vehicleNumber: string) => {
     setDtgRecordTitle(` ${vehicleNumber}`);
   };

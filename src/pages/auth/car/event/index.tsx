@@ -7,6 +7,8 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import { loadMyInfoAPI } from '../../../../components/apis/event/event';
 import Table7 from '../../../../components/table/event7';
+import { useRouter } from 'next/router';
+import React from 'react';
 interface Row {
   companynumber: string;
   busnum: string;
@@ -229,7 +231,17 @@ const dummyTableData = [
 const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
+  const router = useRouter();
 
+  // 세션 스토리지에서 로그인 데이터를 가져옵니다.
+  const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
+
+  // 로그인되어 있지 않으면 로그인 페이지로 리디렉션합니다.
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/auth/login');
+    }
+  }, [isAuthenticated]);
   const fetchMyInfo = async () => {
     try {
       const myInfoData = await loadMyInfoAPI();

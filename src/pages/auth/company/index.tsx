@@ -11,6 +11,8 @@ import BusCreate from '../../../components/modal/buscreate';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import * as XLSX from 'xlsx';
+import { useRouter } from 'next/router';
+import React from 'react';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -39,6 +41,17 @@ const MyPage = () => {
   const [buses, setBuses] = useState<any[]>([]); // 이 줄 추가
   const [buses1, setBuses1] = useState<any[]>([]); // 이 줄 추가
   // 추가: 버스 목록을 가져오는 함수
+  const router = useRouter();
+
+  // 세션 스토리지에서 로그인 데이터를 가져옵니다.
+  const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
+
+  // 로그인되어 있지 않으면 로그인 페이지로 리디렉션합니다.
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/auth/login');
+    }
+  }, [isAuthenticated]);
   const fetchBusList = async () => {
     try {
       const busListData = await loadBusListAPI();

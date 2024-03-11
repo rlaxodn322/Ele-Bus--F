@@ -8,6 +8,7 @@ import Map from '../components/apis/kakao/map';
 import BusCard from '../components/card/buscard';
 
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 
 const Page = styled.section`
   // display: inline-flex;
@@ -48,6 +49,17 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState('전체'); // 선택된 위치 상태 추가
   const [sortingOrder] = useState<string | string[]>(['latest']);
   const [selectedCompany, setSelectedCompany] = useState<string | null>('전체보기');
+  const router = useRouter();
+
+  // 세션 스토리지에서 로그인 데이터를 가져옵니다.
+  const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
+
+  // 로그인되어 있지 않으면 로그인 페이지로 리디렉션합니다.
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/auth/login');
+    }
+  }, [isAuthenticated]);
 
   // Add markers for 10 locations in Osan City
   const markerPositions = [

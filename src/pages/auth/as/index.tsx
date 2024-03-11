@@ -8,6 +8,8 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import { loadMyInfoAPI } from '@/components/apis/item/item';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 interface MaintenanceHistoryItem {
   number: string;
@@ -31,7 +33,17 @@ const MyPage = () => {
   const [maintenanceHistory, setMaintenanceHistory] = useState<MaintenanceHistoryItem[]>([]);
   const [selectedPart, setSelectedPart] = useState<MaintenanceHistoryItem | null>(null);
   const [searchedNumber, setSearchedNumber] = useState(''); // 검색한 부품번호를 저장하기 위한 상태
+  const router = useRouter();
 
+  // 세션 스토리지에서 로그인 데이터를 가져옵니다.
+  const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
+
+  // 로그인되어 있지 않으면 로그인 페이지로 리디렉션합니다.
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/auth/login');
+    }
+  }, [isAuthenticated]);
   const handleInputButtonChange = async (value: string) => {
     setSearchedNumber(value);
   };
