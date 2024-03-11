@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const MainNavbar: FC = () => {
+  const [userRole, setUserRole] = useState<string | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [openHamburger, setOpenHamburger] = useState(true);
   const [openDashboardMenu, setOpenDashboardMenu] = useState(false);
@@ -20,10 +21,13 @@ const MainNavbar: FC = () => {
       // 예시: 세션 스토리지에서 로그인 정보 가져오기
       const isLoggedInFromStorage = Boolean(sessionStorage.getItem('userData'));
       setIsLoggedIn(isLoggedInFromStorage);
+      const userDataFromStorage = JSON.parse(sessionStorage.getItem('userData') || '{}');
+      setUserRole(userDataFromStorage.admin);
     };
 
     checkLoginStatus();
   }, []); // 페이지가 로드될 때 한 번만 실행
+
   const onChangeMenu = (e: any) => {
     const id = e.target.id;
     // if (id === 'hamburger') setOpenHamburger(!openHamburger);
@@ -48,14 +52,23 @@ const MainNavbar: FC = () => {
               routes.map((item, i) => {
                 const isSelected = router.route === item.router;
                 const liStyle = isSelected ? { borderRight: '3px solid #808080' } : {};
+
+                // 여기서 userRole에 따라 메뉴를 보여주거나 숨깁니다.
+                const isAdmin = userRole === '01';
+                const shouldShowMenu =
+                  isAdmin ||
+                  (userRole === '02' &&
+                    (item.router === '/' || item.router === '/auth/car' || item.router === '/auth/dtg'));
+
+                if (!shouldShowMenu) {
+                  return null;
+                }
+
                 return (
                   <li key={item.name + i} style={liStyle}>
                     <Link href={item.router}>
                       <IconImage src={isSelected ? item.active : item.default} />
                       <label style={{ fontWeight: isSelected ? 400 : 'normal' }}>{item.name}</label>
-                      {/* <a>
-                      
-                      </a> */}
                     </Link>
                   </li>
                 );

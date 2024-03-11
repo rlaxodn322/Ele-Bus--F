@@ -47,6 +47,7 @@ const MyPage = () => {
   const handleInputButtonChange = async (value: string) => {
     setSearchedNumber(value);
   };
+
   useEffect(() => {
     if (searchedNumber && maintenanceHistory.length > 0) {
       const foundPart = maintenanceHistory.find((part) => part.number === searchedNumber);

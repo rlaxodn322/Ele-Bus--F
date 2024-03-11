@@ -1,4 +1,4 @@
- export const routes = [
+export const routes = [
   {
     router: '/',
     default: '/icons/sidebar/dashboard_active.svg',
@@ -44,10 +44,10 @@
     name: 'A/S및 부품관리',
   },
 
-  {
-    router: '/auth/login',
-    active: '/icons/sidebar/user_active.svg',
-    default: '/icons/sidebar/user_active.svg',
-    name: 'Login',
-  },
+  // {
+  //   router: '/auth/login',
+  //   active: '/icons/sidebar/user_active.svg',
+  //   default: '/icons/sidebar/user_active.svg',
+  //   name: 'Login',
+  // },
 ];

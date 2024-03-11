@@ -308,7 +308,7 @@ const MyPage = () => {
             </div>
           </div>
         </div>
-        <div style={{ width: '65%', height: '100%' }}>
+        <div style={{ width: '69%', height: '100%' }}>
           <h3>부품 교체 이력</h3>
           <div style={{ width: '100%', height: '90%' }}>
             <div
