@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { IconImage, Layout, Menu, MenuIconWrapper, MenuWrapper } from './style';
 import { routes } from '../../../routes';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const MainNavbar: FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [openHamburger, setOpenHamburger] = useState(true);
   const [openDashboardMenu, setOpenDashboardMenu] = useState(false);
   const [openDashboardMenu2, setOpenDashboardMenu2] = useState(false);
@@ -12,7 +13,17 @@ const MainNavbar: FC = () => {
   const [openDashboardMenu4, setOpenDashboardMenu4] = useState(false);
 
   const router = useRouter();
+  useEffect(() => {
+    // 여기에 로그인 상태를 확인하는 로직을 추가
+    // 예: 세션 스토리지, 쿠키, 서버에서 확인하는 등
+    const checkLoginStatus = () => {
+      // 예시: 세션 스토리지에서 로그인 정보 가져오기
+      const isLoggedInFromStorage = Boolean(sessionStorage.getItem('userData'));
+      setIsLoggedIn(isLoggedInFromStorage);
+    };
 
+    checkLoginStatus();
+  }, []); // 페이지가 로드될 때 한 번만 실행
   const onChangeMenu = (e: any) => {
     const id = e.target.id;
     // if (id === 'hamburger') setOpenHamburger(!openHamburger);
@@ -21,7 +32,10 @@ const MainNavbar: FC = () => {
     else if (id === 'dashboard3') setOpenDashboardMenu3(!openDashboardMenu3);
     else if (id === 'dashboard4') setOpenDashboardMenu4(!openDashboardMenu4);
   };
-
+  // 로그인되어 있지 않다면 네비게이션을 숨깁니다.
+  if (!isLoggedIn) {
+    return null;
+  }
   return (
     <>
       <Layout>
