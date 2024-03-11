@@ -66,7 +66,7 @@ const MyPage = () => {
   const fetchMyInfo = async () => {
     try {
       const myInfoData = await loadMyInfoAPI1();
-      console.log(myInfoData);
+      // console.log(myInfoData);
 
       // 회사 정보만 가져와서 setMaintenanceHistory로 업데이트
       const companiesData = myInfoData.companies.map(

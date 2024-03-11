@@ -210,7 +210,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
           </div>
         </div>
 
-        <div style={{ width: '25%', marginRight: '100px' }}>
+        <div style={{ width: '25%', marginRight: '100px', overflow: 'auto' }}>
           <h1>버스 정보</h1>
           <div style={infoBoxStyle}>
             {!foundCompany ? (
@@ -227,7 +227,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
               <>
                 {foundCompany.buses && foundCompany.buses.length > 0 ? (
                   foundCompany.buses.map((bus, index) => (
-                    <div key={index}>
+                    <div style={{ boxShadow: '1px 1px 2px 2px lightgray' }} key={index}>
                       <div
                         style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}
                       >

@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 
 // 내 정보 불러오기 API
 export async function loadMyInfoAPI() {
-  console.log('loadMyInfo');
+  console.log('loadMyInfoAPI/company');
   return await axios.get('/company').then((response) => response.data);
 }
 // 내 정보 불러오기 API
