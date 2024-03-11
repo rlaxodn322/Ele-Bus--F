@@ -1,11 +1,14 @@
 import React from 'react';
 import { Button } from 'antd';
+
 interface ButtonProps {
-  a?: string; // 'a' 속성을 선택적으로 받도록 변경
-  b?: string; // 'b' 속성을 선택적으로 받도록 변경
-  c?: string; // 'b' 속성을 선택적으로 받도록 변경
+  a?: string;
+  b?: string;
+  c?: string;
+  onClick?: () => void; // 'onClick' prop 추가
 }
-const Button3: React.FC<ButtonProps> = ({ a, b, c }) => {
+
+const Button3: React.FC<ButtonProps> = ({ a, b, c, onClick }) => {
   return (
     <>
       <div
@@ -19,7 +22,7 @@ const Button3: React.FC<ButtonProps> = ({ a, b, c }) => {
         }}
       >
         <Button>{a}</Button>
-        <Button>{b}</Button>
+        <Button onClick={onClick}>{b}</Button>
         <Button>{c}</Button>
       </div>
     </>

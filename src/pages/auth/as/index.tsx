@@ -139,6 +139,7 @@ const MyPage = () => {
                 c={selectedPart.date}
                 d={selectedPart.memo}
                 e={selectedPart.status}
+                number={searchedNumber}
               />
             ) : (
               <EmptyDivBox />

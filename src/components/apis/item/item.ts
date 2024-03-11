@@ -16,8 +16,8 @@ export function signUpAPI(data: any) {
   return axios.post('/item', data).then((response) => response.data);
 }
 
-// // 회원 삭제 API
-// export function deleteUserAPI(email: string) {
-//   console.log('회원 삭제', email);
-//   return axios.delete('/user', { data: { email } }).then((response) => response.data);
-// }
+//아이템 삭제
+export function deleteItemAPI(number: string) {
+  console.log('아이템 삭제', number);
+  return axios.delete(`/item/${number}`).then((response) => response.data);
+}
