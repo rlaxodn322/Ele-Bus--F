@@ -391,7 +391,7 @@ const MyPage = () => {
     if (!isAuthenticated) {
       router.push('/auth/login');
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, router]);
   const updateDtgRecordTitle = (vehicleNumber: string) => {
     setDtgRecordTitle(` ${vehicleNumber}`);
   };

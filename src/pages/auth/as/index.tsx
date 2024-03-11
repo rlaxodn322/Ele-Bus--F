@@ -50,7 +50,7 @@ const MyPage = () => {
 
   useEffect(() => {
     if (searchedNumber && maintenanceHistory.length > 0) {
-      const foundPart = maintenanceHistory.find((part) => part.number === searchedNumbeggr);
+      const foundPart = maintenanceHistory.find((part) => part.number === searchedNumber);
       setSelectedPart(foundPart || null);
     }
   }, [searchedNumber, maintenanceHistory]);

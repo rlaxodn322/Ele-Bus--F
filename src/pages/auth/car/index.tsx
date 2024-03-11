@@ -63,7 +63,7 @@ const MyPage = () => {
     if (!isAuthenticated) {
       router.push('/auth/login');
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, router]);
   useEffect(() => {
     const fetchStations = async () => {
       try {
@@ -162,7 +162,9 @@ const MyPage = () => {
             <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '100px' }}>
               <Link href="./dtg">
-                <Button style={{ marginRight: '10px' }}>DTG 조회하기</Button>
+                <Button type="primary" style={{ marginRight: '10px' }}>
+                  DTG 조회하기
+                </Button>
               </Link>
             </div>
           </div>

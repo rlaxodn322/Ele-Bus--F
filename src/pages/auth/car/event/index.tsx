@@ -241,7 +241,7 @@ const MyPage = () => {
     if (!isAuthenticated) {
       router.push('/auth/login');
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, router]);
   const fetchMyInfo = async () => {
     try {
       const myInfoData = await loadMyInfoAPI();
@@ -300,7 +300,7 @@ const MyPage = () => {
               <EventTable data={maintenanceHistory} />
             </div>
             <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
-              <Button style={{ marginRight: '5px' }} onClick={showModal}>
+              <Button type="primary" style={{ marginRight: '5px' }} onClick={showModal}>
                 정비이력입력
               </Button>
 
@@ -323,7 +323,7 @@ const MyPage = () => {
               <Table7 data={dummyTableData} columns={busDataColumns} />
             </div>
             <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
-              <Button>부품 교체 이력 다운로드</Button>
+              <Button style={{ color: 'white', background: '#27B964' }}>부품 교체 이력 다운로드</Button>
             </div>
           </div>
         </div>

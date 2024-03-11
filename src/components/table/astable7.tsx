@@ -119,7 +119,12 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
           />
           <div style={{ marginLeft: '10PX' }}>
-            <Button onClick={() => downloadExcel(data, columns, '부품 리스트 현황')}>엑셀다운로드</Button>
+            <Button
+              style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
+              onClick={() => downloadExcel(data, columns, '부품 리스트 현황')}
+            >
+              엑셀다운로드
+            </Button>
           </div>
         </div>
         <div

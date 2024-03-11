@@ -98,11 +98,11 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
           ))}
         </div>
         <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '20px' }}>
-          <Button onClick={downloadExcel} style={{ marginRight: '10px' }}>
+          <Button onClick={downloadExcel} style={{ marginRight: '10px', background: '#27B964', color: 'white' }}>
             엑셀다운로드
           </Button>
           <Link href="https://www.kotsa.or.kr/main.do">
-            <Button>DTG정보제출하기</Button>
+            <Button type="primary">DTG정보제출하기</Button>
           </Link>
         </div>
       </div>

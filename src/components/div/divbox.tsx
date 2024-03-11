@@ -101,7 +101,7 @@ const DivBox: React.FC<DivBoxprops> = ({ a, b, c, d, e, number }) => {
           기타사항: {e}
         </div>
       </div>
-      <Button3 a="편집" b="삭제" c="취소" onClick={showModal} />
+      <Button3 b="삭제" c="취소" onClick={showModal} />
       <Modal title="아이템 삭제" open={isModalVisible} onOk={handleDelete} onCancel={handleCancel}>
         <p>정말로 {d} 삭제하시겠습니까?</p>
       </Modal>

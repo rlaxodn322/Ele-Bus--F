@@ -119,7 +119,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
           <h1>사업자검색</h1>
           <div style={{ display: 'flex' }}>
             <Input placeholder="사업자 검색" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
-            <Button style={{ background: '#2B85FF', color: 'white' }} onClick={handleSearch}>
+            <Button type="primary" onClick={handleSearch}>
               검색
             </Button>
           </div>
@@ -173,8 +173,10 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
             ))}
           </div>
           <div style={{ height: '120px', display: 'flex', justifyContent: 'end', marginTop: '30px' }}>
-            <Button onClick={showModal}>신규등록</Button>
-            <Button style={{ marginLeft: '10px' }} onClick={showDeleteConfirm}>
+            <Button type="primary" onClick={showModal}>
+              신규등록
+            </Button>
+            <Button type="primary" danger style={{ marginLeft: '10px' }} onClick={showDeleteConfirm}>
               삭제
             </Button>
             <CompanyCreate open={modalOpen} onCancel={handleCancel} />

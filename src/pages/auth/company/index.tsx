@@ -2,7 +2,8 @@ import MainLayout from '../../../layouts/index';
 import Top from '../../../components/company/top';
 import Table7 from '../../../components/table/table7';
 import Table5 from '../../../components/table/table5';
-import { Button } from 'antd'; // Modal과 Form을 추가로 import
+// import { Button } from 'antd'; // Modal과 Form을 추가로 import
+import Button from 'antd-button-color';
 import { useState, useEffect } from 'react';
 import { loadMyInfoAPI1 } from '@/components/apis/company/company';
 import { loadBusListAPI } from '../../../components/apis/bus/bus';
@@ -51,7 +52,7 @@ const MyPage = () => {
     if (!isAuthenticated) {
       router.push('/auth/login');
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, router]);
   const fetchBusList = async () => {
     try {
       const busListData = await loadBusListAPI();
@@ -237,11 +238,11 @@ const MyPage = () => {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h1>버스 등록 현황</h1>
                 <div>
-                  <Button style={{ marginRight: '5px' }} onClick={showModal}>
+                  <Button type="primary" style={{ marginRight: '5px' }} onClick={showModal}>
                     버스 등록
                   </Button>
                   <Button
-                    style={{ marginRight: '5px' }}
+                    style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
                     onClick={() => downloadExcel(buses1, busDataColumns, '버스_등록_현황')}
                   >
                     엑셀다운로드
@@ -254,7 +255,10 @@ const MyPage = () => {
             <div style={{ width: '90%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h1>충전기 등록 현황</h1>
-                <Button onClick={() => downloadExcel(dummyTableData1, busDataColumns1, '충전기_등록_현황')}>
+                <Button
+                  style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
+                  onClick={() => downloadExcel(dummyTableData1, busDataColumns1, '충전기_등록_현황')}
+                >
                   엑셀다운로드
                 </Button>
               </div>
