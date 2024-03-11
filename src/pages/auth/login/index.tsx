@@ -92,7 +92,12 @@ const LoginPage = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {});
+  useEffect(() => {
+    const isLoggedIn = sessionStorage.getItem('userData');
+    if (isLoggedIn) {
+      router.push('/');
+    }
+  }, [router]);
 
   const emailCheck = () => {
     const emailRegex =
