@@ -43,6 +43,7 @@ const MyPage = () => {
     if (!isAuthenticated) {
       router.push('/auth/login');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
   const handleInputButtonChange = async (value: string) => {
     setSearchedNumber(value);
@@ -86,6 +87,7 @@ const MyPage = () => {
 
   useEffect(() => {
     fetchMyInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleInput5Submit = (values: any) => {

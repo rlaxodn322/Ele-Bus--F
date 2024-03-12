@@ -9,7 +9,7 @@ export async function loadMyInfoAPI() {
   console.log('loadMyInfoAPI/company');
   return await axios.get('/company').then((response) => response.data);
 }
-// 내 정보 불러오기 API
+// 버스, 회사 join 불러오기 API
 export async function loadMyInfoAPI1() {
   console.log('loadMyInfo');
   return await axios.get('/company/1').then((response) => response.data);
