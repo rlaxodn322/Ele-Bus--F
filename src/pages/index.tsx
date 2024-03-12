@@ -123,9 +123,9 @@ const Home = () => {
         <meta name="description" content="text." />
       </Head>
       <Page>
-        <h1>버스 현황</h1>
         <div style={{ display: 'flex', height: '100%', width: '100%' }}>
           <div style={{ width: '49.5%', height: '100%' }}>
+            <h1>버스 현황</h1>
             <Map markerPositions={markerPositions} mapHeight={mapHeight} />
           </div>
           <div style={{ width: '49.5%', height: '100%' }}>
