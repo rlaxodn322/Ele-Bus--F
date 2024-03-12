@@ -150,7 +150,7 @@ const Home = () => {
                 flexDirection: 'column',
                 overflowY: 'auto',
                 width: '98.5%',
-                height: '430px',
+                height: '400px',
                 marginLeft: '10px',
                 boxShadow: '1px 1px 1px 2px lightgray',
                 borderRadius: '10px',
