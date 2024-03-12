@@ -16,7 +16,7 @@ const Page = styled.section`
   /* /* display: flex; */
   /* justify-content: space-between; */
   width: 1370px;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
 `;
 // Dummy 데이터
@@ -40,6 +40,9 @@ const dummyVehicleData = [
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
+  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
   // Add more dummy data as needed
@@ -77,12 +80,6 @@ const Home = () => {
     { title: '대구운수', latlng: { lat: 35.871435, lng: 128.601445 } },
     { title: '대천운수', latlng: { lat: 36.491065, lng: 126.494356 } },
     { title: '광주운수', latlng: { lat: 35.491065, lng: 126.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
@@ -153,7 +150,7 @@ const Home = () => {
                 flexDirection: 'column',
                 overflowY: 'auto',
                 width: '98.5%',
-                height: 'calc(43% - 30px)',
+                height: '430px',
                 marginLeft: '10px',
                 boxShadow: '1px 1px 1px 2px lightgray',
                 borderRadius: '10px',

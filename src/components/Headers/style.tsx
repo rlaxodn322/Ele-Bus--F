@@ -14,23 +14,36 @@ export const LogoWrapper = styled.div`
   padding-left: 20px;
   background-color: white;
   z-index: 5;
+
   & img {
-    height: 50px;
-    // margin: 10px;
+    height: 40px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 `;
 
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  // background-color: white;
   margin: 10px;
 
   & Button {
     margin-right: 10px;
     width: 100px;
-    // height: 30px;
     color: #808080;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    & Button {
+      margin-right: 0;
+    }
   }
 `;
 
