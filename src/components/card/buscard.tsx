@@ -14,7 +14,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange }) => {
     <>
       <div
         style={{
-          height: '12%',
+          height: '120px',
           marginLeft: '10px',
           marginTop: '10px',
           background: 'white',
@@ -75,7 +75,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange }) => {
       </div>
       <div
         style={{
-          height: '12%',
+          height: '120px',
           marginLeft: '10px',
           marginTop: '13px',
           background: 'white',
