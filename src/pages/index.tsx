@@ -59,6 +59,7 @@ const Home = () => {
     if (!isAuthenticated) {
       router.push('/auth/login');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
 
   // Add markers for 10 locations in Osan City
