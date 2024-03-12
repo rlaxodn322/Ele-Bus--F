@@ -132,27 +132,37 @@ const LoginPage = () => {
       setLoading(true);
     },
     onSuccess: (email) => {
-      queryClient.setQueryData(['email'], email);
       const userData = queryClient.setQueryData(['email'], email);
-      // setUserData(userData);
 
       if (userData !== null && Object.keys(userData).length > 0) {
+        if (userData.admin === '03') {
+          // 만약 admin 값이 '03'이면 권한이 없는 경우
+          Swal.fire({
+            icon: 'error',
+            title: '권한이 없습니다.',
+            text: '로그인에 실패했습니다. 권한을 확인해주세요.',
+            timer: 2000,
+          });
+          return;
+        }
+
+        // 권한이 있는 경우 로그인 성공 처리
         sessionStorage.setItem('userData', JSON.stringify(userData));
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 500,
+          timerProgressBar: true,
+        });
+        Toast.fire({
+          icon: 'success',
+          title: '로그인 성공.',
+        });
+        router.push('../').then(() => {
+          window.location.reload();
+        });
       }
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 500,
-        timerProgressBar: true,
-      });
-      Toast.fire({
-        icon: 'success',
-        title: '로그인 성공.',
-      });
-      router.push('../').then(() => {
-        window.location.reload();
-      });
     },
     onSettled: () => {
       setLoading(false);
