@@ -46,13 +46,20 @@ const MyPage = () => {
 
   // 세션 스토리지에서 로그인 데이터를 가져옵니다.
   const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
-
+  const userDataString = typeof window !== 'undefined' ? sessionStorage.getItem('userData') : null;
+  const userData = userDataString ? JSON.parse(userDataString) : {};
+  const adminValue = userData.admin;
+  console.log(adminValue);
   // 로그인되어 있지 않으면 로그인 페이지로 리디렉션합니다.
   React.useEffect(() => {
     if (!isAuthenticated) {
       router.push('/auth/login');
     }
-  }, [isAuthenticated, router]);
+    if (userData.admin !== null && userData.admin === '02') {
+      router.push('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated, userData]);
   const fetchBusList = async () => {
     try {
       const busListData = await loadBusListAPI();

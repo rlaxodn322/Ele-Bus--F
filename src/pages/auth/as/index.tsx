@@ -35,16 +35,23 @@ const MyPage = () => {
   const [searchedNumber, setSearchedNumber] = useState(''); // 검색한 부품번호를 저장하기 위한 상태
   const router = useRouter();
 
-  // 세션 스토리지에서 로그인 데이터를 가져옵니다.
   const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
+  const userDataString = typeof window !== 'undefined' ? sessionStorage.getItem('userData') : null;
+  const userData = userDataString ? JSON.parse(userDataString) : {};
+  const adminValue = userData.admin;
+  console.log(adminValue);
 
-  // 로그인되어 있지 않으면 로그인 페이지로 리디렉션합니다.
+  // 로그인되어 있지 않거나 어드민 값이 '02'가 아니면 로그인 페이지로 리디렉션합니다.
   React.useEffect(() => {
     if (!isAuthenticated) {
       router.push('/auth/login');
     }
+    if (userData.admin !== null && userData.admin === '02') {
+      router.push('/');
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
+  }, [isAuthenticated, userData]);
+
   const handleInputButtonChange = async (value: string) => {
     setSearchedNumber(value);
   };
