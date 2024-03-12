@@ -1,4 +1,21 @@
 import styled from '@emotion/styled';
+export const LogoutWrapper = styled.div`
+  height: 50px;
+  width: 70%;
+
+  & img {
+    margin-right: 10px;
+    float: left;
+  }
+
+  & span {
+    color: #808080;
+    font-family: Noto Sans KR;
+    font-size: 16px;
+    float: left;
+    margin-top: 12px;
+  }
+`;
 
 export const Layout = styled.div`
   position: fixed;
@@ -11,13 +28,16 @@ export const Layout = styled.div`
   border-right: 1px solid #f0f0f0;
   background-color: white;
   border-radius: 5px;
+
   & div {
     height: 30px;
     padding-top: 40px;
+
     & li {
       height: 25px;
       width: 60px;
       padding-top: 14px;
+
       & a {
         & label {
           visibility: hidden;
@@ -29,30 +49,56 @@ export const Layout = styled.div`
       }
     }
   }
-  &:hover {
-    width: 250px;
-    & div {
-      text-align: right;
-      margin: 20px;
-      & img {
-      }
-      visibility: visible;
-      & li {
-        text-align: left;
-        width: 190px;
-        & a {
-          & label {
-            visibility: visible;
-          }
-          & img {
-            margin-left: 0px;
+
+  @media (min-width: 769px) {
+    &:hover {
+      width: 250px;
+
+      & div {
+        text-align: right;
+        margin: 20px;
+
+        & img {
+        }
+        visibility: visible;
+
+        & li {
+          text-align: left;
+          width: 190px;
+
+          & a {
+            & label {
+              visibility: visible;
+            }
+            & img {
+              margin-left: 0px;
+            }
           }
         }
       }
     }
   }
-`;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #f0f0f0;
+    border-right: none;
 
+    &:hover {
+      width: 100%; // 원하는 화면 크기로 수정
+      & div {
+        margin: 10;
+      }
+    }
+
+    & ${LogoutWrapper} {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      bottom: unset;
+    }
+  }
+`;
 export const Menu = styled.div``;
 
 export const MenuIconWrapper = styled.div`
@@ -107,24 +153,4 @@ export const MenuDetailWrapper = styled.div`
 
 export const IconImage = styled.img`
   float: left;
-`;
-
-export const LogoutWrapper = styled.div`
-  position: absolute;
-  bottom: 60px;
-  left: 20px;
-  height: 50px;
-  width: 70%;
-  & img {
-    margin-right: 10px;
-    float: left;
-  }
-
-  & span {
-    color: #808080;
-    font-family: Noto Sans KR;
-    font-size: 16px;
-    float: left;
-    margin-top: 12px;
-  }
 `;
