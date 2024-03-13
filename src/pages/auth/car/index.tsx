@@ -29,8 +29,24 @@ const Page = styled.section`
   width: 1370px;
   height: 100%;
   margin: 30px auto;
+
+  @media (max-width: 768px) {
+    width: 350px;
+    margin-top: 50px;
+  }
 `;
 
+const CarCard = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 65%;
+  margin-top: 20px;
+  @media (max-width: 768px) {
+    margin: 0;
+    flex-direction: column;
+  }
+`;
 // 더미 데이터
 const dummyData = [
   { id: 1, vehicle: '차량1', status: '운행기록장치 모델명', battery: 'GTG 기록 ABCD' },
@@ -107,15 +123,16 @@ const MyPage = () => {
       <Page>
         <h1>차량조회/관리</h1>
         <BusCard busCount={busLocations.length} />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '100%',
-            height: '65%',
-            marginTop: '20px',
-          }}
-        >
+        <CarCard>
+          {/* <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+              height: '65%',
+              marginTop: '20px',
+            }}
+          > */}
           <div
             style={{
               height: '600px',
@@ -124,6 +141,7 @@ const MyPage = () => {
               borderRadius: '10px',
               boxShadow: '1px 1px 2px 2px lightgray',
               background: 'white',
+              marginBottom: '10px',
             }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>수원여객차량</h1>
@@ -138,6 +156,7 @@ const MyPage = () => {
               boxShadow: '1px 1px 2px 2px lightgray',
               overflowY: 'auto',
               background: 'white',
+              marginBottom: '10px',
             }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>
@@ -154,13 +173,21 @@ const MyPage = () => {
               boxShadow: '1px 1px 2px 2px lightgray',
               marginRight: '20px',
               background: 'white',
+              marginBottom: '10PX',
             }}
           >
             <h1 style={{ marginLeft: '10px', color: '#2B85FF' }}>
               <br></br>
             </h1>
             <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
-            <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '100px' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'end',
+                marginRight: '10px',
+                marginTop: '100px',
+              }}
+            >
               <Link href="./dtg">
                 <Button type="primary" style={{ marginRight: '10px' }}>
                   DTG 조회하기
@@ -170,7 +197,7 @@ const MyPage = () => {
           </div>
           <div
             style={{
-              width: '90%',
+              width: '100%',
               height: '600px',
 
               borderRadius: '10px',
@@ -193,7 +220,8 @@ const MyPage = () => {
             </div>
             <Bus stations={stations} busLocations={busLocations} />
           </div>
-        </div>
+          {/* </div> */}
+        </CarCard>
       </Page>
     </>
   );
