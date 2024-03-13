@@ -20,7 +20,6 @@ export const LogoWrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-    flex-direction: column;
     align-items: center;
     text-align: center;
   }
@@ -38,11 +37,13 @@ export const ButtonWrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-    justify-content: center;
     margin-top: 10px;
     margin-left: 10px;
+
     & Button {
-      margin-right: 0;
+      font-size: 10px;
+      height: 25px;
+      width: 100%;
     }
   }
 `;

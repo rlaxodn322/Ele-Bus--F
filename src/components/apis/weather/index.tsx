@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { WeatherContainer, WeatherTemp, WeatherDesc, WeatherCloud } from './style';
+import { WeatherContainer, WeatherTemp, WeatherDesc, WeatherCloud, Day } from './style';
 import axios from 'axios';
 
 interface WeatherState {
@@ -20,7 +20,20 @@ const Weather = () => {
     loading: true,
     contury: '',
   });
+  const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString('ko-KR'));
+  // Update date every day
+  useEffect(() => {
+    // Update date every day
+    const intervalId = setInterval(
+      () => {
+        setCurrentDate(new Date().toLocaleDateString('ko-KR'));
+      },
+      24 * 60 * 60 * 1000,
+    ); // Update every 24 hours
 
+    // Clear interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
   useEffect(() => {
     const city = 'Hwaseong'; //원하는 지역 검색하여 변경
     const apiKey = 'c5597f52c85276cd2e0898b8d3d77ea0';
@@ -54,6 +67,7 @@ const Weather = () => {
         <>
           {/* <WeatherIcon src={imgSrc} alt="Weather Icon" /> */}
           {/* <WeatherCloud>위치 : text</WeatherCloud> */}
+          <Day>{currentDate}</Day>
           <WeatherCloud>날씨 : {desc}</WeatherCloud>
           <WeatherTemp>온도 : {temp}°C</WeatherTemp>
           <WeatherDesc>습도 : {humidity}%</WeatherDesc>

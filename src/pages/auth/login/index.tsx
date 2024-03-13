@@ -30,6 +30,10 @@ const PageLogin = styled(Form)`
   align-items: center;
   justify-content: center;
   height: 60vh;
+  /* @media (max-width: 768px) {
+    margin: 0;
+    margin-left: -80px;
+  } */
 `;
 
 const LoginTitle = styled.div`

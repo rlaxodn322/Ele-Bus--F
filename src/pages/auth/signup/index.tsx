@@ -39,10 +39,13 @@ const TitleWrapper = styled.div`
 
 const PageSignUp = styled.div`
   //margin-top: 0%;
-  width: 60%;
-  height: 60vh;
+  width: 100%;
+  height: 750px;
   padding-left: 40%;
   background-color: white;
+  @media (max-width: 768px) {
+    padding-left: 20%;
+  }
 `;
 
 const SignUpBar = styled.div`
@@ -52,9 +55,12 @@ const SignUpBar = styled.div`
   border-radius: 24px;
   padding: 6px;
   margin: 10px;
-
+  width: 300px;
   &:focus-within {
     box-shadow: 0 0 0 2px #4285f4;
+  }
+  @media (max-width: 768px) {
+    width: 200px;
   }
 `;
 
@@ -72,8 +78,8 @@ const SignUpInput = styled.input`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  padding-left: 40%;
+  justify-content: center;
+  padding-left: 0%;
 `;
 
 const Signup = () => {
@@ -227,7 +233,7 @@ const Signup = () => {
       </Head>
       <form>
         <PageSignUp>
-          <div>회원가입</div>
+          <div style={{ marginLeft: '10px' }}>회원가입</div>
           <TitleWrapper></TitleWrapper>
           <SignUpBar>
             <SignUpInput

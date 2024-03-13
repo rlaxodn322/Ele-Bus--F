@@ -18,9 +18,34 @@ const Page = styled.section`
   width: 1370px;
   height: 100vh;
   margin: 0 auto;
+  display: flex;
+  @media (max-width: 768px) {
+    width: 330px;
+  }
+`;
+const PageWapper = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  @media (max-width: 768px) {
+    width: 330px;
+
+    flex-wrap: wrap; /* flex items이 여러 줄로 나뉠 수 있도록 설정 */
+  }
 `;
 // Dummy 데이터
-
+const MapBox = styled.div`
+  width: 50%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+const Busstatic = styled.div`
+  width: 49.5%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 const dummyVehicleData = [
   {
     company: '화성여객',
@@ -85,7 +110,7 @@ const Home = () => {
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
   ];
-  const mapHeight = '797px';
+  const mapHeight = '740px';
   const uniqueCompanies = Array.from(new Set(dummyVehicleData.map((vehicle) => vehicle.company)));
 
   // 운행중인 차량 정보 필터링 함수
@@ -123,12 +148,14 @@ const Home = () => {
         <meta name="description" content="text." />
       </Head>
       <Page>
-        <div style={{ display: 'flex', height: '100%', width: '100%' }}>
-          <div style={{ width: '49.5%', height: '100%' }}>
+        <PageWapper>
+          {/* <div style={{ display: 'flex', height: '100%', width: '100%' }}> */}
+          <MapBox>
             <h1>버스 현황</h1>
             <Map markerPositions={markerPositions} mapHeight={mapHeight} />
-          </div>
-          <div style={{ width: '49.5%', height: '100%' }}>
+          </MapBox>
+          <Busstatic>
+            {/* <div style={{ width: '49.5%', height: '100%' }}> */}
             <h1 style={{ marginLeft: '20px' }}>버스상태</h1>
             <BusCard onFilterChange={(location) => setSelectedLocation(location)} />
             <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>운행중인 차량정보</h1>
@@ -150,7 +177,7 @@ const Home = () => {
                 flexDirection: 'column',
                 overflowY: 'auto',
                 width: '98.5%',
-                height: '455px',
+                height: '400px',
                 marginLeft: '10px',
                 boxShadow: '1px 1px 1px 2px lightgray',
                 borderRadius: '10px',
@@ -211,8 +238,10 @@ const Home = () => {
                 </h6>
               ))}
             </div>
-          </div>
-        </div>
+            {/* </div> */}
+          </Busstatic>
+          {/* </div> */}
+        </PageWapper>
       </Page>
     </>
   );

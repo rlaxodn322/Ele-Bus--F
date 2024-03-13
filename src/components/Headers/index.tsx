@@ -10,7 +10,6 @@ import LoginButton from '../antd/loginbutton';
 const MainLogo = () => {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentDate, setCurrentDate] = useState(new Date().toLocaleDateString('ko-KR'));
 
   useEffect(() => {
     const userDataString = sessionStorage.getItem('userData');
@@ -19,17 +18,6 @@ const MainLogo = () => {
     } else {
       setIsLoggedIn(false);
     }
-
-    // Update date every day
-    const intervalId = setInterval(
-      () => {
-        setCurrentDate(new Date().toLocaleDateString('ko-KR'));
-      },
-      24 * 60 * 60 * 1000,
-    ); // Update every 24 hours
-
-    // Clear interval on component unmount
-    return () => clearInterval(intervalId);
   }, []);
 
   const handleLogout = () => {
@@ -56,17 +44,9 @@ const MainLogo = () => {
       <LogoWrapper>
         <Link href="../">
           <img src={'/images/FirstLogo.jpeg'} alt="Logo" />
-          {/* <a>
-        
-          </a> */}
         </Link>
-
         <ButtonWrapper>
-          <div style={{ color: '#808080', margin: '10px', fontSize: '15px' }}>{currentDate}</div>
-          <div style={{ marginRight: '30px' }}>
-            <Weather />
-          </div>
-
+          <Weather />
           <LoginButton isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         </ButtonWrapper>
       </LogoWrapper>

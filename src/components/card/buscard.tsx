@@ -1,5 +1,17 @@
 import React from 'react';
-
+import styled from '@emotion/styled';
+const DivWapper = styled.div`
+  margin-left: 10px;
+  height: 120px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 7px;
+  @media (max-width: 768px) {
+    height: 100px;
+  }
+`;
 interface BusCardProps {
   // eslint-disable-next-line no-unused-vars
   onFilterChange: (location: string) => void;
@@ -12,16 +24,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange }) => {
 
   return (
     <>
-      <div
-        style={{
-          height: '120px',
-          marginLeft: '10px',
-          marginTop: '10px',
-          background: 'white',
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
+      <DivWapper>
         <div
           onClick={() => handleClick('전체')}
           style={{
@@ -72,17 +75,8 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange }) => {
             ></img>
           </div>
         </div>
-      </div>
-      <div
-        style={{
-          height: '120px',
-          marginLeft: '10px',
-          marginTop: '13px',
-          background: 'white',
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
+      </DivWapper>
+      <DivWapper>
         <div
           onClick={() => handleClick('충전/대기')}
           style={{
@@ -137,7 +131,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange }) => {
             ></img>
           </div>
         </div>
-      </div>
+      </DivWapper>
     </>
   );
 };

@@ -18,7 +18,10 @@ export const ContentsWrapper = styled.div`
   }
 
   @media (max-width: 1340px) {
-    width: 100%;
-    margin: 0 80px;
+    /* width: 100%;
+    margin: 0 80px; */
+  }
+  @media (max-width: 768px) {
+    margin: 0 auto;
   }
 `;
