@@ -10,6 +10,7 @@ const DivWapper = styled.div`
   margin-bottom: 7px;
   @media (max-width: 768px) {
     height: 100px;
+    width: 94%;
   }
 `;
 interface BusCardProps {

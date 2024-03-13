@@ -2,11 +2,9 @@ import Head from 'next/head';
 import MainLayout from '../layouts';
 // import { Page } from './style';
 import React, { useState } from 'react';
-
 import { Cascader } from 'antd'; // antd
 import Map from '../components/apis/kakao/map';
 import BusCard from '../components/card/buscard';
-
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 
@@ -21,6 +19,7 @@ const Page = styled.section`
   display: flex;
   @media (max-width: 768px) {
     width: 330px;
+    height: 100%;
   }
 `;
 const PageWapper = styled.div`
@@ -46,6 +45,38 @@ const Busstatic = styled.div`
     width: 100%;
   }
 `;
+const CarinfoTable = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 98.5%;
+  height: 400px;
+  margin-left: 10px;
+  box-shadow: 1px 1px 1px 2px lightgray;
+  border-radius: 10px;
+  background-color: white;
+  @media (max-width: 768px) {
+    width: 94%;
+  }
+`;
+const DivTable = styled.div`
+  flex: 1;
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+`;
+const DivTable2 = styled.div`
+  flex: 1;
+  text-align: center;
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+`;
+const Title = styled.div`
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+`;
 const dummyVehicleData = [
   {
     company: '화성여객',
@@ -56,8 +87,7 @@ const dummyVehicleData = [
     note: 'no',
   },
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
+
   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '충전/대기', soc: '65%', note: 'no' },
   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
@@ -65,10 +95,7 @@ const dummyVehicleData = [
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
+
   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
   // Add more dummy data as needed
 ];
@@ -151,14 +178,20 @@ const Home = () => {
         <PageWapper>
           {/* <div style={{ display: 'flex', height: '100%', width: '100%' }}> */}
           <MapBox>
-            <h1>버스 현황</h1>
+            <Title>
+              <h1>버스 현황</h1>
+            </Title>
             <Map markerPositions={markerPositions} mapHeight={mapHeight} />
           </MapBox>
           <Busstatic>
             {/* <div style={{ width: '49.5%', height: '100%' }}> */}
-            <h1 style={{ marginLeft: '20px' }}>버스상태</h1>
+            <Title>
+              <h1 style={{ marginLeft: '10px' }}>버스상태</h1>
+            </Title>
             <BusCard onFilterChange={(location) => setSelectedLocation(location)} />
-            <h1 style={{ marginLeft: '20px', marginBottom: '0' }}>운행중인 차량정보</h1>
+            <Title>
+              <h1 style={{ marginLeft: '10px', marginBottom: '0' }}>운행중인 차량정보</h1>
+            </Title>
             <div style={{ marginBottom: '5px', border: '0px', display: 'flex', justifyContent: 'end' }}>
               <Cascader
                 options={companyOptions}
@@ -171,19 +204,20 @@ const Home = () => {
                 style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
               />
             </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                overflowY: 'auto',
-                width: '98.5%',
-                height: '400px',
-                marginLeft: '10px',
-                boxShadow: '1px 1px 1px 2px lightgray',
-                borderRadius: '10px',
-                background: 'white',
-              }}
-            >
+            <CarinfoTable>
+              {/* <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  overflowY: 'auto',
+                  width: '98.5%',
+                  height: '400px',
+                  marginLeft: '10px',
+                  boxShadow: '1px 1px 1px 2px lightgray',
+                  borderRadius: '10px',
+                  background: 'white',
+                }}
+              > */}
               <div
                 style={{
                   position: 'sticky',
@@ -198,12 +232,12 @@ const Home = () => {
                   fontSize: '17px',
                 }}
               >
-                <div style={{ flex: 1, textAlign: 'center' }}>운행사</div>
-                <div style={{ flex: 1, textAlign: 'center' }}>차량번호</div>
-                <div style={{ flex: 1, textAlign: 'center' }}>운행노선</div>
-                <div style={{ flex: 1, textAlign: 'center' }}>운행상태</div>
-                <div style={{ flex: 1, textAlign: 'center' }}>SOC</div>
-                <div style={{ flex: 1, textAlign: 'center' }}>이벤트발생</div>
+                <DivTable2>운행사</DivTable2>
+                <DivTable2>차량번호</DivTable2>
+                <DivTable2>운행노선</DivTable2>
+                <DivTable2>운행상태</DivTable2>
+                <DivTable2>SOC</DivTable2>
+                <DivTable2>이벤트발생</DivTable2>
               </div>
               {sortedVehicleData.map((vehicle, index) => (
                 <h6
@@ -229,15 +263,16 @@ const Home = () => {
                     // 수정된 부분 끝
                   }}
                 >
-                  <div style={{ flex: 1 }}>{vehicle.company}</div>
-                  <div style={{ flex: 1 }}>{vehicle.route}</div>
-                  <div style={{ flex: 1 }}>{vehicle.vehicleNum}</div>
-                  <div style={{ flex: 1 }}>{vehicle.location}</div>
-                  <div style={{ flex: 1 }}>{vehicle.soc}</div>
-                  <div style={{ flex: 1 }}>{vehicle.note}</div>
+                  <DivTable>{vehicle.company}</DivTable>
+                  <DivTable>{vehicle.route}</DivTable>
+                  <DivTable>{vehicle.vehicleNum}</DivTable>
+                  <DivTable>{vehicle.location}</DivTable>
+                  <DivTable>{vehicle.soc}</DivTable>
+                  <DivTable>{vehicle.note}</DivTable>
                 </h6>
               ))}
-            </div>
+              {/* </div> */}
+            </CarinfoTable>
             {/* </div> */}
           </Busstatic>
           {/* </div> */}
