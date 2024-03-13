@@ -22,7 +22,35 @@ const Page = styled.section`
   width: 1370px;
   height: 100%;
   margin: 30px auto;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
+const BusCharger = styled.div`
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+const TableContainer = styled.div`
+  width: 100%;
+  height: 30%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 2px lightgray;
+  background-color: white;
+  @media (max-width: 768px) {
+    box-shadow: none;
+    width: 100%;
+    font-size: 8px;
+    margin-left: 3%;
+  }
+`;
+
 interface Row {
   buses: any;
   companynumber: string;
@@ -228,26 +256,19 @@ const MyPage = () => {
       <Page>
         <h1>사업자조회/관리</h1>
         <Top data={maintenanceHistory} onReloadData={fetchMyInfo} />
-        <div
-          style={{
-            width: '100%',
-            height: '30%',
-            marginTop: '10px',
-            padding: '10px',
-
-            borderRadius: '10px',
-            boxShadow: '1px 1px 2px 2px lightgray',
-            background: 'white',
-          }}
-        >
-          <div style={{ width: '100%', height: '90%', display: 'flex', justifyContent: 'space-between' }}>
+        <TableContainer>
+          <BusCharger>
             <div style={{ width: '90%', marginRight: '20px', height: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h1>버스 등록 현황</h1>
+                <div style={{ fontSize: '10px' }}>
+                  <h1>버스 등록 현황</h1>
+                </div>
+
                 <div>
                   <Button type="primary" style={{ marginRight: '5px' }} onClick={showModal}>
                     버스 등록
                   </Button>
+
                   <Button
                     style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
                     onClick={() => downloadExcel(buses1, busDataColumns, '버스_등록_현황')}
@@ -257,11 +278,14 @@ const MyPage = () => {
                 </div>
               </div>
               <BusCreate open={modalOpen} onCancel={handleCancel} />
+
               <Table7 a="전체모델" data={Array.isArray(buses1) ? buses1 : []} columns={busDataColumns} />
             </div>
             <div style={{ width: '90%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h1>충전기 등록 현황</h1>
+                <div style={{ fontSize: '10px' }}>
+                  <h1>충전기 등록 현황</h1>
+                </div>
                 <Button
                   style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
                   onClick={() => downloadExcel(dummyTableData1, busDataColumns1, '충전기_등록_현황')}
@@ -272,8 +296,8 @@ const MyPage = () => {
 
               <Table5 data={dummyTableData1} columns={busDataColumns1} />
             </div>
-          </div>
-        </div>
+          </BusCharger>
+        </TableContainer>
       </Page>
     </>
   );

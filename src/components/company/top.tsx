@@ -2,7 +2,43 @@ import React, { useEffect, useState } from 'react';
 import { Button, Input, Modal } from 'antd';
 import CompanyCreate from '../modal/companycreate';
 import { deleteCompanyAPI } from '../apis/company/company';
-
+import styled from '@emotion/styled';
+const CompanyTop = styled.section`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 350px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 2px lightgray;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    box-shadow: none;
+  }
+`;
+const CompanyTop1 = styled.section`
+  margin-left: 100px;
+  width: 30%;
+  @media (max-width: 768px) {
+    width: 95%;
+    margin-left: 3%;
+    font-size: 13px;
+  }
+`;
+const CompanyInfoTable = styled.div`
+  width: 25%;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+const BusInfoTable = styled.div`
+  width: 25%;
+  margin-right: 100px;
+  overflow: auto;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 interface Row {
   buses: {
     carNumber: string;
@@ -104,26 +140,21 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
 
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          width: '100%',
-          height: '350px',
-          background: 'white',
-          borderRadius: '10px',
-          boxShadow: '1px 1px 1px 2px lightgray',
-        }}
-      >
-        <div style={{ marginLeft: '100px', width: '25%' }}>
-          <h1>사업자검색</h1>
+      <CompanyTop>
+        <CompanyTop1>
+          <div style={{ fontSize: '17px' }}>
+            <h1>사업자검색</h1>
+          </div>
+
           <div style={{ display: 'flex' }}>
             <Input placeholder="사업자 검색" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
             <Button type="primary" onClick={handleSearch}>
               검색
             </Button>
           </div>
-          <h4 style={{ margin: '3px' }}>사업자리스트</h4>
+          <div style={{ fontSize: '14px' }}>
+            <h4 style={{ margin: '3px' }}>사업자리스트</h4>
+          </div>
           <div
             style={{
               border: '1px solid lightgray',
@@ -181,9 +212,9 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
             </Button>
             <CompanyCreate open={modalOpen} onCancel={handleCancel} />
           </div>
-        </div>
+        </CompanyTop1>
 
-        <div style={{ width: '25%' }}>
+        <CompanyInfoTable>
           <h1>사업자 정보</h1>
           <div style={infoBoxStyle}>
             {!foundCompany ? (
@@ -208,9 +239,8 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
               </>
             )}
           </div>
-        </div>
-
-        <div style={{ width: '25%', marginRight: '100px', overflow: 'auto' }}>
+        </CompanyInfoTable>
+        <BusInfoTable>
           <h1>버스 정보</h1>
           <div style={infoBoxStyle}>
             {!foundCompany ? (
@@ -261,8 +291,9 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
               </>
             )}
           </div>
-        </div>
-      </div>
+        </BusInfoTable>
+        {/* </div> */}
+      </CompanyTop>
     </>
   );
 };
