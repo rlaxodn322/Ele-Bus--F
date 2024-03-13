@@ -83,7 +83,7 @@ const MyPage = () => {
   useEffect(() => {
     const fetchStations = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/stations');
+        const response = await axios.get('http://ele.firstcorea.com:3000/api/stations');
         setStations(response.data.stations);
       } catch (error) {
         console.error(error);
@@ -92,7 +92,7 @@ const MyPage = () => {
 
     const fetchBusLocations = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/bus');
+        const response = await axios.get('http://ele.firstcorea.com:3000/api/bus');
         setBusLocations(response.data.stations);
       } catch (error) {
         console.error(error);
