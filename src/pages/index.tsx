@@ -18,7 +18,7 @@ const Page = styled.section`
   margin: 0 auto;
   display: flex;
   @media (max-width: 768px) {
-    width: 330px;
+    width: 100%;
     height: 100%;
     margin-top: 50px;
     margin-bottom: 10px;
@@ -29,7 +29,7 @@ const PageWapper = styled.div`
   height: 100%;
   width: 100%;
   @media (max-width: 768px) {
-    width: 330px;
+    width: 100%;
 
     flex-wrap: wrap; /* flex items이 여러 줄로 나뉠 수 있도록 설정 */
   }
@@ -38,7 +38,7 @@ const PageWapper = styled.div`
 const MapBox = styled.div`
   width: 50%;
   @media (max-width: 768px) {
-    width: 100%;
+    width: 97%;
   }
 `;
 const Busstatic = styled.div`
@@ -58,7 +58,7 @@ const CarinfoTable = styled.div`
   border-radius: 10px;
   background-color: white;
   @media (max-width: 768px) {
-    width: 94%;
+    width: 95%;
   }
 `;
 const DivTable = styled.div`
@@ -76,7 +76,6 @@ const DivTable2 = styled.div`
 `;
 const Title = styled.div`
   @media (max-width: 768px) {
-    font-size: 13px;
   }
 `;
 const dummyVehicleData = [

@@ -16,8 +16,53 @@ const Page = styled.section`
   width: 1370px;
   height: 100%;
   margin: 30px auto;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 40px;
+  }
 `;
+const DtgInfoTable = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+  }
+`;
+const CarTable = styled.div`
+  width: 30%;
+  height: 700px;
+  margin-right: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 2px lightgray;
+  background-color: white;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+`;
+const DTGCarTable = styled.div`
+  width: 40%;
+  height: 700px;
+  margin-right: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 2px lightgray;
+  background-color: white;
 
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
+`;
+const DateContainer = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 const busDataColumns = ['운행일시', '운행시간', '누적거리', '운행속도', '운행거리', '평균속도'];
 const dummyTableData = [
   {
@@ -415,63 +460,31 @@ const MyPage = () => {
       </Head>
       <Page>
         <h1>DTG 관리</h1>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '100%',
-            height: '100%',
-            marginTop: '20px',
-          }}
-        >
-          <div
-            style={{
-              width: '30%',
-              height: '700px',
-              marginRight: '20px',
-              borderRadius: '10px',
-              boxShadow: '1px 1px 2px 2px lightgray',
-              background: 'white',
-            }}
-          >
+        <DtgInfoTable>
+          <CarTable>
             <h1 style={{ marginLeft: '10px' }}>차량 목록</h1>
             <Table3 data={dummyTableData2} columns={busDataColumns2} updateDtgRecordTitle={updateDtgRecordTitle} />
-          </div>
-          <div
-            style={{
-              width: '30%',
-
-              marginRight: '20px',
-              borderRadius: '10px',
-              boxShadow: '1px 1px 2px 2px lightgray',
-              background: 'white',
-            }}
-          >
+          </CarTable>
+          <CarTable>
             <h1 style={{ marginLeft: '10px' }}>DTG 실시간 기록</h1>
             <Card dtgRecordTitle={dtgRecordTitle} data={dummyData}></Card>
             <div style={{ display: 'flex', justifyContent: 'end', marginRight: '10px', marginTop: '120px' }}></div>
-          </div>
-          <div
-            style={{
-              height: '700px',
-              width: '50%',
-              marginRight: '20px',
-              borderRadius: '10px',
-              boxShadow: '1px 1px 2px 2px lightgray',
-              background: 'white',
-            }}
-          >
+            {/* </div> */}
+          </CarTable>
+          <DTGCarTable>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <h1 style={{ marginLeft: '10px' }}>DTG 과거 이력</h1>
               <div style={{ marginTop: '15px' }}>
-                {/* Date 컴포넌트에 선택한 날짜 범위를 전달하고, 선택 시 handleDateChange 함수 호출 */}
-                <Date onDateChange={handleDateChange} />
+                <DateContainer>
+                  {/* Date 컴포넌트에 선택한 날짜 범위를 전달하고, 선택 시 handleDateChange 함수 호출 */}
+                  <Date size={'small'} onDateChange={handleDateChange} />
+                </DateContainer>
               </div>
             </div>
             {/* 필터링된 데이터를 DtgTable 컴포넌트로 전달 */}
             <DtgTable data={filteredData} columns={busDataColumns} />
-          </div>
-        </div>
+          </DTGCarTable>
+        </DtgInfoTable>
       </Page>
     </>
   );

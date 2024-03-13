@@ -31,8 +31,8 @@ const Page = styled.section`
   margin: 30px auto;
 
   @media (max-width: 768px) {
-    width: 350px;
-    margin-top: 50px;
+    width: 100%;
+    margin-top: 70px;
   }
 `;
 

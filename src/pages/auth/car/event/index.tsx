@@ -25,7 +25,7 @@ const Page = styled.section`
   justify-content: space-between;
   @media (max-width: 768px) {
     margin-top: 30px;
-    width: 400px;
+    width: 100%;
     flex-direction: column;
   }
 `;
@@ -34,7 +34,7 @@ const ItemTable = styled.div`
   height: 100%;
   @media (max-width: 768px) {
     width: 100%;
-    font-size: 11px;
+    font-size: 9px;
   }
 `;
 const EventAS = styled.div`
@@ -50,7 +50,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -59,7 +59,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -68,7 +68,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -77,7 +77,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -86,7 +86,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -95,7 +95,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -104,7 +104,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -113,7 +113,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -122,7 +122,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -131,7 +131,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -140,7 +140,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -149,7 +149,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -158,88 +158,7 @@ const dummyTableData = [
   {
     user: '-',
     registrationDate: '배터리',
-    status: '5년/200,000',
-    status1: '2024-01-01',
-    status2: '2027-01-01',
-    status3: '',
-    status4: '수정',
-  },
-  {
-    user: '-',
-    registrationDate: '배터리',
-    status: '5년/200,000',
-    status1: '2024-01-01',
-    status2: '2027-01-01',
-    status3: '',
-    status4: '수정',
-  },
-  {
-    user: '-',
-    registrationDate: '배터리',
-    status: '5년/200,000',
-    status1: '2024-01-01',
-    status2: '2027-01-01',
-    status3: '',
-    status4: '수정',
-  },
-  {
-    user: '-',
-    registrationDate: '배터리',
-    status: '5년/200,000',
-    status1: '2024-01-01',
-    status2: '2027-01-01',
-    status3: '',
-    status4: '수정',
-  },
-  {
-    user: '-',
-    registrationDate: '배터리',
-    status: '5년/200,000',
-    status1: '2024-01-01',
-    status2: '2027-01-01',
-    status3: '',
-    status4: '수정',
-  },
-  {
-    user: '-',
-    registrationDate: '배터리',
-    status: '5년/200,000',
-    status1: '2024-01-01',
-    status2: '2027-01-01',
-    status3: '',
-    status4: '수정',
-  },
-  {
-    user: '-',
-    registrationDate: '배터리',
-    status: '5년/200,000',
-    status1: '2024-01-01',
-    status2: '2027-01-01',
-    status3: '',
-    status4: '수정',
-  },
-  {
-    user: '-',
-    registrationDate: '배터리',
-    status: '5년/200,000',
-    status1: '2024-01-01',
-    status2: '2027-01-01',
-    status3: '',
-    status4: '수정',
-  },
-  {
-    user: '-',
-    registrationDate: '배터리',
-    status: '5년/200,000',
-    status1: '2024-01-01',
-    status2: '2027-01-01',
-    status3: '',
-    status4: '수정',
-  },
-  {
-    user: '-',
-    registrationDate: '배터리',
-    status: '5년/200,000',
+    status: '5년',
     status1: '2024-01-01',
     status2: '2027-01-01',
     status3: '',
@@ -330,9 +249,10 @@ const MyPage = () => {
           </div>
           {/* </div> */}
         </EventAS>
+        <h3>부품 교체 이력</h3>
         <ItemTable>
           {/* <div style={{ width: '69%', height: '100%' }}> */}
-          <h3>부품 교체 이력</h3>
+
           <div style={{ width: '100%', height: '90%' }}>
             <div
               style={{
