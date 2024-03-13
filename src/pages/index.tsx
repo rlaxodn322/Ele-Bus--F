@@ -20,6 +20,7 @@ const Page = styled.section`
   @media (max-width: 768px) {
     width: 330px;
     height: 100%;
+    margin-top: 50px;
   }
 `;
 const PageWapper = styled.div`
@@ -176,7 +177,6 @@ const Home = () => {
       </Head>
       <Page>
         <PageWapper>
-          {/* <div style={{ display: 'flex', height: '100%', width: '100%' }}> */}
           <MapBox>
             <Title>
               <h1>버스 현황</h1>
@@ -184,7 +184,6 @@ const Home = () => {
             <Map markerPositions={markerPositions} mapHeight={mapHeight} />
           </MapBox>
           <Busstatic>
-            {/* <div style={{ width: '49.5%', height: '100%' }}> */}
             <Title>
               <h1 style={{ marginLeft: '10px' }}>버스상태</h1>
             </Title>
@@ -205,19 +204,6 @@ const Home = () => {
               />
             </div>
             <CarinfoTable>
-              {/* <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  overflowY: 'auto',
-                  width: '98.5%',
-                  height: '400px',
-                  marginLeft: '10px',
-                  boxShadow: '1px 1px 1px 2px lightgray',
-                  borderRadius: '10px',
-                  background: 'white',
-                }}
-              > */}
               <div
                 style={{
                   position: 'sticky',
@@ -271,11 +257,8 @@ const Home = () => {
                   <DivTable>{vehicle.note}</DivTable>
                 </h6>
               ))}
-              {/* </div> */}
             </CarinfoTable>
-            {/* </div> */}
           </Busstatic>
-          {/* </div> */}
         </PageWapper>
       </Page>
     </>

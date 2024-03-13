@@ -51,7 +51,7 @@ const MainNavbar: FC = () => {
             {routes &&
               routes.map((item, i) => {
                 const isSelected = router.route === item.router;
-                const liStyle = isSelected ? { borderRight: '3px solid #808080' } : {};
+                const liStyle = isSelected ? {} : {};
 
                 // 여기서 userRole에 따라 메뉴를 보여주거나 숨깁니다.
                 const isAdmin = userRole === '01';

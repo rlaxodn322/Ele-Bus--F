@@ -20,7 +20,6 @@ export const LogoutWrapper = styled.div`
 export const Layout = styled.div`
   position: fixed;
   left: 0;
-  width: 250px;
   bottom: 0;
   height: 100vh;
   width: 100px;
@@ -51,6 +50,8 @@ export const Layout = styled.div`
   }
 
   @media (min-width: 769px) {
+    // 화면 크기가 769px 이상일 때의 스타일
+
     &:hover {
       width: 250px;
 
@@ -79,20 +80,22 @@ export const Layout = styled.div`
     }
   }
   @media (max-width: 768px) {
+    // 화면 크기가 768px 이하일 때의 스타일
     width: 100%;
     height: 70px;
     border-bottom: 1px solid #f0f0f0;
     border-right: none;
 
+    top: 0; // 상단으로 이동
+
     &:hover {
-      width: 100%; // 원하는 화면 크기로 수정
+      width: 100%;
       & div {
         margin: 10;
       }
     }
 
     & ${LogoutWrapper} {
-      position: fixed;
       top: 20px;
       right: 20px;
       bottom: unset;
@@ -143,6 +146,44 @@ export const MenuWrapper = styled.ul`
       cursor: pointer;
       width: 30px;
       height: 30px;
+    }
+  }
+  @media (max-width: 768px) {
+    margin: -55px 10px 50px 0px;
+    font-family: Noto Sans KR;
+    font-size: 16px;
+    line-height: 100%;
+    list-style: none;
+    display: flex; /* 가로로 나열되도록 설정 */
+
+    & li {
+      color: #808080;
+      margin-right: 30px; /* 각 메뉴 사이의 간격 설정 */
+
+      & label {
+        cursor: pointer;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 18px;
+
+        margin: 10px 0px 0px 15px;
+        color: #808080;
+      }
+
+      & span {
+        cursor: pointer;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+
+        color: #808080;
+      }
+
+      & img {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 `;
