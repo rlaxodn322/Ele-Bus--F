@@ -21,6 +21,7 @@ const Page = styled.section`
     width: 330px;
     height: 100%;
     margin-top: 50px;
+    margin-bottom: 10px;
   }
 `;
 const PageWapper = styled.div`

@@ -23,6 +23,26 @@ const Page = styled.section`
   margin: auto;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    width: 400px;
+    flex-direction: column;
+  }
+`;
+const ItemTable = styled.div`
+  width: 69%;
+  height: 100%;
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 11px;
+  }
+`;
+const EventAS = styled.div`
+  width: 30%;
+  height: 100%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const busDataColumns = ['이벤트경보', '부품명', '교체주기', '마지막점검', '교체예정', '비고', '수정'];
 
@@ -281,12 +301,13 @@ const MyPage = () => {
         <title>자동차 정비 이력페이지</title>
         <meta name="description" content="Bus" />
       </Head>
-      <div style={{ width: '1370px', margin: '0 auto', display: 'flex', justifyContent: 'flex-start' }}>
-        <h1>자동차 정비 및 부품교체 이력</h1>
-      </div>
+      <div style={{ width: '1370px', margin: '0 auto', display: 'flex', justifyContent: 'flex-start' }}></div>
       <Page>
-        <div style={{ width: '30%', height: '100%' }}>
-          <h3>정비 이력</h3>
+        <h1></h1>
+
+        <EventAS>
+          {/* <div style={{ width: '30%', height: '100%' }}> */}
+          <h3>자동차 정비 이력</h3>
           <div style={{ width: '100%', height: '90%' }}>
             <div
               style={{
@@ -307,8 +328,10 @@ const MyPage = () => {
               <EventModal open={modalOpen} onCancel={handleCancel} />
             </div>
           </div>
-        </div>
-        <div style={{ width: '69%', height: '100%' }}>
+          {/* </div> */}
+        </EventAS>
+        <ItemTable>
+          {/* <div style={{ width: '69%', height: '100%' }}> */}
           <h3>부품 교체 이력</h3>
           <div style={{ width: '100%', height: '90%' }}>
             <div
@@ -326,7 +349,8 @@ const MyPage = () => {
               <Button style={{ color: 'white', background: '#27B964' }}>부품 교체 이력 다운로드</Button>
             </div>
           </div>
-        </div>
+          {/* </div> */}
+        </ItemTable>
       </Page>
     </>
   );
