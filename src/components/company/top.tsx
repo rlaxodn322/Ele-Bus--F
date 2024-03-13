@@ -20,7 +20,7 @@ const CompanyTop1 = styled.section`
   margin-left: 100px;
   width: 30%;
   @media (max-width: 768px) {
-    width: 95%;
+    width: 95ost%;
     margin-left: 3%;
     font-size: 13px;
   }
