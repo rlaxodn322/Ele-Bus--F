@@ -12,8 +12,26 @@ const Page = styled.section`
   border-radius: 20px;
   background-color: white;
   box-shadow: 2px 2px 2px 2px lightgray;
+  @media (max-width: 1100px) {
+    margin-top: 60px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-shadow: none;
+  }
 `;
-
+const ErrorWapper = styled.div`
+  border: 1px solid lightgray;
+  margin: 0 auto;
+  width: 100%;
+  height: 65%;
+  border-radius: 10px;
+  overflow-y: auto;
+  @media (max-width: 1100px) {
+    font-size: 10px;
+    width: 100%;
+  }
+`;
 interface ErrorLogProps {
   date: string;
   busNumber: string;
@@ -70,22 +88,20 @@ const MyPage = () => {
   return (
     <>
       <Page>
+        <h1>통계정보</h1>
         <div style={{ width: '100%', height: '27%' }}>
-          <h1 style={{ marginLeft: '100px' }}>통계정보</h1>
-          <h1>
-            <Range buses={buses} onSelectCarNumber={setSelectedBusNumber} />
-          </h1>
+          <Range buses={buses} onSelectCarNumber={setSelectedBusNumber} />
         </div>
         <div style={{ marginBottom: '10px', width: '89.7%', display: 'flex', justifyContent: 'end' }}>
           <Button type="primary">엑셀다운로드</Button>
         </div>
 
-        <div
+        <ErrorWapper
           style={{
             border: '1px solid lightgray',
             margin: '0 auto',
-            width: '80%',
-            height: '65%',
+            width: '98%',
+            height: '60%',
             borderRadius: '10px',
             overflow: 'auto',
           }}
@@ -106,7 +122,7 @@ const MyPage = () => {
           ).map((log, index) => (
             <ErrorLog key={index} {...log} />
           ))}
-        </div>
+        </ErrorWapper>
       </Page>
     </>
   );

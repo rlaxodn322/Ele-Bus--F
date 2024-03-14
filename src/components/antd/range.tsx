@@ -47,7 +47,7 @@ const Range: React.FC<RangeProps> = ({ buses, onSelectCarNumber }) => {
   };
 
   return (
-    <Form style={{ maxWidth: 600 }} {...formItemLayout} onFinish={onFinish}>
+    <Form style={{ maxWidth: 600, marginBottom: '10px' }} {...formItemLayout} onFinish={onFinish}>
       <Form.Item label="Bus" name="Select" rules={[{ required: true, message: '필수 입력 항목입니다!' }]}>
         <Select>
           {buses.map((bus) => (
@@ -62,14 +62,15 @@ const Range: React.FC<RangeProps> = ({ buses, onSelectCarNumber }) => {
         <RangePicker />
       </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 17, span: 16 }}>
+      {/* <Form.Item wrapperCol={{ offset: 17, span: 16 }}></Form.Item> */}
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Button type="primary" htmlType="submit">
-          입력
+          검색
         </Button>
         <Button onClick={handleViewAll} style={{ marginLeft: 10 }}>
           전체 보기
         </Button>
-      </Form.Item>
+      </div>
     </Form>
   );
 };
