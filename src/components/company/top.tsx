@@ -11,7 +11,7 @@ const CompanyTop = styled.section`
   background-color: white;
   border-radius: 10px;
   box-shadow: 1px 1px 1px 2px lightgray;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
     box-shadow: none;
   }
@@ -19,7 +19,7 @@ const CompanyTop = styled.section`
 const CompanyTop1 = styled.section`
   margin-left: 100px;
   width: 30%;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 95%;
     margin-left: 3%;
     font-size: 13px;
@@ -27,7 +27,7 @@ const CompanyTop1 = styled.section`
 `;
 const CompanyInfoTable = styled.div`
   width: 25%;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     display: none;
   }
 `;
@@ -35,12 +35,12 @@ const BusInfoTable = styled.div`
   width: 25%;
   margin-right: 100px;
   overflow: auto;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     display: none;
   }
 `;
 const Title = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     font-weight: 600;
     font-size: 16px;
   }

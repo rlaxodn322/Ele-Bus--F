@@ -30,7 +30,7 @@ const Columnstyle = styled.div`
   height: 6.5%;
   font-size: 18px;
   font-weight: bold;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     font-size: 12px;
   }
 `;

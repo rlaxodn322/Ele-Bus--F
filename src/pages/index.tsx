@@ -17,7 +17,7 @@ const Page = styled.section`
   height: 100vh;
   margin: 0 auto;
   display: flex;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 100%;
     height: 100%;
     margin-top: 50px;
@@ -28,7 +28,7 @@ const PageWapper = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 100%;
 
     flex-wrap: wrap; /* flex items이 여러 줄로 나뉠 수 있도록 설정 */
@@ -37,13 +37,13 @@ const PageWapper = styled.div`
 // Dummy 데이터
 const MapBox = styled.div`
   width: 50%;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 97%;
   }
 `;
 const Busstatic = styled.div`
   width: 49.5%;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 100%;
   }
 `;
@@ -57,25 +57,25 @@ const CarinfoTable = styled.div`
   box-shadow: 1px 1px 1px 2px lightgray;
   border-radius: 10px;
   background-color: white;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 95%;
   }
 `;
 const DivTable = styled.div`
   flex: 1;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     font-size: 10px;
   }
 `;
 const DivTable2 = styled.div`
   flex: 1;
   text-align: center;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     font-size: 10px;
   }
 `;
 const Title = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
   }
 `;
 const dummyVehicleData = [

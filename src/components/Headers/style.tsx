@@ -19,7 +19,7 @@ export const LogoWrapper = styled.div`
     height: 40px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     align-items: center;
     text-align: center;
   }
@@ -36,7 +36,7 @@ export const ButtonWrapper = styled.div`
     color: #808080;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     margin-top: 10px;
     margin-left: 10px;
 

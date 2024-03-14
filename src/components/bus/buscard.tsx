@@ -8,8 +8,21 @@ const BusWapper = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
+  }
+`;
+const BusInfo = styled.div`
+  width: 100%;
+  height: 100%;
+  box-shadow: 1px 1px 2px 2px lightgray;
+  border-radius: 10px;
+  background-color: white;
+  margin-right: 10px;
+  margin-left: 10px;
+  @media (max-width: 1100px) {
+    width: 50%;
+    height: 50%;
   }
 `;
 const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
@@ -24,7 +37,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
             height: '100px',
           }}
         > */}
-        <div
+        <BusInfo
           style={{
             width: '100%',
             height: '100%',
@@ -47,8 +60,8 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
             <h2>10 대</h2>
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/bus-svgrepo-com (8).svg"></img>
           </div>
-        </div>
-        <div
+        </BusInfo>
+        <BusInfo
           style={{
             width: '100%',
             height: '100%',
@@ -70,8 +83,8 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
             <h2>{busCount} 대</h2>
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/bus-transport-svgrepo-com (2).svg"></img>
           </div>
-        </div>
-        <div
+        </BusInfo>
+        <BusInfo
           style={{
             width: '100%',
             height: '100%',
@@ -94,8 +107,8 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
             <h2>2 대</h2>
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/stop-circle-svgrepo-com.svg"></img>
           </div>
-        </div>
-        <div
+        </BusInfo>
+        <BusInfo
           style={{
             width: '100%',
             height: '100%',
@@ -118,7 +131,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
             <h2>2 대</h2>
             <img style={{ width: '20%', marginBottom: '20px' }} src="/images/danger-circle-svgrepo-com (1).svg"></img>
           </div>
-        </div>
+        </BusInfo>
         {/* </div> */}
       </BusWapper>
     </>

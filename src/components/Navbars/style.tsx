@@ -49,7 +49,7 @@ export const Layout = styled.div`
     }
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1100px) {
     // 화면 크기가 769px 이상일 때의 스타일
 
     &:hover {
@@ -79,7 +79,7 @@ export const Layout = styled.div`
       }
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     // 화면 크기가 768px 이하일 때의 스타일
     width: 100%;
     height: 70px;
@@ -148,7 +148,7 @@ export const MenuWrapper = styled.ul`
       height: 30px;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     margin: -55px 10px 50px 0px;
     font-family: Noto Sans KR;
     font-size: 16px;
@@ -156,9 +156,9 @@ export const MenuWrapper = styled.ul`
     list-style: none;
     display: flex; /* 가로로 나열되도록 설정 */
     background-color: white;
+    justify-content: space-between;
     & li {
       color: #808080;
-      margin-right: 30px; /* 각 메뉴 사이의 간격 설정 */
 
       & label {
         cursor: pointer;

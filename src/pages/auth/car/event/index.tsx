@@ -23,7 +23,7 @@ const Page = styled.section`
   margin: auto;
   display: flex;
   justify-content: space-between;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     margin-top: 30px;
     width: 100%;
     flex-direction: column;
@@ -32,7 +32,7 @@ const Page = styled.section`
 const ItemTable = styled.div`
   width: 69%;
   height: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 100%;
     font-size: 9px;
   }
@@ -40,12 +40,12 @@ const ItemTable = styled.div`
 const EventAS = styled.div`
   width: 30%;
   height: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 100%;
   }
 `;
 const Title = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     font-size: 16px;
   }
 `;

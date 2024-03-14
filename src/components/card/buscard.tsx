@@ -8,7 +8,7 @@ const DivWapper = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-bottom: 7px;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     height: 100px;
     width: 95%;
   }

@@ -22,7 +22,7 @@ const Page = styled.section`
   width: 1370px;
   height: 100%;
   margin: 30px auto;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 100%;
     margin-top: 70px;
     background-color: white;
@@ -33,7 +33,7 @@ const BusCharger = styled.div`
   height: 90%;
   display: flex;
   justify-content: space-between;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 100%;
     flex-direction: column;
   }
@@ -46,7 +46,7 @@ const TableContainer = styled.div`
   border-radius: 10px;
   box-shadow: 1px 1px 2px 2px lightgray;
   background-color: white;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     box-shadow: none;
     width: 100%;
     font-size: 8px;
@@ -54,7 +54,7 @@ const TableContainer = styled.div`
   }
 `;
 const Title = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     font-weight: 600;
     font-size: 16px;
   }

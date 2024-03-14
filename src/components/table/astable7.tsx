@@ -26,7 +26,7 @@ const ColumnStyle = styled.div`
   position: sticky;
   top: 0;
   z-index: 2;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     font-size: 10px;
   }
 `;

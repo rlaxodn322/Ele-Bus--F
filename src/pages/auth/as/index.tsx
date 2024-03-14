@@ -23,7 +23,7 @@ const Page = styled.section`
   width: 1370px;
   height: 100%;
   margin: 30px auto;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 100%;
     margin-top: 70px;
     background-color: white;
@@ -37,7 +37,7 @@ const AsTable = styled.div`
   justify-content: space-between;
   border-radius: 10px;
   background-color: white;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
     box-shadow: none;
   }
@@ -46,7 +46,7 @@ const ItemSearch = styled.div`
   margin: 10px;
   width: 33%;
   height: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 95%;
     margin-bottom: 50px;
   }
@@ -56,7 +56,7 @@ const ItemManager = styled.div`
   width: 33%;
   height: 100%;
   border-radius: 10px;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     display: none;
   }
 `;
@@ -65,7 +65,7 @@ const ItemInput = styled.div`
   width: 33%;
   height: 100%;
   border-radius: 10px;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 95%;
     margin-top: 40px;
   }
@@ -77,15 +77,15 @@ const ItemList = styled.div`
   margin-top: 10px;
   background-color: white;
   box-shadow: 1px 1px 2px 2px lightgray;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 95%;
     box-shadow: none;
-    font-size: 12px;
+    font-size: 11px;
   }
 `;
 const Title = styled.div`
   font-size: 20px;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     font-size: 19px;
   }
 `;

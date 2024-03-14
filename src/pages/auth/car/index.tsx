@@ -30,7 +30,7 @@ const Page = styled.section`
   height: 100%;
   margin: 30px auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 100%;
     margin-top: 70px;
   }
@@ -42,7 +42,7 @@ const CarCard = styled.div`
   width: 100%;
   height: 65%;
   margin-top: 20px;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     margin: 0;
     flex-direction: column;
   }
@@ -83,8 +83,8 @@ const MyPage = () => {
   useEffect(() => {
     const fetchStations = async () => {
       try {
-        const response = await axios.get('http://ele.firstcorea.com:3000/api/stations');
-        // const response = await axios.get('http://localhost:3000/api/stations');
+        //const response = await axios.get('http://ele.firstcorea.com:3000/api/stations');
+        const response = await axios.get('http://localhost:3000/api/stations');
         setStations(response.data.stations);
       } catch (error) {
         console.error(error);
@@ -93,8 +93,8 @@ const MyPage = () => {
 
     const fetchBusLocations = async () => {
       try {
-        const response = await axios.get('http://ele.firstcorea.com:3000/api/bus');
-        // const response = await axios.get('http://localhost:3000/api/bus');
+        //const response = await axios.get('http://ele.firstcorea.com:3000/api/bus');
+        const response = await axios.get('http://localhost:3000/api/bus');
         setBusLocations(response.data.stations);
       } catch (error) {
         console.error(error);

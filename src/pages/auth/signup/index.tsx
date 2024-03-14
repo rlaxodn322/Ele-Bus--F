@@ -43,7 +43,7 @@ const PageSignUp = styled.div`
   height: 750px;
   padding-left: 40%;
   background-color: white;
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     padding-left: 20%;
   }
 `;
@@ -59,7 +59,7 @@ const SignUpBar = styled.div`
   &:focus-within {
     box-shadow: 0 0 0 2px #4285f4;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     width: 200px;
   }
 `;
