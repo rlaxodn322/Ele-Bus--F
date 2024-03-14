@@ -23,8 +23,63 @@ const Page = styled.section`
   width: 1370px;
   height: 100%;
   margin: 30px auto;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 70px;
+  }
 `;
-
+const AsTable = styled.div`
+  width: 100%;
+  height: 40%;
+  box-shadow: 1px 1px 2px 2px lightgray;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: white;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    box-shadow: none;
+  }
+`;
+const ItemSearch = styled.div`
+  margin: 10px;
+  width: 33%;
+  height: 100%;
+  @media (max-width: 768px) {
+    width: 95%;
+    margin-bottom: 50px;
+  }
+`;
+const ItemManager = styled.div`
+  margin: 10px;
+  width: 33%;
+  height: 100%;
+  border-radius: 10px;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+const ItemInput = styled.div`
+  margin: 10px;
+  width: 33%;
+  height: 100%;
+  border-radius: 10px;
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+`;
+const ItemList = styled.div`
+  width: 95%;
+  height: 30%;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: white;
+  box-shadow: 1px 1px 2px 2px lightgray;
+  @media (max-width: 768px) {
+    box-shadow: none;
+    font-size: 12px;
+  }
+`;
 const busDataColumns = ['부품번호', '날짜', '부품위치', '창고위치', '요청시간', '담당자', '부품'];
 
 const busDataColumns2 = ['등록일자', '담당이름', '부품'];
@@ -118,28 +173,11 @@ const MyPage = () => {
 
       <Page>
         <h1 style={{}}>A/S서비스 부품관리</h1>
-        <div
-          style={{
-            width: '100%',
-            height: '40%',
-            boxShadow: '1px 1px 2px 2px lightgray',
-            display: 'flex',
-            justifyContent: 'space-between',
-            borderRadius: '10px',
-            background: 'white',
-          }}
-        >
-          <div
-            style={{
-              margin: '10px',
-              width: '33%',
-              height: '100%',
-            }}
-          >
+        <AsTable>
+          <ItemSearch>
             <Table3 data={maintenanceHistory} columns={busDataColumns2} />
-          </div>
-
-          <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
+          </ItemSearch>
+          <ItemManager>
             <InputButton a="부품 관리" name="부품 번호 검색" onChange={handleInputButtonChange} />
             {selectedPart !== null ? (
               <DivBox
@@ -153,8 +191,8 @@ const MyPage = () => {
             ) : (
               <EmptyDivBox />
             )}
-          </div>
-          <div style={{ margin: '10px', width: '33%', height: '100%', borderRadius: '10px' }}>
+          </ItemManager>
+          <ItemInput>
             <NewItem
               onReloadData={fetchMyInfo}
               title="신규 부품 입력"
@@ -162,19 +200,9 @@ const MyPage = () => {
               onCancel={handleInput5Cancel} // handleInput5Cancel 함수는 취소 버튼이 클릭되었을 때 호출되어야 하는 함수입니다.
               placeholders={[]}
             />
-          </div>
-        </div>
-        <div
-          style={{
-            width: '100%',
-            height: '30%',
-            border: '1px solid lightgray',
-            marginTop: '20px',
-            borderRadius: '10px',
-            background: 'white',
-            boxShadow: '1px 1px 2px 2px lightgray',
-          }}
-        >
+          </ItemInput>
+        </AsTable>
+        <ItemList>
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ marginLeft: '10px', width: '100%' }}>
               <h1>부품 리스트</h1>
@@ -182,7 +210,7 @@ const MyPage = () => {
               <ASTable7 data={maintenanceHistory} columns={busDataColumns} />
             </div>
           </div>
-        </div>
+        </ItemList>
       </Page>
     </>
   );

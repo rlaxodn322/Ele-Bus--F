@@ -24,6 +24,7 @@ const Page = styled.section`
   margin: 30px auto;
   @media (max-width: 768px) {
     width: 100%;
+    margin-top: 60px;
   }
 `;
 const BusCharger = styled.div`
@@ -32,6 +33,7 @@ const BusCharger = styled.div`
   display: flex;
   justify-content: space-between;
   @media (max-width: 768px) {
+    width: 100%;
     flex-direction: column;
   }
 `;
@@ -258,9 +260,9 @@ const MyPage = () => {
         <Top data={maintenanceHistory} onReloadData={fetchMyInfo} />
         <TableContainer>
           <BusCharger>
-            <div style={{ width: '90%', marginRight: '20px', height: '100%' }}>
+            <div style={{ width: '100%', marginRight: '20px', height: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ fontSize: '10px' }}>
+                <div style={{}}>
                   <h1>버스 등록 현황</h1>
                 </div>
 
@@ -281,9 +283,9 @@ const MyPage = () => {
 
               <Table7 a="전체모델" data={Array.isArray(buses1) ? buses1 : []} columns={busDataColumns} />
             </div>
-            <div style={{ width: '90%' }}>
+            <div style={{ width: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ fontSize: '10px' }}>
+                <div style={{}}>
                   <h1>충전기 등록 현황</h1>
                 </div>
                 <Button

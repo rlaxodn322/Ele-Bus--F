@@ -18,7 +18,7 @@ const Page = styled.section`
   margin: 30px auto;
   @media (max-width: 768px) {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 60px;
   }
 `;
 const DtgInfoTable = styled.div`
@@ -28,7 +28,7 @@ const DtgInfoTable = styled.div`
   height: 100%;
   margin-top: 20px;
   @media (max-width: 768px) {
-    width: 100%;
+    width: 99%;
     flex-direction: column;
   }
 `;
@@ -40,7 +40,7 @@ const CarTable = styled.div`
   box-shadow: 1px 1px 2px 2px lightgray;
   background-color: white;
   @media (max-width: 768px) {
-    width: 100%;
+    width: 99%;
     margin-bottom: 10px;
   }
 `;
@@ -53,7 +53,7 @@ const DTGCarTable = styled.div`
   background-color: white;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 99%;
     margin-bottom: 10px;
     font-size: 11px;
   }
