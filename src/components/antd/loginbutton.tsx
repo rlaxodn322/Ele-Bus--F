@@ -8,6 +8,7 @@ interface LoginButtonProps {
   handleLogout: () => void;
 }
 
+
 const LoginButton: React.FC<LoginButtonProps> = ({ isLoggedIn, handleLogout }) => {
   return (
     <>

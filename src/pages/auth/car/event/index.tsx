@@ -230,7 +230,6 @@ const MyPage = () => {
         <h1></h1>
 
         <EventAS>
-          {/* <div style={{ width: '30%', height: '100%' }}> */}
           <h3>자동차 정비 이력</h3>
           <div style={{ width: '100%', height: '90%' }}>
             <div
@@ -252,7 +251,6 @@ const MyPage = () => {
               <EventModal open={modalOpen} onCancel={handleCancel} />
             </div>
           </div>
-          {/* </div> */}
         </EventAS>
 
         <ItemTable>

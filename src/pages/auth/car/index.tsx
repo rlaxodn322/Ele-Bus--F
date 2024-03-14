@@ -83,8 +83,8 @@ const MyPage = () => {
   useEffect(() => {
     const fetchStations = async () => {
       try {
-        const response = await axios.get('http://ele.firstcorea.com:3000/api/stations');
-        // const response = await axios.get('http://localhost:3000/api/stations');
+        // const response = await axios.get('http://ele.firstcorea.com:3000/api/stations');
+        const response = await axios.get('http://localhost:3000/api/stations');
         setStations(response.data.stations);
       } catch (error) {
         console.error(error);
@@ -93,8 +93,8 @@ const MyPage = () => {
 
     const fetchBusLocations = async () => {
       try {
-        const response = await axios.get('http://ele.firstcorea.com:3000/api/bus');
-        // const response = await axios.get('http://localhost:3000/api/bus');
+        // const response = await axios.get('http://ele.firstcorea.com:3000/api/bus');
+        const response = await axios.get('http://localhost:3000/api/bus');
         setBusLocations(response.data.stations);
       } catch (error) {
         console.error(error);
@@ -126,15 +126,6 @@ const MyPage = () => {
         <h1>차량조회/관리</h1>
         <BusCard busCount={busLocations.length} />
         <CarCard>
-          {/* <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '100%',
-              height: '65%',
-              marginTop: '20px',
-            }}
-          > */}
           <div
             style={{
               height: '600px',
@@ -222,7 +213,6 @@ const MyPage = () => {
             </div>
             <Bus stations={stations} busLocations={busLocations} />
           </div>
-          {/* </div> */}
         </CarCard>
       </Page>
     </>

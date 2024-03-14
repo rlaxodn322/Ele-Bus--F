@@ -143,8 +143,8 @@ const LoginPage = () => {
           // 만약 admin 값이 '03'이면 권한이 없는 경우
           Swal.fire({
             icon: 'error',
-            title: '권한이 없습니다.',
-            text: '로그인에 실패했습니다. 권한을 확인해주세요.',
+            title: '관리자에게 문의해주세요.',
+            text: '액세스 권한을 확인해주세요.',
             timer: 2000,
           });
           return;
@@ -228,7 +228,6 @@ const LoginPage = () => {
           </Button>
           <span className="button-gap" />
           <Link href="/auth/signup">
-            {' '}
             {/* 변경 */}
             <Button size="large" primary-color="true">
               회원가입
