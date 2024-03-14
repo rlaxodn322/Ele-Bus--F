@@ -44,6 +44,11 @@ const EventAS = styled.div`
     width: 100%;
   }
 `;
+const Title = styled.div`
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+`;
 const busDataColumns = ['이벤트경보', '부품명', '교체주기', '마지막점검', '교체예정', '비고', '수정'];
 
 const dummyTableData = [
@@ -249,9 +254,11 @@ const MyPage = () => {
           </div>
           {/* </div> */}
         </EventAS>
-        <h3>부품 교체 이력</h3>
+
         <ItemTable>
-          {/* <div style={{ width: '69%', height: '100%' }}> */}
+          <Title>
+            <h3>부품 교체 이력</h3>
+          </Title>
 
           <div style={{ width: '100%', height: '90%' }}>
             <div
@@ -269,7 +276,6 @@ const MyPage = () => {
               <Button style={{ color: 'white', background: '#27B964' }}>부품 교체 이력 다운로드</Button>
             </div>
           </div>
-          {/* </div> */}
         </ItemTable>
       </Page>
     </>
