@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Cascader, Button } from 'antd';
 import * as XLSX from 'xlsx';
+import styled from '@emotion/styled';
 interface MaintenanceHistoryItem {
   registrationDate: any;
   number: string;
@@ -15,6 +16,20 @@ interface CardProps {
   columns: string[];
   a?: string;
 }
+const ColumnStyle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #2ca0f3;
+  color: white;
+  border-radius: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+`;
 const parseDate = (dateString: string): number => {
   const [year, month, day] = dateString.split('-');
 
@@ -137,7 +152,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
             overflowY: 'auto',
           }}
         >
-          <div
+          <ColumnStyle
             style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -155,7 +170,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
                 {column}
               </div>
             ))}
-          </div>
+          </ColumnStyle>
           {sortedEventHistory.map((row, index) => (
             <h6
               key={index}

@@ -3,6 +3,7 @@ import { Button } from 'antd';
 import Link from 'next/link';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import styled from '@emotion/styled';
 interface Row {
   user: string;
   registrationDate: string;
@@ -16,6 +17,23 @@ interface CardProps {
   data: Row[];
   columns: string[];
 }
+const Columnstyle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #2ca0f3;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding-bottom: 10px;
+  height: 6.5%;
+  font-size: 18px;
+  font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+`;
 
 const Card: React.FC<CardProps> = ({ data, columns }) => {
   const sortedEventHistory = [...data];
@@ -53,28 +71,13 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
             overflowY: 'auto',
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              padding: '10px',
-              background: '#2CA0F3',
-              color: 'white',
-              position: 'sticky',
-              top: '0',
-              zIndex: '2',
-              paddingTop: '10px',
-              height: '6.5%',
-              fontSize: '18px',
-              fontWeight: 'bold',
-            }}
-          >
+          <Columnstyle>
             {sortedEventHistory1.map((column, index) => (
               <div key={index} style={{ flex: 1, textAlign: 'center' }}>
                 {column}
               </div>
             ))}
-          </div>
+          </Columnstyle>
           {sortedEventHistory.map((row, index) => (
             <h6
               key={index}

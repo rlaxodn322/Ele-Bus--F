@@ -67,6 +67,7 @@ const ItemInput = styled.div`
   border-radius: 10px;
   @media (max-width: 768px) {
     width: 95%;
+    margin-top: 40px;
   }
 `;
 const ItemList = styled.div`
@@ -180,7 +181,7 @@ const MyPage = () => {
       </Head>
 
       <Page>
-        <h1 style={{}}>A/S서비스 부품관리</h1>
+        <h1>A/S서비스 부품관리</h1>
         <AsTable>
           <ItemSearch>
             <Table3 data={maintenanceHistory} columns={busDataColumns2} />

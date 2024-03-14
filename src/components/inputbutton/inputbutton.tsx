@@ -28,7 +28,7 @@ const InputButton: React.FC<InputButtonProps> = ({ a, onChange, name }) => {
         <h1>{a}</h1>
         <Input
           placeholder={name}
-          style={{ width: '300px', marginBottom: '30px' }}
+          style={{ width: '250px', marginBottom: '30px' }}
           value={searchInput}
           onChange={handleInputChange}
         />
