@@ -24,7 +24,8 @@ const Page = styled.section`
   margin: 30px auto;
   @media (max-width: 768px) {
     width: 100%;
-    margin-top: 60px;
+    margin-top: 70px;
+    background-color: white;
   }
 `;
 const BusCharger = styled.div`
@@ -52,7 +53,12 @@ const TableContainer = styled.div`
     margin-left: 3%;
   }
 `;
-
+const Title = styled.div`
+  @media (max-width: 768px) {
+    font-weight: 600;
+    font-size: 16px;
+  }
+`;
 interface Row {
   buses: any;
   companynumber: string;
@@ -256,15 +262,17 @@ const MyPage = () => {
         <meta name="description" content="company" />
       </Head>
       <Page>
-        <h1>사업자조회/관리</h1>
+        <Title>
+          <h1>사업자조회/관리</h1>
+        </Title>
         <Top data={maintenanceHistory} onReloadData={fetchMyInfo} />
         <TableContainer>
           <BusCharger>
             <div style={{ width: '100%', marginRight: '20px', height: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{}}>
-                  <h1>버스 등록 현황</h1>
-                </div>
+                <Title>
+                  <h4>버스 등록 현황</h4>
+                </Title>
 
                 <div>
                   <Button type="primary" style={{ marginRight: '5px' }} onClick={showModal}>
@@ -285,9 +293,10 @@ const MyPage = () => {
             </div>
             <div style={{ width: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{}}>
-                  <h1>충전기 등록 현황</h1>
-                </div>
+                <Title>
+                  <h4>충전기 등록 현황</h4>
+                </Title>
+
                 <Button
                   style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
                   onClick={() => downloadExcel(dummyTableData1, busDataColumns1, '충전기_등록_현황')}

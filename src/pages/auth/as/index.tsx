@@ -26,6 +26,7 @@ const Page = styled.section`
   @media (max-width: 768px) {
     width: 100%;
     margin-top: 70px;
+    background-color: white;
   }
 `;
 const AsTable = styled.div`
@@ -69,15 +70,22 @@ const ItemInput = styled.div`
   }
 `;
 const ItemList = styled.div`
-  width: 95%;
+  width: 100%;
   height: 30%;
   border-radius: 10px;
   margin-top: 10px;
   background-color: white;
   box-shadow: 1px 1px 2px 2px lightgray;
   @media (max-width: 768px) {
+    width: 95%;
     box-shadow: none;
     font-size: 12px;
+  }
+`;
+const Title = styled.div`
+  font-size: 20px;
+  @media (max-width: 768px) {
+    font-size: 19px;
   }
 `;
 const busDataColumns = ['부품번호', '날짜', '부품위치', '창고위치', '요청시간', '담당자', '부품'];
@@ -205,7 +213,9 @@ const MyPage = () => {
         <ItemList>
           <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ marginLeft: '10px', width: '100%' }}>
-              <h1>부품 리스트</h1>
+              <Title>
+                <h4>부품 리스트</h4>
+              </Title>
 
               <ASTable7 data={maintenanceHistory} columns={busDataColumns} />
             </div>

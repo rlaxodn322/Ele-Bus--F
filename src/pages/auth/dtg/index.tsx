@@ -18,7 +18,7 @@ const Page = styled.section`
   margin: 30px auto;
   @media (max-width: 768px) {
     width: 100%;
-    margin-top: 60px;
+    margin-top: 70px;
   }
 `;
 const DtgInfoTable = styled.div`
@@ -61,6 +61,12 @@ const DTGCarTable = styled.div`
 const DateContainer = styled.div`
   @media (max-width: 768px) {
     display: none;
+  }
+`;
+const Title = styled.div`
+  @media (max-width: 768px) {
+    font-weight: 600;
+    font-size: 16px;
   }
 `;
 const busDataColumns = ['운행일시', '운행시간', '누적거리', '운행속도', '운행거리', '평균속도'];
@@ -473,7 +479,10 @@ const MyPage = () => {
           </CarTable>
           <DTGCarTable>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <h1 style={{ marginLeft: '10px' }}>DTG 과거 이력</h1>
+              <Title>
+                <h1 style={{ marginLeft: '10px' }}>DTG 과거 이력</h1>
+              </Title>
+
               <div style={{ marginTop: '15px' }}>
                 <DateContainer>
                   {/* Date 컴포넌트에 선택한 날짜 범위를 전달하고, 선택 시 handleDateChange 함수 호출 */}

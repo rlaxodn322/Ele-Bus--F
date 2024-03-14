@@ -39,6 +39,12 @@ const BusInfoTable = styled.div`
     display: none;
   }
 `;
+const Title = styled.div`
+  @media (max-width: 768px) {
+    font-weight: 600;
+    font-size: 16px;
+  }
+`;
 interface Row {
   buses: {
     carNumber: string;
@@ -142,19 +148,18 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
     <>
       <CompanyTop>
         <CompanyTop1>
-          <div style={{ fontSize: '17px' }}>
-            <h1>사업자검색</h1>
-          </div>
-
+          <Title>
+            <h3>사업자검색</h3>
+          </Title>
           <div style={{ display: 'flex' }}>
             <Input placeholder="사업자 검색" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
             <Button type="primary" onClick={handleSearch}>
               검색
             </Button>
           </div>
-          <div style={{ fontSize: '14px' }}>
+          <Title>
             <h4 style={{ margin: '3px' }}>사업자리스트</h4>
-          </div>
+          </Title>
           <div
             style={{
               border: '1px solid lightgray',
@@ -215,7 +220,10 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
         </CompanyTop1>
 
         <CompanyInfoTable>
-          <h1>사업자 정보</h1>
+          <Title>
+            <h3>사업자 정보</h3>
+          </Title>
+
           <div style={infoBoxStyle}>
             {!foundCompany ? (
               <div style={{ height: '30px', color: 'gray', padding: '5px' }}>좌측에 사업자를 입력해주세요.</div>
@@ -241,7 +249,10 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
           </div>
         </CompanyInfoTable>
         <BusInfoTable>
-          <h1>버스 정보</h1>
+          <Title>
+            <h3>버스 정보</h3>
+          </Title>
+
           <div style={infoBoxStyle}>
             {!foundCompany ? (
               <div
