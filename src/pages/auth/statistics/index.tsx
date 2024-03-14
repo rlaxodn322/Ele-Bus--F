@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MainLayout from '../../../layouts';
-// import { Page } from './style';
 import Range from '../../../components/antd/range';
 import { Button } from 'antd';
 import styled from '@emotion/styled';
-const Page = styled.section`
-  // display: inline-flex;
+import { loadBusListAPI } from '../../../components/apis/bus/bus';
 
-  /* /* display: flex; */
-  /* justify-content: space-between; */
+const Page = styled.section`
   width: 1370px;
   height: 750px;
   margin: 30px auto;
@@ -16,17 +13,19 @@ const Page = styled.section`
   background-color: white;
   box-shadow: 2px 2px 2px 2px lightgray;
 `;
+
 interface ErrorLogProps {
   date: string;
-  vehicle: string;
+  busNumber: string;
   errorLocation: string;
   errorMessage: string;
   remark: string;
 }
-const ErrorLog: React.FC<ErrorLogProps> = ({ date, vehicle, errorLocation, errorMessage, remark }) => (
-  <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px' }}>
+
+const ErrorLog: React.FC<ErrorLogProps> = ({ date, busNumber, errorLocation, errorMessage, remark }) => (
+  <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px', overflowY: 'auto' }}>
     <h1 style={{ width: '15%', height: '30px', margin: '5px' }}>{date}</h1>
-    <h1 style={{ width: '20%', height: '30px', margin: '5px' }}>{vehicle}</h1>
+    <h1 style={{ width: '20%', height: '30px', margin: '5px' }}>{busNumber}</h1>
     <h1 style={{ width: '25%', height: '30px', margin: '5px' }}>{errorLocation}</h1>
     <h1 style={{ width: '19%', height: '30px', margin: '5px' }}>{errorMessage}</h1>
     <h1 style={{ width: '15%', height: '30px', margin: '5px' }}>{remark}</h1>
@@ -34,30 +33,39 @@ const ErrorLog: React.FC<ErrorLogProps> = ({ date, vehicle, errorLocation, error
 );
 
 const MyPage = () => {
-  const errorLogs = [
-    {
-      date: '20240117',
-      vehicle: '123호1234',
-      errorLocation: 'MCU통신고장경보',
-      errorMessage: '에러',
-      remark: '미조치',
-    },
-    {
-      date: '20240117',
-      vehicle: '321호1234',
-      errorLocation: '배터리팩 열관리상태',
-      errorMessage: '에러',
-      remark: '미조치',
-    },
-    {
-      date: '20240117',
-      vehicle: '321호1234',
-      errorLocation: '배터리팩 열관리상태',
-      errorMessage: '에러',
-      remark: '미조치',
-    },
-    { date: '20240117', vehicle: '123호1234', errorLocation: '모터온도', errorMessage: '에러', remark: '미조치' },
-  ];
+  const [buses, setBuses] = useState<{ id: string; carNumber: string }[]>([]);
+  const [errorLogs, setErrorLogs] = useState<ErrorLogProps[]>([]);
+  const [selectedBusNumber, setSelectedBusNumber] = useState<string | null>(null);
+
+  const fetchBusList = async () => {
+    try {
+      const busListData = await loadBusListAPI();
+      setBuses(busListData);
+      const errorLogsData = busListData.map((bus: any) => ({
+        date: bus.day,
+        busNumber: bus.carNumber,
+        errorLocation: 'MCU통신고장경보',
+        errorMessage: '에러',
+        remark: '미조치',
+      }));
+      setErrorLogs(errorLogsData);
+    } catch (error) {
+      console.error('버스 목록 불러오기 오류:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBusList();
+  }, []);
+
+  // 날짜를 기준으로 오름차순으로 정렬하는 함수
+  const sortByDateAscending = (logs: ErrorLogProps[]) => {
+    return logs.sort((a, b) => {
+      const dateA: any = new Date(a.date);
+      const dateB: any = new Date(b.date);
+      return dateB - dateA;
+    });
+  };
 
   return (
     <>
@@ -65,7 +73,7 @@ const MyPage = () => {
         <div style={{ width: '100%', height: '27%' }}>
           <h1 style={{ marginLeft: '100px' }}>통계정보</h1>
           <h1>
-            <Range />
+            <Range buses={buses} onSelectCarNumber={setSelectedBusNumber} />
           </h1>
         </div>
         <div style={{ marginBottom: '10px', width: '89.7%', display: 'flex', justifyContent: 'end' }}>
@@ -79,7 +87,7 @@ const MyPage = () => {
             width: '80%',
             height: '65%',
             borderRadius: '10px',
-            overflow: 'auto', // Add this to enable scrolling if the content overflows
+            overflow: 'auto',
           }}
         >
           <div style={{ borderBottom: '1px solid lightgray', height: '10%' }}>
@@ -91,7 +99,11 @@ const MyPage = () => {
               <h1 style={{ width: '15%' }}>비고</h1>
             </div>
           </div>
-          {errorLogs.map((log, index) => (
+          {/* 선택된 차량 번호에 따라 필터링 및 정렬하여 매핑 */}
+          {(selectedBusNumber
+            ? sortByDateAscending(errorLogs.filter((log) => log.busNumber === selectedBusNumber))
+            : sortByDateAscending(errorLogs)
+          ).map((log, index) => (
             <ErrorLog key={index} {...log} />
           ))}
         </div>
