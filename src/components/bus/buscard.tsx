@@ -19,12 +19,13 @@ const BusInfo = styled.div`
   border-radius: 10px;
   background-color: white;
   margin-right: 10px;
-  margin-left: 10px;
+
   @media (max-width: 1100px) {
     width: 50%;
     height: 50%;
   }
 `;
+
 const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
   return (
     <>
