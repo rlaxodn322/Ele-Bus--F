@@ -16,9 +16,8 @@ const DivWapper = styled.div`
 interface BusCardProps {
   // eslint-disable-next-line no-unused-vars
   onFilterChange: (location: string) => void;
-  vihiclelength: number; // vihiclelength 속성을 필수로 설정
+  vihiclelength: number; // vihiclelength 속성 추가
 }
-
 const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
   const handleClick = (location: string) => {
     onFilterChange(location);
@@ -46,7 +45,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
               paddingRight: '20px',
             }}
           >
-            <h2>2 대</h2>
+            <h2>{vihiclelength + 4} 대</h2>
             <img style={{ width: '20%', marginBottom: '60px' }} src="images/bus-svgrepo-com (8).svg" alt="bus"></img>
           </div>
         </div>

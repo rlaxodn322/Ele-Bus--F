@@ -89,6 +89,7 @@ const Title = styled.div`
   @media (max-width: 1100px) {
   }
 `;
+
 // const dummyVehicleData = [
 //   {
 //     company: '화성여객',
@@ -227,6 +228,7 @@ const Home = () => {
             </Title>
 
             <BusCard onFilterChange={(location) => setSelectedLocation(location)} vihiclelength={vihiclelength} />
+
             <Title>
               <h1 style={{ marginLeft: '10px', marginBottom: '0' }}>
                 운행중인 차량정보
@@ -291,17 +293,20 @@ const Home = () => {
                     textAlign: 'center',
                     margin: '0',
                     fontSize: '14px',
-                    // 수정된 부분 시작
-
                     color:
-                      vehicle.regionName === '화성' ? 'blue' : vehicle.regionName === '충전/대기' ? 'green' : 'red',
-                    // 수정된 부분 끝
+                      vehicle.note === '충전/대기'
+                        ? 'green'
+                        : vehicle.note === '고장'
+                        ? 'red'
+                        : vehicle.note === '운행'
+                        ? 'black'
+                        : 'blue', // 운행 상태일 때는 파란색으로 표시합니다.
                   }}
                 >
                   <DivTable>{vehicle.regionName}</DivTable>
                   <DivTable>{vehicle.plateNo}</DivTable>
                   <DivTable>{vehicle.routeId}</DivTable>
-                  <DivTable>운행</DivTable>
+                  <DivTable>{vehicle.note ? vehicle.note : '운행'}</DivTable>
                   <DivTable>{vehicle.stationSeq}%</DivTable>
                   <DivTable>{vehicle.turnYn}O</DivTable>
                 </h6>
