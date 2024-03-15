@@ -49,6 +49,15 @@ const Title = styled.div`
     font-size: 16px;
   }
 `;
+const ButtonWapper = styled.div`
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
+`;
 const busDataColumns = ['이벤트경보', '부품명', '교체주기', '마지막점검', '교체예정', '비고', '수정'];
 
 const dummyTableData = [
@@ -270,9 +279,9 @@ const MyPage = () => {
             >
               <Table7 data={dummyTableData} columns={busDataColumns} />
             </div>
-            <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'flex-end' }}>
+            <ButtonWapper>
               <Button style={{ color: 'white', background: '#27B964' }}>부품 교체 이력 다운로드</Button>
-            </div>
+            </ButtonWapper>
           </div>
         </ItemTable>
       </Page>
