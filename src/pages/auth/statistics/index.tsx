@@ -21,17 +21,19 @@ const Page = styled.section`
 const ErrorWapper = styled.div`
   border: 1px solid lightgray;
   margin: 0 auto;
-  width: 100%;
-  height: 65%;
+  width: 90%;
+  height: 60%;
   border-radius: 10px;
-  overflow-y: auto;
+
   @media (max-width: 1100px) {
     font-size: 10px;
     width: 100%;
   }
 `;
 const ErrorTable = styled.div`
-  height: 400px;
+  height: 80%;
+
+  overflow-y: auto;
   @media (max-width: 1100px) {
     font-size: 9px;
   }
@@ -68,7 +70,7 @@ interface Bus {
   carinfo: string;
 }
 const ErrorLog: React.FC<ErrorLogProps> = ({ date, busNumber, errorLocation, errorMessage, remark }) => (
-  <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px', overflowY: 'auto' }}>
+  <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px' }}>
     <h1 style={{ width: '15%', height: '30px', margin: '5px' }}>{date}</h1>
     <h1 style={{ width: '20%', height: '30px', margin: '5px' }}>{busNumber}</h1>
     <h1 style={{ width: '25%', height: '30px', margin: '5px' }}>{errorLocation}</h1>
@@ -146,16 +148,7 @@ const MyPage = () => {
               엑셀다운로드
             </Button>
           </ButtonWapper>
-          <ErrorWapper
-            style={{
-              border: '1px solid lightgray',
-              margin: '0 auto',
-              width: '98%',
-              height: '60%',
-              borderRadius: '10px',
-              overflow: 'auto',
-            }}
-          >
+          <ErrorWapper>
             <div
               style={{
                 borderBottom: '1px solid lightgray',
