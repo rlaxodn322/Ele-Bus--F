@@ -4,14 +4,12 @@ import Range from '../../../components/antd/range';
 import { Button } from 'antd';
 import styled from '@emotion/styled';
 import { loadBusListAPI } from '../../../components/apis/bus/bus';
-
+import * as XLSX from 'xlsx';
 const Page = styled.section`
   width: 1370px;
   height: 750px;
   margin: 30px auto;
-  border-radius: 20px;
-  background-color: white;
-  box-shadow: 2px 2px 2px 2px lightgray;
+
   @media (max-width: 1100px) {
     margin-top: 60px;
     width: 100%;
@@ -32,6 +30,29 @@ const ErrorWapper = styled.div`
     width: 100%;
   }
 `;
+const ErrorTable = styled.div`
+  height: 400px;
+  @media (max-width: 1100px) {
+    font-size: 9px;
+  }
+`;
+const ErrorPageWapper = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px lightgray;
+  padding-top: 15px;
+`;
+const ButtonWapper = styled.div`
+  margin-bottom: 10px;
+  width: 89.7%;
+  display: flex;
+  justify-content: end;
+  @media (max-width: 1100px) {
+    display: none;
+  }
+`;
 interface ErrorLogProps {
   date: string;
   busNumber: string;
@@ -39,7 +60,13 @@ interface ErrorLogProps {
   errorMessage: string;
   remark: string;
 }
-
+interface Bus {
+  id: number;
+  companyNumber: string;
+  day: string;
+  carNumber: string;
+  carinfo: string;
+}
 const ErrorLog: React.FC<ErrorLogProps> = ({ date, busNumber, errorLocation, errorMessage, remark }) => (
   <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px', overflowY: 'auto' }}>
     <h1 style={{ width: '15%', height: '30px', margin: '5px' }}>{date}</h1>
@@ -51,10 +78,29 @@ const ErrorLog: React.FC<ErrorLogProps> = ({ date, busNumber, errorLocation, err
 );
 
 const MyPage = () => {
-  const [buses, setBuses] = useState<{ id: string; carNumber: string }[]>([]);
+  const [buses, setBuses] = useState<Bus[]>([]);
   const [errorLogs, setErrorLogs] = useState<ErrorLogProps[]>([]);
   const [selectedBusNumber, setSelectedBusNumber] = useState<string | null>(null);
+  const downloadExcel = () => {
+    // 엑셀 파일로 변환할 데이터 가져오기
+    const data = errorLogs.map(({ date, busNumber, errorLocation, errorMessage, remark }) => ({
+      날짜: date,
+      차량: busNumber,
+      에러위치: errorLocation,
+      에러내용: errorMessage,
+      비고: remark,
+    }));
 
+    // 데이터 배열을 워크북에 추가
+    const ws = XLSX.utils.json_to_sheet(data);
+
+    // 새 워크북 생성
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'ErrorLogs');
+
+    // 엑셀 파일 저장
+    XLSX.writeFile(wb, 'error_logs.xlsx');
+  };
   const fetchBusList = async () => {
     try {
       const busListData = await loadBusListAPI();
@@ -74,6 +120,7 @@ const MyPage = () => {
 
   useEffect(() => {
     fetchBusList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 날짜를 기준으로 오름차순으로 정렬하는 함수
@@ -89,40 +136,57 @@ const MyPage = () => {
     <>
       <Page>
         <h1>통계정보</h1>
-        <div style={{ width: '100%', height: '27%' }}>
-          <Range buses={buses} onSelectCarNumber={setSelectedBusNumber} />
-        </div>
-        <div style={{ marginBottom: '10px', width: '89.7%', display: 'flex', justifyContent: 'end' }}>
-          <Button type="primary">엑셀다운로드</Button>
-        </div>
 
-        <ErrorWapper
-          style={{
-            border: '1px solid lightgray',
-            margin: '0 auto',
-            width: '98%',
-            height: '60%',
-            borderRadius: '10px',
-            overflow: 'auto',
-          }}
-        >
-          <div style={{ borderBottom: '1px solid lightgray', height: '10%' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginLeft: '10px' }}>
-              <h1 style={{ width: '15%' }}>날짜</h1>
-              <h1 style={{ width: '20%' }}>차량</h1>
-              <h1 style={{ width: '20%' }}>에러위치</h1>
-              <h1 style={{ width: '20%' }}>에러내용</h1>
-              <h1 style={{ width: '15%' }}>비고</h1>
-            </div>
+        <ErrorPageWapper>
+          <div style={{ width: '100%', height: '27%' }}>
+            <Range buses={buses} onSelectCarNumber={setSelectedBusNumber} />
           </div>
-          {/* 선택된 차량 번호에 따라 필터링 및 정렬하여 매핑 */}
-          {(selectedBusNumber
-            ? sortByDateAscending(errorLogs.filter((log) => log.busNumber === selectedBusNumber))
-            : sortByDateAscending(errorLogs)
-          ).map((log, index) => (
-            <ErrorLog key={index} {...log} />
-          ))}
-        </ErrorWapper>
+          <ButtonWapper>
+            <Button onClick={downloadExcel} style={{ background: '#27B964', color: 'white' }}>
+              엑셀다운로드
+            </Button>
+          </ButtonWapper>
+          <ErrorWapper
+            style={{
+              border: '1px solid lightgray',
+              margin: '0 auto',
+              width: '98%',
+              height: '60%',
+              borderRadius: '10px',
+              overflow: 'auto',
+            }}
+          >
+            <div
+              style={{
+                borderBottom: '1px solid lightgray',
+                height: '10%',
+                background: '#2CA0F3',
+                color: 'white',
+                borderRadius: '10px',
+                position: 'sticky',
+                top: '0',
+                zIndex: '2',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginLeft: '10px' }}>
+                <h1 style={{ width: '15%', margin: '0 auto', marginTop: '5px' }}>날짜</h1>
+                <h1 style={{ width: '20%', margin: '0 auto', marginTop: '5px' }}>차량</h1>
+                <h1 style={{ width: '20%', margin: '0 auto', marginTop: '5px' }}>에러위치</h1>
+                <h1 style={{ width: '20%', margin: '0 auto', marginTop: '5px' }}>에러내용</h1>
+                <h1 style={{ width: '15%', margin: '0 auto', marginTop: '5px' }}>비고</h1>
+              </div>
+            </div>
+            <ErrorTable>
+              {/* 선택된 차량 번호에 따라 필터링 및 정렬하여 매핑 */}
+              {(selectedBusNumber
+                ? sortByDateAscending(errorLogs.filter((log) => log.busNumber === selectedBusNumber))
+                : sortByDateAscending(errorLogs)
+              ).map((log, index) => (
+                <ErrorLog key={index} {...log} />
+              ))}
+            </ErrorTable>
+          </ErrorWapper>
+        </ErrorPageWapper>
       </Page>
     </>
   );

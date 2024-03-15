@@ -30,6 +30,12 @@ const ColumnStyle = styled.div`
     font-size: 10px;
   }
 `;
+const ButtonWapper = styled.div`
+  margin-left: 10px;
+  @media (max-width: 1100px) {
+    display: none;
+  }
+`;
 const parseDate = (dateString: string): number => {
   const [year, month, day] = dateString.split('-');
 
@@ -133,14 +139,14 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
             defaultValue={['all']}
             style={{ marginLeft: '20px', margin: '0px', border: '0px' }}
           />
-          <div style={{ marginLeft: '10PX' }}>
+          <ButtonWapper>
             <Button
               style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
               onClick={() => downloadExcel(data, columns, '부품 리스트 현황')}
             >
               엑셀다운로드
             </Button>
-          </div>
+          </ButtonWapper>
         </div>
         <div
           style={{
