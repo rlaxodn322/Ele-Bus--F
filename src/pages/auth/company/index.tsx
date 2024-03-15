@@ -59,6 +59,11 @@ const Title = styled.div`
     font-size: 16px;
   }
 `;
+const ButtonWapper = styled.div`
+  @media (max-width: 1100px) {
+    display: none;
+  }
+`;
 interface Row {
   buses: any;
   companynumber: string;
@@ -274,17 +279,18 @@ const MyPage = () => {
                   <h4>버스 등록 현황</h4>
                 </Title>
 
-                <div>
+                <div style={{ display: 'flex' }}>
                   <Button type="primary" style={{ marginRight: '5px' }} onClick={showModal}>
                     버스 등록
                   </Button>
-
-                  <Button
-                    style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
-                    onClick={() => downloadExcel(buses1, busDataColumns, '버스_등록_현황')}
-                  >
-                    엑셀다운로드
-                  </Button>
+                  <ButtonWapper>
+                    <Button
+                      style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
+                      onClick={() => downloadExcel(buses1, busDataColumns, '버스_등록_현황')}
+                    >
+                      엑셀다운로드
+                    </Button>
+                  </ButtonWapper>
                 </div>
               </div>
               <BusCreate open={modalOpen} onCancel={handleCancel} />
@@ -296,13 +302,14 @@ const MyPage = () => {
                 <Title>
                   <h4>충전기 등록 현황</h4>
                 </Title>
-
-                <Button
-                  style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
-                  onClick={() => downloadExcel(dummyTableData1, busDataColumns1, '충전기_등록_현황')}
-                >
-                  엑셀다운로드
-                </Button>
+                <ButtonWapper>
+                  <Button
+                    style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
+                    onClick={() => downloadExcel(dummyTableData1, busDataColumns1, '충전기_등록_현황')}
+                  >
+                    엑셀다운로드
+                  </Button>
+                </ButtonWapper>
               </div>
 
               <Table5 data={dummyTableData1} columns={busDataColumns1} />
