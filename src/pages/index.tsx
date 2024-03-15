@@ -52,14 +52,14 @@ const CarinfoTable = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  width: 98.5%;
+  width: 97%;
   height: 400px;
   margin-left: 10px;
   box-shadow: 1px 1px 1px 2px lightgray;
   border-radius: 10px;
   background-color: white;
   @media (max-width: 1100px) {
-    width: 95%;
+    width: 97%;
   }
 `;
 const DivTable = styled.div`
@@ -194,7 +194,15 @@ const Home = () => {
                 <h1 style={{ marginLeft: '10px', marginBottom: '0' }}>운행중인 차량정보➕</h1>
               </Link>
             </Title>
-            <div style={{ marginBottom: '5px', border: '0px', display: 'flex', justifyContent: 'end' }}>
+            <div
+              style={{
+                marginRight: '10px',
+                marginBottom: '5px',
+                border: '0px',
+                display: 'flex',
+                justifyContent: 'end',
+              }}
+            >
               <Cascader
                 options={companyOptions}
                 onChange={(value) => {

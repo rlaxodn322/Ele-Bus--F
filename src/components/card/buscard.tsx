@@ -6,11 +6,11 @@ const DivWapper = styled.div`
   background: white;
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 97%;
   margin-bottom: 7px;
   @media (max-width: 1100px) {
     height: 120px;
-    width: 95%;
+    width: 97%;
   }
 `;
 interface BusCardProps {
