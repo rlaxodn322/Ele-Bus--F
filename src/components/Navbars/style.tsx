@@ -53,7 +53,7 @@ export const Layout = styled.div`
     // 화면 크기가 769px 이상일 때의 스타일
 
     &:hover {
-      width: 250px;
+      width: 240px;
 
       & div {
         text-align: right;

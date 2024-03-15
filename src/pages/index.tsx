@@ -1,14 +1,24 @@
 import Head from 'next/head';
 import MainLayout from '../layouts';
 // import { Page } from './style';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // axios 추가
 import { Cascader } from 'antd'; // antd
 import Map from '../components/apis/kakao/map';
 import BusCard from '../components/card/buscard';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
+interface Vehicle {
+  turnYn: string;
+  stationSeq: string;
+  regionName: string;
+  plateNo: string;
+  routeId: string;
+  location: string;
+  soc: string;
+  note: string;
+}
 const Page = styled.section`
   // display: inline-flex;
 
@@ -79,35 +89,54 @@ const Title = styled.div`
   @media (max-width: 1100px) {
   }
 `;
-const dummyVehicleData = [
-  {
-    company: '화성여객',
-    route: '경기11가1234',
-    vehicleNum: 'Route 1',
-    location: '운행',
-    soc: '80%',
-    note: 'no',
-  },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
+// const dummyVehicleData = [
+//   {
+//     company: '화성여객',
+//     route: '경기11가1234',
+//     vehicleNum: 'Route 1',
+//     location: '운행',
+//     soc: '80%',
+//     note: 'no',
+//   },
+//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
 
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '충전/대기', soc: '65%', note: 'no' },
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
-  { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+//   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '충전/대기', soc: '65%', note: 'no' },
+//   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
+//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
+//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
+//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
+//   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
 
-  { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
-  // Add more dummy data as needed
-];
+//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
+//   // Add more dummy data as needed
+// ];
 
 const Home = () => {
+  const [vehicleData, setVehicleData] = useState<Vehicle[]>([]);
   const [selectedLocation, setSelectedLocation] = useState('전체'); // 선택된 위치 상태 추가
   const [sortingOrder] = useState<string | string[]>(['latest']);
   const [selectedCompany, setSelectedCompany] = useState<string | null>('전체보기');
-  const router = useRouter();
+  const [vihiclelength, setvihiclelength] = useState<number>(0); // 초기값을 0 또는 다른 숫자로 설정(); // 초기값을 0 또는 다른 숫자로 설정
 
+  const router = useRouter();
+  useEffect(() => {
+    // API 호출
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/data');
+        // console.log(response.data.mergedData.length);
+        setVehicleData(response.data.mergedData);
+        setvihiclelength(response.data.mergedData.length);
+      } catch (error) {
+        console.error('데이터를 가져오는 중 오류 발생:', error);
+      }
+    };
+
+    fetchData(); // 데이터 가져오기 함수 호출
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // 컴포넌트가 처음 렌더링될 때 한 번만 실행
   // 세션 스토리지에서 로그인 데이터를 가져옵니다.
   const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
 
@@ -140,7 +169,7 @@ const Home = () => {
     { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
   ];
   const mapHeight = '740px';
-  const uniqueCompanies = Array.from(new Set(dummyVehicleData.map((vehicle) => vehicle.company)));
+  const uniqueCompanies = Array.from(new Set(vehicleData.map((vehicle) => vehicle.regionName)));
 
   // 운행중인 차량 정보 필터링 함수
   const companyOptions = [
@@ -149,20 +178,20 @@ const Home = () => {
   ];
   const getFilteredVehicleData = () => {
     if (selectedLocation === '전체' && selectedCompany === '전체보기') {
-      return dummyVehicleData;
+      return vehicleData;
     } else {
-      return dummyVehicleData.filter((vehicle) => {
+      return vehicleData.filter((vehicle) => {
         return (
-          (selectedLocation === '전체' || vehicle.location === selectedLocation) &&
-          (selectedCompany === '전체보기' || vehicle.company === selectedCompany)
+          (selectedLocation === '전체' || vehicle.regionName === selectedLocation) &&
+          (selectedCompany === '전체보기' || vehicle.regionName === selectedCompany)
         );
       });
     }
   };
 
   const sortedVehicleData = getFilteredVehicleData().sort((a, b) => {
-    const companyA = a.company.toLowerCase();
-    const companyB = b.company.toLowerCase();
+    const companyA = a.regionName.toLowerCase();
+    const companyB = b.regionName.toLowerCase();
 
     if (sortingOrder === 'asc') {
       return companyA.localeCompare(companyB);
@@ -197,7 +226,7 @@ const Home = () => {
               </h1>
             </Title>
 
-            <BusCard onFilterChange={(location) => setSelectedLocation(location)} />
+            <BusCard onFilterChange={(location) => setSelectedLocation(location)} vihiclelength={vihiclelength} />
             <Title>
               <h1 style={{ marginLeft: '10px', marginBottom: '0' }}>
                 운행중인 차량정보
@@ -265,22 +294,16 @@ const Home = () => {
                     // 수정된 부분 시작
 
                     color:
-                      vehicle.location === '운행'
-                        ? vehicle.note === 'no'
-                          ? 'blue'
-                          : 'red'
-                        : vehicle.location === '충전/대기'
-                        ? 'green'
-                        : 'red',
+                      vehicle.regionName === '화성' ? 'blue' : vehicle.regionName === '충전/대기' ? 'green' : 'red',
                     // 수정된 부분 끝
                   }}
                 >
-                  <DivTable>{vehicle.company}</DivTable>
-                  <DivTable>{vehicle.route}</DivTable>
-                  <DivTable>{vehicle.vehicleNum}</DivTable>
-                  <DivTable>{vehicle.location}</DivTable>
-                  <DivTable>{vehicle.soc}</DivTable>
-                  <DivTable>{vehicle.note}</DivTable>
+                  <DivTable>{vehicle.regionName}</DivTable>
+                  <DivTable>{vehicle.plateNo}</DivTable>
+                  <DivTable>{vehicle.routeId}</DivTable>
+                  <DivTable>운행</DivTable>
+                  <DivTable>{vehicle.stationSeq}%</DivTable>
+                  <DivTable>{vehicle.turnYn}O</DivTable>
                 </h6>
               ))}
             </CarinfoTable>

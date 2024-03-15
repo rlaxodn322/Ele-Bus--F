@@ -58,7 +58,7 @@ const Range: React.FC<RangeProps> = ({ buses, onSelectCarNumber }) => {
 
   return (
     <Form style={{ maxWidth: 400, marginBottom: '10px' }} {...formItemLayout} onFinish={onFinish}>
-      <Form.Item label="Bus">
+      <Form.Item label={<h2 style={{}}>Bus</h2>}>
         <Select allowClear onChange={(value) => setSelectedBusId(value)}>
           {buses.map((bus) => (
             <Select.Option key={bus.id} value={bus.id}>
