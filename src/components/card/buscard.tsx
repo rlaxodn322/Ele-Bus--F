@@ -6,10 +6,10 @@ const DivWapper = styled.div`
   background: white;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   margin-bottom: 7px;
   @media (max-width: 1100px) {
-    height: 100px;
+    height: 120px;
     width: 95%;
   }
 `;
@@ -46,7 +46,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange }) => {
             }}
           >
             <h2>2 대</h2>
-            <img style={{ width: '20%', marginBottom: '20px' }} src="images/bus-svgrepo-com (8).svg" alt="bus"></img>
+            <img style={{ width: '20%', marginBottom: '60px' }} src="images/bus-svgrepo-com (8).svg" alt="bus"></img>
           </div>
         </div>
         <div
@@ -70,7 +70,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange }) => {
           >
             <h2>2 대</h2>
             <img
-              style={{ width: '20%', marginBottom: '20px' }}
+              style={{ width: '20%', marginBottom: '60px' }}
               src="images/bus-transport-svgrepo-com (2).svg"
               alt="bus"
             ></img>
@@ -99,7 +99,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange }) => {
           >
             <h2>2 대</h2>
             <img
-              style={{ width: '20%', marginBottom: '20px' }}
+              style={{ width: '20%', marginBottom: '0px' }}
               src="images/stop-circle-svgrepo-com.svg"
               alt="stop"
             ></img>
