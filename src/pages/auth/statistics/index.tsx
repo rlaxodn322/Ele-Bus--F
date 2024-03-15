@@ -31,8 +31,7 @@ const ErrorWapper = styled.div`
   }
 `;
 const ErrorTable = styled.div`
-  height: 80%;
-
+  height: 90%;
   overflow-y: auto;
   @media (max-width: 1100px) {
     font-size: 9px;
