@@ -186,13 +186,28 @@ const Home = () => {
           </MapBox>
           <Busstatic>
             <Title>
-              <h1 style={{ marginLeft: '10px' }}>버스상태</h1>
+              <h1 style={{ marginLeft: '10px' }}>
+                버스상태
+                <Link href="./auth/car">
+                  <img
+                    style={{ marginLeft: '5px', width: '18px', height: '18px' }}
+                    src="images/plus-circle-1427-svgrepo-com.svg"
+                  ></img>
+                </Link>
+              </h1>
             </Title>
+
             <BusCard onFilterChange={(location) => setSelectedLocation(location)} />
             <Title>
-              <Link href="./auth/statistics">
-                <h1 style={{ marginLeft: '10px', marginBottom: '0' }}>운행중인 차량정보➕</h1>
-              </Link>
+              <h1 style={{ marginLeft: '10px', marginBottom: '0' }}>
+                운행중인 차량정보
+                <Link href="./auth/statistics">
+                  <img
+                    style={{ marginLeft: '5px', width: '18px', height: '18px' }}
+                    src="images/plus-circle-1427-svgrepo-com.svg"
+                  ></img>
+                </Link>
+              </h1>
             </Title>
             <div
               style={{

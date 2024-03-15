@@ -28,7 +28,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight 
         const clusterer = new window.kakao.maps.MarkerClusterer({
           map: map,
           averageCenter: true,
-          minLevel: 5,
+          minLevel: 1,
           calculator: [1, 2, 5, 10],
         });
 
