@@ -7,6 +7,7 @@ import Map from '../components/apis/kakao/map';
 import BusCard from '../components/card/buscard';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Page = styled.section`
   // display: inline-flex;
@@ -189,7 +190,9 @@ const Home = () => {
             </Title>
             <BusCard onFilterChange={(location) => setSelectedLocation(location)} />
             <Title>
-              <h1 style={{ marginLeft: '10px', marginBottom: '0' }}>운행중인 차량정보</h1>
+              <Link href="./auth/statistics">
+                <h1 style={{ marginLeft: '10px', marginBottom: '0' }}>운행중인 차량정보➕</h1>
+              </Link>
             </Title>
             <div style={{ marginBottom: '5px', border: '0px', display: 'flex', justifyContent: 'end' }}>
               <Cascader
