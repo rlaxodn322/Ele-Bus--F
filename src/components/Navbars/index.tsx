@@ -63,7 +63,6 @@ const MainNavbar: FC = () => {
                 if (!shouldShowMenu) {
                   return null;
                 }
-
                 return (
                   <li key={item.name + i} style={liStyle}>
                     <Link href={item.router}>
