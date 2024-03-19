@@ -69,6 +69,7 @@ const dummyData = [
 const MyPage = () => {
   const [stations, setStations] = useState<BusLocation[]>([]);
   const [busLocations, setBusLocations] = useState<BusLocation[]>([]);
+
   const router = useRouter();
 
   // 세션 스토리지에서 로그인 데이터를 가져옵니다.

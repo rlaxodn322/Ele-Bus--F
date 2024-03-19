@@ -22,7 +22,6 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
   const handleClick = (location: string) => {
     onFilterChange(location);
   };
-
   return (
     <>
       <DivWapper>
@@ -45,7 +44,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
               paddingRight: '20px',
             }}
           >
-            <h2>{vihiclelength + 4} 대</h2>
+            <h2>{vihiclelength} 대</h2>
             <img style={{ width: '20%', marginBottom: '60px' }} src="images/bus-svgrepo-com (8).svg" alt="bus"></img>
           </div>
         </div>
@@ -97,7 +96,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
               paddingRight: '20px',
             }}
           >
-            <h2>2 대</h2>
+            <h2>0 대</h2>
             <img
               style={{ width: '20%', marginBottom: '0px' }}
               src="images/stop-circle-svgrepo-com.svg"
@@ -124,7 +123,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
               paddingRight: '20px',
             }}
           >
-            <h2>2 대</h2>
+            <h2>0 대</h2>
             <img
               style={{ width: '20%', marginBottom: '20px' }}
               src="images/danger-circle-svgrepo-com (1).svg"

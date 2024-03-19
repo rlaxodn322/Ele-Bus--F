@@ -129,6 +129,7 @@ const Home = () => {
         const response = await axios.get('http://localhost:3000/api/data');
         // console.log(response.data.mergedData.length);
         setVehicleData(response.data.mergedData);
+        console.log(vehicleData);
         setvihiclelength(response.data.mergedData.length);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
@@ -201,6 +202,25 @@ const Home = () => {
       return companyB.localeCompare(companyA);
     }
   });
+
+  const filterByLocationNote = (note: string) => {
+    return sortedVehicleData.filter((vehicle) => vehicle.note === note);
+  };
+
+  const filteredByLocation = () => {
+    switch (selectedLocation) {
+      case '전체':
+        return sortedVehicleData;
+      case '운행':
+        return filterByLocationNote('운행');
+      case '충전/대기':
+        return filterByLocationNote('충전/대기');
+      case '고장':
+        return filterByLocationNote('고장');
+      default:
+        return sortedVehicleData.filter((vehicle) => vehicle.regionName === selectedLocation);
+    }
+  };
   return (
     <>
       <Head>
@@ -283,7 +303,7 @@ const Home = () => {
                 <DivTable2>SOC</DivTable2>
                 <DivTable2>이벤트발생</DivTable2>
               </div>
-              {sortedVehicleData.map((vehicle, index) => (
+              {filteredByLocation().map((vehicle, index) => (
                 <h6
                   key={index}
                   style={{
@@ -295,21 +315,21 @@ const Home = () => {
                     margin: '0',
                     fontSize: '14px',
                     color:
-                      vehicle.note === '충전/대기'
+                      vehicle.note === '운행'
+                        ? 'blue'
+                        : vehicle.note === '충전/대기'
                         ? 'green'
                         : vehicle.note === '고장'
                         ? 'red'
-                        : vehicle.note === '운행'
-                        ? 'black'
-                        : 'blue', // 운행 상태일 때는 파란색으로 표시합니다.
+                        : 'black',
                   }}
                 >
                   <DivTable>{vehicle.regionName}</DivTable>
                   <DivTable>{vehicle.plateNo}</DivTable>
                   <DivTable>{vehicle.routeId}</DivTable>
-                  <DivTable>{vehicle.note ? vehicle.note : '운행'}</DivTable>
-                  <DivTable>{vehicle.stationSeq}%</DivTable>
-                  <DivTable>{vehicle.turnYn}O</DivTable>
+                  <DivTable>{vehicle.note}</DivTable>
+                  <DivTable>{vehicle.stationSeq}</DivTable>
+                  <DivTable>{vehicle.turnYn}</DivTable>
                 </h6>
               ))}
             </CarinfoTable>
