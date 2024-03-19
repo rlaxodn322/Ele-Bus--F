@@ -102,8 +102,8 @@ const MyPage = () => {
   const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
   const userDataString = typeof window !== 'undefined' ? sessionStorage.getItem('userData') : null;
   const userData = userDataString ? JSON.parse(userDataString) : {};
-  const adminValue = userData.admin;
-  console.log(adminValue);
+  // const adminValue = userData.admin;
+  // console.log(adminValue);
 
   // 로그인되어 있지 않거나 어드민 값이 '02'가 아니면 로그인 페이지로 리디렉션합니다.
   React.useEffect(() => {

@@ -7,6 +7,7 @@ import MainLayout from '../../../layouts';
 import { deleteUserAPI } from '../../../components/apis/user/user';
 // import EditModal from '../../../components/Modals/auth';
 import styled from '@emotion/styled';
+import Mail from '../../../components/apis/mail';
 // const TitleWrapper = styled.div`
 //   margin-bottom: 20px;
 // `;
@@ -146,6 +147,7 @@ const MyPage = () => {
           </ButtonWrapper>
         </ProfileInfo>
       </PageProfile>
+      <Mail />
       {/* <EditModal visible={editModalVisible} onCancel={handleEditModalCancel} user={{ name, email }} /> */}
     </>
   );

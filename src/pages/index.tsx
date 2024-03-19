@@ -9,6 +9,7 @@ import BusCard from '../components/card/buscard';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+
 interface Vehicle {
   turnYn: string;
   stationSeq: string;
@@ -335,6 +336,7 @@ const Home = () => {
             </CarinfoTable>
           </Busstatic>
         </PageWapper>
+   
       </Page>
     </>
   );
