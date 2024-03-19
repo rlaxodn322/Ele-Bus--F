@@ -1,7 +1,59 @@
 import React, { useState } from 'react';
+import styled from '@emotion/styled';
 
-const EmailForm = () => {
-  const [email, setEmail] = useState('');
+// 스타일드 컴포넌트를 사용하여 스타일링
+const FormContainer = styled.form`
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+`;
+
+const FormGroup = styled.div`
+  margin-bottom: 20px;
+`;
+
+const Label = styled.label`
+  display: block;
+  margin-bottom: 5px;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const Button = styled.button`
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+const EmailForm = ({ onSuccess }: { onSuccess: () => void }) => {
+  const [email, setEmail] = useState('taewoo@firstcorea.com');
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -19,6 +71,8 @@ const EmailForm = () => {
 
       if (response.ok) {
         alert('이메일이 성공적으로 전송되었습니다.');
+        onSuccess(); // 이메일 전송 성공 시 onSuccess 이벤트 호출
+        setMessage('');
       } else {
         alert('이메일 전송에 실패했습니다.');
       }
@@ -29,17 +83,22 @@ const EmailForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        이메일:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      </label>
-      <label>
-        메시지:
-        <textarea value={message} onChange={(e) => setMessage(e.target.value)} required />
-      </label>
-      <button type="submit">보내기</button>
-    </form>
+    <FormContainer onSubmit={handleSubmit}>
+      <FormGroup>
+        <Label>이메일:</Label>
+        <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      </FormGroup>
+      <FormGroup>
+        <Label>메시지:</Label>
+        <TextArea
+          placeholder="회사명, 권한상향 이유를 입력해주세요."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+        />
+      </FormGroup>
+      <Button type="submit">보내기</Button>
+    </FormContainer>
   );
 };
 

@@ -1,14 +1,31 @@
 // LoginButton.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Button } from 'antd';
-
+import { Button, Modal } from 'antd';
+import EmailForm from '../apis/mail';
 interface LoginButtonProps {
   isLoggedIn: boolean;
   handleLogout: () => void;
 }
 
 const LoginButton: React.FC<LoginButtonProps> = ({ isLoggedIn, handleLogout }) => {
+  // 모달 열고 닫는 상태 및 함수 정의
+  const [modalVisible, setModalVisible] = useState(false);
+
+  // 모달 열기 함수
+  const showModal = () => {
+    setModalVisible(true);
+  };
+
+  // 모달 닫기 함수
+  const handleCancel = () => {
+    setModalVisible(false);
+  };
+  // 이메일 전송 성공 시 모달 닫기
+  const handleEmailSent = () => {
+    setModalVisible(false);
+  };
+
   return (
     <>
       {isLoggedIn ? (
@@ -17,6 +34,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({ isLoggedIn, handleLogout }) =
             <Button>마이페이지</Button>
           </Link>
           <Button onClick={handleLogout}>로그아웃</Button>
+          <Button onClick={showModal}>권한상향</Button>
         </>
       ) : (
         <>
@@ -28,6 +46,10 @@ const LoginButton: React.FC<LoginButtonProps> = ({ isLoggedIn, handleLogout }) =
           </Link> */}
         </>
       )}
+      <Modal title="권한 상향" visible={modalVisible} onCancel={handleCancel} footer={null} onOk={handleCancel}>
+        {/* EmailForm 컴포넌트를 모달 안에 렌더링 */}
+        <EmailForm onSuccess={handleEmailSent} />
+      </Modal>
     </>
   );
 };
