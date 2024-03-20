@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-
+// import axios from 'axios';
 // 스타일드 컴포넌트를 사용하여 스타일링
 const FormContainer = styled.form`
   max-width: 500px;
@@ -62,7 +62,7 @@ const EmailForm = ({ onSuccess }: { onSuccess: () => void }) => {
     // 이메일과 메시지를 서버로 전송하는 API 호출
     try {
       //const response = await fetch('http://localhost:3000/mail', {
-      const response = await fetch('http://ele.firstcorea:3000/mail', {
+      const response = await fetch('http://ele.firstcorea.com:3000/mail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
