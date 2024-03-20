@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-// import axios from 'axios';
+import axios from 'axios';
 // 스타일드 컴포넌트를 사용하여 스타일링
 const FormContainer = styled.form`
   max-width: 500px;
@@ -59,20 +59,19 @@ const EmailForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    // 이메일과 메시지를 서버로 전송하는 API 호출
     try {
-      //const response = await fetch('http://localhost:3000/mail', {
-      const response = await fetch('http://ele.firstcorea.com:3000/mail', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, message }),
+      // const response = await axios.post('http://localhost:3000/mail', {
+      //   email,
+      //   message,
+      // });
+      const response = await axios.post('http://ele.firstcorea.com:3000/mail', {
+        email,
+        message,
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         alert('이메일이 성공적으로 전송되었습니다.');
-        onSuccess(); // 이메일 전송 성공 시 onSuccess 이벤트 호출
+        onSuccess();
         setMessage('');
       } else {
         alert('이메일 전송에 실패했습니다.');
