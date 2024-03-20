@@ -336,7 +336,6 @@ const Home = () => {
             </CarinfoTable>
           </Busstatic>
         </PageWapper>
-   
       </Page>
     </>
   );
