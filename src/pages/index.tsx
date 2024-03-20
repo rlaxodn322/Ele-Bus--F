@@ -2,14 +2,13 @@ import Head from 'next/head';
 import MainLayout from '../layouts';
 // import { Page } from './style';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // axios 추가
 import { Cascader } from 'antd'; // antd
 import Map from '../components/apis/kakao/map';
 import BusCard from '../components/card/buscard';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
+import { loaddata } from '../components/apis/bus/bus';
 interface Vehicle {
   turnYn: string;
   stationSeq: string;
@@ -123,24 +122,18 @@ const Home = () => {
 
   const router = useRouter();
   useEffect(() => {
-    // API 호출
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://ele.firstcorea.com:3000/api/data');
-        //const response = await axios.get('http://localhost:3000/api/data');
-        // console.log(response.data.mergedData.length);
-        setVehicleData(response.data.mergedData);
-        console.log(vehicleData);
-        setvihiclelength(response.data.mergedData.length);
+        const response = await loaddata(); // loaddata 함수로 데이터를 가져옴
+        setVehicleData(response.mergedData);
+        setvihiclelength(response.mergedData.length);
       } catch (error) {
         console.error('데이터를 가져오는 중 오류 발생:', error);
       }
     };
 
-    fetchData(); // 데이터 가져오기 함수 호출
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // 컴포넌트가 처음 렌더링될 때 한 번만 실행
+    fetchData();
+  }, []);
   // 세션 스토리지에서 로그인 데이터를 가져옵니다.
   const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
 

@@ -16,6 +16,15 @@ export function signUpAPI(data: any) {
   return axios.post('/bus', data).then((response) => response.data);
 }
 
+export async function loaddata() {
+  return await axios.get('/api/data').then((response) => response.data);
+}
+export async function loadbus() {
+  return await axios.get('api/bus').then((response) => response.data);
+}
+export async function loadstation() {
+  return await axios.get('api/stations').then((response) => response.data);
+}
 // // 회원 삭제 API
 // export function deleteUserAPI(email: string) {
 //   console.log('회원 삭제', email);

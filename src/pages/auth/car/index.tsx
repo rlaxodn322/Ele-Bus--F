@@ -10,8 +10,7 @@ import BusCard from '../../../components/bus/buscard';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import Bus from '../../../components/bus/busstation';
-
-import axios from 'axios';
+import { loadbus, loadstation } from '../../../components/apis/bus/bus';
 import { useRouter } from 'next/router';
 interface BusLocation {
   stationId: string;
@@ -84,9 +83,8 @@ const MyPage = () => {
   useEffect(() => {
     const fetchStations = async () => {
       try {
-        const response = await axios.get('http://ele.firstcorea.com:3000/api/stations');
-        //const response = await axios.get('http://localhost:3000/api/stations');
-        setStations(response.data.stations);
+        const response = await loadstation();
+        setStations(response.stations);
       } catch (error) {
         console.error(error);
       }
@@ -94,9 +92,8 @@ const MyPage = () => {
 
     const fetchBusLocations = async () => {
       try {
-        const response = await axios.get('http://ele.firstcorea.com:3000/api/bus');
-        //const response = await axios.get('http://localhost:3000/api/bus');
-        setBusLocations(response.data.stations);
+        const response = await loadbus();
+        setBusLocations(response.stations);
       } catch (error) {
         console.error(error);
       }
@@ -115,6 +112,7 @@ const MyPage = () => {
     // 컴포넌트가 언마운트되면 clearInterval을 호출하여 인터벌 제거
     return () => clearInterval(intervalId);
   }, []);
+
   const [dtgRecordTitle] = useState<string>('DTG정보');
 
   return (
