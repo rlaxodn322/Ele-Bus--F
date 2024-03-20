@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import axios from 'axios';
+import { signUpAPI } from '../apis/mail/mail';
 // 스타일드 컴포넌트를 사용하여 스타일링
 const FormContainer = styled.form`
   max-width: 500px;
@@ -60,16 +60,11 @@ const EmailForm = ({ onSuccess }: { onSuccess: () => void }) => {
     e.preventDefault();
 
     try {
-      // const response = await axios.post('http://localhost:3000/mail', {
-      //   email,
-      //   message,
-      // });
-      const response = await axios.post('http://ele.firstcorea.com:3000/mail', {
-        email,
-        message,
-      });
+      // signUpAPI를 사용하여 요청 보내기
+      const data = { email, message };
+      const response = await signUpAPI(data); // signUpAPI를 사용하여 요청 보내기
 
-      if (response.status === 200) {
+      if (response) {
         alert('이메일이 성공적으로 전송되었습니다.');
         onSuccess();
         setMessage('');
