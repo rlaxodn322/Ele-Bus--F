@@ -126,8 +126,8 @@ const Home = () => {
     // API 호출
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://ele.firstcorea:3000/api/data');
-        //const response = await axios.get('http://localhost:3000/api/data');
+        //const response = await axios.get('http://ele.firstcorea:3000/api/data');
+        const response = await axios.get('http://localhost:3000/api/data');
         // console.log(response.data.mergedData.length);
         setVehicleData(response.data.mergedData);
         console.log(vehicleData);
