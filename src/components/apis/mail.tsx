@@ -85,7 +85,7 @@ const EmailForm = ({ onSuccess }: { onSuccess: () => void }) => {
   return (
     <FormContainer onSubmit={handleSubmit}>
       <FormGroup>
-        <Label>이메일:</Label>
+        <Label>관리자 이메일:</Label>
         <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
       </FormGroup>
       <FormGroup>

@@ -46,7 +46,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({ isLoggedIn, handleLogout }) =
           </Link> */}
         </>
       )}
-      <Modal title="권한 상향" visible={modalVisible} onCancel={handleCancel} footer={null} onOk={handleCancel}>
+      <Modal title="권한 상향" open={modalVisible} onCancel={handleCancel} footer={null} onOk={handleCancel}>
         {/* EmailForm 컴포넌트를 모달 안에 렌더링 */}
         <EmailForm onSuccess={handleEmailSent} />
       </Modal>

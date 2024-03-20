@@ -68,7 +68,7 @@ const MyPage = () => {
       setEmail(userData.email);
       setCreate(userData.createdAt);
       setUpdate(userData.updatedAt);
-      console.log(userData);
+      // console.log(userData);
     }
   }, []);
 
