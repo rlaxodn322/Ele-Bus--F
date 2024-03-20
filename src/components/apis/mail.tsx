@@ -61,7 +61,8 @@ const EmailForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
     // 이메일과 메시지를 서버로 전송하는 API 호출
     try {
-      const response = await fetch('http://localhost:3000/mail', {
+      //const response = await fetch('http://localhost:3000/mail', {
+      const response = await fetch('http://ele.firstcorea:3000/mail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
