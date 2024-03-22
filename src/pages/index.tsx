@@ -28,7 +28,7 @@ const Page = styled.section`
   /* justify-content: space-between; */
 
   width: 1370px;
-  height: 10000vh;
+  height: 100%;
   margin: 0 auto;
   display: flex;
 
