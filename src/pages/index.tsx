@@ -9,6 +9,8 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { loaddata } from '../components/apis/bus/bus';
+import ScrollToTopButton from '../components/Scroll/ScrollToTopButton';
+import ScrollToDownButton from '../components/Scroll/ScrollToDownButton';
 interface Vehicle {
   turnYn: string;
   stationSeq: string;
@@ -24,10 +26,12 @@ const Page = styled.section`
 
   /* /* display: flex; */
   /* justify-content: space-between; */
+
   width: 1370px;
-  height: 100vh;
+  height: 10000vh;
   margin: 0 auto;
   display: flex;
+
   @media (max-width: 1100px) {
     width: 100%;
     height: 100%;
@@ -215,6 +219,18 @@ const Home = () => {
         return sortedVehicleData.filter((vehicle) => vehicle.regionName === selectedLocation);
     }
   };
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      // behavior: 'smooth',
+    });
+  };
+  const handleScrollToDown = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      // behavior: 'smooth',
+    });
+  };
   return (
     <>
       <Head>
@@ -330,6 +346,8 @@ const Home = () => {
           </Busstatic>
         </PageWapper>
       </Page>
+      <ScrollToTopButton handleScrollToTop={handleScrollToTop}></ScrollToTopButton>
+      <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
     </>
   );
 };

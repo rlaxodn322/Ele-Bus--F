@@ -54,6 +54,6 @@ export const routes = [
     router: '/auth/statistics',
     active: '/icons/sidebar/error-svgrepo-com (3).svg',
     default: '/icons/sidebar/error-svgrepo-com (2).svg',
-    name: 'Errorlog',
+    name: '통계정보',
   },
 ];

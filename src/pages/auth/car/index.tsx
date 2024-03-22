@@ -12,6 +12,8 @@ import Head from 'next/head';
 import Bus from '../../../components/bus/busstation';
 import { loadbus, loadstation } from '../../../components/apis/bus/bus';
 import { useRouter } from 'next/router';
+import ScrollToTopButton from '../../../components/Scroll/ScrollToTopButton';
+import ScrollToDownButton from '../../../components/Scroll/ScrollToDownButton';
 interface BusLocation {
   stationId: string;
   remainSeatCnt: string;
@@ -46,6 +48,7 @@ const CarCard = styled.div`
     flex-direction: column;
   }
 `;
+
 // 더미 데이터
 const dummyData = [
   { id: 1, vehicle: '차량1', status: '운행기록장치 모델명', battery: 'GTG 기록 ABCD' },
@@ -114,7 +117,18 @@ const MyPage = () => {
   }, []);
 
   const [dtgRecordTitle] = useState<string>('DTG정보');
-
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      // behavior: 'smooth',
+    });
+  };
+  const handleScrollToDown = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      // behavior: 'smooth',
+    });
+  };
   return (
     <>
       <Head>
@@ -213,6 +227,8 @@ const MyPage = () => {
             <Bus stations={stations} busLocations={busLocations} />
           </div>
         </CarCard>
+        <ScrollToTopButton handleScrollToTop={handleScrollToTop}></ScrollToTopButton>
+        <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
       </Page>
     </>
   );

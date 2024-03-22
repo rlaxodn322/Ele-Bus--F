@@ -7,6 +7,8 @@ import Date from '../../../components/antd/date';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import ScrollToTopButton from '../../../components/Scroll/ScrollToTopButton';
+import ScrollToDownButton from '../../../components/Scroll/ScrollToDownButton';
 
 const Page = styled.section`
   // display: inline-flex;
@@ -433,7 +435,15 @@ const MyPage = () => {
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
   const router = useRouter();
-
+  const handelScrollToTop = () => {
+    window.scrollTo({ top: 0 });
+  };
+  const handleScrollToDown = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      // behavior: 'smooth',
+    });
+  };
   // 세션 스토리지에서 로그인 데이터를 가져옵니다.
   const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
 
@@ -494,6 +504,8 @@ const MyPage = () => {
             <DtgTable data={filteredData} columns={busDataColumns} />
           </DTGCarTable>
         </DtgInfoTable>
+        <ScrollToTopButton handleScrollToTop={handelScrollToTop}></ScrollToTopButton>
+        <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
       </Page>
     </>
   );

@@ -10,6 +10,8 @@ import { loadMyInfoAPI } from '@/components/apis/item/item';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import React from 'react';
+import ScrollToTopButton from '../../../components/Scroll/ScrollToTopButton';
+import ScrollToDownButton from '../../../components/Scroll/ScrollToDownButton';
 
 interface MaintenanceHistoryItem {
   number: string;
@@ -173,6 +175,18 @@ const MyPage = () => {
     console.log('입력 취소');
     // 필요한 로직을 추가하세요.
   };
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      // behavior: 'smooth',
+    });
+  };
+  const handleScrollToDown = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      // behavior: 'smooth',
+    });
+  };
   return (
     <>
       <Head>
@@ -222,6 +236,8 @@ const MyPage = () => {
             </div>
           </div>
         </ItemList>
+        <ScrollToTopButton handleScrollToTop={handleScrollToTop}></ScrollToTopButton>
+        <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
       </Page>
     </>
   );

@@ -14,6 +14,8 @@ import Head from 'next/head';
 import * as XLSX from 'xlsx';
 import { useRouter } from 'next/router';
 import React from 'react';
+import ScrollToTopButton from '../../../components/Scroll/ScrollToTopButton';
+import ScrollToDownButton from '../../../components/Scroll/ScrollToDownButton';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -84,7 +86,15 @@ const MyPage = () => {
   const [buses1, setBuses1] = useState<any[]>([]); // 이 줄 추가
   // 추가: 버스 목록을 가져오는 함수
   const router = useRouter();
-
+  const hadleScrollToTop = () => {
+    window.scrollTo({ top: 0 });
+  };
+  const handleScrollToDown = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      // behavior: 'smooth',
+    });
+  };
   // 세션 스토리지에서 로그인 데이터를 가져옵니다.
   const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
   const userDataString = typeof window !== 'undefined' ? sessionStorage.getItem('userData') : null;
@@ -316,6 +326,8 @@ const MyPage = () => {
             </div>
           </BusCharger>
         </TableContainer>
+        <ScrollToTopButton handleScrollToTop={hadleScrollToTop}></ScrollToTopButton>
+        <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
       </Page>
     </>
   );

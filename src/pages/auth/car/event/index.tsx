@@ -9,6 +9,9 @@ import { loadMyInfoAPI } from '../../../../components/apis/event/event';
 import Table7 from '../../../../components/table/event7';
 import { useRouter } from 'next/router';
 import React from 'react';
+import ScrollToTopButton from '../../../../components/Scroll/ScrollToTopButton';
+import ScrollToDownButton from '../../../../components/Scroll/ScrollToDownButton';
+
 interface Row {
   companynumber: string;
   busnum: string;
@@ -227,7 +230,18 @@ const MyPage = () => {
     setModalOpen(false);
     fetchMyInfo();
   };
-
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      // behavior: 'smooth',
+    });
+  };
+  const handleScrollToDown = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      // behavior: 'smooth',
+    });
+  };
   return (
     <>
       <Head>
@@ -284,6 +298,8 @@ const MyPage = () => {
             </ButtonWapper>
           </div>
         </ItemTable>
+        <ScrollToTopButton handleScrollToTop={handleScrollToTop}></ScrollToTopButton>
+        <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
       </Page>
     </>
   );
