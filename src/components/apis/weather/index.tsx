@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { WeatherContainer, WeatherTemp, WeatherDesc, WeatherCloud, Day } from './style';
+import { WeatherContainer, WeatherTemp, WeatherDesc, WeatherCloud, Day, WeatherIcon } from './style';
 import axios from 'axios';
 
 interface WeatherState {
@@ -56,7 +56,7 @@ const Weather = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  // const imgSrc = `https://openweathermap.org/img/w/${weatherData.icon}.png`;
+  const imgSrc = `https://openweathermap.org/img/w/${weatherData.icon}.png`;
   const { loading, temp, humidity, desc } = weatherData;
 
   return (
@@ -65,10 +65,10 @@ const Weather = () => {
         <p>Loading...</p>
       ) : (
         <>
-          {/* <WeatherIcon src={imgSrc} alt="Weather Icon" /> */}
           {/* <WeatherCloud>위치 : text</WeatherCloud> */}
           <Day>{currentDate}</Day>
           <WeatherCloud>날씨 : {desc}</WeatherCloud>
+          <WeatherIcon src={imgSrc} alt="Weather Icon" />
           <WeatherTemp>온도 : {temp}°C</WeatherTemp>
           <WeatherDesc>습도 : {humidity}%</WeatherDesc>
         </>

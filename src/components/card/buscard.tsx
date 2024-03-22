@@ -20,7 +20,8 @@ interface BusCardProps {
 }
 const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
   const handleClick = (location: string) => {
-    onFilterChange(location);
+    onFilterChange(location); // 변경된 상태를 부모 컴포넌트로 전달
+    console.log(location);
   };
   return (
     <>

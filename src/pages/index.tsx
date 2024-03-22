@@ -123,6 +123,13 @@ const Home = () => {
   const [sortingOrder] = useState<string | string[]>(['latest']);
   const [selectedCompany, setSelectedCompany] = useState<string | null>('전체보기');
   const [vihiclelength, setvihiclelength] = useState<number>(0); // 초기값을 0 또는 다른 숫자로 설정(); // 초기값을 0 또는 다른 숫자로 설정
+  // eslint-disable-next-line no-unused-vars
+  const [filteredData, setFilteredData] = useState<Vehicle[]>([]);
+  useEffect(() => {
+    const filteredData = filteredByLocation();
+    setFilteredData(filteredData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLocation]);
 
   const router = useRouter();
   useEffect(() => {
@@ -210,13 +217,13 @@ const Home = () => {
       case '전체':
         return sortedVehicleData;
       case '운행':
-        return filterByLocationNote('운행');
+        return sortedVehicleData.filter((vehicle) => vehicle.note === '운행');
       case '충전/대기':
         return filterByLocationNote('충전/대기');
       case '고장':
         return filterByLocationNote('고장');
       default:
-        return sortedVehicleData.filter((vehicle) => vehicle.regionName === selectedLocation);
+        return sortedVehicleData.filter((vehicle) => vehicle.note === selectedLocation);
     }
   };
   const handleScrollToTop = () => {
