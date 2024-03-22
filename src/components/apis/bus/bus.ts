@@ -6,13 +6,13 @@ axios.defaults.withCredentials = true;
 
 // 내 정보 불러오기 API
 export async function loadBusListAPI() {
-  console.log('loadBusListAPI');
+  // console.log('loadBusListAPI');
   return await axios.get('/bus').then((response) => response.data);
 }
 
 // 등록 API
 export function signUpAPI(data: any) {
-  console.log('등록', data);
+  // console.log('등록', data);
   return axios.post('/bus', data).then((response) => response.data);
 }
 

@@ -13,7 +13,7 @@ export async function loadMyInfoAPI() {
 // 로그인 API
 
 export function logInAPI(data: any) {
-  console.log('로그인', data);
+  // console.log('로그인', data);
   return axios.post('/user/login', data).then((response) => response.data);
 }
 
@@ -24,18 +24,18 @@ export function logOutAPI() {
 
 // 회원가입 API
 export function signUpAPI(data: any) {
-  console.log('회원가입', data);
+  // console.log('회원가입', data);
   return axios.post('/user', data).then((response) => response.data);
 }
 
 // 회원 수정 API
 export function updateUserAPI(data: any) {
-  console.log('회원 수정', data);
+  // console.log('회원 수정', data);
   return axios.patch('/user', data).then((response) => response.data);
 }
 
 // 회원 삭제 API
 export function deleteUserAPI(email: string) {
-  console.log('회원 삭제', email);
+  // console.log('회원 삭제', email);
   return axios.delete('/user', { data: { email } }).then((response) => response.data);
 }
