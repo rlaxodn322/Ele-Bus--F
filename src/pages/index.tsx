@@ -136,6 +136,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await loaddata(); // loaddata 함수로 데이터를 가져옴
+        // console.log(response);
         setVehicleData(response.mergedData);
         setvihiclelength(response.mergedData.length);
       } catch (error) {

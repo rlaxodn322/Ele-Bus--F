@@ -23,7 +23,6 @@ const MainLogo = () => {
   const handleLogout = () => {
     Swal.fire({
       title: '로그아웃 하시겠습니까?',
-      icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
@@ -31,11 +30,20 @@ const MainLogo = () => {
       cancelButtonText: '취소',
     }).then((result) => {
       if (result.isConfirmed) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 500,
+          timerProgressBar: true,
+        });
+        Toast.fire({
+          icon: 'success',
+          title: '로그아웃 성공.',
+        });
         sessionStorage.removeItem('userData');
-        Swal.fire('로그아웃 성공!', '로그아웃 되었습니다.', 'success').then(() => {
-          router.push('/auth/login').then(() => {
-            window.location.reload();
-          });
+        router.push('/auth/login').then(() => {
+          window.location.reload();
         });
       }
     });
