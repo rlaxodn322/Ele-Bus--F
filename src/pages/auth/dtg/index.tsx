@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MainLayout from '../../../layouts/index';
 import Card from '../../../components/card/dtgcard';
 import Table3 from '../../../components/table/table3company';
@@ -9,7 +9,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ScrollToTopButton from '../../../components/Scroll/ScrollToTopButton';
 import ScrollToDownButton from '../../../components/Scroll/ScrollToDownButton';
-
+import { loadBusListAPI1 } from '../../../components/apis/bus/bus';
 const Page = styled.section`
   // display: inline-flex;
 
@@ -217,197 +217,10 @@ const dummyTableData = [
     status2: '60km',
     status3: '60km',
   },
-  {
-    user: '2024-02-09',
-    registrationDate: '1시 01분 30초',
-    status: '1111111km',
-    status1: '18,000km',
-    status2: '60km',
-    status3: '60km',
-  },
-  {
-    user: '2024-02-09',
-    registrationDate: '1시 01분 30초',
-    status: '1111111km',
-    status1: '18,000km',
-    status2: '60km',
-    status3: '60km',
-  },
-  {
-    user: '2024-02-09',
-    registrationDate: '1시 01분 30초',
-    status: '1111111km',
-    status1: '18,000km',
-    status2: '60km',
-    status3: '60km',
-  },
-  {
-    user: '2024-02-09',
-    registrationDate: '1시 01분 30초',
-    status: '1111111km',
-    status1: '18,000km',
-    status2: '60km',
-    status3: '60km',
-  },
-  {
-    user: '2024-02-09',
-    registrationDate: '1시 01분 30초',
-    status: '1111111km',
-    status1: '18,000km',
-    status2: '60km',
-    status3: '60km',
-  },
 
   // Add more dummy data as needed
 ];
-const busDataColumns2 = ['등록일자', '사용자', '상태'];
-const dummyTableData2 = [
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1235',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1236',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1237',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1238',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-  {
-    user: '동탄여객',
-    registrationDate: '경기11가1234',
-    status: '운행중',
-  },
-];
+const busDataColumns2 = ['운행사', '차량번호', '운행상태'];
 
 // 더미 데이터
 const dummyData = [
@@ -434,6 +247,8 @@ const MyPage = () => {
   const [dtgRecordTitle, setDtgRecordTitle] = useState<string>('차량넘버');
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
+  // eslint-disable-next-line no-unused-vars
+  const [buses1, setBuses1] = useState<any[]>([]); // 이 줄 추가
   const router = useRouter();
   const handelScrollToTop = () => {
     window.scrollTo({ top: 0 });
@@ -468,6 +283,18 @@ const MyPage = () => {
     return item.user >= startDate && item.user <= endDate;
   });
 
+  const fetchBusList = async () => {
+    try {
+      const busListData = await loadBusListAPI1();
+      console.log(busListData);
+      setBuses1(busListData);
+    } catch (error) {
+      console.error('버스 목록 불러오기 오류:', error);
+    }
+  };
+  useEffect(() => {
+    fetchBusList();
+  }, []);
   return (
     <>
       <Head>
@@ -479,7 +306,7 @@ const MyPage = () => {
         <DtgInfoTable>
           <CarTable>
             <h1 style={{ marginLeft: '10px' }}>차량 목록</h1>
-            <Table3 data={dummyTableData2} columns={busDataColumns2} updateDtgRecordTitle={updateDtgRecordTitle} />
+            <Table3 buses1={buses1} columns={busDataColumns2} updateDtgRecordTitle={updateDtgRecordTitle} />
           </CarTable>
           <CarTable>
             <h1 style={{ marginLeft: '10px' }}>DTG 실시간 기록</h1>

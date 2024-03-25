@@ -18,7 +18,7 @@ export const Day = styled.p`
 `;
 export const WeatherIcon = styled.img`
   margin: 0px;
-  padding: 0px;
+  padding-bottom: 10px;
 `;
 export const WeatherCloud = styled.p`
   margin: 3px;

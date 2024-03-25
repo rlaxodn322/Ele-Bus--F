@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Input, Button } from 'antd';
 
 interface Row {
-  user: string;
-  registrationDate: string;
-  status: string;
+  carNumber: string;
+  company: string;
+  note: string;
 }
 
 interface CardProps {
-  data: Row[];
   columns: string[];
+  buses1: Row[];
   // eslint-disable-next-line no-unused-vars
   updateDtgRecordTitle: (vehicleNumber: string) => void;
 }
@@ -28,7 +28,7 @@ const parseDate = (dateString: string): number => {
   return 0; // 유효한 날짜가 파싱되지 않을 경우 0을 반환
 };
 
-const Card: React.FC<CardProps> = ({ data, columns, updateDtgRecordTitle }) => {
+const Card: React.FC<CardProps> = ({ buses1, columns, updateDtgRecordTitle }) => {
   const [sortingOrder] = useState<string | string[]>(['latest']);
   const [sortingOrder1] = useState<string | string[]>(['latest']);
   const [filterDate, setFilterDate] = useState<string | null>(null);
@@ -43,13 +43,11 @@ const Card: React.FC<CardProps> = ({ data, columns, updateDtgRecordTitle }) => {
       updateDtgRecordTitle(vehicleNumber);
     }
   };
-  const sortedEventHistory = [...data]
-    .filter(
-      (row) => (!filterDate || row.registrationDate.includes(filterDate)) && (!filterUser || row.user === filterUser),
-    )
+  const sortedEventHistory = [...buses1]
+    .filter((row) => (!filterDate || row.carNumber.includes(filterDate)) && (!filterUser || row.company === filterUser))
     .sort((a, b) => {
-      const dateA = parseDate(a.registrationDate);
-      const dateB = parseDate(b.registrationDate);
+      const dateA = parseDate(a.carNumber);
+      const dateB = parseDate(b.carNumber);
 
       if (sortingOrder === 'oldest') {
         return dateA - dateB;
@@ -137,9 +135,9 @@ const Card: React.FC<CardProps> = ({ data, columns, updateDtgRecordTitle }) => {
                 color: 'gray',
               }}
             >
-              <div style={{ flex: 1 }}>{row.registrationDate}</div>
-              <div style={{ flex: 1 }}>{row.user}</div>
-              <div style={{ flex: 1 }}>{row.status}</div>
+              <div style={{ flex: 1 }}>{row.company}</div>
+              <div style={{ flex: 1 }}>{row.carNumber}</div>
+              <div style={{ flex: 1 }}>{row.note}</div>
             </h6>
           ))}
         </div>

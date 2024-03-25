@@ -9,6 +9,11 @@ export async function loadBusListAPI() {
   // console.log('loadBusListAPI');
   return await axios.get('/bus').then((response) => response.data);
 }
+// 내 정보 불러오기 API
+export async function loadBusListAPI1() {
+  // console.log('loadBusListAPI');
+  return await axios.get('/bus/1').then((response) => response.data);
+}
 
 // 등록 API
 export function signUpAPI(data: any) {
