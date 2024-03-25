@@ -5,7 +5,7 @@ import { Button, message, Modal } from 'antd';
 import MainLayout from '../../../layouts';
 // import { PageProfile, ProfileTitle, ProfileInfo, ButtonWrapper } from './style';
 import { deleteUserAPI } from '../../../components/apis/user/user';
-// import EditModal from '../../../components/Modals/auth';
+import EditModal from '../../../components/modal/EditModal';
 import styled from '@emotion/styled';
 
 // const TitleWrapper = styled.div`
@@ -42,9 +42,9 @@ const ProfileInfo = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  padding-left: 40%;
+  padding-left: 20%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 0px;
 
   .button-gap {
@@ -57,7 +57,7 @@ const MyPage = () => {
   const [email, setEmail] = useState('');
   const [createdAt, setCreate] = useState('');
   const [updatedAt, setUpdate] = useState('');
-  // const [editModalVisible, setEditModalVisible] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -72,9 +72,9 @@ const MyPage = () => {
     }
   }, []);
 
-  // const handleEdit = () => {
-  //   setEditModalVisible(true);
-  // };
+  const handleEdit = () => {
+    setEditModalOpen(true);
+  };
   const handleDelete = () => {
     Modal.confirm({
       title: '회원 탈퇴',
@@ -111,9 +111,9 @@ const MyPage = () => {
   //   }
   // };
 
-  // const handleEditModalCancel = () => {
-  //   setEditModalVisible(false);
-  // };
+  const handleEditModalCancel = () => {
+    setEditModalOpen(false);
+  };
 
   return (
     <>
@@ -137,9 +137,9 @@ const MyPage = () => {
             <strong>업데이트일:</strong> {updatedAt}
           </div>
           <ButtonWrapper>
-            {/* <Button key="" type="primary" onClick={handleEdit}>
+            <Button key="" type="primary" onClick={handleEdit}>
               정보수정
-            </Button> */}
+            </Button>
             <span className="button-gap" />
             <Button key="primary" onClick={handleDelete}>
               회원탈퇴
@@ -148,7 +148,7 @@ const MyPage = () => {
         </ProfileInfo>
       </PageProfile>
 
-      {/* <EditModal visible={editModalVisible} onCancel={handleEditModalCancel} user={{ name, email }} /> */}
+      <EditModal open={editModalOpen} onCancel={handleEditModalCancel} user={{ name, email }} />
     </>
   );
 };
