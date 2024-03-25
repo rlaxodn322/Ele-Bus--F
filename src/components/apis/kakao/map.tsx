@@ -29,7 +29,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight 
           map: map,
           averageCenter: true,
           minLevel: 1,
-          calculator: [1, 2, 5, 10],
+          calculator: [1, 2, 2, 5],
         });
 
         // 마커 생성 및 클러스터러에 추가
