@@ -9,8 +9,7 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { loaddata } from '../components/apis/bus/bus';
-import ScrollToTopButton from '../components/Scroll/ScrollToTopButton';
-import ScrollToDownButton from '../components/Scroll/ScrollToDownButton';
+
 interface Vehicle {
   turnYn: string;
   stationSeq: string;
@@ -227,18 +226,7 @@ const Home = () => {
         return sortedVehicleData.filter((vehicle) => vehicle.note === selectedLocation);
     }
   };
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      // behavior: 'smooth',
-    });
-  };
-  const handleScrollToDown = () => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      // behavior: 'smooth',
-    });
-  };
+
   return (
     <>
       <Head>
@@ -354,8 +342,6 @@ const Home = () => {
           </Busstatic>
         </PageWapper>
       </Page>
-      <ScrollToTopButton handleScrollToTop={handleScrollToTop}></ScrollToTopButton>
-      <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
     </>
   );
 };

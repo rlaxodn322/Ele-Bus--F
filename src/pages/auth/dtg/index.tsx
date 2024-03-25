@@ -7,8 +7,7 @@ import Date from '../../../components/antd/date';
 import styled from '@emotion/styled';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import ScrollToTopButton from '../../../components/Scroll/ScrollToTopButton';
-import ScrollToDownButton from '../../../components/Scroll/ScrollToDownButton';
+
 import { loadBusListAPI1 } from '../../../components/apis/bus/bus';
 const Page = styled.section`
   // display: inline-flex;
@@ -250,15 +249,7 @@ const MyPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [buses1, setBuses1] = useState<any[]>([]); // 이 줄 추가
   const router = useRouter();
-  const handelScrollToTop = () => {
-    window.scrollTo({ top: 0 });
-  };
-  const handleScrollToDown = () => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      // behavior: 'smooth',
-    });
-  };
+
   // 세션 스토리지에서 로그인 데이터를 가져옵니다.
   const isAuthenticated = typeof window !== 'undefined' && Boolean(sessionStorage.getItem('userData'));
 
@@ -286,7 +277,7 @@ const MyPage = () => {
   const fetchBusList = async () => {
     try {
       const busListData = await loadBusListAPI1();
-      console.log(busListData);
+      // console.log(busListData);
       setBuses1(busListData);
     } catch (error) {
       console.error('버스 목록 불러오기 오류:', error);
@@ -331,8 +322,6 @@ const MyPage = () => {
             <DtgTable data={filteredData} columns={busDataColumns} />
           </DTGCarTable>
         </DtgInfoTable>
-        <ScrollToTopButton handleScrollToTop={handelScrollToTop}></ScrollToTopButton>
-        <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
       </Page>
     </>
   );

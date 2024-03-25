@@ -5,8 +5,6 @@ import { Button } from 'antd';
 import styled from '@emotion/styled';
 import { loadBusListAPI } from '../../../components/apis/bus/bus';
 import * as XLSX from 'xlsx';
-import ScrollToTopButton from '../../../components/Scroll/ScrollToTopButton';
-import ScrollToDownButton from '../../../components/Scroll/ScrollToDownButton';
 
 const Page = styled.section`
   width: 1370px;
@@ -139,18 +137,7 @@ const MyPage = () => {
       return dateB - dateA;
     });
   };
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      // behavior: 'smooth',
-    });
-  };
-  const handleScrollToDown = () => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      // behavior: 'smooth',
-    });
-  };
+
   return (
     <>
       <Page>
@@ -198,8 +185,6 @@ const MyPage = () => {
             </ErrorTable>
           </ErrorWapper>
         </ErrorPageWapper>
-        <ScrollToTopButton handleScrollToTop={handleScrollToTop}></ScrollToTopButton>
-        <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
       </Page>
     </>
   );
