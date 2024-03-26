@@ -45,7 +45,7 @@ const TableContainer = styled.div`
   margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 1px 1px 2px 2px lightgray;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   background-color: white;
   @media (max-width: 1100px) {
     box-shadow: none;

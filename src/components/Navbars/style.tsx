@@ -25,7 +25,7 @@ export const Layout = styled.div`
   width: 100px;
   z-index: 3;
   border-right: 1px solid #f0f0f0;
-  background-color: white;
+  background-color: #fcfcfc;
   border-radius: 5px;
 
   & div {

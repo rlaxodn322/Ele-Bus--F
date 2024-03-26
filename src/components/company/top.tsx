@@ -10,7 +10,7 @@ const CompanyTop = styled.section`
   height: 350px;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 1px 1px 1px 2px lightgray;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   @media (max-width: 1100px) {
     flex-direction: column;
     box-shadow: none;
@@ -138,7 +138,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
     marginTop: '20px',
     border: '1px solid lightgray',
     borderRadius: '5px',
-    boxShadow: '2px 2px 1px 1px lightgray',
+    boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
     padding: '5px',
     marginBottom: '20px', // Add margin-bottom for spacing
   };
@@ -268,7 +268,7 @@ const Top: React.FC<TopProps> = ({ data, onReloadData }) => {
               <>
                 {foundCompany.buses && foundCompany.buses.length > 0 ? (
                   foundCompany.buses.map((bus, index) => (
-                    <div style={{ boxShadow: '1px 1px 2px 2px lightgray' }} key={index}>
+                    <div style={{ boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px' }} key={index}>
                       <div
                         style={{ height: '30px', color: 'gray', borderBottom: '1px solid lightgray', padding: '5px' }}
                       >

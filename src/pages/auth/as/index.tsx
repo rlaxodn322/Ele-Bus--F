@@ -32,7 +32,7 @@ const Page = styled.section`
 const AsTable = styled.div`
   width: 100%;
   height: 40%;
-  box-shadow: 1px 1px 2px 2px lightgray;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
@@ -76,7 +76,7 @@ const ItemList = styled.div`
   border-radius: 10px;
   margin-top: 10px;
   background-color: white;
-  box-shadow: 1px 1px 2px 2px lightgray;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   @media (max-width: 1100px) {
     width: 95%;
     box-shadow: none;

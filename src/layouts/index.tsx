@@ -1,6 +1,6 @@
 import MainHeader from '../components/Headers';
 import MainNavbar from '../components/Navbars';
-// import MainFooter from '../components/Footers';
+import MainFooter from '../components/Footers';
 import { ContentsWrapper, Layout } from './style';
 import ScrollToTopButton from '../components/Scroll/ScrollToTopButton';
 import ScrollToDownButton from '../components/Scroll/ScrollToDownButton';
@@ -25,7 +25,7 @@ const MainLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
         <MainHeader />
         <MainNavbar />
         <ContentsWrapper>{children}</ContentsWrapper>
-        {/* <MainFooter></MainFooter> */}
+        <MainFooter></MainFooter>
         <ScrollToTopButton handleScrollToTop={handleScrollToTop}></ScrollToTopButton>
         <ScrollToDownButton handleScrollToDown={handleScrollToDown}></ScrollToDownButton>
       </Layout>

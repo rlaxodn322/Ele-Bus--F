@@ -6,7 +6,7 @@ const MainFooter = () => {
     <>
       <Layout>
         <footer>
-          <nav>
+          {/* <nav>
             <img src="/images/FirstLogo.jpeg"></img>
             <a>First C&D</a>
           </nav>
@@ -14,7 +14,7 @@ const MainFooter = () => {
             <span>저자 : 김태우</span>
             <span>이메일 : taewoo@firstcorea.com</span>
             <span>Copyright 2024. 김태우. ALL Rights Reserved.</span>
-          </p>
+          </p> */}
         </footer>
       </Layout>
     </>

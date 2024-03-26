@@ -247,7 +247,7 @@ const MyPage = () => {
                 width: '100%',
                 height: '90%',
                 background: 'white',
-                boxShadow: '1px 1px 2px 2px lightgray',
+                boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
                 borderRadius: '10px',
               }}
             >
@@ -274,7 +274,7 @@ const MyPage = () => {
                 width: '100%',
                 height: '90%',
                 background: 'white',
-                boxShadow: '1px 1px 2px 2px lightgray',
+                boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
                 borderRadius: '10px',
               }}
             >

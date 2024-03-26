@@ -12,7 +12,7 @@ export const LogoWrapper = styled.div`
   justify-content: space-between;
   padding: 10px;
   padding-left: 20px;
-  background-color: white;
+  background-color: #fcfcfc;
   z-index: 5;
 
   & img {

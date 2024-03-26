@@ -133,7 +133,7 @@ const MyPage = () => {
               width: '100%',
               marginRight: '20px',
               borderRadius: '10px',
-              boxShadow: '1px 1px 2px 2px lightgray',
+              boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
               background: 'white',
               marginBottom: '10px',
             }}
@@ -147,7 +147,7 @@ const MyPage = () => {
               height: '600px',
               marginRight: '20px',
               borderRadius: '10px',
-              boxShadow: '1px 1px 2px 2px lightgray',
+              boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
               overflowY: 'auto',
               background: 'white',
               marginBottom: '10px',
@@ -164,7 +164,7 @@ const MyPage = () => {
               width: '100%',
               height: '600px',
               borderRadius: '10px',
-              boxShadow: '1px 1px 2px 2px lightgray',
+              boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
               marginRight: '20px',
               background: 'white',
               marginBottom: '10PX',
@@ -195,7 +195,7 @@ const MyPage = () => {
               height: '600px',
 
               borderRadius: '10px',
-              boxShadow: '1px 1px 2px 2px lightgray',
+              boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
               overflowY: 'auto',
             }}
           >

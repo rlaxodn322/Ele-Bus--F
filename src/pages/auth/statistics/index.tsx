@@ -43,7 +43,7 @@ const ErrorPageWapper = styled.div`
   height: 100%;
   border-radius: 20px;
   background-color: white;
-  box-shadow: 2px 2px 2px 2px lightgray;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   padding-top: 15px;
 `;
 const ButtonWapper = styled.div`

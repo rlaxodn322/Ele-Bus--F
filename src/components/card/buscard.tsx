@@ -31,7 +31,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
           style={{
             width: '49%',
             height: '100%',
-            boxShadow: '1px 1px 1px 2px lightgray',
+            boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
             borderRadius: '10px',
             cursor: 'pointer',
           }}
@@ -54,7 +54,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
           style={{
             width: '49%',
             height: '100%',
-            boxShadow: '1px 1px 1px 2px lightgray',
+            boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
             borderRadius: '10px',
             cursor: 'pointer',
           }}
@@ -83,7 +83,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
           style={{
             width: '49%',
             height: '100%',
-            boxShadow: '1px 1px 1px 2px lightgray',
+            boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
             borderRadius: '10px',
             cursor: 'pointer',
           }}
@@ -110,7 +110,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
           style={{
             width: '49%',
             height: '100%',
-            boxShadow: '1px 1px 1px 2px lightgray',
+            boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
             borderRadius: '10px',
             cursor: 'pointer',
           }}

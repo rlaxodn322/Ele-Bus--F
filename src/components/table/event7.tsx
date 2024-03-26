@@ -108,6 +108,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
               <div style={{ flex: 1 }}>{row.status1}</div>
               <div style={{ flex: 1 }}>{row.status2}</div>
               <div style={{ flex: 1 }}>{row.status3}</div>
+
               <Button style={{ flex: 1, margin: '0', padding: '0' }}>{row.status4}</Button>
             </div>
           ))}
