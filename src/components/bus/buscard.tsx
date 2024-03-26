@@ -42,7 +42,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
           style={{
             width: '100%',
             height: '100%',
-            boxShadow: '1px 1px 2px 2px lightgray',
+            boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
             borderRadius: '10px',
             background: 'white',
             marginRight: '10px',
@@ -66,7 +66,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
           style={{
             width: '100%',
             height: '100%',
-            boxShadow: '1px 1px 2px 2px lightgray',
+            boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
             borderRadius: '10px',
             marginRight: '10px',
             marginBottom: '10px',
@@ -89,7 +89,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
           style={{
             width: '100%',
             height: '100%',
-            boxShadow: '1px 1px 2px 2px lightgray',
+            boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
             borderRadius: '10px',
             background: 'white',
             marginRight: '10px',
@@ -113,7 +113,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
           style={{
             width: '100%',
             height: '100%',
-            boxShadow: '1px 1px 2px 2px lightgray',
+            boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px',
             borderRadius: '10px',
             background: 'white',
             marginRight: '10px',
