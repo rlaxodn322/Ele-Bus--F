@@ -56,4 +56,10 @@ export const routes = [
     default: '/icons/sidebar/error-svgrepo-com (2).svg',
     name: '통계정보',
   },
+  {
+    router: '/auth/graph',
+    active: '/icons/sidebar/error-svgrepo-com (3).svg',
+    default: '/icons/sidebar/error-svgrepo-com (2).svg',
+    name: '그래프테스트',
+  },
 ];
