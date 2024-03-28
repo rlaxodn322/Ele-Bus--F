@@ -117,7 +117,7 @@ const Home = () => {
             tickSize: 1,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'Voltage',
+            legend: 'Elebus',
             legendOffset: -40,
             legendPosition: 'middle',
           }}
