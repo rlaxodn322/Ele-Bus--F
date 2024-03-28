@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
-    const intervalId = setInterval(fetchData, 10000);
+    const intervalId = setInterval(fetchData, 1000);
     return () => clearInterval(intervalId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -26,7 +26,7 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const koreaTime = (timestamp: number) => {
-    const koreaTime = new Date(timestamp + 9 * 60 * 60 * 1000);
+    const koreaTime = new Date(timestamp + 1 * 60 * 60);
     return koreaTime.toLocaleString(); // Format the date into a string
   };
   const fetchData = () => {
