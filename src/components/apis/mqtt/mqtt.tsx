@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { ResponsiveLine } from '@nivo/line';
 
+import { ResponsiveLine } from '@nivo/line';
+import { graphget } from './mqttapi';
 const Home = () => {
   // eslint-disable-next-line no-unused-vars
   const [acColor, setACColor] = useState<string>('red');
@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
-    const intervalId = setInterval(fetchData, 1000);
+    const intervalId = setInterval(fetchData, 2000);
     return () => clearInterval(intervalId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -30,11 +30,10 @@ const Home = () => {
     return koreaTime.toLocaleString(); // Format the date into a string
   };
   const fetchData = () => {
-    axios
-      .get('http://localhost:3000/mqtt/getdata')
+    graphget()
       .then((response) => {
-        const receivedData = response.data;
-        // console.log(receivedData);
+        const receivedData = response;
+        console.log(receivedData);
         const acRawValue = receivedData[0]?.data.data[0]?.AC || '0.00V';
         setACValue(acRawValue);
         setACColor(acRawValue === '0.00V' ? 'red' : 'blue');

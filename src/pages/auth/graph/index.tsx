@@ -1,4 +1,4 @@
-import Mqtt from '@/components/apis/mqtt/mqtt';
+import Mqtt from '../../../components/apis/mqtt/mqtt';
 import MainLayout from '../../../layouts/index';
 // import { Page } from './style';
 
