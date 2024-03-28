@@ -1,56 +1,64 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { XYPlot, LineSeries, XAxis, YAxis, HorizontalGridLines, VerticalGridLines } from 'react-vis';
-
-interface Item {
-  data: {
-    data: {
-      AC: string;
-      DC: string;
-    }[];
-  };
-}
+import { ResponsiveLine } from '@nivo/line';
 
 const Home = () => {
   const [acColor, setACColor] = useState<string>('red');
   const [dcColor, setDCColor] = useState<string>('red');
   const [acValue, setACValue] = useState<string>('');
   const [dcValue, setDCValue] = useState<string>('');
-  const [data, setData] = useState<{ x: number; y: number }[]>([]);
+  const [acData, setACData] = useState<{ x: number; y: number }[]>([]);
+  const [dcData, setDCData] = useState<{ x: number; y: number }[]>([]);
 
   useEffect(() => {
-    // 초기 데이터 로딩
     fetchData();
-
-    // 1분마다 데이터 갱신
-    const intervalId = setInterval(fetchData, 60000); // 1분에 한 번씩
-
-    // 컴포넌트 언마운트 시 clearInterval 호출하여 메모리 누수 방지
+    const intervalId = setInterval(fetchData, 50000);
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
   const fetchData = () => {
     axios
-      .get<Item[]>('http://localhost:3000/mqtt/getdata')
+      .get('http://localhost:3000/mqtt/getdata')
       .then((response) => {
         const receivedData = response.data;
         console.log(receivedData);
-        // AC 값 및 색상 업데이트
         const acRawValue = receivedData[0]?.data.data[0]?.AC || '0.00V';
         setACValue(acRawValue);
         setACColor(acRawValue === '0.00V' ? 'red' : 'blue');
 
-        // DC 값 및 색상 업데이트
         const dcRawValue = receivedData[0]?.data.data[0]?.DC || '0.00V';
         setDCValue(dcRawValue);
         setDCColor(dcRawValue === '0.00V' ? 'red' : 'blue');
 
-        // 그래프 데이터 업데이트
-        const newDataPoint = { x: Date.now(), y: parseFloat(acRawValue) }; // AC 값을 그래프 데이터로 사용
-        setData((prevData) => [...prevData, newDataPoint]);
+        const timestamp = Date.now();
+        const koreaTimestamp = new Date(timestamp + 9 * 60 * 60 * 1000);
+
+        // 새로운 데이터 추가
+        const newACData = { x: koreaTimestamp.getTime(), y: parseFloat(acRawValue) };
+        const newDCData = { x: koreaTimestamp.getTime(), y: parseFloat(dcRawValue) };
+
+        // 최신 5개의 데이터만 유지
+        setACData((prevData) => [...prevData.slice(-10), newACData]);
+        setDCData((prevData) => [...prevData.slice(-10), newDCData]);
       })
       .catch((error) => console.error('Error fetching data:', error));
   };
+
+  const data = [
+    {
+      id: 'AC',
+      color: 'blue',
+      data: acData.map((point) => ({ x: point.x, y: point.y })),
+    },
+    {
+      id: 'DC',
+      color: 'green',
+      data: dcData.map((point) => ({ x: point.x, y: point.y })),
+    },
+  ];
 
   return (
     <div>
@@ -70,21 +78,60 @@ const Home = () => {
           {dcValue}
         </div>
       </div>
-      {/* 그래프 */}
-      <div style={{ marginTop: '20px' }}>
-        <XYPlot width={500} height={300}>
-          <HorizontalGridLines />
-          <VerticalGridLines />
-          <XAxis title="Time" />
-          <YAxis title="AC Value" />
-          <LineSeries data={data} />
-        </XYPlot>
+
+      <div style={{ width: '1000px', height: '500px', marginTop: '20px' }}>
+        <ResponsiveLine
+          data={data}
+          margin={{ top: 10, right: 110, bottom: 40, left: 60 }}
+          xScale={{
+            type: 'point',
+          }}
+          axisLeft={{
+            tickSize: 10,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'Voltage',
+            legendOffset: -40,
+            legendPosition: 'middle',
+          }}
+          pointSize={1}
+          pointColor={{ theme: 'background' }}
+          pointBorderWidth={2}
+          pointBorderColor={{ from: 'serieColor' }}
+          pointLabelYOffset={-12}
+          enableSlices="x"
+          useMesh={true}
+          legends={[
+            {
+              anchor: 'bottom-right',
+              direction: 'column',
+              justify: false,
+              translateX: 120,
+              translateY: 0,
+              itemsSpacing: 0,
+              itemDirection: 'left-to-right',
+              itemWidth: 80,
+              itemHeight: 20,
+              itemOpacity: 0.75,
+              symbolSize: 12,
+              symbolShape: 'circle',
+              symbolBorderColor: 'rgba(0, 0, 0, .5)',
+              effects: [
+                {
+                  on: 'hover',
+                  style: {
+                    itemBackground: 'rgba(0, 0, 0, .03)',
+                    itemOpacity: 1,
+                  },
+                },
+              ],
+            },
+          ]}
+        />
       </div>
     </div>
   );
 };
-
-export default Home;
 
 const getTextStyle = (color: string): React.CSSProperties => ({
   textAlign: 'center',
@@ -92,3 +139,5 @@ const getTextStyle = (color: string): React.CSSProperties => ({
   fontWeight: 'bold',
   color: color,
 });
+
+export default Home;
