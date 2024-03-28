@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
-    const intervalId = setInterval(fetchData, 1000);
+    const intervalId = setInterval(fetchData, 10000);
     return () => clearInterval(intervalId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -99,6 +99,7 @@ const Home = () => {
         </div>
         <div style={{ marginLeft: '10px' }}>
           DC:
+          
           <div style={{ backgroundColor: dcColor, width: '50px', height: '10px' }}>
             <div style={{ ...getTextStyle(dcColor), ...{ color: 'white' } }}>{dcValue === '0.00V' ? '' : ''}</div>
           </div>

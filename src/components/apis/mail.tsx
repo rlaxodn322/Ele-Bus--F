@@ -52,7 +52,7 @@ const Button = styled.button`
     background-color: #0056b3;
   }
 `;
-const EmailForm = ({ onSuccess }: { onSuccess: () => void }) => {
+const EmailForm = ({ placeholder, onSuccess }: { onSuccess: () => void; placeholder: any }) => {
   const [email, setEmail] = useState('taewoo@firstcorea.com');
   const [message, setMessage] = useState('');
 
@@ -84,13 +84,8 @@ const EmailForm = ({ onSuccess }: { onSuccess: () => void }) => {
         <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
       </FormGroup>
       <FormGroup>
-        <Label>메시지:</Label>
-        <TextArea
-          placeholder="회사명, 권한상향 이유를 입력해주세요."
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-        />
+        <Label>{placeholder}</Label>
+        <TextArea placeholder={placeholder} value={message} onChange={(e) => setMessage(e.target.value)} required />
       </FormGroup>
       <Button type="submit">보내기</Button>
     </FormContainer>
