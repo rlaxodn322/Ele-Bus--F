@@ -18,10 +18,12 @@ const Home = () => {
     fetchData();
     const intervalId = setInterval(fetchData, 1000);
     return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const koreaTime = (timestamp: number) => {
     const koreaTime = new Date(timestamp + 9 * 60 * 60 * 1000);
@@ -32,7 +34,7 @@ const Home = () => {
       .get('http://localhost:3000/mqtt/getdata')
       .then((response) => {
         const receivedData = response.data;
-        console.log(receivedData);
+        // console.log(receivedData);
         const acRawValue = receivedData[0]?.data.data[0]?.AC || '0.00V';
         setACValue(acRawValue);
         setACColor(acRawValue === '0.00V' ? 'red' : 'blue');
@@ -49,8 +51,25 @@ const Home = () => {
         const newDCData = { x: koreaTimestamp, y: parseFloat(dcRawValue) };
 
         // Update state with the new data
-        setACData((prevData) => [...prevData.slice(-3), newACData]);
-        setDCData((prevData) => [...prevData.slice(-3), newDCData]);
+        setACData((prevData) => {
+          if (prevData.length < 3) {
+            // If less than 3 data points, append the new data
+            return [...prevData, newACData];
+          } else {
+            // If 3 data points already, remove the oldest data point and append the new one
+            return [...prevData.slice(1), newACData];
+          }
+        });
+
+        setDCData((prevData) => {
+          if (prevData.length < 3) {
+            // If less than 3 data points, append the new data
+            return [...prevData, newDCData];
+          } else {
+            // If 3 data points already, remove the oldest data point and append the new one
+            return [...prevData.slice(1), newDCData];
+          }
+        });
       })
       .catch((error) => console.error('Error fetching data:', error));
   };
