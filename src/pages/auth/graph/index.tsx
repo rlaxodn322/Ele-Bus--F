@@ -7,8 +7,8 @@ import Head from 'next/head';
 const Page = styled.section`
   // display: inline-flex;
 
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   width: 1370px;
   height: 100vh;
   margin: 0 auto;
@@ -20,6 +20,10 @@ const MqttBox = styled.div`
   height: 15%;
   margin-right: 500px;
 `;
+const MqttWapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 const MyPage = () => {
   return (
     <>
@@ -28,12 +32,22 @@ const MyPage = () => {
         <meta name="description" content="Service" />
       </Head>
       <Page>
-        <MqttBox>
-          <Mqtt></Mqtt>
-        </MqttBox>
-        <MqttBox>
-          <Mqtt></Mqtt>
-        </MqttBox>
+        <MqttWapper>
+          <MqttBox>
+            <Mqtt></Mqtt>
+          </MqttBox>
+          <MqttBox>
+            <Mqtt></Mqtt>
+          </MqttBox>
+        </MqttWapper>
+        <MqttWapper>
+          <MqttBox>
+            <Mqtt></Mqtt>
+          </MqttBox>
+          <MqttBox>
+            <Mqtt></Mqtt>
+          </MqttBox>
+        </MqttWapper>
       </Page>
     </>
   );
