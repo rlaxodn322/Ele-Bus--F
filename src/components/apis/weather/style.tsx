@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const WeatherContainer = styled.div`
   display: flex;
   font-size: 15px;
-  background-color: white;
+  background-color: #fcfcfc;
   height: 40px;
   // margin: 10px;
   color: #808080;
