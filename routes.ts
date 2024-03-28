@@ -58,8 +58,8 @@ export const routes = [
   },
   {
     router: '/auth/graph',
-    active: '/icons/sidebar/error-svgrepo-com (3).svg',
-    default: '/icons/sidebar/error-svgrepo-com (2).svg',
+    active: '/icons/sidebar/graph1-svgrepo-com.svg',
+    default: '/icons/sidebar/graph1-svgrepo-com.svg',
     name: '그래프테스트',
   },
 ];

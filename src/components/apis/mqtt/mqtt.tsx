@@ -3,22 +3,30 @@ import axios from 'axios';
 import { ResponsiveLine } from '@nivo/line';
 
 const Home = () => {
+  // eslint-disable-next-line no-unused-vars
   const [acColor, setACColor] = useState<string>('red');
+  // eslint-disable-next-line no-unused-vars
   const [dcColor, setDCColor] = useState<string>('red');
+  // eslint-disable-next-line no-unused-vars
   const [acValue, setACValue] = useState<string>('');
+  // eslint-disable-next-line no-unused-vars
   const [dcValue, setDCValue] = useState<string>('');
-  const [acData, setACData] = useState<{ x: number; y: number }[]>([]);
-  const [dcData, setDCData] = useState<{ x: number; y: number }[]>([]);
+  const [acData, setACData] = useState<{ x: string; y: number }[]>([]);
+  const [dcData, setDCData] = useState<{ x: string; y: number }[]>([]);
 
   useEffect(() => {
     fetchData();
-    const intervalId = setInterval(fetchData, 50000);
+    const intervalId = setInterval(fetchData, 1000);
     return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
     fetchData();
   }, []);
+  const koreaTime = (timestamp: number) => {
+    const koreaTime = new Date(timestamp + 9 * 60 * 60 * 1000);
+    return koreaTime.toLocaleString(); // Format the date into a string
+  };
   const fetchData = () => {
     axios
       .get('http://localhost:3000/mqtt/getdata')
@@ -34,15 +42,15 @@ const Home = () => {
         setDCColor(dcRawValue === '0.00V' ? 'red' : 'blue');
 
         const timestamp = Date.now();
-        const koreaTimestamp = new Date(timestamp + 9 * 60 * 60 * 1000);
+        const koreaTimestamp = koreaTime(timestamp); // Converted to string
 
-        // 새로운 데이터 추가
-        const newACData = { x: koreaTimestamp.getTime(), y: parseFloat(acRawValue) };
-        const newDCData = { x: koreaTimestamp.getTime(), y: parseFloat(dcRawValue) };
+        // New data with string type for x
+        const newACData = { x: koreaTimestamp, y: parseFloat(acRawValue) };
+        const newDCData = { x: koreaTimestamp, y: parseFloat(dcRawValue) };
 
-        // 최신 5개의 데이터만 유지
-        setACData((prevData) => [...prevData.slice(-10), newACData]);
-        setDCData((prevData) => [...prevData.slice(-10), newDCData]);
+        // Update state with the new data
+        setACData((prevData) => [...prevData.slice(-3), newACData]);
+        setDCData((prevData) => [...prevData.slice(-3), newDCData]);
       })
       .catch((error) => console.error('Error fetching data:', error));
   };
@@ -62,7 +70,7 @@ const Home = () => {
 
   return (
     <div>
-      <div style={{ display: 'flex', marginLeft: '10px' }}>
+      {/* <div style={{ display: 'flex', marginLeft: '10px' }}>
         <div style={{ marginLeft: '10px' }}>
           AC:
           <div style={{ backgroundColor: acColor, width: '50px', height: '10px' }}>
@@ -77,9 +85,9 @@ const Home = () => {
           </div>
           {dcValue}
         </div>
-      </div>
+      </div> */}
 
-      <div style={{ width: '1000px', height: '500px', marginTop: '20px' }}>
+      <div style={{ width: '700px', height: '250px', marginTop: '20px' }}>
         <ResponsiveLine
           data={data}
           margin={{ top: 10, right: 110, bottom: 40, left: 60 }}
@@ -87,16 +95,18 @@ const Home = () => {
             type: 'point',
           }}
           axisLeft={{
-            tickSize: 10,
+            tickSize: 1,
             tickPadding: 5,
             tickRotation: 0,
             legend: 'Voltage',
             legendOffset: -40,
             legendPosition: 'middle',
           }}
+          enableGridX={false}
           pointSize={1}
           pointColor={{ theme: 'background' }}
-          pointBorderWidth={2}
+          pointBorderWidth={5}
+          enablePointLabel={true}
           pointBorderColor={{ from: 'serieColor' }}
           pointLabelYOffset={-12}
           enableSlices="x"
@@ -133,11 +143,11 @@ const Home = () => {
   );
 };
 
-const getTextStyle = (color: string): React.CSSProperties => ({
-  textAlign: 'center',
-  marginTop: '5px',
-  fontWeight: 'bold',
-  color: color,
-});
+// const getTextStyle = (color: string): React.CSSProperties => ({
+//   textAlign: 'center',
+//   marginTop: '5px',
+//   fontWeight: 'bold',
+//   color: color,
+// });
 
 export default Home;

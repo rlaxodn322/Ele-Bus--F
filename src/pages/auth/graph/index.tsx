@@ -7,15 +7,19 @@ import Head from 'next/head';
 const Page = styled.section`
   // display: inline-flex;
 
-  /* /* display: flex; */
-  /* justify-content: space-between; */
+  display: flex;
+  justify-content: space-between;
   width: 1370px;
   height: 100vh;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-`;
 
+  /* justify-content: center; */
+`;
+const MqttBox = styled.div`
+  width: 15%;
+  height: 15%;
+  margin-right: 500px;
+`;
 const MyPage = () => {
   return (
     <>
@@ -24,7 +28,12 @@ const MyPage = () => {
         <meta name="description" content="Service" />
       </Head>
       <Page>
-        <Mqtt></Mqtt>
+        <MqttBox>
+          <Mqtt></Mqtt>
+        </MqttBox>
+        <MqttBox>
+          <Mqtt></Mqtt>
+        </MqttBox>
       </Page>
     </>
   );
