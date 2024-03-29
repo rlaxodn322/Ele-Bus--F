@@ -248,7 +248,7 @@ const LoginPage = () => {
             로그인
           </Button>
           <span className="button-gap" />
-          <Link href="/auth/signup">
+          <Link href="/auth/login/onoff">
             {/* 변경 */}
             <Button style={{ marginRight: '10px' }} size="large" primary-color="true">
               회원가입
