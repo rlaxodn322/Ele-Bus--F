@@ -143,6 +143,8 @@ const MyPage = () => {
             <h1>회원가입약관 안내</h1>
             <Table>
               <thead>
+                {' '}
+                {/* <thead>를 <Table> 내부로 이동 */}
                 <tr>
                   <Th>목적</Th>
                   <Th>항목</Th>
