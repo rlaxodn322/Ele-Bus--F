@@ -39,3 +39,6 @@ export function deleteUserAPI(email: string) {
   // console.log('회원 삭제', email);
   return axios.delete('/user', { data: { email } }).then((response) => response.data);
 }
+export function codeCheckAPI(data: any) {
+  return axios.get(`/user/code/join/${data.code}`).then((response) => response.data);
+}
