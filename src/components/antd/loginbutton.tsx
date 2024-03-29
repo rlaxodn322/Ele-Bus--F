@@ -48,7 +48,10 @@ const LoginButton: React.FC<LoginButtonProps> = ({ isLoggedIn, handleLogout }) =
       )}
       <Modal title="권한 상향" open={modalVisible} onCancel={handleCancel} footer={null} onOk={handleCancel}>
         {/* EmailForm 컴포넌트를 모달 안에 렌더링 */}
-        <EmailForm onSuccess={handleEmailSent} placeholder="회사명, 권한상향 이유를 입력해주세요." />
+        <EmailForm
+          onSuccess={handleEmailSent}
+          placeholder="회사명, 이름, 직책, 관리자 권한 상향 사유를 입력해주세요."
+        />
       </Modal>
     </>
   );

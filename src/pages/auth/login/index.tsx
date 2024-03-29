@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Button, Form } from 'antd';
+import { Button, Form, Modal } from 'antd';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -8,7 +8,7 @@ import { logInAPI } from '../../../components/apis/user/user';
 import Swal from 'sweetalert2';
 import styled from '@emotion/styled';
 import Link from 'next/link';
-
+import EmailForm from '../../../components/apis/mail';
 const CheckError = styled.button`
   font-size: 10px;
   color: red;
@@ -74,9 +74,9 @@ const SearchInput = styled.input`
 `;
 
 const ButtonWrapper = styled.div`
-  width: 70%;
+  width: 40%;
   display: flex;
-  justify-content: space-between;
+
   margin-top: 20px;
 `;
 
@@ -90,7 +90,22 @@ const LoginPage = () => {
   // const setUserData = useSetRecoilState(userState);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  // 모달 열고 닫는 상태 및 함수 정의
+  const [modalVisible, setModalVisible] = useState(false);
 
+  // 모달 열기 함수
+  const showModal = () => {
+    setModalVisible(true);
+  };
+
+  // 모달 닫기 함수
+  const handleCancel = () => {
+    setModalVisible(false);
+  };
+  // 이메일 전송 성공 시 모달 닫기
+  const handleEmailSent = () => {
+    setModalVisible(false);
+  };
   useEffect(() => {
     const isLoggedIn = sessionStorage.getItem('userData');
     if (isLoggedIn) {
@@ -223,18 +238,34 @@ const LoginPage = () => {
           />
         </LoginBar>
         <ButtonWrapper>
-          <Button size="large" onClick={loginStart} loading={loading}>
+          <Button
+            style={{ marginRight: '10px' }}
+            size="large"
+            primary-color="true"
+            onClick={loginStart}
+            loading={loading}
+          >
             로그인
           </Button>
           <span className="button-gap" />
           <Link href="/auth/signup">
             {/* 변경 */}
-            <Button size="large" primary-color="true">
+            <Button style={{ marginRight: '10px' }} size="large" primary-color="true">
               회원가입
             </Button>
           </Link>
+          <Button style={{ marginRight: '10px' }} size="large" primary-color="true" onClick={showModal}>
+            권한상향
+          </Button>
         </ButtonWrapper>
       </PageLogin>
+      <Modal title="권한 상향" open={modalVisible} onCancel={handleCancel} footer={null} onOk={handleCancel}>
+        {/* EmailForm 컴포넌트를 모달 안에 렌더링 */}
+        <EmailForm
+          onSuccess={handleEmailSent}
+          placeholder="회사명, 이름, 직책, 사용자 권한 상향 사유를 입력해주세요."
+        />
+      </Modal>
     </>
   );
 };
