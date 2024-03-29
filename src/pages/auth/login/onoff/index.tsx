@@ -16,7 +16,7 @@ const Page = styled.section`
 `;
 
 const Content = styled.div`
-  max-width: 800px;
+  max-width: 1000px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -92,7 +92,6 @@ const MyPage = () => {
             개인정보 처리방침에 동의합니다.
           </label>
           <TableWrapper>
-            {' '}
             <Table>
               <thead>
                 <tr>
@@ -119,7 +118,9 @@ const MyPage = () => {
           <Checkbox type="checkbox" checked={termsAgreed} onChange={handleTermsChange} />
           회원가입약관에 동의합니다.
           <br />
-          <Button onClick={handleSignup}>회원가입</Button>
+          <Button style={{ marginTop: '90px' }} onClick={handleSignup}>
+            회원가입
+          </Button>
         </Content>
       </Page>
     </>
