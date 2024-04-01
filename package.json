@@ -8,6 +8,8 @@
     "start": "cross-env NODE_ENV=production next start -p 3060",
     "lint": "next lint"
   },
+  "author": "Taewoo Kim",
+  "license": "ISC",
   "dependencies": {
     "@ant-design/colors": "^7.0.0",
     "@ckeditor/ckeditor5-build-classic": "^35.0.1",
