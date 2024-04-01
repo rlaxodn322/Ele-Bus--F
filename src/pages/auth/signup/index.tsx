@@ -243,7 +243,7 @@ const Signup = () => {
       </Head>
       <form>
         <PageSignUp>
-          <div style={{ marginLeft: '10px' }}>회원가입</div>
+          <h3 style={{ marginLeft: '10px' }}>회원가입</h3>
           <TitleWrapper></TitleWrapper>
           <SignUpBar>
             <SignUpInput
