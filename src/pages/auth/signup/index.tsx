@@ -79,7 +79,7 @@ const SignUpInput = styled.input`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-right: 65%;
+  margin-right: 71%;
   padding-left: 0%;
   @media (max-width: 1100px) {
     margin-right: 73%;
