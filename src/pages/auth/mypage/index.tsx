@@ -55,6 +55,8 @@ const ButtonWrapper = styled.div`
 const MyPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [company, setCompany] = useState('');
   const [createdAt, setCreate] = useState('');
   const [updatedAt, setUpdate] = useState('');
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -66,11 +68,13 @@ const MyPage = () => {
       const userData = JSON.parse(userDataString);
       setName(userData.name);
       setEmail(userData.email);
+      setPhone(userData.phone);
+      setCompany(userData.company);
       setCreate(userData.createdAt);
       setUpdate(userData.updatedAt);
       // console.log(userData);
     }
-  }, []);
+  }, [setName]);
 
   const handleEdit = () => {
     setEditModalOpen(true);
@@ -128,6 +132,12 @@ const MyPage = () => {
             <strong>이름:</strong> {name}
           </div>
           <div>
+            <strong>연락처:</strong> {phone}
+          </div>
+          <div>
+            <strong>회사명:</strong> {company}
+          </div>
+          <div>
             <strong>이메일:</strong> {email}
           </div>
           <div>
@@ -148,7 +158,7 @@ const MyPage = () => {
         </ProfileInfo>
       </PageProfile>
 
-      <EditModal open={editModalOpen} onCancel={handleEditModalCancel} user={{ name, email }} />
+      <EditModal open={editModalOpen} onCancel={handleEditModalCancel} user={{ name, email, phone, company }} />
     </>
   );
 };

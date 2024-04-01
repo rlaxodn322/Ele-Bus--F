@@ -155,7 +155,7 @@ export const MenuWrapper = styled.ul`
     line-height: 100%;
     list-style: none;
     display: flex; /* 가로로 나열되도록 설정 */
-    background-color: white;
+    background-color: #fcfcfc;
     justify-content: space-between;
     & li {
       color: #808080;
