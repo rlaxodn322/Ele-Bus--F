@@ -79,7 +79,17 @@ const SignUpInput = styled.input`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+  margin-right: 65%;
   padding-left: 0%;
+  @media (max-width: 1100px) {
+    margin-right: 73%;
+    @media (max-width: 700px) {
+      margin-right: 50%;
+    }
+    @media (max-width: 400px) {
+      margin-right: 25%;
+    }
+  }
 `;
 
 const Signup = () => {
