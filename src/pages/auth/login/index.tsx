@@ -78,6 +78,15 @@ const ButtonWrapper = styled.div`
   display: flex;
 
   margin-top: 20px;
+  @media (max-width: 600px) {
+    width: 50%;
+  }
+  @media (max-width: 500px) {
+    width: 60%;
+  }
+  @media (max-width: 400px) {
+    width: 93%;
+  }
 `;
 
 const LoginPage = () => {
