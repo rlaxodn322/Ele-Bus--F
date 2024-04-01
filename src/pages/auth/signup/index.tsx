@@ -42,7 +42,7 @@ const PageSignUp = styled.div`
   width: 100%;
   height: 750px;
   padding-left: 40%;
-  background-color: white;
+  /* background-color: white; */
   @media (max-width: 1100px) {
     padding-left: 20%;
   }
@@ -94,18 +94,24 @@ const ButtonWrapper = styled.div`
 
 const Signup = () => {
   const [name, setName] = useState<string>('');
+  const [company, setCompany] = useState<string>('');
   const [email, setEmail] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [password2, setPassword2] = useState<string>('');
   const router = useRouter();
   const admin = '03';
   const [nameError, setNameError] = useState(false);
+  const [companyError, setCompanyError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
+  const companyRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -115,6 +121,22 @@ const Signup = () => {
       setNameError(true);
     } else {
       setNameError(false);
+    }
+  };
+  // 회사 확인
+  const companyCheck = () => {
+    if (company.length < 1 || company.length > 15) {
+      setCompanyError(true);
+    } else {
+      setCompanyError(false);
+    }
+  };
+  // 연락처 확인
+  const phoneCheck = () => {
+    if (phone.length < 11 || phone.length > 11) {
+      setPhoneError(true);
+    } else {
+      setPhoneError(false);
     }
   };
 
@@ -149,9 +171,15 @@ const Signup = () => {
 
   // 가입하기
   const Sign = () => {
-    if (nameError || emailError || passwordError) {
+    if (nameError || emailError || passwordError || companyError) {
       if (nameError && nameRef.current) {
         nameRef.current.focus();
+        return;
+      } else if (companyError && companyRef.current) {
+        companyRef.current.focus();
+        return;
+      } else if (phoneError && phoneRef.current) {
+        phoneRef.current.focus();
         return;
       } else if (emailError && emailRef.current) {
         emailRef.current.focus();
@@ -165,6 +193,14 @@ const Signup = () => {
     if (name.length === 0 && nameRef.current) {
       setNameError(true);
       nameRef.current.focus();
+      return;
+    } else if (company.length == 0 && companyRef.current) {
+      setCompanyError(true);
+      companyRef.current.focus();
+      return;
+    } else if (phone.length == 0 && phoneRef.current) {
+      setPhoneError(true);
+      phoneRef.current.focus();
       return;
     } else if (email.length === 0 && emailRef.current) {
       setEmailError(true);
@@ -232,8 +268,8 @@ const Signup = () => {
 
   const onSubmitForm = useCallback(() => {
     console.log('email : ', email, ', password : ', password, ', name : ', password);
-    mutation.mutate({ email, password, name, admin });
-  }, [email, password, name, admin, mutation]);
+    mutation.mutate({ email, password, name, admin, company, phone });
+  }, [email, password, name, admin, mutation, company, phone]);
 
   return (
     <>
@@ -260,6 +296,36 @@ const Signup = () => {
             />
           </SignUpBar>
           {nameError && <CheckError>- 2글자 이상 20글자 미만으로 입력해주세요.</CheckError>}
+          <SignUpBar>
+            <SignUpInput
+              type="company"
+              placeholder="회사명"
+              name="user-company"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              onKeyUp={companyCheck}
+              maxLength={20}
+              onKeyDown={handleKeyDown}
+              ref={companyRef}
+              required
+            />
+          </SignUpBar>
+          {companyError && <CheckError>- 1글자 이상 20글자 미만으로 입력해주세요.</CheckError>}
+          <SignUpBar>
+            <SignUpInput
+              type="phone"
+              placeholder="연락처"
+              name="user-phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              onKeyUp={phoneCheck}
+              maxLength={20}
+              onKeyDown={handleKeyDown}
+              ref={phoneRef}
+              required
+            />
+          </SignUpBar>
+          {phoneError && <CheckError>- 11글자 입력해주세요.ex-01000000000</CheckError>}
           <SignUpBar>
             <SignUpInput
               type="email"
