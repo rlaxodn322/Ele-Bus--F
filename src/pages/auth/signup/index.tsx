@@ -171,7 +171,7 @@ const Signup = () => {
 
   // 가입하기
   const Sign = () => {
-    if (nameError || emailError || passwordError || companyError) {
+    if (nameError || emailError || passwordError || companyError || phoneError) {
       if (nameError && nameRef.current) {
         nameRef.current.focus();
         return;
