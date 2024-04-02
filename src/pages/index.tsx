@@ -185,7 +185,11 @@ const Home = () => {
     ...uniqueCompanies.map((company) => ({ value: company, label: company })),
   ];
   const getFilteredVehicleData = () => {
-    if (selectedLocation === '전체' && selectedCompany === '전체보기') {
+    if (selectedLocation === '운행' && selectedCompany === '전체보기') {
+      return vehicleData;
+    } else if (selectedLocation === '고장' && selectedCompany === '전체보기') {
+      return vehicleData;
+    } else if (selectedLocation === '충전/대기' && selectedCompany === '전체보기') {
       return vehicleData;
     } else {
       return vehicleData.filter((vehicle) => {
