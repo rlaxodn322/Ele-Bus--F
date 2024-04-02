@@ -155,7 +155,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
               <div style={{ flex: 1 }}>{row.date}</div>
               <div style={{ flex: 1 }}>{row.powerConsumption}</div>
               <div style={{ flex: 1 }}>{row.powerConsumption}</div>
-              <div style={{ flex: 1 }}>급속</div>
+              <div style={{ flex: 1 }}>완속</div>
             </h6>
           ))}
         </div>
