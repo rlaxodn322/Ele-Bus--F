@@ -1,12 +1,14 @@
 import MainLayout from '../../../layouts/index';
 import Top from '../../../components/company/top';
 import Table7 from '../../../components/table/table7';
-import Table5 from '../../../components/table/table5';
+// import Table5 from '../../../components/table/table5';
+import Table5a from '../../../components/table/table5 copy';
 // import { Button } from 'antd'; // Modal과 Form을 추가로 import
 import Button from 'antd-button-color';
 import { useState, useEffect } from 'react';
 import { loadMyInfoAPI1 } from '@/components/apis/company/company';
 import { loadBusListAPI } from '../../../components/apis/bus/bus';
+import { loadChargerAPI } from '@/components/apis/charger/charger';
 import BusCreate from '../../../components/modal/buscreate';
 // import { Page } from './style';
 import styled from '@emotion/styled';
@@ -79,6 +81,7 @@ interface Row {
 }
 const MyPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [chargerData, setChargerData] = useState([]); // 충전기 데이터를 담을 상태
   const [maintenanceHistory, setMaintenanceHistory] = useState<Row[]>([]);
   // eslint-disable-next-line no-unused-vars
   const [buses, setBuses] = useState<any[]>([]); // 이 줄 추가
@@ -160,9 +163,21 @@ const MyPage = () => {
       console.error('데이터 불러오기 오류:', error);
     }
   };
+
+  const fetchChargerData = async () => {
+    try {
+      const chargerList = await loadChargerAPI(); // 충전기 API 함수를 호출하여 데이터를 가져옵니다
+      console.log(chargerList.chargerList);
+      setChargerData(chargerList.chargerList); // 상태를 업데이트하여 데이터를 저장합니다
+    } catch (error) {
+      console.error('충전기 데이터를 불러오는 중 오류 발생:', error);
+    }
+  };
+
   useEffect(() => {
     fetchMyInfo();
     fetchBusList();
+    fetchChargerData();
   }, []);
 
   // Modal 열기 함수
@@ -313,7 +328,7 @@ const MyPage = () => {
                 </ButtonWapper>
               </div>
 
-              <Table5 data={dummyTableData1} columns={busDataColumns1} />
+              <Table5a data={chargerData} columns={busDataColumns1} />
             </div>
           </BusCharger>
         </TableContainer>

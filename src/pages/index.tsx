@@ -93,29 +93,6 @@ const Title = styled.div`
   }
 `;
 
-// const dummyVehicleData = [
-//   {
-//     company: '화성여객',
-//     route: '경기11가1234',
-//     vehicleNum: 'Route 1',
-//     location: '운행',
-//     soc: '80%',
-//     note: 'no',
-//   },
-//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '65%', note: 'no' },
-
-//   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
-//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '충전/대기', soc: '65%', note: 'no' },
-//   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
-//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
-//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
-//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
-//   { company: '화성여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '운행', soc: '80%', note: 'no' },
-
-//   { company: '오산여객', route: '경기11가1234', vehicleNum: 'Route 1', location: '고장', soc: '65%', note: 'on' },
-//   // Add more dummy data as needed
-// ];
-
 const Home = () => {
   const [vehicleData, setVehicleData] = useState<Vehicle[]>([]);
   const [selectedLocation, setSelectedLocation] = useState('전체'); // 선택된 위치 상태 추가
