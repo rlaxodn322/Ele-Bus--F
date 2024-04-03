@@ -9,3 +9,6 @@ export async function loadChargerAPI() {
   //console.log(loadChargerAPI);
   return await axios.get('/api/charger').then((response) => response.data);
 }
+export async function loadChargerAPILocation() {
+  return await axios.get('/api/chargerLocation').then((response) => response.data);
+}
