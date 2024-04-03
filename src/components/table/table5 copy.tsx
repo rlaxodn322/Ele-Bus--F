@@ -2,16 +2,11 @@ import React, { useState } from 'react';
 import { Cascader } from 'antd';
 
 interface Row {
-  powerConsumption: any;
-  chargerName: any;
-  usageCount: any;
-  date: any;
-  chargerType: any;
-  user: string;
-  registrationDate: string;
-  status: string;
-  status1: string;
-  status2: string;
+  충전기타입: any;
+  충전량: any;
+  충전소명칭: any;
+  일자: any;
+  경도: any;
 }
 
 interface CardProps {
@@ -36,11 +31,11 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
 
   const sortedEventHistory = [...data]
     .filter(
-      (row) => (!filterDate || row.date.includes(filterDate)) && (!filterStatus3 || row.chargerType === filterStatus3),
+      (row) => (!filterDate || row.일자.includes(filterDate)) && (!filterStatus3 || row.충전기타입 === filterStatus3),
     )
     .sort((a, b) => {
-      const dateA = parseDate(a.date);
-      const dateB = parseDate(b.date);
+      const dateA = parseDate(a.일자);
+      const dateB = parseDate(b.일자);
 
       if (sortingOrder === 'oldest') {
         return dateA - dateB;
@@ -61,7 +56,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
   });
 
   // Options for the Cascader filtering by status3
-  const status3Options = Array.from(new Set(data.map((row) => row.chargerType)));
+  const status3Options = Array.from(new Set(data.map((row) => row.충전기타입)));
 
   return (
     <>
@@ -151,11 +146,11 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
                 color: 'gray',
               }}
             >
-              <div style={{ flex: 1 }}>{row.chargerName}</div>
-              <div style={{ flex: 1 }}>{row.date}</div>
-              <div style={{ flex: 1 }}>{row.powerConsumption}</div>
-              <div style={{ flex: 1 }}>{row.powerConsumption}</div>
-              <div style={{ flex: 1 }}>완속</div>
+              <div style={{ flex: 1 }}>{row.충전소명칭}</div>
+              <div style={{ flex: 1 }}>{row.일자}</div>
+              <div style={{ flex: 1 }}>{row.충전량}</div>
+              <div style={{ flex: 1 }}>{row.충전량 * 2}</div>
+              <div style={{ flex: 1 }}>{row.충전기타입}</div>
             </h6>
           ))}
         </div>

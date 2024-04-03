@@ -167,8 +167,8 @@ const MyPage = () => {
   const fetchChargerData = async () => {
     try {
       const chargerList = await loadChargerAPI(); // 충전기 API 함수를 호출하여 데이터를 가져옵니다
-      console.log(chargerList.chargerList);
-      setChargerData(chargerList.chargerList); // 상태를 업데이트하여 데이터를 저장합니다
+      console.log(chargerList.data);
+      setChargerData(chargerList.data); // 상태를 업데이트하여 데이터를 저장합니다
     } catch (error) {
       console.error('충전기 데이터를 불러오는 중 오류 발생:', error);
     }
@@ -208,7 +208,7 @@ const MyPage = () => {
   };
 
   const busDataColumns = ['사업자번호', '등록일', '차량번호', '버스종류', '모델번호', '노선번호', '모델번호'];
-  const busDataColumns1 = ['충전ID', '등록일', '충전용량', '누적충전', '모델'];
+  const busDataColumns1 = ['충전소명', '등록일', '충전용량', '누적충전', '모델'];
 
   const dummyTableData1 = [
     {
