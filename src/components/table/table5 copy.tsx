@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Cascader } from 'antd';
 
 interface Row {
-  충전기타입: any;
+  충전소ID: string;
+  충전기타입: string;
   충전량: any;
-  충전소명칭: any;
-  일자: any;
-  경도: any;
+  충전소명칭: string;
+  일자: string;
+  경도: string;
 }
 
 interface CardProps {
@@ -90,7 +91,7 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
           {/* Cascader for filtering by status3 */}
           <Cascader
             options={[
-              { value: 'all', label: '전체 모델' },
+              { value: 'all', label: '전체 타입' },
               ...status3Options.map((option) => ({ value: option, label: option })),
             ]}
             onChange={(value) => {
@@ -146,10 +147,11 @@ const Card: React.FC<CardProps> = ({ data, columns }) => {
                 color: 'gray',
               }}
             >
+              <div style={{ flex: 1 }}>{row.충전소ID}</div>
               <div style={{ flex: 1 }}>{row.충전소명칭}</div>
               <div style={{ flex: 1 }}>{row.일자}</div>
-              <div style={{ flex: 1 }}>{row.충전량}</div>
-              <div style={{ flex: 1 }}>{row.충전량 * 2}</div>
+              <div style={{ flex: 1 }}>{row.충전량 + ' kW'}</div>
+
               <div style={{ flex: 1 }}>{row.충전기타입}</div>
             </h6>
           ))}

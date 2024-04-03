@@ -33,7 +33,7 @@ const Home = () => {
     graphget()
       .then((response) => {
         const receivedData = response;
-        console.log(receivedData);
+        // console.log(receivedData);
         const acRawValue = receivedData[0]?.data.data[0]?.AC || '0.00V';
         setACValue(acRawValue);
         setACColor(acRawValue === '0.00V' ? 'red' : 'blue');

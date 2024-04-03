@@ -208,74 +208,8 @@ const MyPage = () => {
   };
 
   const busDataColumns = ['사업자번호', '등록일', '차량번호', '버스종류', '모델번호', '노선번호', '모델번호'];
-  const busDataColumns1 = ['충전소명', '등록일', '충전용량', '누적충전', '모델'];
+  const busDataColumns1 = ['충전소ID', '충전소명', '등록일', '충전량', '충전기타입'];
 
-  const dummyTableData1 = [
-    {
-      user: 'chargerID',
-      registrationDate: '2023-1108/08:31',
-      status: '60kw',
-      status1: '600kw',
-      status2: '급속A123',
-    },
-    {
-      user: 'chargerID',
-      registrationDate: '2023-1108/08:32',
-      status: '60kw',
-      status1: '600kw',
-      status2: '급속A123',
-    },
-    {
-      user: 'chargerID',
-      registrationDate: '2023-1108/08:30',
-      status: '60kw',
-      status1: '600kw',
-      status2: '급속A125',
-    },
-    {
-      user: 'chargerID',
-      registrationDate: '2023-1108/08:30',
-      status: '60kw',
-      status1: '600kw',
-      status2: '급속A125',
-    },
-    {
-      user: 'chargerID',
-      registrationDate: '2023-1108/08:30',
-      status: '60kw',
-      status1: '600kw',
-      status2: '급속A125',
-    },
-    {
-      user: 'chargerID',
-      registrationDate: '2023-1108/08:30',
-      status: '60kw',
-      status1: '600kw',
-      status2: '급속A125',
-    },
-    {
-      user: 'chargerID',
-      registrationDate: '2023-1108/08:30',
-      status: '60kw',
-      status1: '600kw',
-      status2: '급속A125',
-    },
-    {
-      user: 'chargerID',
-      registrationDate: '2023-1108/08:30',
-      status: '60kw',
-      status1: '600kw',
-      status2: '급속A125',
-    },
-    {
-      user: 'chargerID',
-      registrationDate: '2023-1108/08:30',
-      status: '60kw',
-      status1: '600kw',
-      status2: '급속A125',
-    },
-    // Add more dummy data as needed
-  ];
   return (
     <>
       <Head>
@@ -321,7 +255,7 @@ const MyPage = () => {
                 <ButtonWapper>
                   <Button
                     style={{ marginRight: '5px', background: '#27B964', color: 'white' }}
-                    onClick={() => downloadExcel(dummyTableData1, busDataColumns1, '충전기_등록_현황')}
+                    onClick={() => downloadExcel(chargerData, busDataColumns1, '충전기_등록_현황')}
                   >
                     엑셀다운로드
                   </Button>
