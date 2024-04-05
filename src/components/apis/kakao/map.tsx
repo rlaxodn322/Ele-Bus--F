@@ -5,7 +5,7 @@ interface MapComponentProps {
   //mapHeight: string | number;
   markerPositions: { title: string; lat: string; lng: string }[];
   mapHeight: string | number;
-  busPositions: { x: string; y: string }[];
+  busPositions: { x: string; y: string; plateNo: string }[];
 }
 
 declare global {
@@ -47,7 +47,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
           calculator: [2, 5, 9, 10],
         });
 
-        busPositions.forEach(({ x, y }) => {
+        busPositions.forEach(({ x, y, plateNo }) => {
           const marker = new window.kakao.maps.Marker({
             position: new window.kakao.maps.LatLng(y, x),
             image: markerImage1, // 이미지 설정
@@ -59,13 +59,18 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
           // 마커에 이벤트 리스너 등록
           // 마커를 클릭할 때 인포윈도우를 표시하도록 설정 가능
           const infowindow = new window.kakao.maps.InfoWindow({
-            content: `<div>추가한 마커</div>`,
+            content: `<div>${plateNo}</div>`,
           });
 
-          window.kakao.maps.event.addListener(marker, 'click', function () {
+          window.kakao.maps.event.addListener(marker, 'mouseover', function () {
             infowindow.open(map, marker);
           });
+
+          window.kakao.maps.event.addListener(marker, 'mouseout', function () {
+            infowindow.close();
+          });
         });
+
         // 마커 생성 및 클러스터러에 추가
         markerPositions.forEach(({ title, lat, lng }) => {
           const marker = new window.kakao.maps.Marker({
