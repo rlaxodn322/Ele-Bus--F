@@ -31,6 +31,9 @@ export async function loadbus() {
 export async function loadstation() {
   return await axios.get('api/stations').then((response) => response.data);
 }
+export async function loadbusLocation() {
+  return await axios.get('api/Buslocation').then((response) => response.data);
+}
 // // 회원 삭제 API
 // export function deleteUserAPI(email: string) {
 //   console.log('회원 삭제', email);

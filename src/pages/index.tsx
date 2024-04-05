@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { loaddata } from '../components/apis/bus/bus';
 import { loadChargerAPILocation } from '../components/apis/charger/charger';
+import { loadbusLocation } from '../components/apis/bus/bus';
 interface Vehicle {
   turnYn: string;
   stationSeq: string;
@@ -24,6 +25,11 @@ interface Charger {
   lat: string;
   lng: string;
   title: string;
+}
+interface Bus {
+  stationId: string;
+  x: string;
+  y: string;
 }
 const Page = styled.section`
   // display: inline-flex;
@@ -101,6 +107,7 @@ const Title = styled.div`
 const Home = () => {
   const [vehicleData, setVehicleData] = useState<Vehicle[]>([]);
   const [chargerData, setChargerData] = useState<Charger[]>([]);
+  const [busLocation, setBusLocation] = useState<Bus[]>([]);
   const [selectedLocation, setSelectedLocation] = useState('전체'); // 선택된 위치 상태 추가
   const [sortingOrder] = useState<string | string[]>(['latest']);
   const [selectedCompany, setSelectedCompany] = useState<string | null>('전체보기');
@@ -119,7 +126,7 @@ const Home = () => {
       try {
         const response = await loadChargerAPILocation();
         setChargerData(response);
-        console.log(chargerData);
+        // console.log(chargerData);
 
         //console.log(response);
       } catch (err) {
@@ -127,6 +134,26 @@ const Home = () => {
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await loadbusLocation();
+        console.log(response);
+        setBusLocation(response);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData(); // 최초 1회 호출
+
+    const intervalId = setInterval(fetchData, 5 * 60 * 1000); // 5분마다 fetchData 함수 호출
+
+    return () => {
+      clearInterval(intervalId); // 컴포넌트가 언마운트될 때 interval 정리
+    };
   }, []);
 
   useEffect(() => {
@@ -155,25 +182,7 @@ const Home = () => {
   }, [isAuthenticated]);
 
   // Add markers for 10 locations in Osan City
-  const markerPositions = [
-    { title: '하남운수', latlng: { lat: 37.549899, lng: 127.216505 } },
-    { title: '오산운수', latlng: { lat: 37.149528, lng: 127.077071 } },
-    { title: '수원운수', latlng: { lat: 37.263573, lng: 127.028601 } },
-    { title: '평택운수', latlng: { lat: 36.990437, lng: 127.092379 } },
-    { title: '부산운수', latlng: { lat: 35.179554, lng: 129.075642 } },
-    { title: '부산운수', latlng: { lat: 35.179554, lng: 129.075642 } },
-    { title: '안성운수', latlng: { lat: 36.990437, lng: 127.092379 } },
-    { title: '포항운수', latlng: { lat: 36.019986, lng: 129.342938 } },
-    { title: '울산운수', latlng: { lat: 35.538377, lng: 129.311359 } },
-    { title: '대구운수', latlng: { lat: 35.871435, lng: 128.601445 } },
-    { title: '대구운수', latlng: { lat: 35.871435, lng: 128.601445 } },
-    { title: '대천운수', latlng: { lat: 36.491065, lng: 126.494356 } },
-    { title: '광주운수', latlng: { lat: 35.491065, lng: 126.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
-    { title: '남원운수', latlng: { lat: 35.491065, lng: 127.494356 } },
-  ];
+
   const mapHeight = '740px';
   const uniqueCompanies = Array.from(new Set(vehicleData.map((vehicle) => vehicle.regionName)));
 
@@ -241,7 +250,7 @@ const Home = () => {
             <Title>
               <h1>버스 현황</h1>
             </Title>
-            <Map markerPositions={chargerData} mapHeight={mapHeight} />
+            <Map busPositions={busLocation} markerPositions={chargerData} mapHeight={mapHeight} />
             {/* <Map markerPositions={markerPositions} mapHeight={mapHeight} /> */}
           </MapBox>
           <Busstatic>
