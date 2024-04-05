@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
 
+interface MarkerPosition {
+  title: string;
+  lat: string;
+  lng: string;
+}
+
+// MapComponentProps의 markerPositions 프로퍼티의 형식을 변경
 interface MapComponentProps {
-  // markerPositions: { title: string; latlng: { lat: number; lng: number } }[];
-  //mapHeight: string | number;
-  markerPositions: { title: string; lat: string; lng: string }[];
+  markerPositions: MarkerPosition[];
   mapHeight: string | number;
   busPositions: { x: string; y: string; plateNo: string }[];
 }
