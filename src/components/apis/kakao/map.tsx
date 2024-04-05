@@ -27,7 +27,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
         // };
         const options = {
           center: new window.kakao.maps.LatLng(37.1994932, 127.1311887),
-          level: 9,
+          level: 12,
         };
         const kakao = (window as any).kakao;
         const map = new window.kakao.maps.Map(container, options);
@@ -44,7 +44,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
           map: map,
           averageCenter: true,
           minLevel: 1,
-          calculator: [2, 5, 9, 10],
+          calculator: [1, 5, 9, 10],
         });
 
         busPositions.forEach(({ x, y, plateNo }) => {
@@ -52,9 +52,11 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
             position: new window.kakao.maps.LatLng(y, x),
             image: markerImage1, // 이미지 설정
           });
+          // // 클러스터러에 마커 추가
+          clusterer.addMarker(marker);
 
           // 마커를 지도에 추가
-          marker.setMap(map);
+          // marker.setMap(map);
 
           // 마커에 이벤트 리스너 등록
           // 마커를 클릭할 때 인포윈도우를 표시하도록 설정 가능
@@ -79,7 +81,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
             image: markerImage,
           });
 
-          // 클러스터러에 마커 추가
+          // // 클러스터러에 마커 추가
           clusterer.addMarker(marker);
 
           const infowindow = new window.kakao.maps.InfoWindow({

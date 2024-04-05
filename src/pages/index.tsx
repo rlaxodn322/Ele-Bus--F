@@ -27,9 +27,9 @@ interface Charger {
   title: string;
 }
 interface Bus {
-  stationId: string;
   x: string;
   y: string;
+  plateNo: string;
 }
 const Page = styled.section`
   // display: inline-flex;
@@ -126,9 +126,6 @@ const Home = () => {
       try {
         const response = await loadChargerAPILocation();
         setChargerData(response);
-        // console.log(chargerData);
-
-        //console.log(response);
       } catch (err) {
         console.error(err);
       }
@@ -140,7 +137,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await loadbusLocation();
-        console.log(response);
+
         setBusLocation(response);
       } catch (err) {
         console.error(err);
@@ -150,7 +147,6 @@ const Home = () => {
     fetchData(); // 최초 1회 호출
 
     const intervalId = setInterval(fetchData, 5 * 60 * 1000); // 5분마다 fetchData 함수 호출
-
     return () => {
       clearInterval(intervalId); // 컴포넌트가 언마운트될 때 interval 정리
     };
