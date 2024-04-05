@@ -9,7 +9,7 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { loaddata } from '../components/apis/bus/bus';
-
+import { loadChargerAPILocation } from '../components/apis/charger/charger';
 interface Vehicle {
   turnYn: string;
   stationSeq: string;
@@ -19,6 +19,11 @@ interface Vehicle {
   location: string;
   soc: string;
   note: string;
+}
+interface Charger {
+  lat: string;
+  lng: string;
+  title: string;
 }
 const Page = styled.section`
   // display: inline-flex;
@@ -95,6 +100,7 @@ const Title = styled.div`
 
 const Home = () => {
   const [vehicleData, setVehicleData] = useState<Vehicle[]>([]);
+  const [chargerData, setChargerData] = useState<Charger[]>([]);
   const [selectedLocation, setSelectedLocation] = useState('전체'); // 선택된 위치 상태 추가
   const [sortingOrder] = useState<string | string[]>(['latest']);
   const [selectedCompany, setSelectedCompany] = useState<string | null>('전체보기');
@@ -108,6 +114,21 @@ const Home = () => {
   }, [selectedLocation]);
 
   const router = useRouter();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await loadChargerAPILocation();
+        setChargerData(response);
+        console.log(chargerData);
+
+        //console.log(response);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -220,7 +241,8 @@ const Home = () => {
             <Title>
               <h1>버스 현황</h1>
             </Title>
-            <Map markerPositions={markerPositions} mapHeight={mapHeight} />
+            <Map markerPositions={chargerData} mapHeight={mapHeight} />
+            {/* <Map markerPositions={markerPositions} mapHeight={mapHeight} /> */}
           </MapBox>
           <Busstatic>
             <Title>

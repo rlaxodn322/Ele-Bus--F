@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 
 interface MapComponentProps {
-  markerPositions: { title: string; latlng: { lat: number; lng: number } }[];
+  // markerPositions: { title: string; latlng: { lat: number; lng: number } }[];
+  //mapHeight: string | number;
+  markerPositions: { title: string; lat: string; lng: string }[];
   mapHeight: string | number;
 }
 
@@ -17,11 +19,15 @@ const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight 
     const onLoadKakaoAPI = () => {
       window.kakao.maps.load(() => {
         const container = document.getElementById('map');
-        const options = {
-          center: new window.kakao.maps.LatLng(36.34008, 127.56761),
-          level: 13,
-        };
 
+        // const options = {
+        //   center: new window.kakao.maps.LatLng(36.34008, 127.56761),
+        //   level: 13,
+        // };
+        const options = {
+          center: new window.kakao.maps.LatLng(35.8714354, 128.601445),
+          level: 9,
+        };
         const map = new window.kakao.maps.Map(container, options);
 
         // 클러스터러 생성
@@ -33,9 +39,9 @@ const MapComponent: React.FC<MapComponentProps> = ({ markerPositions, mapHeight 
         });
 
         // 마커 생성 및 클러스터러에 추가
-        markerPositions.forEach(({ title, latlng }) => {
+        markerPositions.forEach(({ title, lat, lng }) => {
           const marker = new window.kakao.maps.Marker({
-            position: new window.kakao.maps.LatLng(latlng.lat, latlng.lng),
+            position: new window.kakao.maps.LatLng(lat, lng),
             title: title,
           });
 
