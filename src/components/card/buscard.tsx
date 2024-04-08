@@ -46,7 +46,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
             }}
           >
             <h2>{vihiclelength} 대</h2>
-            <img style={{ width: '20%', marginBottom: '60px' }} src="images/bus-svgrepo-com (8).svg" alt="bus"></img>
+            <img style={{ width: '20%', marginBottom: '60px' }} src="images/bus-svgrepo-com (7).svg" alt="bus"></img>
           </div>
         </div>
         <div

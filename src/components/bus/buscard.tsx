@@ -59,7 +59,7 @@ const BusCard: React.FC<BusCardProps> = ({ busCount }) => {
             }}
           >
             <h2>{busCount} 대</h2>
-            <img style={{ width: '20%', marginBottom: '20px' }} src="/images/bus-svgrepo-com (8).svg"></img>
+            <img style={{ width: '20%', marginBottom: '20px' }} src="/images/bus-svgrepo-com (7).svg"></img>
           </div>
         </BusInfo>
         <BusInfo
