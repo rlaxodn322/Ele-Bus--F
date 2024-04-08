@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Cascader } from 'antd'; // antd의 Cascader 컴포넌트를 사용
-import Map from '../apis/kakao/map';
+// import Map from '../apis/kakao/map';
 // import Mqtt from '../apis/mqtt/mqtt';
 
 // Dummy 데이터
@@ -24,19 +24,19 @@ const dummyVehicleData = [
 
 const Middle = () => {
   // Add markers for 10 locations in Osan City
-  const markerPositions = [
-    { title: '하남운수', latlng: { lat: 37.549899, lng: 127.216505 } },
-    { title: '오산운수', latlng: { lat: 37.149528, lng: 127.077071 } },
-    { title: '수원운수', latlng: { lat: 37.263573, lng: 127.028601 } },
-    { title: '평택운수', latlng: { lat: 36.990437, lng: 127.092379 } },
-    { title: '부산운수', latlng: { lat: 35.179554, lng: 129.075642 } },
-    { title: '안성운수', latlng: { lat: 36.990437, lng: 127.092379 } },
-    { title: '포항운수', latlng: { lat: 36.019986, lng: 129.342938 } },
-    { title: '울산운수', latlng: { lat: 35.538377, lng: 129.311359 } },
-    { title: '대구운수', latlng: { lat: 35.871435, lng: 128.601445 } },
-    { title: '대천운수', latlng: { lat: 36.491065, lng: 126.494356 } },
-  ];
-  const mapHeight = '680px';
+  // const markerPositions = [
+  //   { title: '하남운수', lat: 37.549899, lng: 127.216505 },
+  //   { title: '오산운수', lat: 37.149528, lng: 127.077071 },
+  //   { title: '수원운수', lat: 37.263573, lng: 127.028601 },
+  //   { title: '평택운수', lat: 36.990437, lng: 127.092379 },
+  //   { title: '부산운수', lat: 35.179554, lng: 129.075642 },
+  //   { title: '안성운수', lat: 36.990437, lng: 127.092379 },
+  //   { title: '포항운수', lat: 36.019986, lng: 129.342938 },
+  //   { title: '울산운수', lat: 35.538377, lng: 129.311359 },
+  //   { title: '대구운수', lat: 35.871435, lng: 128.601445 },
+  //   { title: '대천운수', lat: 36.491065, lng: 126.494356 },
+  // ];
+  // const mapHeight = '680px';
   const uniqueCompanies = Array.from(new Set(dummyVehicleData.map((vehicle) => vehicle.company)));
 
   const [sortingOrder] = useState<string | string[]>(['latest']);
@@ -72,7 +72,7 @@ const Middle = () => {
       <div style={{ display: 'flex', height: '100%', width: '100%' }}>
         <div style={{ width: '49.5%', height: '100%' }}>
           <h1>버스 현황</h1>
-          <Map markerPositions={markerPositions} mapHeight={mapHeight} />
+          {/* <Map markerPositions={markerPositions} mapHeight={mapHeight} /> */}
         </div>
         <div style={{ width: '49.5%', height: '100%' }}>
           <h1 style={{ marginLeft: '20px' }}>버스상태</h1>
