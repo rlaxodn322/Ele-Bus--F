@@ -36,6 +36,7 @@ const BusCard: React.FC<BusCardProps> = ({ onFilterChange, vihiclelength }) => {
             cursor: 'pointer',
           }}
         >
+          
           <h3 style={{ margin: '20px', marginBottom: '0', marginTop: '10px' }}>전체</h3>
           <div
             style={{

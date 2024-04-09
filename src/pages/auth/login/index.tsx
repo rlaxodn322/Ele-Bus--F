@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import EmailForm from '../../../components/apis/mail';
+
 const CheckError = styled.button`
   font-size: 10px;
   color: red;
