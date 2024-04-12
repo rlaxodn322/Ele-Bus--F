@@ -62,4 +62,10 @@ export const routes = [
     default: '/icons/sidebar/graph1-svgrepo-com.svg',
     name: '그래프테스트',
   },
+  // {
+  //   router: '/auth/guestbook',
+  //   active: '/icons/sidebar/graph1-svgrepo-com.svg',
+  //   default: '/icons/sidebar/graph1-svgrepo-com.svg',
+  //   name: '그래프테스트',
+  // },
 ];
