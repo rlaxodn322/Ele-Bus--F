@@ -102,7 +102,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
     if (typeof window !== 'undefined') {
       const kakaoMapScript = document.createElement('script');
       kakaoMapScript.async = false;
-      kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=2b230b26fde09123dfbe3d79c118924d&autoload=false&libraries=clusterer`;
+      kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_APPKEY}&autoload=false&libraries=clusterer`;
       document.head.appendChild(kakaoMapScript);
 
       kakaoMapScript.addEventListener('load', onLoadKakaoAPI, { passive: true });
