@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "next -p 3090",
+    "build": "cross-env ANALYZE=true NODE_ENV=production next build",
+    "start": "cross-env NODE_ENV=production next start -p 3060",
+    "lint": "next lint"
   },
   "author": "Taewoo Kim",
   "license": "ISC",
