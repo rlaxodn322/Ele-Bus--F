@@ -25,6 +25,7 @@ interface Charger {
   lat: string;
   lng: string;
   title: string;
+  cpStat: string;
 }
 interface Bus {
   x: string;

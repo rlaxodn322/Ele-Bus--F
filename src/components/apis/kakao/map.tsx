@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 // MapComponentProps의 markerPositions 프로퍼티의 형식을 변경
 interface MapComponentProps {
-  markerPositions: { title: string; lat: string; lng: string }[];
+  markerPositions: { title: string; lat: string; lng: string; cpStat: string }[];
   mapHeight: string | number;
   busPositions: { x: string; y: string; plateNo: string }[];
 }
@@ -73,10 +73,40 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
         });
 
         // 마커 생성 및 클러스터러에 추가
-        markerPositions.forEach(({ title, lat, lng }) => {
+        markerPositions.forEach(({ title, lat, lng, cpStat }) => {
+          let cpStatusText = '';
+          let textColor = '';
+          // cpStat에 따라 상태 텍스트 설정
+          switch (cpStat) {
+            case '1':
+              cpStatusText = '충전 가능';
+              textColor = 'blue'; // 충전 가능이면 파란색
+              break;
+            case '2':
+              cpStatusText = '충전 중';
+              textColor = 'green'; // 충전 중이면 초록색
+              break;
+            case '3':
+              cpStatusText = '고장/점검';
+              textColor = 'black'; // 고장/점검이면 검은색
+              break;
+            case '4':
+              cpStatusText = '통신 장애';
+              textColor = 'red'; // 통신 장애면 빨간색
+              break;
+            case '5':
+              cpStatusText = '통신 미연결';
+              textColor = 'orange'; // 통신 미연결이면 주황색
+              break;
+            default:
+              cpStatusText = '알 수 없음';
+              textColor = 'gray'; // 알 수 없음이면 회색
+              break;
+          }
           const marker = new window.kakao.maps.Marker({
             position: new window.kakao.maps.LatLng(lat, lng),
             title: title,
+
             image: markerImage,
           });
 
@@ -84,7 +114,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
           clusterer.addMarker(marker);
 
           const infowindow = new window.kakao.maps.InfoWindow({
-            content: `<div>${title}</div>`,
+            content: `<div style="padding: 10px"><p>${title}<p><p style="color:${textColor}">${cpStatusText}</p></div>`,
           });
 
           window.kakao.maps.event.addListener(marker, 'mouseover', function () {
