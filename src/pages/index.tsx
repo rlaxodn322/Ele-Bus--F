@@ -26,6 +26,7 @@ interface Charger {
   lng: string;
   title: string;
   cpStat: string;
+  chargeTp: string;
 }
 interface Bus {
   x: string;

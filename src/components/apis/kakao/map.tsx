@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 // MapComponentProps의 markerPositions 프로퍼티의 형식을 변경
 interface MapComponentProps {
-  markerPositions: { title: string; lat: string; lng: string; cpStat: string }[];
+  markerPositions: { title: string; lat: string; lng: string; cpStat: string; chargeTp: string }[];
   mapHeight: string | number;
   busPositions: { x: string; y: string; plateNo: string }[];
 }
@@ -73,9 +73,10 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
         });
 
         // 마커 생성 및 클러스터러에 추가
-        markerPositions.forEach(({ title, lat, lng, cpStat }) => {
+        markerPositions.forEach(({ title, lat, lng, cpStat, chargeTp }) => {
           let cpStatusText = '';
           let textColor = '';
+          let chargeTpText = '';
           // cpStat에 따라 상태 텍스트 설정
           switch (cpStat) {
             case '1':
@@ -103,6 +104,14 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
               textColor = 'gray'; // 알 수 없음이면 회색
               break;
           }
+          switch (chargeTp) {
+            case '1':
+              chargeTpText = '완속';
+              break;
+            default:
+              chargeTpText = '급속';
+              break;
+          }
           const marker = new window.kakao.maps.Marker({
             position: new window.kakao.maps.LatLng(lat, lng),
             title: title,
@@ -114,7 +123,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
           clusterer.addMarker(marker);
 
           const infowindow = new window.kakao.maps.InfoWindow({
-            content: `<div style="padding: 10px"><p>${title}<p><p style="color:${textColor}">${cpStatusText}</p></div>`,
+            content: `<div style="padding: 10px" ><p>${title}<p><p>${chargeTpText}</p><p style="color:${textColor}">${cpStatusText}</p></div>`,
           });
 
           window.kakao.maps.event.addListener(marker, 'mouseover', function () {
