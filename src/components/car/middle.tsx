@@ -68,7 +68,7 @@ const Middle = () => {
             paddingTop: '10px',
           }}
         >
-          <h1 style={{ margin: '0 auto' }}>상태정보</h1>
+          <h4 style={{ margin: '0 auto' }}>상태정보</h4>
         </div>
         <div style={gridStyles}>
           {dummyData[currentDataIndex].map((data, index) => (

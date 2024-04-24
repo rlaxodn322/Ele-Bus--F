@@ -95,7 +95,7 @@ const Card: React.FC<CardProps> = ({ buses1, columns, updateDtgRecordTitle }) =>
               zIndex: '2',
               paddingTop: '10px',
               height: '8.2%',
-              fontSize: '18px',
+              fontSize: '16px',
               fontWeight: 'bold',
             }}
           >

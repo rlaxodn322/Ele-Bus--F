@@ -74,12 +74,13 @@ const ErrorLog: React.FC<ErrorLogProps> = ({ date, busNumber, errorLocation, err
   const temperature = Math.floor(Math.random() * 21) + 5; // 20부터 40까지의 랜덤한 온도 생성
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px' }}>
-      <h1 style={{ width: '15%', height: '30px', margin: '5px' }}>{date}</h1>
-      <h1 style={{ width: '20%', height: '30px', margin: '5px' }}>{busNumber}</h1>
-      <h1 style={{ width: '25%', height: '30px', margin: '5px' }}>{errorLocation}</h1>
-      <h1 style={{ width: '19%', height: '30px', margin: '5px' }}>{errorMessage}</h1>
-      <h1 style={{ width: '15%', height: '30px', margin: '5px' }}>{temperature}˚</h1> {/* 온도 값을 표시합니다. */}
-      <h1 style={{ width: '15%', height: '30px', margin: '5px' }}>{remark}</h1>
+      <h1 style={{ width: '15%', height: '30px', margin: '5px', textAlign: 'center' }}>{date}</h1>
+      <h1 style={{ width: '20%', height: '30px', margin: '5px', textAlign: 'center' }}>{busNumber}</h1>
+      <h1 style={{ width: '25%', height: '30px', margin: '5px', textAlign: 'center' }}>{errorLocation}</h1>
+      <h1 style={{ width: '19%', height: '30px', margin: '5px', textAlign: 'center' }}>{errorMessage}</h1>
+      <h1 style={{ width: '15%', height: '30px', margin: '5px', textAlign: 'center' }}>{temperature}˚</h1>{' '}
+      {/* 온도 값을 표시합니다. */}
+      <h1 style={{ width: '15%', height: '30px', margin: '5px', textAlign: 'center' }}>{remark}</h1>
     </div>
   );
 };
@@ -166,12 +167,12 @@ const MyPage = () => {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', marginLeft: '10px' }}>
-                <h1 style={{ width: '15%', margin: '0 auto', marginTop: '5px' }}>날짜</h1>
-                <h1 style={{ width: '20%', margin: '0 auto', marginTop: '5px' }}>차량</h1>
-                <h1 style={{ width: '20%', margin: '0 auto', marginTop: '5px' }}>에러위치</h1>
-                <h1 style={{ width: '20%', margin: '0 auto', marginTop: '5px' }}>에러내용</h1>
-                <h1 style={{ width: '15%', margin: '0 auto', marginTop: '5px' }}>온도</h1>
-                <h1 style={{ width: '15%', margin: '0 auto', marginTop: '5px' }}>비고</h1>
+                <h1 style={{ width: '15%', margin: '0 auto', marginTop: '5px', textAlign: 'center' }}>날짜</h1>
+                <h1 style={{ width: '20%', margin: '0 auto', marginTop: '5px', textAlign: 'center' }}>차량</h1>
+                <h1 style={{ width: '20%', margin: '0 auto', marginTop: '5px', textAlign: 'center' }}>에러위치</h1>
+                <h1 style={{ width: '20%', margin: '0 auto', marginTop: '5px', textAlign: 'center' }}>에러내용</h1>
+                <h1 style={{ width: '15%', margin: '0 auto', marginTop: '5px', textAlign: 'center' }}>온도</h1>
+                <h1 style={{ width: '15%', margin: '0 auto', marginTop: '5px', textAlign: 'center' }}>비고</h1>
               </div>
             </div>
             <ErrorTable>

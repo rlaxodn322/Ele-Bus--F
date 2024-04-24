@@ -210,7 +210,7 @@ const MyPage = () => {
                 alignItems: 'center',
               }}
             >
-              <h1 style={{ margin: '0 auto' }}>노선</h1>
+              <h4 style={{ margin: '0 auto' }}>노선</h4>
             </div>
             <Bus stations={stations} busLocations={busLocations} />
           </div>

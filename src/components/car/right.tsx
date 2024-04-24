@@ -75,7 +75,7 @@ const Right = () => {
             height: '10%',
             fontWeight: 'bold',
             background: '#2CA0F3',
-            fontSize: '18px',
+            fontSize: '11px',
             color: 'white',
             borderTopLeftRadius: '10px',
             borderTopRightRadius: '10px',

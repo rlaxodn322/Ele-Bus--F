@@ -67,7 +67,7 @@ const Right: React.FC<RightProps> = ({ data, dtgRecordTitle }) => {
             alignItems: 'center',
           }}
         >
-          <h1 style={{ margin: '0 auto' }}>{dtgRecordTitle}</h1>
+          <h4 style={{ margin: '0 auto' }}>{dtgRecordTitle}</h4>
         </div>
         <div style={gridStyles}>
           {data.map((data, index) => (

@@ -226,7 +226,7 @@ const MyPage = () => {
             <div style={{ width: '100%', marginRight: '20px', height: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Title>
-                  <h4>버스 등록 현황</h4>
+                  <h3>버스 등록 현황</h3>
                 </Title>
 
                 <div style={{ display: 'flex' }}>
@@ -250,7 +250,7 @@ const MyPage = () => {
             <div style={{ width: '100%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Title>
-                  <h4>충전기 등록 현황</h4>
+                  <h3>충전기 등록 현황</h3>
                 </Title>
                 <ButtonWapper>
                   <Button
