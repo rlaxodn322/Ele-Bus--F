@@ -147,7 +147,6 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
 
       kakaoMapScript.addEventListener('load', onLoadKakaoAPI, { passive: true });
     }
-
     return () => {
       // Cleanup code if necessary
     };
