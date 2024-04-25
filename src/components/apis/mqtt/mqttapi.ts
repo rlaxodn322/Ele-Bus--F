@@ -7,5 +7,5 @@ axios.defaults.withCredentials = true;
 // 내 정보 불러오기 API
 export async function graphget() {
   // console.log('loadMyInfoAPI/company');
-  return await axios.get('/mqtt/getdata').then((response) => response.data);
+  return await axios.get('/mqtt/getdata1').then((response) => response.data);
 }
