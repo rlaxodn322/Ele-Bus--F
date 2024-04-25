@@ -44,8 +44,8 @@ const MapComponent: React.FC<MapComponentProps> = ({ busPositions, markerPositio
         const clusterer = new window.kakao.maps.MarkerClusterer({
           map: map,
           averageCenter: true,
-          minLevel: 1,
-          calculator: [1, 2, 5, 10],
+          minLevel: 5,
+          calculator: [5, 10, 5, 10],
         });
 
         busPositions.forEach(({ x, y, plateNo }) => {
